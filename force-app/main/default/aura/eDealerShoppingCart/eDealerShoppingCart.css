@@ -1,0 +1,113 @@
+.THIS {   
+}
+
+.THIS .container{
+    
+}
+.THIS.tabBox
+{
+    margin: 0 15px 17px 16px;
+}
+.THIS li.slds-tabs_default__item.slds-is-active a {
+    color: #e3474b!important;
+    font-weight: 600;
+}
+.THIS li.slds-tabs_default__item.slds-is-active {
+    color: #e3474b!important;
+}
+.THIS ul.slds-tabs_default__nav li {
+    margin: 0 26px 0 0;
+}
+.THIS .slds-tabs_default__link {
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+}
+.THIS .slds-tabs_default__item.slds-is-active:after {
+    background: #e3474b!important;
+}
+.THIS .slds-tabs_default
+{
+    box-shadow: 0 1px 3px 2px #e4e4e4;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.THIS .invDatacontainer{
+    padding-top:1%
+}
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:1%;
+}
+
+.THIS .invDatacontainertable{
+    width:100%
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;
+    padding:1%
+}
+
+
+.THIS .invDatacontainertabledata{
+    padding:1%
+}
+
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:1%;
+}
+
+.THIS .ordertablefirstColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 1%;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorRed svg {
+    fill : red;
+}
+
+.THIS .slds-icon-action-remove {
+    background-color: red;
+}
+
+.THIS .button-Black {
+    background-color: black;
+        border-color: black;
+        color: white;
+}
+.THIS .disabledEvent{
+    opacity: 0.6;
+    pointer-events: none;
+}

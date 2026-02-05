@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dual_Affiliation__c</fullName>
+    <description>Describe the affiliation that the dealer code have as a Dual Dealership</description>
+    <label>Dual Affiliation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AutoCar</fullName>
+                <default>false</default>
+                <label>AutoCar</label>
+            </value>
+            <value>
+                <fullName>Bluebird</fullName>
+                <default>false</default>
+                <label>Bluebird</label>
+            </value>
+            <value>
+                <fullName>Clement Trailer</fullName>
+                <default>false</default>
+                <label>Clement Trailer</label>
+            </value>
+            <value>
+                <fullName>East Trailer</fullName>
+                <default>false</default>
+                <label>East Trailer</label>
+            </value>
+            <value>
+                <fullName>Ford</fullName>
+                <default>false</default>
+                <label>Ford</label>
+            </value>
+            <value>
+                <fullName>GMC</fullName>
+                <default>false</default>
+                <label>GMC</label>
+            </value>
+            <value>
+                <fullName>Hino</fullName>
+                <default>false</default>
+                <label>Hino</label>
+            </value>
+            <value>
+                <fullName>International</fullName>
+                <default>false</default>
+                <label>International</label>
+            </value>
+            <value>
+                <fullName>Isuzu</fullName>
+                <default>false</default>
+                <label>Isuzu</label>
+            </value>
+            <value>
+                <fullName>John Deere</fullName>
+                <default>false</default>
+                <label>John Deere</label>
+            </value>
+            <value>
+                <fullName>Mack</fullName>
+                <default>false</default>
+                <label>Mack</label>
+            </value>
+            <value>
+                <fullName>Mitsu</fullName>
+                <default>false</default>
+                <label>Mitsu</label>
+            </value>
+            <value>
+                <fullName>Sterling</fullName>
+                <default>false</default>
+                <label>Sterling</label>
+            </value>
+            <value>
+                <fullName>Trailmobile</fullName>
+                <default>false</default>
+                <label>Trailmobile</label>
+            </value>
+            <value>
+                <fullName>UD</fullName>
+                <default>false</default>
+                <label>UD</label>
+            </value>
+            <value>
+                <fullName>Utility</fullName>
+                <default>false</default>
+                <label>Utility</label>
+            </value>
+            <value>
+                <fullName>Volvo</fullName>
+                <default>false</default>
+                <label>Volvo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

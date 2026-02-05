@@ -1,0 +1,115 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="eDealerExcess90Days">
+    <aura:attribute name="excess90DaysInventory" type="Object"/>
+    <aura:attribute name="dealerInventory" type="List"/>
+    <aura:attribute name="currentDate" type="String"/>
+    <aura:attribute name="selectedLocation" type="List" />
+    <aura:attribute name="division" type="String" />
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+ 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:handler name="change" value="{!v.selectedLocation}" action="{!c.doInit}"/>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h2>Total Inventory</h2>
+            <div class="filter">
+                <span>{!v.currentDate}</span>
+                <button class="refresh-button" onclick="{!c.handleRefresh}">GO</button>
+            </div>
+        </header>
+		
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>
+
+        <!-- TOTAL INVENTORY SECTION -->
+        <section class="data-table">
+            <aura:if isTrue="{!not(empty(v.excess90DaysInventory))}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">{!$Label.c.Edealer_Total}</th>                            
+                            <th style="width: 25%;">{!$Label.c.Edealer_Category}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_Inventory_Value}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_Percentage_of_Total_Inventory}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_PDC}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_DSP}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="total-row">
+                             <td rowspan="3">{!$Label.c.Edealer_Total}</td>
+                            <td>{!$Label.c.Edealer_Excess_90_Days}</td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.inventory}" /></td>
+                            <td>{!v.excess90DaysInventory.percentage}</td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.pdc}" /></td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.dsp}" /></td>
+                        </tr>
+                        <tr>
+                            <td>{!$Label.c.Edealer_Total_Possible_MDI_Suggested}</td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.mdiSuggested}" /></td>
+                            <td>{!v.excess90DaysInventory.mdiSuggestedPercentage}</td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.mdiSuggestedPDC}" /></td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.mdiSuggestedDSP}" /></td>                            
+                        </tr>
+                        <tr>
+                            <td>{!$Label.c.Edealer_Total_Not_MDI_Suggested}</td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.notMdiSuggested}" /></td>
+                            <td>{!v.excess90DaysInventory.notSuggestedPercentage}</td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.notSuggestedPDC}" /></td>
+                            <td>$<lightning:formattedNumber value="{!v.excess90DaysInventory.notSuggestedDSP}" /></td>                            
+                        </tr>
+                    </tbody>
+                </table>
+            </aura:if>
+        </section>
+
+        <!-- DEALER CODE BREAKDOWN SECTION -->
+        <section class="data-table">
+            <aura:if isTrue="{!not(empty(v.dealerInventory))}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">{!$Label.c.EDealer_Dealer}</th>
+                            <th style="width: 25%;">{!$Label.c.Edealer_Category}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_Inventory_Value}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_Percentage_of_Total_Inventory}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_PDC}</th>
+                            <th style="width: 15%;">{!$Label.c.Edealer_DSP}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.dealerInventory}" var="dealer">
+                            <tr class="total-row">
+                                <td rowspan="3">{!dealer.dealerCode}</td>
+                                <td>{!$Label.c.Edealer_Excess_90_Days}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.inventory}" /></td>
+                                <td>{!dealer.percentage}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.pdc}" /></td>
+                                <td>$<lightning:formattedNumber value="{!dealer.dsp}" /></td>                                
+                            </tr>
+                            <tr>
+                                <td>{!$Label.c.Edealer_Total_Possible_MDI_Suggested}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.mdiSuggested}" /></td>
+                                <td>{!dealer.mdiSuggestedPercentage}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.mdiSuggestedPDC}" /></td>
+                                <td>$<lightning:formattedNumber value="{!dealer.mdiSuggestedDSP}" /></td>                                    
+                            </tr>
+                            <tr>
+                                <td>{!$Label.c.Edealer_Total_Not_MDI_Suggested}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.notMdiSuggested}" /></td>
+                                <td>{!dealer.notSuggestedPercentage}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.notSuggestedPDC}" /></td>
+                                <td>$<lightning:formattedNumber value="{!dealer.notSuggestedDSP}" /></td>                                         
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </aura:if>
+        </section>
+    </div>
+</aura:component>

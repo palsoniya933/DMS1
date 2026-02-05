@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XYTD_Achieved_PACCAR_Brands_Sales__c</fullName>
+    <formula>PACCAR_Brands_YTD_Purchases_Curr_Year__c / XYTD_PACCAR_Brands_Goal__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Shows the % to the Goal</inlineHelpText>
+    <label>2010 Achieved PACCAR Brands Sales</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

@@ -1,0 +1,81 @@
+.imgicon-style-align {
+  width: 30px;
+  height: 20px;
+  margin-right: 4px;
+  margin-left: -4px;
+  margin-top: -2px;
+}
+
+.action-icon {
+  margin-right: 4px;
+  margin-top: -2px;
+}
+
+.action-icon:hover {
+  cursor: pointer;
+}
+
+.edit-icon {
+  width: 30px;
+  height: 18px;
+}
+
+.save-icon {
+  width: 30px;
+  height: 20px;
+}
+
+.width-fifty {
+  min-width: 50%;
+  max-width: 50%;
+}
+
+.warning-bg-color {
+  background-color: #ffb75e;
+}
+
+.content-style {
+  min-height: 3rem;
+  align-content: center;
+}
+
+.color-red {
+  color: #cf3642;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.underline-text-link {
+  text-decoration: underline;
+}
+
+.underline-text-link:hover {
+  cursor: pointer;
+}
+
+.text-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.text-wrap img {
+  flex-shrink: 0;
+  margin-right: 5px;
+}
+
+.text-wrap span,
+.text-wrap div {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.negative-margin {
+  margin-left: -10px;
+}
+
+lightning-input {
+  margin-top: -1.5%;
+}

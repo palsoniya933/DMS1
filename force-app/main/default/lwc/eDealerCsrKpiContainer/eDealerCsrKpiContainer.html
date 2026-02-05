@@ -1,0 +1,50 @@
+<template>
+    <div class="slds-m-around_medium">
+        <h1>{accordionTitle} </h1>
+    <lightning-layout>
+                <lightning-layout-item size="3" class="container-item">
+                    <c-e-dealer-active-csr-tile  dealercode= {dealerCode} dealercodelist = {dealercodeListString} selectedlocobj = {selectedlocationstring}></c-e-dealer-active-csr-tile>
+                </lightning-layout-item>
+                <lightning-layout-item size="3" class="container-item">
+                    <c-e-dealer-my-csr-tile  dealercode= {dealerCode} dealercodelist = {dealercodeListString} selectedlocobj = {selectedlocationstring}></c-e-dealer-my-csr-tile>
+                </lightning-layout-item>
+                <lightning-layout-item size="3" class="container-item">
+                    <c-e-dealer-pending-csr-tile  dealercode= {dealerCode} dealercodelist = {dealercodeListString} selectedlocobj = {selectedlocationstring}></c-e-dealer-pending-csr-tile>
+                </lightning-layout-item>
+            </lightning-layout>
+
+<lightning-layout>
+            <lightning-layout-item size="12" class="container-item">
+                <c-e-dealer-c-s-r-template-announcement>
+                </c-e-dealer-c-s-r-template-announcement>  
+            </lightning-layout-item>  
+        </lightning-layout>   
+    </div>
+    <!--<lightning-accordion allow-multiple-sections-open
+    onsectiontoggle={handleSectionToggle}
+    active-section-name={activeSections}>
+        <lightning-accordion-section name="CSR" label={accordionTitle} >
+            <lightning-layout>
+                <lightning-layout-item size="3" class="container-item">
+                    <c-e-dealer-active-csr-tile  dealercode= {dealerCode} dealercodelist = {dealercodeListString} selectedlocobj = {selectedlocationstring}></c-e-dealer-active-csr-tile>
+                </lightning-layout-item>
+                <lightning-layout-item size="3" class="container-item">
+                    <c-e-dealer-my-csr-tile  dealercode= {dealerCode} dealercodelist = {dealercodeListString} selectedlocobj = {selectedlocationstring}></c-e-dealer-my-csr-tile>
+                </lightning-layout-item>
+                <lightning-layout-item size="3" class="container-item">
+                    <c-e-dealer-pending-csr-tile  dealercode= {dealerCode} dealercodelist = {dealercodeListString} selectedlocobj = {selectedlocationstring}></c-e-dealer-pending-csr-tile>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-accordion-section>
+        </br>
+        </br>
+        <lightning-layout>
+            <lightning-layout-item size="12" class="container-item">
+                <c-e-dealer-c-s-r-template-announcement>
+                </c-e-dealer-c-s-r-template-announcement>  
+            </lightning-layout-item>  
+        </lightning-layout>          
+       
+    </lightning-accordion>-->
+      
+</template>

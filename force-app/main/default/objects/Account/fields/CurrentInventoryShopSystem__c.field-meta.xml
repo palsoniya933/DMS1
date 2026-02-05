@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CurrentInventoryShopSystem__c</fullName>
+    <label>Current Inventory/Shop System</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aurora</fullName>
+                <default>false</default>
+                <label>Aurora</label>
+            </value>
+            <value>
+                <fullName>Conexion Profesional</fullName>
+                <default>false</default>
+                <label>Conexion Profesional</label>
+            </value>
+            <value>
+                <fullName>Connect Enterprise</fullName>
+                <default>false</default>
+                <label>Connect Enterprise</label>
+            </value>
+            <value>
+                <fullName>Connect Express</fullName>
+                <default>false</default>
+                <label>Connect Express</label>
+            </value>
+            <value>
+                <fullName>Connect Professional</fullName>
+                <default>false</default>
+                <label>Connect Professional</label>
+            </value>
+            <value>
+                <fullName>Connect Pro Inventory + Equipment</fullName>
+                <default>false</default>
+                <label>Connect Pro Inventory + Equipment</label>
+            </value>
+            <value>
+                <fullName>CSA</fullName>
+                <default>false</default>
+                <label>CSA</label>
+            </value>
+            <value>
+                <fullName>Dossier - Arsenault</fullName>
+                <default>false</default>
+                <label>Dossier - Arsenault</label>
+            </value>
+            <value>
+                <fullName>Enrich</fullName>
+                <default>false</default>
+                <label>Enrich</label>
+            </value>
+            <value>
+                <fullName>EPAC</fullName>
+                <default>false</default>
+                <label>EPAC</label>
+            </value>
+            <value>
+                <fullName>Excel</fullName>
+                <default>false</default>
+                <label>Excel</label>
+            </value>
+            <value>
+                <fullName>Extra Fleet 2000</fullName>
+                <default>false</default>
+                <label>Extra Fleet 2000</label>
+            </value>
+            <value>
+                <fullName>Fleet Assist</fullName>
+                <default>false</default>
+                <label>Fleet Assist</label>
+            </value>
+            <value>
+                <fullName>Halbersem</fullName>
+                <default>false</default>
+                <label>Halbersem</label>
+            </value>
+            <value>
+                <fullName>Halberstat</fullName>
+                <default>false</default>
+                <label>Halberstat</label>
+            </value>
+            <value>
+                <fullName>Home grown system</fullName>
+                <default>false</default>
+                <label>Home grown system</label>
+            </value>
+            <value>
+                <fullName>Innovative</fullName>
+                <default>false</default>
+                <label>Innovative</label>
+            </value>
+            <value>
+                <fullName>International - Diamond Connect / RIS</fullName>
+                <default>false</default>
+                <label>International - Diamond Connect / RIS</label>
+            </value>
+            <value>
+                <fullName>International - Diamond Connections / Truck Tracker</fullName>
+                <default>false</default>
+                <label>International - Diamond Connections / Truck Tracker</label>
+            </value>
+            <value>
+                <fullName>JJ Keller&apos;s Maintenance Manager</fullName>
+                <default>false</default>
+                <label>JJ Keller&apos;s Maintenance Manager</label>
+            </value>
+            <value>
+                <fullName>Karmak Profitmaker</fullName>
+                <default>false</default>
+                <label>Karmak Profitmaker</label>
+            </value>
+            <value>
+                <fullName>Maddox</fullName>
+                <default>false</default>
+                <label>Maddox</label>
+            </value>
+            <value>
+                <fullName>Manual / Paper</fullName>
+                <default>false</default>
+                <label>Manual / Paper</label>
+            </value>
+            <value>
+                <fullName>Milton</fullName>
+                <default>false</default>
+                <label>Milton</label>
+            </value>
+            <value>
+                <fullName>NAPA TRACS</fullName>
+                <default>false</default>
+                <label>NAPA TRACS</label>
+            </value>
+            <value>
+                <fullName>No system</fullName>
+                <default>false</default>
+                <label>No system</label>
+            </value>
+            <value>
+                <fullName>Old DOS</fullName>
+                <default>false</default>
+                <label>Old DOS</label>
+            </value>
+            <value>
+                <fullName>Parts2000</fullName>
+                <default>false</default>
+                <label>Parts2000</label>
+            </value>
+            <value>
+                <fullName>Powerpro</fullName>
+                <default>false</default>
+                <label>Powerpro</label>
+            </value>
+            <value>
+                <fullName>Quickbooks</fullName>
+                <default>false</default>
+                <label>Quickbooks</label>
+            </value>
+            <value>
+                <fullName>SAP</fullName>
+                <default>false</default>
+                <label>SAP</label>
+            </value>
+            <value>
+                <fullName>Shop Controller</fullName>
+                <default>false</default>
+                <label>Shop Controller</label>
+            </value>
+            <value>
+                <fullName>Somax</fullName>
+                <default>false</default>
+                <label>Somax</label>
+            </value>
+            <value>
+                <fullName>Squarerigger</fullName>
+                <default>false</default>
+                <label>Squarerigger</label>
+            </value>
+            <value>
+                <fullName>TL 2000 - TMW</fullName>
+                <default>false</default>
+                <label>TL 2000 - TMW</label>
+            </value>
+            <value>
+                <fullName>Total Shop Manager</fullName>
+                <default>false</default>
+                <label>Total Shop Manager</label>
+            </value>
+            <value>
+                <fullName>Transman - TMT</fullName>
+                <default>false</default>
+                <label>Transman - TMT</label>
+            </value>
+            <value>
+                <fullName>Truck Tracker</fullName>
+                <default>false</default>
+                <label>Truck Tracker</label>
+            </value>
+            <value>
+                <fullName>Vax Mainframe</fullName>
+                <default>false</default>
+                <label>Vax Mainframe</label>
+            </value>
+            <value>
+                <fullName>WebConnect</fullName>
+                <default>false</default>
+                <label>WebConnect</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

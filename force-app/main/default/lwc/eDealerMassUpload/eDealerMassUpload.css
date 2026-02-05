@@ -1,0 +1,329 @@
+:host {
+    overflow-x: hidden;
+    --sds-c-tabs-item-text-color-active:red;
+    --sds-c-tabs-item-text-font-weight: 700;
+    --slds-c-tabs-item-color-border-hover :none;
+    --sds-c-tabs-item-color-border-active:red;
+}
+
+.slds-var-p-around_medium {
+    max-width: 100%;
+    overflow-x: visible;
+}
+.slds-path__link{
+	    padding-left: 0px !important;
+    padding-right: 0px !important;
+	padding: 0 5px 0 5px !important;
+}
+.fixedPosition {
+    position: fixed !important;
+}
+.delete-color {
+      
+    --sds-c-icon-color-foreground-default: red !important;
+    --sds-c-icon-color-background: red !important;
+}
+.add-color {
+     
+    --sds-c-icon-color-foreground-default: green !important;
+    --sds-c-icon-color-background: green !important;
+}
+.btn-padding{
+   padding-top: 18px !important;
+}
+.submit-btn{
+   padding-left: 18px !important;
+}
+.slds-table thead th{
+    background: gray;
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.delete_icon {
+    --sds-c-icon-color-background: #FF4538;
+    --sds-c-icon-color-foreground-default: white !important;
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.add_icon {
+    --sds-c-icon-color-background: green;
+    --sds-c-icon-color-foreground-default: white !important;
+    padding: 3px;
+    border-radius: 20px;
+}
+.paragraph-container p {
+    display: inline-block; /* or display: inline; */
+    margin: 0; /* Remove default paragraph margin */
+}
+.imgicon-style-align{
+    width: 31px;
+    height: 23px;
+    margin-right: 4px;
+    margin-left: -4px;
+    margin-top: -2px;
+   
+}
+.download-btn{ 
+    background: #c23934!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #c23934;
+    margin-right: 6px;
+    margin-top: 1px;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-content {
+    margin-right: auto; 
+}
+
+.right-content {
+    text-align: right;
+    
+}
+.upload-btn{ 
+    --slds-c-button-success-text-color:#fff !important;
+    
+}
+.align-close{
+    text-align: right;
+}
+.close-icon{
+    background: red;
+    padding-bottom: 1rem;
+    text-align: right;
+}
+.slds-modal__close{ 
+    top: 1.4rem;
+    z-index: 999;
+    right: 1.7rem;
+}
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px; 
+    cursor: pointer;
+    padding-top: 20px;
+}
+.search-btn{
+    text-align: right;
+}
+.slds-table_container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+.close-icon{
+    width: 25px !important;
+    height: 25px !important;
+    fill:red !important;
+}
+.slds-modal__container{
+    max-width: 50rem !important;
+    width: 50% !important;
+    border-radius: 10%;
+    padding: 20px;
+    
+}
+.slds-file-selector_files{
+float:left !important;
+}
+.slds-checkbox{
+    padding-left: 30px;
+}
+.invDatacontainertablecontainer{
+    padding-top:0px;
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+}
+.leftpd{
+    padding-left:20px !important;
+}
+.invDatacontainertable{
+    width:100%;
+}
+.SetMaxHeight{
+    width: 100%;
+    max-height: 250px;
+    overflow: auto;
+}
+.invDatacontainertableheading th{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: uppercase;
+    height: 35px;
+    font-weight: 500;
+}
+.slds-icon .slds-icon-text-default .slds-icon_small{
+    width: 25px !important;
+    height: 25px !important;
+    fill:red !important;
+}
+.slds-is-active {
+    color: #e3474b!important;
+    background-color: red !important;
+}
+.black-btn{
+    background-color: black;
+    color: white;
+    padding-right: 0.8rem;
+}
+.button-container{
+    text-align: right;
+    padding: 0.9rem;
+    
+}
+.btn-group{
+    padding-left: 0.8rem;
+}
+.bgpart-style{
+    padding: 0px 10px;
+    width: 100%;
+    background: #f5f6fa;
+    margin: -7px 0 12px 0;
+    height: 55px;
+    padding-top: 0px 10px;
+}
+.prodnameno {
+    font-size: 16px;
+}
+.align-partname{margin: 17px 0px 0px!important;padding:0px!important;}
+.pt-name{    
+    float: left;
+    padding: 2px 0px;
+}
+.padding-around{
+  padding-right: 5px;
+  padding-left: 3px;
+  padding-bottom: 10px;
+}
+.custom-row{
+    background-color: lightgrey !important;
+    height: 30px;
+}
+.csrpartstabledata{
+    padding: 0 5px;
+    height: 42px;
+}
+.row-design{
+    background: #fff;
+}
+.slds-m-around_x-small{
+    text-align:left;
+    padding-left:25px;
+    background:lightgrey;
+    
+}
+.slds-text-heading_medium{
+    padding-bottom:15px;
+    font-weight: 600;
+    font-size:medium;
+    /* font-size: ; */
+}
+.slds-icon_container{
+    fill:red;
+}
+.fill-color{
+    --slds-c-icon-color-foreground-default:#ff0000;
+}
+.slds-is-fixed{
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+.th-color{
+  background-color: #333;
+  color: #fff;
+}
+.index-column{
+    padding-top:15px;
+}
+.icon-margin{
+    margin-top: 10px;
+}
+.btn-right{
+    padding-right:15px;
+    float:right;
+}
+.layout-fonts{
+    font-family:RobotoRegular;
+    font-size:12px;
+}
+.search-margin{
+    margin-top: 35px;
+}
+.alternate-part-row{
+    padding-left:5%; 
+    padding-top:5px
+}
+.error-message{
+    color:red;
+    margin: 10px;
+}
+.part-search-button-slot{
+    margin-top: 35px;
+}
+.channel-combobox{
+    padding-bottom: 20px;
+}
+.outer-div{
+    position: relative;
+    height:200px;
+	background-color:#eee
+}
+.spinner {
+    position: absolute;
+}
+.slds-badge{
+    font-size: 9px !important;
+}
+.badge-color{
+    color: red;
+}
+thead{
+    position: sticky;
+    top: 0;
+}
+.margn{
+    margin: 20px
+}
+.info-msg {
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    width: 100%;
+        border: 1px solid #fff36a;
+
+}
+.warningbox{
+    padding: 1%;
+    border-radius: 4px;
+    color:#898989;
+    background-color:#fff;
+    background-image: none;
+}
+.info-msg svg{
+    margin: 0px 5px 4px 5px;
+    vertical-align: middle;
+}
+.centered-alert {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; /* You can adjust the width as needed */
+  }

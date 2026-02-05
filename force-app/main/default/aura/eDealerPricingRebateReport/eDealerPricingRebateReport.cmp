@@ -1,0 +1,61 @@
+<!-- 
+ Name        : eDealerPricingRebateReport
+ Description : This is an aura component eDealer Pricing category rebate report page.
+ Developer: Nikhil Nair
+-->
+
+<aura:component
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global"
+    controller="RebateReportController"
+>
+    <!-- Attributes for storing date, dealer code, and button label -->
+    <aura:attribute name="currentDate" type="String" />
+    <aura:attribute name="RebateDaysAgoDate" type="String" />
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="downloadUrl" type="String" />
+    <aura:attribute name="downloadLinkText" type="String" />
+
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object" />
+    <aura:attribute name="selectedmenu" type="string" />
+    <aura:attribute name="displayLoading" type="boolean" default="false" />
+
+    <!-- Handler for component initialization -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- Handler for changes to dealerCode -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.handleDealerCodeChange}" />
+
+    <!-- Markup container -->
+    <div class="container">
+        <div class="tabs">
+            <lightning:tabset selectedTabId="one">
+                <lightning:tab label="{!$Label.c.EDealer_Rebate_Report}" id="one">
+                    <aura:if isTrue="{!v.displayLoading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" variant="brand" />
+                    </aura:if>
+
+                    <div class="center-form">
+                        <aura:if isTrue="{!v.dealerCode}">
+                            <aura:if isTrue="{!not(v.downloadUrl)}">
+                                 <p class="button">
+                                        <a class = "button-style" onclick="{!c.downloadReport}" 
+                                           name = 'Dealer Incentive'>{!$Label.c.EDealer_Rebate_Report_Download_Button}</a>    
+                                    </p>
+                            </aura:if>
+                        <aura:set attribute="else">
+                            <p>No dealer code found for the current user.</p>
+                        </aura:set>
+                            <div class="info-container">
+                                <p>{!$Label.c.If_you_have_any_questions_regarding_the_contents}</p>
+                                <p>{!$Label.c.In_the_event_that_you_observe_any_negative_margin_on_the_stock_classes_listed_be}</p>
+                                <p>{!$Label.c.The_stock_classes_to_monitor_are_as_follows_010V_150_159A_403G_403H_400W}</p>
+                            </div>
+                        </aura:if>
+                    </div>
+                </lightning:tab>
+            </lightning:tabset>
+        </div>
+    </div>
+</aura:component>

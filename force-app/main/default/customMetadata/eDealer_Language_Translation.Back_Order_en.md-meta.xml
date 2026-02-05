@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Back Order</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; : &quot;GROUP&quot;,
+&quot;loc&quot; : &quot;LOCATION&quot;,
+&quot;item&quot; : &quot;ITEM&quot;,
+&quot;order_date&quot; : &quot;ORDER DATE&quot; ,
+&quot;order_type&quot; : &quot;ORDER TYPE&quot; ,
+&quot;order_number&quot; :&quot;ORDER NUMBER&quot;,
+&quot;po_number&quot; : &quot;PO NUMBER&quot;,
+&quot;status&quot; : &quot;STATUS&quot;,
+&quot;status_descr&quot; : &quot;STATUS DESCRIPTION&quot;,
+&quot;qty_order&quot; : &quot;QUANTITY ORDER&quot;,
+&quot;ext_net&quot; : &quot;EXTENSION NET&quot;,
+&quot;vendor_id&quot; : &quot;VENDOR ID&quot;,
+&quot;vendor_name&quot; : &quot;VENDOR NAME&quot;,
+&quot;saleable_ind&quot; : &quot;SALEABLE INDEX&quot;,
+&quot;oh&quot; : &quot;ON HAND&quot;,
+&quot;distchan&quot; : &quot;DISTRIBUTION CHANNEL&quot;,
+&quot;abc&quot; : &quot;ABC&quot;,
+&quot;dlrrslnumber&quot; : &quot;DLRRSLNUMBER&quot;
+}</value>
+    </values>
+</CustomMetadata>

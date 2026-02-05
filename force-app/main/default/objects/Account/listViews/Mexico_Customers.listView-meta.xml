@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mexico_Customers</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ADDRESS1_COUNTRY</field>
+        <operation>contains</operation>
+        <value>Mexico,MX,Mex</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.ALIAS</field>
+        <operation>equals</operation>
+        <value>caccount</value>
+    </filters>
+    <label>Mexico Fleets &amp; Repair Shops</label>
+    <sharedTo>
+        <group>MexicoAllUsers</group>
+        <group>MexicoExecutives</group>
+        <group>MexicoFleets</group>
+        <role>Administrator</role>
+        <role>GeneralManager</role>
+    </sharedTo>
+</ListView>

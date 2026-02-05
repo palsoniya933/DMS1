@@ -1,0 +1,71 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+   <!-- <ltng:require scripts="{!join(',', 
+                           $Resource.EDealerResources + '/js/jquery-1.12.4.js', 
+                           $Resource.EDealerResources + '/js/xlsx.full.min.js')}"                  
+                  afterScriptsLoaded="{!c.doInit}" /> -->
+    
+    <!-- this is the list of the report data to be download -->
+    <aura:attribute name="report" type="LIST" />
+    
+    <!-- to add timestamp on report name or not to add that -->
+    <aura:attribute name="isReportTimeStamp" type="Boolean" default="true" />
+    
+    <!-- this used to save the method which will call api to get data -->
+    <aura:attribute name="callapimethod" type="Aura.Action" />
+    
+    <!-- this used to save the method which will call api to get data -->
+    <aura:attribute name="callcsvdownloadmethod" type="Aura.Action" />
+    
+    <!-- this is the report name -->
+    <aura:attribute name="reportName" type="String" />
+    
+    <aura:attribute name="columns" type="List" />
+    
+    <!-- this is used to make button enable or disabled NOT Disabled -->
+    <aura:attribute name="disabledbtn" type="boolean" default="false" />   
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- for Document Type -->
+    <aura:attribute name="isDownloadFromInventory" type="Boolean" default="false"/>
+    
+    <!-- spinner -->
+    <aura:if isTrue="{!v.displayLoading}">
+        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+    </aura:if>    
+    
+    <!-- method to download excel -->
+    <aura:method name="downloadExcel" action="{!c.downloadCsvPartion}" access="public">
+        <aura:attribute name="reportData" type="report"/>         
+    </aura:method>
+    
+    <!-- method to download csv -->
+    <aura:method name="downloadCsv" action="{!c.downloadCsvData}" access="public">
+        <aura:attribute name="reportData" type="report"/>         
+    </aura:method>
+    <!--<button class="{!v.report.length > 0 ? 'download-btn' : ''}" 
+            disabled="{!v.report.length > 0 ? false : true}" 
+            onclick="{!c.downloadCsv}" >
+        <img src="{!$Resource.EDealerResources + '/icons/Excelliconwhite.svg'+'#Excelliconwhite'}" 
+             class="imgicon-style-align" />Download</button>-->
+    
+    
+    <aura:if isTrue="{! empty(v.callapimethod)}">
+        <button class="{!v.report.length > 0 ? 'download-btn' : ''}" 
+                disabled="{!v.report.length > 0 ? false : true}" 
+                onclick="{!c.downloadCsv}" >
+            <img src="{!$Resource.EDealerResources + '/icons/Excelliconwhite.svg'+'#Excelliconwhite'}" 
+                 class="imgicon-style-align" />{!$Label.c.Download_Button}</button>
+        
+        <aura:set attribute="else">
+            <button class="{!v.report.length > 0 ? 'download-btn' : ''}" 
+                    disabled="{!v.report.length > 0 ? false : true}" 
+                    onclick="{!v.callapimethod}" >
+                <img src="{!$Resource.EDealerResources + '/icons/Excelliconwhite.svg'+'#Excelliconwhite'}" 
+                     class="imgicon-style-align" />{!$Label.c.Download_Button}</button>
+        </aura:set>
+    </aura:if>    
+    <span style="display:none"><c:eDealerDownloadExcelLWC aura:id="childLwcCompId" /></span>
+</aura:component>

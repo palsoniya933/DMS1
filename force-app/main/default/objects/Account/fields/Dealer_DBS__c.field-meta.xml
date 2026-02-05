@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_DBS__c</fullName>
+    <label>Dealer DBS</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>ADP/CDK</fullName>
+                <default>false</default>
+                <label>ADP/CDK</label>
+            </value>
+            <value>
+                <fullName>AS400</fullName>
+                <default>false</default>
+                <label>AS400</label>
+            </value>
+            <value>
+                <fullName>CAT Custom</fullName>
+                <default>false</default>
+                <label>CAT Custom</label>
+            </value>
+            <value>
+                <fullName>DP Solutions Vibe</fullName>
+                <default>false</default>
+                <label>DP Solutions Vibe</label>
+            </value>
+            <value>
+                <fullName>DSI</fullName>
+                <default>false</default>
+                <label>DSI</label>
+            </value>
+            <value>
+                <fullName>Karmak Fusion</fullName>
+                <default>false</default>
+                <label>Karmak Fusion</label>
+            </value>
+            <value>
+                <fullName>Karmak Info5</fullName>
+                <default>false</default>
+                <label>Karmak Info5</label>
+            </value>
+            <value>
+                <fullName>Karmak Legend</fullName>
+                <default>false</default>
+                <label>Karmak Legend</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Own</fullName>
+                <default>false</default>
+                <label>Own</label>
+            </value>
+            <value>
+                <fullName>Procede</fullName>
+                <default>false</default>
+                <label>Procede</label>
+            </value>
+            <value>
+                <fullName>SAP</fullName>
+                <default>false</default>
+                <label>SAP</label>
+            </value>
+            <value>
+                <fullName>Serti</fullName>
+                <default>false</default>
+                <label>Serti</label>
+            </value>
+            <value>
+                <fullName>Sitic</fullName>
+                <default>false</default>
+                <label>Sitic</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

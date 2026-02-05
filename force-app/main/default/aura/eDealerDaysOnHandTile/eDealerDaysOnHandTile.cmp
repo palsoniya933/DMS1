@@ -1,0 +1,94 @@
+<aura:component controller="EDealerDaysOnhandController" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will save the days On Hand api details -->
+    <aura:attribute name="totalDays" type="Integer" />
+    
+    <!-- this will save the days On Hand api details -->
+    <aura:attribute name="daysOnHandData" type="List" />
+    <aura:attribute name="daysOnHandDisplaydata" type="object" />
+    
+    <!-- this will save the days On Hand api details cache for based on multiple location -->
+    <aura:attribute name="daysOnHandMapCache" type="Map" />
+    
+    <!-- this will save the title for the tile -->
+    <aura:attribute name="title" type="string" />    
+    
+    <aura:attribute name="selectoptions" type="List" default="[
+                                                              {'label': 'monthly', 'value': 'M'},
+                                                              {'label': 'yearly', 'value': 'Y'}]"/>
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="monthly"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- saving the Engine updated value -->
+    <aura:attribute name="isEngine" type="Boolean" default="false"/>
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerLoc}" action="{!c.doInit}"/> 
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_8-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">{!v.title}</span>
+                            <span class="slds-p-around_xx-small floatRight" style="margin-top: -4px;">
+                                <div class="toggleswitch">
+                                    <lightning:input type="toggle" 
+                                                     name="input1" 
+                                                     label="ENGINE"
+                                                     messageToggleActive=""
+                                                     messageToggleInactive=""
+                                                     checked="{!v.isEngine}"
+                                                     onchange="{!c.engineUpdateTileDetails}"/>
+                                </div>
+                            </span>
+                        </div>
+                        
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td class="greenTextb">                                       
+                                        
+                                        <aura:if isTrue="{!not(empty(v.daysOnHandDisplaydata.doh))}">
+                                            <lightning:formattedNumber value="{!v.daysOnHandDisplaydata.doh}" currencyCode="USD"/>                                            
+                                            <aura:set attribute="else">
+                                                0
+                                            </aura:set>
+                                        </aura:if>
+                                        <span class="sideText">Days</span>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

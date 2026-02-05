@@ -1,0 +1,188 @@
+<aura:component   controller="EDealerTotalInventoryKPI"
+                implements="forceCommunity:availableForAllPageTypes" 
+                extends="c:edealerTracking"
+                access="global" >    
+    
+    <!-- register event when menu is clicked -->
+    
+    <aura:registerEvent name="eDealerMenuClickedEvent" type="c:eDealerMenuClickedEvent"/> 
+    <aura:registerEvent name="subMenuEvent" type="c:eDealerMenuClickedEvent"/>
+    <!-- this will save the Total Inventory KPI details -->
+    <aura:attribute name="totalInventoryData" type="Object" />
+    <aura:attribute name="selectedSubMenu" type="String" />
+    <!-- this will save the Total Inventory KPI details -->
+    <aura:attribute name="AllInventoryData" type="Object" />
+    <aura:attribute name="selectedTab" type="String" />
+    <aura:attribute name="selectedTabLabel" type="String" />
+    <!-- this will save the total Inventory KPI details -->
+    <aura:attribute name="totalInventoryDataMapCache" type="Map" />    
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="daily"/>
+    
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="Object"/>    
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <!--<aura:handler name="change" value="{!v.dealerLoc}" action="{!c.doInit}"/>--> 
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    
+    
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_8-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">{!v.title}</span>
+                            &nbsp;&nbsp;
+                           
+                        </div>
+                        
+                      <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    
+                                    <td class="fontSize">
+                                        <span class="heading">
+                                        	<a href="" onclick="{!c.handleSelectedTab}" data-tab="TotalInventory" title="{!$Label.c.EdealerTotalInventoryTooltip}">{!$Label.c.Edealer_Total_Inventory}</a>
+                                        </span>    
+                                        <!-- {!$Label.c.Edealer_Total_Inventory} -->
+                                      
+                                    </td>
+                                    
+                                    <!-- title :) {!$Label.c.Edealer_Health_Inventory} -->
+                                    <td class="fontSize"><span class="heading">  
+                                        <a href="" onclick="{!c.handleSelectedTab}" data-tab="HealthInventory" title="{!$Label.c.EdealerHealthyInventoryTooltip}">{!$Label.c.Edealer_Health_Inventory}
+                                        </a>
+                                        </span> 
+                                    </td>
+                                    
+                                    <td class="fontSize">
+                                        <span class="heading">
+                                            <a href="" onclick="{!c.handleSelectedTab}" data-tab="NoMove" title="{!$Label.c.EdealerNoMoveToolotip}">
+                                                {!$Label.c.Edealer_No_Move}
+                                            </a>
+                                        </span>
+                                    </td>
+                                    
+                                    <td class="fontSize">
+                                        <span class="heading">
+                                            <a href="" onclick="{!c.handleSelectedTab}" data-tab="Excess90Days" title="{!$Label.c.EdealerExcess90DaysTooltip}">
+                                                {!$Label.c.Edealer_Excess_90_Days}
+                                            </a>
+                                        </span>
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr class="{!v.selectedLocation.listSelectedLoc.length == 1?'':'disabledEvent'}">
+                                    
+                                    <td class="blackTextb">                                        
+                                        <span class="supHead">
+                                            <sup style="top: -1px;">$</sup>
+                                        </span>
+                                        <aura:if isTrue="{!not(empty(v.AllInventoryData.TotalInventory))}">
+                                            <lightning:formattedNumber value="{!v.AllInventoryData.TotalInventory}" currencyCode="USD"/>
+                                            <aura:set attribute="else">
+                                                0
+                                            </aura:set>
+                                        </aura:if> 
+                                         
+                                    </td>
+                                    
+                                    <!-- healthy inventory -->
+                                    <td class="blackTextb">
+                                            <span class="supHead">
+                                                <sup style="top: -.2em;">$</sup>
+                                            </span>
+                                               <aura:if isTrue="{!not(empty(v.AllInventoryData.HealthyInventory))}">
+                                            <lightning:formattedNumber value="{!v.AllInventoryData.HealthyInventory}" currencyCode="USD"/>
+                                            <aura:set attribute="else">
+                                                0
+                                            </aura:set>
+                                        </aura:if> 
+                                        
+                                    </td>
+                                    
+                                    
+                                    <td class="blackTextb">
+                                        <span class="supHead">
+                                            <sup style="top: -.2em;">$</sup>
+                                        </span>
+                                       
+                                             <aura:if isTrue="{!not(empty(v.AllInventoryData.NoMove))}">
+                                            <lightning:formattedNumber value="{!v.AllInventoryData.NoMove}" currencyCode="USD"/>
+                                            <aura:set attribute="else">
+                                                0
+                                            </aura:set>
+                                        </aura:if> 
+                                       
+                                    </td>
+                                    
+                                    <td class="blackTextb">
+                                        <span onclick="{!c.handleOpenEDealerExcess90Days}">
+                                            <span class="supHead">
+                                                <sup style="top: -.2em;">$</sup>
+                                            </span>
+                                             <aura:if isTrue="{!not(empty(v.AllInventoryData.Excess90Days))}">
+                                            <lightning:formattedNumber value="{!v.AllInventoryData.Excess90Days}" currencyCode="USD"/>
+                                            <aura:set attribute="else">
+                                                0
+                                            </aura:set>
+                                        </aura:if> 
+                                        </span>
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        
+                    </div>
+                    
+                </div>                    
+            </div>
+            
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="{!$Label.c.Edealer_total_value_engine_parts}"
+                                    />
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    
+    
+</aura:component>

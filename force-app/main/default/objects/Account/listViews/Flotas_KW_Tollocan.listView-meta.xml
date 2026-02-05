@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flotas_KW_Tollocan</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Registrado_con_Dealer_en_Programa_Flotas__c</field>
+        <operation>equals</operation>
+        <value>KW Tollocan</value>
+    </filters>
+    <filters>
+        <field>Program_PPM__c</field>
+        <operation>equals</operation>
+        <value>Fleet Program</value>
+    </filters>
+    <label>Flotas - KW Tollocan</label>
+    <sharedTo>
+        <group>MexicoExecutives</group>
+        <group>MexicoFleets</group>
+    </sharedTo>
+</ListView>

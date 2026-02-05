@@ -1,0 +1,65 @@
+<aura:component extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes,force:appHostable,force:hasRecordId" 
+                access="global" >
+   
+    <!-- Attributes Start -->
+    <aura:attribute name="filters" type = "String" description = "It is used to provide filter to dataset in dashboard."/>
+    <aura:attribute name="showDashboard" type = "Boolean" default = "false" description = "It is used to show dashboard." />
+    <aura:attribute name="dealerCode" type = "String" description = "It is used to store the selected dealer code"/>
+    <aura:attribute name="lstSelectedLocation" type="List" default ="[]" description="It is used to get the selected dealer locations from the parent component."/>
+    <aura:attribute name="showErrorMessage" type="Boolean" default ="false" description = "It is used to show error."/>
+    <aura:attribute name="showEnglishDashboard" type="Boolean" default ="false" description = "It is used to show english dashboard."/>
+    <aura:attribute name="showFrenchDashboard" type="Boolean" default ="false" description = "It is used to show french dashboard."/>
+    <aura:attribute name="showSpanishDashboard" type="Boolean" default ="false" description = "It is used to show spanish dashboard."/>
+    <aura:attribute name="dealersInfo" type="List" default="[]"/>
+    <aura:attribute name="dealersInfoString" type="String" default=""/>
+    <aura:attribute name="loadTime" type="Integer" />
+
+    <!-- Attributes End -->
+    
+    <!-- Handlers Start -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.handleDealerCodeChange}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    <!-- Handlers End -->
+    <wave:sdk aura:id="sdk"/>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_12-of-12">
+            <aura:if isTrue="{!v.showErrorMessage}">
+                	 <div class="slds-text-heading_large slds-text-align_center">{!$Label.c.Loyalty_EDealer_Suffix_Error}</div>
+            </aura:if>
+            <aura:if isTrue="{!v.showDashboard}">
+                <aura:if isTrue="{!v.showEnglishDashboard}">
+                    <wave:waveDashboard developerName="KPI"  
+                                        showTitle="false" 
+                                        showSharing="true" 
+                                        showHeader="false" 
+                                        height="900" 
+                                        openLinksInNewWindow="false"
+                                        filter = "{!v.filters}"/>
+                </aura:if>	
+                
+                <aura:if isTrue="{!v.showFrenchDashboard}">
+                    <wave:waveDashboard developerName="KPIs_French"  
+                                        showTitle="false" 
+                                        showSharing="true" 
+                                        showHeader="false" 
+                                        height="900" 
+                                        openLinksInNewWindow="false"
+                                        filter = "{!v.filters}"/>
+                </aura:if>	
+                
+                <aura:if isTrue="{!v.showSpanishDashboard}">
+                    <wave:waveDashboard developerName="KPIs_Spanish"  
+                                        showTitle="false" 
+                                        showSharing="true" 
+                                        showHeader="false" 
+                                        height="900" 
+                                        openLinksInNewWindow="false"
+                                        filter = "{!v.filters}"/>
+                </aura:if>	
+            </aura:if>
+        </div> 
+    </div>
+</aura:component>

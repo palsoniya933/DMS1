@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Q_2_Purchase_to_Goal__c</fullName>
+    <formula>Total_Sales_Current_YTD__c / Q_2_Dealer_Group_Purchase_Goal__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Q 2 Purchase % to Goal</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

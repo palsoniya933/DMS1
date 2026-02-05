@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MDI Stocking Template</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;loc&quot; : &quot;EMPLACEMENT&quot;,
+&quot;distchan&quot; : &quot;CIRCUIT DE DISTRIBUTION&quot;,
+&quot;dlrsplrcd&quot; : &quot;DLRSPLRCD&quot;,
+&quot;stkclass&quot; : &quot;CATÉGORIE DE MARCHANDISES&quot;,
+&quot;abc&quot; : &quot;ABC&quot;,
+&quot;abc_level&quot; : &quot;NIVEAU ABC&quot;,
+&quot;starlevel&quot; : &quot;NIVEAU VEDETTE&quot;,
+&quot;cost&quot; : &quot;COÛT&quot;,
+&quot;mpscovdur&quot; : &quot;MPSCOVDUR&quot;,
+&quot;ssrule&quot; : &quot;SSRULE&quot;,
+&quot;minss&quot; : &quot;MINSS&quot;,
+&quot;sscov&quot; : &quot;SSCOV&quot;
+}</value>
+    </values>
+</CustomMetadata>

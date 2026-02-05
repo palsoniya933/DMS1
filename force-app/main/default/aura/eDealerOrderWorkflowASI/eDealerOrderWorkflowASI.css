@@ -1,0 +1,122 @@
+/* for roboto medium*/
+@font-face {
+    font-family: 'RobotoBold';
+    src: url(/resource/RobotoBold); 
+}
+/* for roboto medium end*/
+.THIS .twenty-order-comfirm{ width:20%!important;}
+.THIS .fourty-order-update{width:40%!important;}
+.THIS .sixty-per{width:60%!important;}
+.THIS .eighty-part-shipped{width:80%!important;}
+.THIS .eightysix-transit{width:89%!important;}
+.THIS .hundread-delivered{width:100%!important;}
+
+
+.THIS .info-msg{
+    
+    
+    top: 7%;  
+}
+
+.THIS .v1{
+    border-left: 3px solid green;
+    height: 94px;
+    position: absolute;
+    top: 32%;
+    left: 44.6%;
+}
+
+
+
+.THIS#b{width:100%!important;} 
+
+.THIS .slds-progress {
+    max-width: 85% !important;
+}
+
+.THIS .progressComplete svg {
+    fill : rgb(94, 180, 255);
+}
+
+.THIS .progressInProgress svg {
+    fill : #F8C109;
+}
+
+.THIS .completeProgressName {
+    position: absolute;
+    margin-top: 1.5rem;
+}
+
+.THIS .notStartedProgressName {
+    position: absolute;
+    margin-top: 1.2rem;
+}
+
+
+
+
+.THIS {
+}
+
+.THIS.h1-style{font-family: 'RobotoBold'!important;
+    margin-left: 1%;
+    font-size: 16px;
+    color: #000;
+}
+.THIS.progressbarcontainer{
+    width:70%!important; 
+    margin:0 auto!important;
+}
+.THIS .blueBg svg {
+    fill:#3cc936!important;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+.THIS .red-bg{
+    left:-3%!important;
+    border:3px solid #fff;
+}
+
+.THIS .red-bg svg{
+    fill: #fbf8f8!important;
+    background: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.THIS .check-icon-align .blueBg{
+    left:-3px;
+}
+.THIS .padding-bt{
+    padding: 1% 1% 6% 1%!important;font-family: 'RobotoRegular' !important;
+}
+.THIS .slds-progress-bar__value{
+    background:#3cc936!important;
+}
+.THIS .slds-progress__item{
+    margin-top:0px!important;
+    background: #fff;
+    border: 2px solid #fff;
+}
+.THIS.slds-progress{
+    margin: 66px 1%!important;
+    max-width: 50%!important;
+}
+.THIS .slds-progress-bar{
+    margin-top:-0.0725rem!important;
+}
+.THIS .icon-style{
+    color:#fff!important;width:20px;
+    height: 20px;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    background:#bfbf15;
+}
+.THIS .icon-style svg{vertical-align:top;}
+
+.THIS .slds-progress__marker{
+    background:#b7b7b7!important;
+    border: 2px solid var(--lwc-progressColorBorder,rgb(255, 255, 255))!important;
+        }

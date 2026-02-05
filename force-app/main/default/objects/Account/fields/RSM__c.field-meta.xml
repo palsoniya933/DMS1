@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RSM__c</fullName>
+    <description>Regional Sales Manager</description>
+    <inlineHelpText>Regional Sales Manager</inlineHelpText>
+    <label>RSM</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CORREDOR, D</fullName>
+                <default>false</default>
+                <label>CORREDOR, D</label>
+            </value>
+            <value>
+                <fullName>EDWARDS, R.</fullName>
+                <default>false</default>
+                <label>EDWARDS, R.</label>
+            </value>
+            <value>
+                <fullName>HERNANDEZ, J</fullName>
+                <default>false</default>
+                <label>HERNANDEZ, J</label>
+            </value>
+            <value>
+                <fullName>JIMENEZ, A</fullName>
+                <default>false</default>
+                <label>JIMENEZ, A</label>
+            </value>
+            <value>
+                <fullName>JOHNSON, B.</fullName>
+                <default>false</default>
+                <label>JOHNSON, B.</label>
+            </value>
+            <value>
+                <fullName>KISTEMAKER, P.</fullName>
+                <default>false</default>
+                <label>KISTEMAKER, P.</label>
+            </value>
+            <value>
+                <fullName>OPEN</fullName>
+                <default>true</default>
+                <label>OPEN</label>
+            </value>
+            <value>
+                <fullName>PRINCE, K.</fullName>
+                <default>false</default>
+                <label>PRINCE, K.</label>
+            </value>
+            <value>
+                <fullName>WAKEFIELD, G.</fullName>
+                <default>false</default>
+                <label>WAKEFIELD, G.</label>
+            </value>
+            <value>
+                <fullName>PRINCE,K.</fullName>
+                <default>false</default>
+                <label>PRINCE,K.</label>
+            </value>
+            <value>
+                <fullName>WELSH, D.</fullName>
+                <default>false</default>
+                <label>WELSH, D.</label>
+            </value>
+            <value>
+                <fullName>DI SALVO, C.</fullName>
+                <default>false</default>
+                <label>DI SALVO, C.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

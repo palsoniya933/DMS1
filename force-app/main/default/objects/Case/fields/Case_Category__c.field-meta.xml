@@ -1,0 +1,2148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Category__c</fullName>
+    <description>Subtype of Case Type to help further break down the type of Case</description>
+    <label>Case Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>200 OK</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>200 OK</label>
+            </value>
+            <value>
+                <fullName>404 Error</fullName>
+                <default>false</default>
+                <label>404 Error</label>
+            </value>
+            <value>
+                <fullName>500 Error</fullName>
+                <default>false</default>
+                <label>500 Error</label>
+            </value>
+            <value>
+                <fullName>Access</fullName>
+                <default>false</default>
+                <label>Access</label>
+            </value>
+            <value>
+                <fullName>Accounts - Add or Change</fullName>
+                <default>false</default>
+                <label>Accounts - Add or Change</label>
+            </value>
+            <value>
+                <fullName>Admin Settings</fullName>
+                <default>false</default>
+                <label>Admin Settings</label>
+            </value>
+            <value>
+                <fullName>Admin Training</fullName>
+                <default>false</default>
+                <label>Admin Training</label>
+            </value>
+            <value>
+                <fullName>ADS/ADAS</fullName>
+                <default>false</default>
+                <label>ADS/ADAS</label>
+            </value>
+            <value>
+                <fullName>After-treatment DEF Dosing System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>After-treatment DEF Dosing System</label>
+            </value>
+            <value>
+                <fullName>After-treatment Regen or Soot Load Issue</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>After-treatment Regen or Soot Load Issue</label>
+            </value>
+            <value>
+                <fullName>After-treatment SCR Efficiency</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>After-treatment SCR Efficiency</label>
+            </value>
+            <value>
+                <fullName>Air Management</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Air Management</label>
+            </value>
+            <value>
+                <fullName>Assembly Breakdown</fullName>
+                <default>false</default>
+                <label>Assembly Breakdown</label>
+            </value>
+            <value>
+                <fullName>Asset</fullName>
+                <default>false</default>
+                <label>Asset</label>
+            </value>
+            <value>
+                <fullName>At Service Provider</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>At Service Provider</label>
+            </value>
+            <value>
+                <fullName>Axle</fullName>
+                <default>false</default>
+                <label>Axle</label>
+            </value>
+            <value>
+                <fullName>Axle Weldment</fullName>
+                <default>false</default>
+                <label>Axle Weldment</label>
+            </value>
+            <value>
+                <fullName>Battery Electric Vehicle</fullName>
+                <default>false</default>
+                <label>Battery Electric Vehicle</label>
+            </value>
+            <value>
+                <fullName>Block Assembly</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Block Assembly</label>
+            </value>
+            <value>
+                <fullName>Brakes/Air System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Brakes/Air System</label>
+            </value>
+            <value>
+                <fullName>Branch / Site / Account Failure</fullName>
+                <default>false</default>
+                <label>Branch / Site / Account Failure</label>
+            </value>
+            <value>
+                <fullName>Cabs/Hoods/Glass</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cabs/Hoods/Glass</label>
+            </value>
+            <value>
+                <fullName>Campaign</fullName>
+                <default>false</default>
+                <label>Campaign</label>
+            </value>
+            <value>
+                <fullName>Campaign Creation</fullName>
+                <default>false</default>
+                <label>Campaign Creation</label>
+            </value>
+            <value>
+                <fullName>CARS</fullName>
+                <default>false</default>
+                <label>CARS</label>
+            </value>
+            <value>
+                <fullName>CARSReport</fullName>
+                <default>false</default>
+                <label>CARSReport</label>
+            </value>
+            <value>
+                <fullName>Chassis</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Chassis</label>
+            </value>
+            <value>
+                <fullName>Chassis Assessment per Bulletin</fullName>
+                <default>false</default>
+                <label>Chassis Assessment per Bulletin</label>
+            </value>
+            <value>
+                <fullName>Chassis Order Inquiry</fullName>
+                <default>false</default>
+                <label>Chassis Order Inquiry</label>
+            </value>
+            <value>
+                <fullName>Chassis Part Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Chassis Part Request</label>
+            </value>
+            <value>
+                <fullName>Collectix</fullName>
+                <default>false</default>
+                <label>Collectix</label>
+            </value>
+            <value>
+                <fullName>Community</fullName>
+                <default>false</default>
+                <label>Community</label>
+            </value>
+            <value>
+                <fullName>Complete Cab / Sleeper Part Numbers</fullName>
+                <default>false</default>
+                <label>Complete Cab / Sleeper Part Numbers</label>
+            </value>
+            <value>
+                <fullName>Console</fullName>
+                <default>false</default>
+                <label>Console</label>
+            </value>
+            <value>
+                <fullName>Contacts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Contacts</label>
+            </value>
+            <value>
+                <fullName>Cooling System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cooling System</label>
+            </value>
+            <value>
+                <fullName>Core Credit Status</fullName>
+                <default>false</default>
+                <label>Core Credit Status</label>
+            </value>
+            <value>
+                <fullName>Core Criteria</fullName>
+                <default>false</default>
+                <label>Core Criteria</label>
+            </value>
+            <value>
+                <fullName>CRA Exception</fullName>
+                <default>false</default>
+                <label>CRA Exception</label>
+            </value>
+            <value>
+                <fullName>Credit Debit Memo Application</fullName>
+                <default>false</default>
+                <label>Credit Debit Memo Application</label>
+            </value>
+            <value>
+                <fullName>Customer Account Information (CAI)</fullName>
+                <default>false</default>
+                <label>Customer Account Information (CAI)</label>
+            </value>
+            <value>
+                <fullName>Customer Setup</fullName>
+                <default>false</default>
+                <label>Customer Setup</label>
+            </value>
+            <value>
+                <fullName>Custom Key Code</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Custom Key Code</label>
+            </value>
+            <value>
+                <fullName>Custom Parts List</fullName>
+                <default>false</default>
+                <label>Custom Parts List</label>
+            </value>
+            <value>
+                <fullName>DAF RMI</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>DAF RMI</label>
+            </value>
+            <value>
+                <fullName>Data Exports</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Data Exports</label>
+            </value>
+            <value>
+                <fullName>Data Update</fullName>
+                <default>false</default>
+                <label>Data Update</label>
+            </value>
+            <value>
+                <fullName>Davie</fullName>
+                <default>false</default>
+                <label>Davie</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 - Activation Code</fullName>
+                <default>false</default>
+                <label>DAVIE4 - Activation Code</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 - Activation Code (License#)</fullName>
+                <default>false</default>
+                <label>DAVIE4 - Activation Code (License#)</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 - Aftermarket</fullName>
+                <default>false</default>
+                <label>DAVIE4 - Aftermarket</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 - Development</fullName>
+                <default>false</default>
+                <label>DAVIE4 - Development</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 – Development</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>DAVIE4 – Development</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 - License Seat Release</fullName>
+                <default>false</default>
+                <label>DAVIE4 - License Seat Release</label>
+            </value>
+            <value>
+                <fullName>DAVIE4 - List of License Seats</fullName>
+                <default>false</default>
+                <label>DAVIE4 - List of License Seats</label>
+            </value>
+            <value>
+                <fullName>DBS</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>DBS</label>
+            </value>
+            <value>
+                <fullName>DBS Error</fullName>
+                <default>false</default>
+                <label>DBS Error</label>
+            </value>
+            <value>
+                <fullName>Dealer Credit Return Management (DCRM)</fullName>
+                <default>false</default>
+                <label>Dealer Credit Return Management (DCRM)</label>
+            </value>
+            <value>
+                <fullName>Dealer Excellence Results</fullName>
+                <default>false</default>
+                <label>Dealer Excellence Results</label>
+            </value>
+            <value>
+                <fullName>Dealer Experience Feedback</fullName>
+                <default>false</default>
+                <label>Dealer Experience Feedback</label>
+            </value>
+            <value>
+                <fullName>Dealer Online Services (DataSc)</fullName>
+                <default>false</default>
+                <label>Dealer Online Services (DataSc)</label>
+            </value>
+            <value>
+                <fullName>Dealer Report Center</fullName>
+                <default>false</default>
+                <label>Dealer Report Center</label>
+            </value>
+            <value>
+                <fullName>Decisiv</fullName>
+                <default>false</default>
+                <label>Decisiv</label>
+            </value>
+            <value>
+                <fullName>delete</fullName>
+                <default>false</default>
+                <label>delete</label>
+            </value>
+            <value>
+                <fullName>Digital Mirror/Vision System</fullName>
+                <default>false</default>
+                <label>Digital Mirror/Vision System</label>
+            </value>
+            <value>
+                <fullName>Digital Vision System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Digital Vision System</label>
+            </value>
+            <value>
+                <fullName>Direct Ship</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Direct Ship</label>
+            </value>
+            <value>
+                <fullName>Dispute</fullName>
+                <default>false</default>
+                <label>Dispute</label>
+            </value>
+            <value>
+                <fullName>Division Engine Orders</fullName>
+                <default>false</default>
+                <label>Division Engine Orders</label>
+            </value>
+            <value>
+                <fullName>Driveline</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Driveline</label>
+            </value>
+            <value>
+                <fullName>DSP Claims</fullName>
+                <default>false</default>
+                <label>DSP Claims</label>
+            </value>
+            <value>
+                <fullName>Dynacraft Order</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dynacraft Order</label>
+            </value>
+            <value>
+                <fullName>Dynacraft Requests</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Dynacraft Requests</label>
+            </value>
+            <value>
+                <fullName>ECAT</fullName>
+                <default>false</default>
+                <label>ECAT</label>
+            </value>
+            <value>
+                <fullName>eComm Fleet</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>eComm Fleet</label>
+            </value>
+            <value>
+                <fullName>ECU</fullName>
+                <default>false</default>
+                <label>ECU</label>
+            </value>
+            <value>
+                <fullName>Electrical</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical</label>
+            </value>
+            <value>
+                <fullName>Electrical System - After-treatment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical System - After-treatment</label>
+            </value>
+            <value>
+                <fullName>Electrical System - CAN Faults</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical System - CAN Faults</label>
+            </value>
+            <value>
+                <fullName>Electrical System - Engine</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical System - Engine</label>
+            </value>
+            <value>
+                <fullName>Electrical System - HC Dosing System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Electrical System - HC Dosing System</label>
+            </value>
+            <value>
+                <fullName>EMUX/VECU3</fullName>
+                <default>false</default>
+                <label>EMUX/VECU3</label>
+            </value>
+            <value>
+                <fullName>Engine</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Engine</label>
+            </value>
+            <value>
+                <fullName>Engine &amp; Aftertreatment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Engine &amp; Aftertreatment</label>
+            </value>
+            <value>
+                <fullName>Engine Assessment per Bulletin</fullName>
+                <default>false</default>
+                <label>Engine Assessment per Bulletin</label>
+            </value>
+            <value>
+                <fullName>Engine Diagnostics</fullName>
+                <default>false</default>
+                <label>Engine Diagnostics</label>
+            </value>
+            <value>
+                <fullName>Engine Labels</fullName>
+                <default>false</default>
+                <label>Engine Labels</label>
+            </value>
+            <value>
+                <fullName>Enhancement Request</fullName>
+                <default>false</default>
+                <label>Enhancement Request</label>
+            </value>
+            <value>
+                <fullName>ESA (Electronic Service Analyst)</fullName>
+                <default>false</default>
+                <label>ESA (Electronic Service Analyst)</label>
+            </value>
+            <value>
+                <fullName>ESA - Add License</fullName>
+                <default>false</default>
+                <label>ESA - Add License</label>
+            </value>
+            <value>
+                <fullName>Estimate</fullName>
+                <default>false</default>
+                <label>Estimate</label>
+            </value>
+            <value>
+                <fullName>Estimated Ship Date</fullName>
+                <default>false</default>
+                <label>Estimated Ship Date</label>
+            </value>
+            <value>
+                <fullName>Expedite an Order</fullName>
+                <default>false</default>
+                <label>Expedite an Order</label>
+            </value>
+            <value>
+                <fullName>Export to RO</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Export to RO</label>
+            </value>
+            <value>
+                <fullName>EZTrac</fullName>
+                <default>false</default>
+                <label>EZTrac</label>
+            </value>
+            <value>
+                <fullName>Factory Truck Invoice</fullName>
+                <default>false</default>
+                <label>Factory Truck Invoice</label>
+            </value>
+            <value>
+                <fullName>Failing Hyperlink</fullName>
+                <default>false</default>
+                <label>Failing Hyperlink</label>
+            </value>
+            <value>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+                <label>Field Service</label>
+            </value>
+            <value>
+                <fullName>FinTran</fullName>
+                <default>false</default>
+                <label>FinTran</label>
+            </value>
+            <value>
+                <fullName>Fleet - Location Add or Change</fullName>
+                <default>false</default>
+                <label>Fleet - Location Add or Change</label>
+            </value>
+            <value>
+                <fullName>Frame Rail</fullName>
+                <default>false</default>
+                <label>Frame Rail</label>
+            </value>
+            <value>
+                <fullName>Freight/Tracking</fullName>
+                <default>false</default>
+                <label>Freight/Tracking</label>
+            </value>
+            <value>
+                <fullName>FSCS Dealer</fullName>
+                <default>false</default>
+                <label>FSCS Dealer</label>
+            </value>
+            <value>
+                <fullName>Fuel System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Fuel System</label>
+            </value>
+            <value>
+                <fullName>General Mechanical</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>General Mechanical</label>
+            </value>
+            <value>
+                <fullName>General Questions</fullName>
+                <default>false</default>
+                <label>General Questions</label>
+            </value>
+            <value>
+                <fullName>Generic</fullName>
+                <default>false</default>
+                <label>Generic</label>
+            </value>
+            <value>
+                <fullName>Glove Box Literature</fullName>
+                <default>false</default>
+                <label>Glove Box Literature</label>
+            </value>
+            <value>
+                <fullName>Harness Information Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Harness Information Request</label>
+            </value>
+            <value>
+                <fullName>Hendrix Profile</fullName>
+                <default>false</default>
+                <label>Hendrix Profile</label>
+            </value>
+            <value>
+                <fullName>HVAC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>HVAC</label>
+            </value>
+            <value>
+                <fullName>Increase Core Eligibility</fullName>
+                <default>false</default>
+                <label>Increase Core Eligibility</label>
+            </value>
+            <value>
+                <fullName>Info Call</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Info Call</label>
+            </value>
+            <value>
+                <fullName>ININ</fullName>
+                <default>false</default>
+                <label>ININ</label>
+            </value>
+            <value>
+                <fullName>Initial Stock</fullName>
+                <default>false</default>
+                <label>Initial Stock</label>
+            </value>
+            <value>
+                <fullName>Interior</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Interior</label>
+            </value>
+            <value>
+                <fullName>Invoice</fullName>
+                <default>false</default>
+                <label>Invoice</label>
+            </value>
+            <value>
+                <fullName>ISP (Pay-for-preview)</fullName>
+                <default>false</default>
+                <label>ISP (Pay-for-preview)</label>
+            </value>
+            <value>
+                <fullName>Kenworth Engineering</fullName>
+                <default>false</default>
+                <label>Kenworth Engineering</label>
+            </value>
+            <value>
+                <fullName>Key Code/Paint/Serial Numbers</fullName>
+                <default>false</default>
+                <label>Key Code/Paint/Serial Numbers</label>
+            </value>
+            <value>
+                <fullName>Key Code/ Paint/ Serial Numbers</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Key Code/ Paint/ Serial Numbers</label>
+            </value>
+            <value>
+                <fullName>Key Code - DAF/Other</fullName>
+                <default>false</default>
+                <label>Key Code - DAF/Other</label>
+            </value>
+            <value>
+                <fullName>KW ServiceNet</fullName>
+                <default>false</default>
+                <label>KW ServiceNet</label>
+            </value>
+            <value>
+                <fullName>Label</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Label</label>
+            </value>
+            <value>
+                <fullName>Labels</fullName>
+                <default>false</default>
+                <label>Labels</label>
+            </value>
+            <value>
+                <fullName>Labor Hours and Pricing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Labor Hours and Pricing</label>
+            </value>
+            <value>
+                <fullName>Legal Other</fullName>
+                <default>false</default>
+                <label>Legal Other</label>
+            </value>
+            <value>
+                <fullName>Lemon Law</fullName>
+                <default>false</default>
+                <label>Lemon Law</label>
+            </value>
+            <value>
+                <fullName>LFNA (KW K270/370, PB 210/220)</fullName>
+                <default>false</default>
+                <label>LFNA (KW K270/370, PB 210/220)</label>
+            </value>
+            <value>
+                <fullName>Location Add</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Location Add</label>
+            </value>
+            <value>
+                <fullName>Login / User</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Login / User</label>
+            </value>
+            <value>
+                <fullName>Login Issues</fullName>
+                <default>false</default>
+                <label>Login Issues</label>
+            </value>
+            <value>
+                <fullName>Loyalty</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Loyalty</label>
+            </value>
+            <value>
+                <fullName>Loyalty Email Failures</fullName>
+                <default>false</default>
+                <label>Loyalty Email Failures</label>
+            </value>
+            <value>
+                <fullName>Loyalty Program</fullName>
+                <default>false</default>
+                <label>Loyalty Program</label>
+            </value>
+            <value>
+                <fullName>Lubrication System</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lubrication System</label>
+            </value>
+            <value>
+                <fullName>Marquee</fullName>
+                <default>false</default>
+                <label>Marquee</label>
+            </value>
+            <value>
+                <fullName>Miscellaneous feedback</fullName>
+                <default>false</default>
+                <label>Miscellaneous feedback</label>
+            </value>
+            <value>
+                <fullName>Missing Data</fullName>
+                <default>false</default>
+                <label>Missing Data</label>
+            </value>
+            <value>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Mobile</label>
+            </value>
+            <value>
+                <fullName>MX Engine</fullName>
+                <default>false</default>
+                <label>MX Engine (Full Engine or Block Only)</label>
+            </value>
+            <value>
+                <fullName>MX Warranty Core Order</fullName>
+                <default>false</default>
+                <label>MX Warranty Core Order</label>
+            </value>
+            <value>
+                <fullName>NA RMI</fullName>
+                <default>false</default>
+                <label>NA RMI</label>
+            </value>
+            <value>
+                <fullName>Next Generation Warranty</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Next Generation Warranty</label>
+            </value>
+            <value>
+                <fullName>Obsolete Parts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Obsolete Parts</label>
+            </value>
+            <value>
+                <fullName>Obsolete Parts Request</fullName>
+                <default>false</default>
+                <label>Obsolete Parts Request</label>
+            </value>
+            <value>
+                <fullName>Offers/Discounts</fullName>
+                <default>false</default>
+                <label>Offers/Discounts</label>
+            </value>
+            <value>
+                <fullName>Onsite Visit</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Onsite Visit</label>
+            </value>
+            <value>
+                <fullName>OPC Demo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>OPC Demo</label>
+            </value>
+            <value>
+                <fullName>Operation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Operation</label>
+            </value>
+            <value>
+                <fullName>Order Inquiry</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Order Inquiry</label>
+            </value>
+            <value>
+                <fullName>Order Modification</fullName>
+                <default>false</default>
+                <label>Order Modification</label>
+            </value>
+            <value>
+                <fullName>Order Processing Error</fullName>
+                <default>false</default>
+                <label>Order Processing Error</label>
+            </value>
+            <value>
+                <fullName>Order Ship Date Tracking</fullName>
+                <default>false</default>
+                <label>Order Ship Date Tracking</label>
+            </value>
+            <value>
+                <fullName>Order Tracking</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Order Tracking</label>
+            </value>
+            <value>
+                <fullName>OSS OPC &amp; Admin Training</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>OSS OPC &amp; Admin Training</label>
+            </value>
+            <value>
+                <fullName>OSS OPC Training</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>OSS OPC Training</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>paccar.net</fullName>
+                <default>false</default>
+                <label>paccar.net</label>
+            </value>
+            <value>
+                <fullName>paccarnet.sharepoint.com</fullName>
+                <default>false</default>
+                <label>paccarnet.sharepoint.com</label>
+            </value>
+            <value>
+                <fullName>PACCAR Solutions</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PACCAR Solutions</label>
+            </value>
+            <value>
+                <fullName>PACCAR Vehicle Pro</fullName>
+                <default>false</default>
+                <label>PACCAR Vehicle Pro</label>
+            </value>
+            <value>
+                <fullName>Parameter Changes</fullName>
+                <default>false</default>
+                <label>Parameter Changes</label>
+            </value>
+            <value>
+                <fullName>Part Pricing and Availability</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Part Pricing and Availability</label>
+            </value>
+            <value>
+                <fullName>Parts Feedback</fullName>
+                <default>false</default>
+                <label>Parts Feedback</label>
+            </value>
+            <value>
+                <fullName>Parts Online</fullName>
+                <default>false</default>
+                <label>Parts Online</label>
+            </value>
+            <value>
+                <fullName>Parts Online User ID Change Request</fullName>
+                <default>false</default>
+                <label>Parts Online User ID Change Request</label>
+            </value>
+            <value>
+                <fullName>Parts Online User ID Deletion</fullName>
+                <default>false</default>
+                <label>Parts Online User ID Deletion</label>
+            </value>
+            <value>
+                <fullName>Parts Online User ID Request</fullName>
+                <default>false</default>
+                <label>Parts Online User ID Request</label>
+            </value>
+            <value>
+                <fullName>PASS</fullName>
+                <default>false</default>
+                <label>PASS</label>
+            </value>
+            <value>
+                <fullName>Payment Processing</fullName>
+                <default>false</default>
+                <label>Payment Processing</label>
+            </value>
+            <value>
+                <fullName>PB Rapid Check</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PB Rapid Check</label>
+            </value>
+            <value>
+                <fullName>PB ServiceNet</fullName>
+                <default>false</default>
+                <label>PB ServiceNet</label>
+            </value>
+            <value>
+                <fullName>PCI Password / Expert Level Rights Requests</fullName>
+                <default>false</default>
+                <label>PCI Password / Expert Level Rights Requests</label>
+            </value>
+            <value>
+                <fullName>PDC/PLS/EPS/PEP/PVP</fullName>
+                <default>false</default>
+                <label>PDC/PLS/EPS/PEP/PVP</label>
+            </value>
+            <value>
+                <fullName>PDC Claims</fullName>
+                <default>false</default>
+                <label>PDC Claims</label>
+            </value>
+            <value>
+                <fullName>Phone Application issues</fullName>
+                <default>false</default>
+                <label>Phone Application issues</label>
+            </value>
+            <value>
+                <fullName>Place a General Order</fullName>
+                <default>false</default>
+                <label>Place a General Order</label>
+            </value>
+            <value>
+                <fullName>Place a General Order?</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Place a General Order?</label>
+            </value>
+            <value>
+                <fullName>Pre-1988 Chassis Part Inquiry</fullName>
+                <default>false</default>
+                <label>Pre-1988 Chassis Part Inquiry</label>
+            </value>
+            <value>
+                <fullName>PremierSpec - Sales Tool</fullName>
+                <default>false</default>
+                <label>PremierSpec - Sales Tool</label>
+            </value>
+            <value>
+                <fullName>Preventative Maintenance</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Preventative Maintenance</label>
+            </value>
+            <value>
+                <fullName>Pre-Wire</fullName>
+                <default>false</default>
+                <label>Pre-Wire</label>
+            </value>
+            <value>
+                <fullName>Pricing Issues</fullName>
+                <default>false</default>
+                <label>Pricing Issues</label>
+            </value>
+            <value>
+                <fullName>Pricing - Stock Check Issues</fullName>
+                <default>false</default>
+                <label>Pricing - Stock Check Issues</label>
+            </value>
+            <value>
+                <fullName>Product</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Product</label>
+            </value>
+            <value>
+                <fullName>Product Feedback</fullName>
+                <default>false</default>
+                <label>Product Feedback</label>
+            </value>
+            <value>
+                <fullName>PRWS</fullName>
+                <default>false</default>
+                <label>PRWS</label>
+            </value>
+            <value>
+                <fullName>PTO</fullName>
+                <default>false</default>
+                <label>PTO</label>
+            </value>
+            <value>
+                <fullName>PTO Setup</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PTO Setup</label>
+            </value>
+            <value>
+                <fullName>QR Codes</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>QR Codes</label>
+            </value>
+            <value>
+                <fullName>Quick Action Buttons</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Quick Action Buttons</label>
+            </value>
+            <value>
+                <fullName>Rebuilder</fullName>
+                <default>false</default>
+                <label>Rebuilder</label>
+            </value>
+            <value>
+                <fullName>Recall</fullName>
+                <default>false</default>
+                <label>Recall</label>
+            </value>
+            <value>
+                <fullName>Recall Campaign</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Recall Campaign</label>
+            </value>
+            <value>
+                <fullName>Recommended Stocking List</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Recommended Stocking List</label>
+            </value>
+            <value>
+                <fullName>Registration</fullName>
+                <default>false</default>
+                <label>Registration</label>
+            </value>
+            <value>
+                <fullName>Rental Request</fullName>
+                <default>false</default>
+                <label>Rental Request</label>
+            </value>
+            <value>
+                <fullName>Report Creation</fullName>
+                <default>false</default>
+                <label>Report Creation</label>
+            </value>
+            <value>
+                <fullName>Reports</fullName>
+                <default>false</default>
+                <label>Reports</label>
+            </value>
+            <value>
+                <fullName>Reports_Dashboard</fullName>
+                <default>false</default>
+                <label>Reports/Dashboard</label>
+            </value>
+            <value>
+                <fullName>Request Credit Memo</fullName>
+                <default>false</default>
+                <label>Request Credit Memo</label>
+            </value>
+            <value>
+                <fullName>Reserve or Conditional Release</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reserve or Conditional Release</label>
+            </value>
+            <value>
+                <fullName>Retrofit</fullName>
+                <default>false</default>
+                <label>Retrofit</label>
+            </value>
+            <value>
+                <fullName>RIS - Premiercare Connect</fullName>
+                <default>false</default>
+                <label>RIS - Premiercare Connect</label>
+            </value>
+            <value>
+                <fullName>Roadside</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Roadside</label>
+            </value>
+            <value>
+                <fullName>Routing</fullName>
+                <default>false</default>
+                <label>Routing</label>
+            </value>
+            <value>
+                <fullName>Sales Allowance / CSR</fullName>
+                <default>false</default>
+                <label>Sales Allowance / CSR</label>
+            </value>
+            <value>
+                <fullName>Sales Feedback</fullName>
+                <default>false</default>
+                <label>Sales Feedback</label>
+            </value>
+            <value>
+                <fullName>Sales-I Error</fullName>
+                <default>false</default>
+                <label>Sales-I Error</label>
+            </value>
+            <value>
+                <fullName>Scrap Claims</fullName>
+                <default>false</default>
+                <label>Scrap Claims</label>
+            </value>
+            <value>
+                <fullName>Service Feedback</fullName>
+                <default>false</default>
+                <label>Service Feedback</label>
+            </value>
+            <value>
+                <fullName>Service Request</fullName>
+                <default>false</default>
+                <label>Service Request</label>
+            </value>
+            <value>
+                <fullName>Set up a Power User</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Set up a Power User</label>
+            </value>
+            <value>
+                <fullName>Set up a User</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Set up a User</label>
+            </value>
+            <value>
+                <fullName>Site Failure</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Site Failure</label>
+            </value>
+            <value>
+                <fullName>Smart Gauge</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Smart Gauge</label>
+            </value>
+            <value>
+                <fullName>SmartSpec - Sales Tool</fullName>
+                <default>false</default>
+                <label>SmartSpec - Sales Tool</label>
+            </value>
+            <value>
+                <fullName>Software/Programming</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Software/Programming</label>
+            </value>
+            <value>
+                <fullName>Software (Base or Calibration Issue)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Software (Base or Calibration Issue)</label>
+            </value>
+            <value>
+                <fullName>Software (PEP. ELF, Q30 Drawing)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Software (PEP. ELF, Q30 Drawing)</label>
+            </value>
+            <value>
+                <fullName>Software Issue</fullName>
+                <default>false</default>
+                <label>Software Issue</label>
+            </value>
+            <value>
+                <fullName>Specific</fullName>
+                <default>false</default>
+                <label>Specific</label>
+            </value>
+            <value>
+                <fullName>SR/IR</fullName>
+                <default>false</default>
+                <label>SR/IR</label>
+            </value>
+            <value>
+                <fullName>Stability Control Parameters</fullName>
+                <default>false</default>
+                <label>Stability Control Parameters</label>
+            </value>
+            <value>
+                <fullName>Steering</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Steering</label>
+            </value>
+            <value>
+                <fullName>Structure</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Structure</label>
+            </value>
+            <value>
+                <fullName>Subscription Renewals</fullName>
+                <default>false</default>
+                <label>Subscription Renewals</label>
+            </value>
+            <value>
+                <fullName>Subscription Services</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Subscription Services</label>
+            </value>
+            <value>
+                <fullName>Suspension</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Suspension</label>
+            </value>
+            <value>
+                <fullName>System Down</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>System Down</label>
+            </value>
+            <value>
+                <fullName>System Down / System Errors</fullName>
+                <default>false</default>
+                <label>System Down / System Errors</label>
+            </value>
+            <value>
+                <fullName>Tableau</fullName>
+                <default>false</default>
+                <label>Tableau</label>
+            </value>
+            <value>
+                <fullName>Technical Part Number Info</fullName>
+                <default>false</default>
+                <label>Technical Part Number Info</label>
+            </value>
+            <value>
+                <fullName>Testing</fullName>
+                <default>false</default>
+                <label>Testing</label>
+            </value>
+            <value>
+                <fullName>Thermal Event</fullName>
+                <default>false</default>
+                <label>Thermal Event</label>
+            </value>
+            <value>
+                <fullName>Tire</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tire</label>
+            </value>
+            <value>
+                <fullName>Tow</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tow</label>
+            </value>
+            <value>
+                <fullName>Training</fullName>
+                <default>false</default>
+                <label>Training</label>
+            </value>
+            <value>
+                <fullName>Training  / How to</fullName>
+                <default>false</default>
+                <label>Training  / How to</label>
+            </value>
+            <value>
+                <fullName>Training - Admin OPC</fullName>
+                <default>false</default>
+                <label>Training - Admin OPC</label>
+            </value>
+            <value>
+                <fullName>Training - Demo OPC</fullName>
+                <default>false</default>
+                <label>Training - Demo OPC</label>
+            </value>
+            <value>
+                <fullName>Transmission</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Transmission</label>
+            </value>
+            <value>
+                <fullName>Transmission Diagnostics</fullName>
+                <default>false</default>
+                <label>Transmission Diagnostics</label>
+            </value>
+            <value>
+                <fullName>Transmission Part Identification</fullName>
+                <default>false</default>
+                <label>Transmission Part Identification</label>
+            </value>
+            <value>
+                <fullName>Transmission Software Support</fullName>
+                <default>false</default>
+                <label>Transmission Software Support</label>
+            </value>
+            <value>
+                <fullName>TRP Technical Request</fullName>
+                <default>false</default>
+                <label>TRP Technical Request</label>
+            </value>
+            <value>
+                <fullName>TR Quality Case</fullName>
+                <default>false</default>
+                <label>TR Quality Case</label>
+            </value>
+            <value>
+                <fullName>Truck Sales Information</fullName>
+                <default>false</default>
+                <label>Truck Sales Information</label>
+            </value>
+            <value>
+                <fullName>Truck Sales Reports</fullName>
+                <default>false</default>
+                <label>Truck Sales Reports</label>
+            </value>
+            <value>
+                <fullName>Updating User Profile</fullName>
+                <default>false</default>
+                <label>Updating User Profile</label>
+            </value>
+            <value>
+                <fullName>Updating Vehicle Records</fullName>
+                <default>false</default>
+                <label>Updating Vehicle Records</label>
+            </value>
+            <value>
+                <fullName>Updating Vehicle records or Subscription Plan</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Updating Vehicle records or Subscription Plan</label>
+            </value>
+            <value>
+                <fullName>Users - Add or Change</fullName>
+                <default>false</default>
+                <label>Users - Add or Change</label>
+            </value>
+            <value>
+                <fullName>User Update</fullName>
+                <default>false</default>
+                <label>User Update</label>
+            </value>
+            <value>
+                <fullName>Valve train and Engine brake</fullName>
+                <default>false</default>
+                <label>Valve train and Engine brake</label>
+            </value>
+            <value>
+                <fullName>VECU/VMUX Diagnostics</fullName>
+                <default>false</default>
+                <label>VECU/VMUX Diagnostics</label>
+            </value>
+            <value>
+                <fullName>VECU Diagnostics</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>VECU Diagnostics</label>
+            </value>
+            <value>
+                <fullName>Vehicle List Upload</fullName>
+                <default>false</default>
+                <label>Vehicle List Upload</label>
+            </value>
+            <value>
+                <fullName>Warranty Claims DWC or DWWC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Warranty Claims DWC or DWWC</label>
+            </value>
+            <value>
+                <fullName>Warranty feedback</fullName>
+                <default>false</default>
+                <label>Warranty feedback</label>
+            </value>
+            <value>
+                <fullName>Wreck Order</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Wreck Order</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>TRP Technical Request</controllingFieldValue>
+            <valueName>TRP Technical Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credits and Returns</controllingFieldValue>
+            <valueName>DSP Claims</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credits and Returns</controllingFieldValue>
+            <controllingFieldValue>EZTrac</controllingFieldValue>
+            <controllingFieldValue>Inventory Inquiry</controllingFieldValue>
+            <controllingFieldValue>Diagnostic Assistant</controllingFieldValue>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <controllingFieldValue>Remote Diagnostics</controllingFieldValue>
+            <controllingFieldValue>Service Management</controllingFieldValue>
+            <controllingFieldValue>Over-the-air (OTA)</controllingFieldValue>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <controllingFieldValue>Data Services Catalog</controllingFieldValue>
+            <controllingFieldValue>Modify/Cancel an Order</controllingFieldValue>
+            <valueName>General Questions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credits and Returns</controllingFieldValue>
+            <valueName>PDC Claims</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Credits and Returns</controllingFieldValue>
+            <valueName>Scrap Claims</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Warranty feedback</controllingFieldValue>
+            <valueName>Warranty feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Miscellaneous feedback</controllingFieldValue>
+            <valueName>Miscellaneous feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Internal Orders</controllingFieldValue>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Field Service</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Internal Orders</controllingFieldValue>
+            <valueName>Initial Stock</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Internal Orders</controllingFieldValue>
+            <valueName>Rebuilder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dealer Experience feedback</controllingFieldValue>
+            <valueName>Dealer Experience Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <valueName>Campaign Creation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <valueName>DBS Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <controllingFieldValue>General Questions</controllingFieldValue>
+            <controllingFieldValue>Request a Quote</controllingFieldValue>
+            <controllingFieldValue>Request Order</controllingFieldValue>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <controllingFieldValue>ECAT</controllingFieldValue>
+            <controllingFieldValue>Loyalty Program</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <valueName>Phone Application issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <valueName>Report Creation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <valueName>Sales-I Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <valueName>Training</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FOCUS</controllingFieldValue>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Users - Add or Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Community</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Console</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Data Update</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>ININ</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Reports</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Reports_Dashboard</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Routing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>SR/IR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <valueName>Tableau</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EZTrac</controllingFieldValue>
+            <valueName>Core Credit Status</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EZTrac</controllingFieldValue>
+            <valueName>CRA Exception</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EZTrac</controllingFieldValue>
+            <valueName>Increase Core Eligibility</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EZTrac</controllingFieldValue>
+            <valueName>Request Credit Memo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dispute</controllingFieldValue>
+            <valueName>Dispute</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Estimate</controllingFieldValue>
+            <valueName>Estimate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Expedite an Order</controllingFieldValue>
+            <valueName>Expedite an Order</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Invoice</controllingFieldValue>
+            <controllingFieldValue>General Questions</controllingFieldValue>
+            <valueName>Invoice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Monitoring Repair</controllingFieldValue>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Davie</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Monitoring Repair</controllingFieldValue>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>ECU</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Monitoring Repair</controllingFieldValue>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>MX Engine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Monitoring Repair</controllingFieldValue>
+            <controllingFieldValue>MX Software Support</controllingFieldValue>
+            <valueName>Software Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Monitoring Repair</controllingFieldValue>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>Transmission Diagnostics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Monitoring Repair</controllingFieldValue>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <valueName>VECU/VMUX Diagnostics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>MX Software Support</controllingFieldValue>
+            <valueName>Parameter Changes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Kenworth Engineering</controllingFieldValue>
+            <valueName>Kenworth Engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>ADS/ADAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Legal Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Lemon Law</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Thermal Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>General Questions</controllingFieldValue>
+            <valueName>Estimated Ship Date</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>General Questions</controllingFieldValue>
+            <valueName>Freight/Tracking</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>General Questions</controllingFieldValue>
+            <valueName>Order Modification</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>General Questions</controllingFieldValue>
+            <valueName>Order Ship Date Tracking</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>CARS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>CARSReport</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Chassis Order Inquiry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Collectix</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Credit Debit Memo Application</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Customer Account Information (CAI)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>DAVIE4 - Aftermarket</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>DAVIE4 - Development</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Dealer Credit Return Management (DCRM)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Dealer Excellence Results</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Dealer Online Services (DataSc)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Dealer Report Center</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>ECAT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>ESA (Electronic Service Analyst)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>EZTrac</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Factory Truck Invoice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>FinTran</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>FSCS Dealer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Hendrix Profile</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>ISP (Pay-for-preview)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>KW ServiceNet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Loyalty Program</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>NA RMI</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>paccar.net</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>paccarnet.sharepoint.com</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>PACCAR Vehicle Pro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Parts Online</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <valueName>PASS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>PB ServiceNet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>PDC/PLS/EPS/PEP/PVP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>PremierSpec - Sales Tool</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>PRWS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>RIS - Premiercare Connect</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Sales Allowance / CSR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>SmartSpec - Sales Tool</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Truck Sales Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incident</controllingFieldValue>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Truck Sales Reports</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Campaign</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Complete Cab / Sleeper Part Numbers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Division Engine Orders</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Frame Rail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Glove Box Literature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Key Code - DAF/Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Labels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>MX Warranty Core Order</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <controllingFieldValue>Dedicated</controllingFieldValue>
+            <controllingFieldValue>Unaffiliated</controllingFieldValue>
+            <valueName>Place a General Order</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Place an Order</controllingFieldValue>
+            <valueName>Pre-Wire</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Licensing</controllingFieldValue>
+            <valueName>DAVIE4 - Activation Code (License#)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Licensing</controllingFieldValue>
+            <valueName>DAVIE4 - License Seat Release</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Licensing</controllingFieldValue>
+            <valueName>DAVIE4 - List of License Seats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Licensing</controllingFieldValue>
+            <valueName>ESA - Add License</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>User ID Request</controllingFieldValue>
+            <valueName>Parts Online User ID Change Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>User ID Request</controllingFieldValue>
+            <valueName>Parts Online User ID Deletion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>User ID Request</controllingFieldValue>
+            <valueName>Parts Online User ID Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Diagnostic Assistant</controllingFieldValue>
+            <controllingFieldValue>Remote Diagnostics</controllingFieldValue>
+            <controllingFieldValue>Over-the-air (OTA)</controllingFieldValue>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <controllingFieldValue>Data Services Catalog</controllingFieldValue>
+            <valueName>Enhancement Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Diagnostic Assistant</controllingFieldValue>
+            <controllingFieldValue>Remote Diagnostics</controllingFieldValue>
+            <controllingFieldValue>Service Management</controllingFieldValue>
+            <controllingFieldValue>Over-the-air (OTA)</controllingFieldValue>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <controllingFieldValue>Data Services Catalog</controllingFieldValue>
+            <valueName>System Down / System Errors</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Diagnostic Assistant</controllingFieldValue>
+            <controllingFieldValue>Remote Diagnostics</controllingFieldValue>
+            <controllingFieldValue>Service Management</controllingFieldValue>
+            <controllingFieldValue>Over-the-air (OTA)</controllingFieldValue>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <controllingFieldValue>Data Services Catalog</controllingFieldValue>
+            <valueName>Training  / How to</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Diagnostic Assistant</controllingFieldValue>
+            <controllingFieldValue>Remote Diagnostics</controllingFieldValue>
+            <controllingFieldValue>Service Management</controllingFieldValue>
+            <controllingFieldValue>Over-the-air (OTA)</controllingFieldValue>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <controllingFieldValue>Data Services Catalog</controllingFieldValue>
+            <valueName>Updating User Profile</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Diagnostic Assistant</controllingFieldValue>
+            <controllingFieldValue>Remote Diagnostics</controllingFieldValue>
+            <controllingFieldValue>Service Management</controllingFieldValue>
+            <controllingFieldValue>Over-the-air (OTA)</controllingFieldValue>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <valueName>Updating Vehicle Records</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Assembly Breakdown</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Axle Weldment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Custom Parts List</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <valueName>Digital Mirror/Vision System</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Key Code/Paint/Serial Numbers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Obsolete Parts Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Pre-1988 Chassis Part Inquiry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>Technical Part Number Info</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>Transmission Part Identification</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Specific Part Inquiry</controllingFieldValue>
+            <valueName>TR Quality Case</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <valueName>Chassis Assessment per Bulletin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <valueName>EMUX/VECU3</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <valueName>LFNA (KW K270/370, PB 210/220)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chassis Support</controllingFieldValue>
+            <valueName>PTO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>Engine Assessment per Bulletin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>Engine Diagnostics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>Engine Labels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>PCI Password / Expert Level Rights Requests</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Powertrain Support</controllingFieldValue>
+            <valueName>Transmission Software Support</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rental</controllingFieldValue>
+            <valueName>Rental Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retrofit</controllingFieldValue>
+            <valueName>Retrofit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Retrofit</controllingFieldValue>
+            <valueName>Stability Control Parameters</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service Request</controllingFieldValue>
+            <valueName>Service Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Vehicle List Upload</controllingFieldValue>
+            <valueName>Vehicle List Upload</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Product Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feedback</controllingFieldValue>
+            <valueName>Failing Hyperlink</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feedback</controllingFieldValue>
+            <valueName>Generic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feedback</controllingFieldValue>
+            <valueName>Specific</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <valueName>Payment Processing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Subscription Services</controllingFieldValue>
+            <valueName>Subscription Renewals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Zero Emission Vehicle</controllingFieldValue>
+            <valueName>Battery Electric Vehicle</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Data Services Catalog</controllingFieldValue>
+            <valueName>Missing Data</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Special Activities</controllingFieldValue>
+            <valueName>Recall</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service Feedback</controllingFieldValue>
+            <valueName>Service Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Feedback</controllingFieldValue>
+            <valueName>Sales Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Parts Feedback</controllingFieldValue>
+            <valueName>Parts Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Accounts - Add or Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Admin Settings</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Branch / Site / Account Failure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Fleet - Location Add or Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Order Processing Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Pricing - Stock Check Issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Training - Admin OPC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Admin Support</controllingFieldValue>
+            <valueName>Training - Demo OPC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ECAT</controllingFieldValue>
+            <valueName>404 Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ECAT</controllingFieldValue>
+            <valueName>500 Error</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ECAT</controllingFieldValue>
+            <valueName>Access</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Loyalty Program</controllingFieldValue>
+            <valueName>Loyalty Email Failures</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Loyalty Program</controllingFieldValue>
+            <valueName>Offers/Discounts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Loyalty Program</controllingFieldValue>
+            <valueName>Registration</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

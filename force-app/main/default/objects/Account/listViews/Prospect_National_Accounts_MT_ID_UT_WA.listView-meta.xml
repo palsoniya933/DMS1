@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prospect_National_Accounts_MT_ID_UT_WA</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>ACCOUNT.ADDRESS2_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ADDRESS2_STATE</field>
+        <operation>contains</operation>
+        <value>MT,ID,WA,UT,NV,WY,OR</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.TYPE</field>
+        <operation>equals</operation>
+        <value>National Account,Prospect National Account</value>
+    </filters>
+    <label>Prospect National Accounts - Mary Murdoc</label>
+    <sharedTo>
+        <role>Administrator</role>
+        <role>DistrictPartsMgrKWDistrict011</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fleet_Goal__c</fullName>
+    <description>Fleet Goal assigned by the Fleet Department. Only Legacy Accounts</description>
+    <externalId>false</externalId>
+    <label>Fleet Goal</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

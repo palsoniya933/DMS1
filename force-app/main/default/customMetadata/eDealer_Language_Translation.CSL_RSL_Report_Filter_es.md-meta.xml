@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSL RSL Report Filter</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;ITEM|text&quot; : &quot;Artículo&quot;,
+&quot;TYPE|text&quot; : &quot;TIPO&quot;,
+&quot;INITIAL DATE|text&quot; : &quot;FECHA DE INICIO&quot;,
+&quot;END DATEID|text&quot; : &quot;FECHA DE VENCIMIENTO&quot;
+}</value>
+    </values>
+</CustomMetadata>

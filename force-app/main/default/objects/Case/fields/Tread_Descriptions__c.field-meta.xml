@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tread_Descriptions__c</fullName>
+    <description>Tread categories for Roadside Feedback cases</description>
+    <inlineHelpText>Tread categories for Roadside Feedback cases</inlineHelpText>
+    <label>Tread Descriptions</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Case_Category__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Steering</fullName>
+                <default>false</default>
+                <label>01. Steering</label>
+            </value>
+            <value>
+                <fullName>Suspension</fullName>
+                <default>false</default>
+                <label>02. Suspension</label>
+            </value>
+            <value>
+                <fullName>ServiceBrake</fullName>
+                <default>false</default>
+                <label>03. ServiceBrake</label>
+            </value>
+            <value>
+                <fullName>ServiceBRakeAir</fullName>
+                <default>false</default>
+                <label>04. ServiceBRakeAir</label>
+            </value>
+            <value>
+                <fullName>ParkingBRake</fullName>
+                <default>false</default>
+                <label>05. ParkingBRake</label>
+            </value>
+            <value>
+                <fullName>EngAngEngCooling</fullName>
+                <default>false</default>
+                <label>06. EngAngEngCooling</label>
+            </value>
+            <value>
+                <fullName>FuelSys</fullName>
+                <default>false</default>
+                <label>07. FuelSys</label>
+            </value>
+            <value>
+                <fullName>FuelSysDiesel</fullName>
+                <default>false</default>
+                <label>08. FuelSysDiesel</label>
+            </value>
+            <value>
+                <fullName>FuelSysOther</fullName>
+                <default>false</default>
+                <label>09. FuelSysOther</label>
+            </value>
+            <value>
+                <fullName>PowerTrain</fullName>
+                <default>false</default>
+                <label>10. PowerTrain</label>
+            </value>
+            <value>
+                <fullName>Electrical</fullName>
+                <default>false</default>
+                <label>11. Electrical</label>
+            </value>
+            <value>
+                <fullName>ExtLighting</fullName>
+                <default>false</default>
+                <label>12. ExtLighting</label>
+            </value>
+            <value>
+                <fullName>Visibility</fullName>
+                <default>false</default>
+                <label>13. Visibility</label>
+            </value>
+            <value>
+                <fullName>AirBags</fullName>
+                <default>false</default>
+                <label>14. AirBags</label>
+            </value>
+            <value>
+                <fullName>SeatBelts</fullName>
+                <default>false</default>
+                <label>15. SeatBelts</label>
+            </value>
+            <value>
+                <fullName>Structure</fullName>
+                <default>false</default>
+                <label>16. Structure</label>
+            </value>
+            <value>
+                <fullName>Latch</fullName>
+                <default>false</default>
+                <label>17. Latch</label>
+            </value>
+            <value>
+                <fullName>SpeedControl</fullName>
+                <default>false</default>
+                <label>18. SpeedControl</label>
+            </value>
+            <value>
+                <fullName>TiresRelated</fullName>
+                <default>false</default>
+                <label>19. TiresRelated</label>
+            </value>
+            <value>
+                <fullName>Wheels</fullName>
+                <default>false</default>
+                <label>20. Wheels</label>
+            </value>
+            <value>
+                <fullName>TrailerHitch</fullName>
+                <default>false</default>
+                <label>21. TrailerHitch</label>
+            </value>
+            <value>
+                <fullName>Seats</fullName>
+                <default>false</default>
+                <label>22. Seats</label>
+            </value>
+            <value>
+                <fullName>FireRelated</fullName>
+                <default>false</default>
+                <label>23. FireRelated</label>
+            </value>
+            <value>
+                <fullName>Rollover</fullName>
+                <default>false</default>
+                <label>24. Rollover</label>
+            </value>
+            <value>
+                <fullName>ESC_RSC</fullName>
+                <default>false</default>
+                <label>25. ESC_RSC</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Steering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Suspension</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>ServiceBrake</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>ServiceBRakeAir</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>ParkingBRake</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>EngAngEngCooling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>FuelSys</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>FuelSysDiesel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>FuelSysOther</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>PowerTrain</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Electrical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>ExtLighting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Visibility</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>AirBags</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>SeatBelts</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Structure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Latch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>SpeedControl</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>TiresRelated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Wheels</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>TrailerHitch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Seats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>FireRelated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>Rollover</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product Feedback</controllingFieldValue>
+            <valueName>ESC_RSC</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

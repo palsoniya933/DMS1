@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volume_Sales_Order_Contact__c</fullName>
+    <description>Volume Sales email contact to be CC&apos;d for Volume Sales case order updates.  DPM&apos;s are to fill in email address for the dealer.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Volume Sales email contact to be CC&apos;d for Volume Sales case order updates.  DPM&apos;s are to fill in email address for the dealer.</inlineHelpText>
+    <label>Volume Sales Order Contact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Email</type>
+    <unique>false</unique>
+</CustomField>

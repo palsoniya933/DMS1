@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FOCUS_Account_Mgr__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <label>FOCUS Account Mgr</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Jorge Mendoza</fullName>
+                <default>false</default>
+                <label>Jorge Mendoza</label>
+            </value>
+            <value>
+                <fullName>Marieve Legault</fullName>
+                <default>false</default>
+                <label>Marieve Legault</label>
+            </value>
+            <value>
+                <fullName>Axel Arvizu</fullName>
+                <default>false</default>
+                <label>Axel Arvizu</label>
+            </value>
+            <value>
+                <fullName>Fortune Rodgriguez</fullName>
+                <default>false</default>
+                <label>Fortune Rodgriguez</label>
+            </value>
+            <value>
+                <fullName>Eric Borsvold</fullName>
+                <default>false</default>
+                <label>Eric Borsvold</label>
+            </value>
+            <value>
+                <fullName>Elizabeth Cortez</fullName>
+                <default>false</default>
+                <label>Elizabeth Cortez</label>
+            </value>
+            <value>
+                <fullName>James Whipkey</fullName>
+                <default>false</default>
+                <label>James Whipkey</label>
+            </value>
+            <value>
+                <fullName>Johnny La</fullName>
+                <default>false</default>
+                <label>Johnny La</label>
+            </value>
+            <value>
+                <fullName>Lauren Zehnder</fullName>
+                <default>false</default>
+                <label>Lauren Zehnder</label>
+            </value>
+            <value>
+                <fullName>Mike McVeigh</fullName>
+                <default>false</default>
+                <label>Mike McVeigh</label>
+            </value>
+            <value>
+                <fullName>SMART Administrator</fullName>
+                <default>false</default>
+                <label>SMART Administrator</label>
+            </value>
+            <value>
+                <fullName>Anthony Tenner</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Anthony Tenner</label>
+            </value>
+            <value>
+                <fullName>Chas Scott</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Chas Scott</label>
+            </value>
+            <value>
+                <fullName>Daniel Sotoamaya</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Daniel Sotoamaya</label>
+            </value>
+            <value>
+                <fullName>Molly Waskom</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Molly Waskom</label>
+            </value>
+            <value>
+                <fullName>Terri Wierlo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Terri Wierlo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

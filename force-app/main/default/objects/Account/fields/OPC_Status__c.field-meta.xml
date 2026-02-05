@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OPC_Status__c</fullName>
+    <label>OPC Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Integration in Process</fullName>
+                <default>false</default>
+                <label>Integration in Process</label>
+            </value>
+            <value>
+                <fullName>Implemented Live</fullName>
+                <default>false</default>
+                <label>Implemented Live</label>
+            </value>
+            <value>
+                <fullName>Closed Lost</fullName>
+                <default>false</default>
+                <label>Closed Lost</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,197 @@
+<template>
+	<template if:false={isLoading}>		
+		<div class="grid-container">			
+			<template if:false={isShowSpinner}>
+				<template if:true={getCsrNumberVisible}>
+					<div class="pad-left">
+						<p>{csrStatusLabel}: {displayStatus}</p>
+					</div>
+				</template>
+				<template if:true={getCsrNumberVisible}>
+					<div class="pad-left">
+						<p>{csrNumberLabel}: {getCsrNumber}</p>
+					</div>
+				</template>
+				<template if:true={getCsrNumberVisible}>
+					<div class="pad-left">
+						<p>{csrPhaseLabel}: {csrPhase}</p>
+					</div>
+				</template>
+			</template>	
+			
+			
+		</div>
+		<!-- This is for filling form to create CSR -->
+
+		<div class="slds-var-p-around_medium">
+			<lightning-card hide-header = "true">
+
+				<h1 class="slds-var-p-around_x-small">{csrHeadingTitle}</h1>
+				<template if:true={isShowSpinner}>
+					<lightning-spinner alternative-text="Loading" size="medium" variant="brand">
+					</lightning-spinner>
+				</template>
+				<!--<br/> -->
+				<lightning-layout class="slds-wrap slds-is-relative">
+					<lightning-layout-item
+						class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+						<lightning-combobox name="dealerType" label={label.EDealer_Dealer_Type} value={dealerType}
+							onchange={handleDealerTypeChange} options={getDealerTypeOptions} required="true"
+							class="validate"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							disabled={isCsrFormSubmited}>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<lightning-layout-item
+						class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+						<lightning-combobox name="dealer" label={label.EDealer_Dealer} value={getDealerCode}
+							options={getAllDealerCodes} onchange={handleDealerCodeChange} required="true"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							class="validate" disabled={isCsrFormSubmited}>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<lightning-layout-item
+						class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+						<lightning-combobox name="csrType" label={label.EDealer_CSR_Type} value={csrType}
+							options={getCsrTypeOptions} onchange={handleCSRTypeChange} required="true"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							class="validate" disabled={isCsrFormSubmited}>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<lightning-layout-item
+						class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+						<lightning-combobox name="competitiveType" label={label.EDealer_Competitive_Type}
+							value={competitiveType} options={getCsrCompetitiveTypeOption}
+							onchange={handleCompetitiveTypeChange} required="true"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							class="validate" disabled={isCsrFormSubmited}>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<lightning-layout-item
+						class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+						<lightning-input name="customerName" label={label.EDealer_Customer_Name} value={customerName} maxlength="30"
+							onchange={handleCustomerNameChange} required={isCustomerNameRequired} data-id="customerNameInput"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							class="validate" disabled={isCsrFormSubmited}>
+						</lightning-input>
+					</lightning-layout-item>
+
+					<template if:true={getshowHideWreck}>
+						<lightning-layout-item
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+							<lightning-input name="chassisnumber" label={label.EDealer_Chassis_Number}
+								value={chassisNumber} onchange={handleChassisNumberChange} required="true"
+								pattern="[a-zA-Z0-9]{6}" maxlength="6"
+								message-when-pattern-mismatch={label.EDealer_Chassis_Number_Error_Message}
+								message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+								class="validate" disabled={isCsrFormSubmited}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+							<lightning-input name="insurancecompany" label={label.EDealer_Insurance_Company}
+								value={insuranceCompany} onchange={handleInsuranceCompanyChange} required="true"
+								maxlength="28"
+								message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+								class="validate" disabled={isCsrFormSubmited}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+							<lightning-input name="writeoffvalue" label={label.EDealer_Write_Off} data-id="writeoffvalue" 
+								value={writeOffvalue} onchange={handleWriteOffValueChange} required="true" pattern="^\d*(\.\d{1,2})?$" maxlength="9"
+								message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+								class="validate" disabled={isCsrFormSubmited}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+							<lightning-input type="number" name="dealerdiscount" label={label.EDealer_Dealer_Discount}
+								value={dealerDiscount} onchange={handleDealerDiscountChange} required="true" min="0" max="99" maxlength="2"
+								message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+								class="validate" disabled={isCsrFormSubmited}>
+							</lightning-input>
+						</lightning-layout-item>
+					</template>
+					<template if:true={getshowHideBlindBid}>
+						<lightning-layout-item
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+							<lightning-input name="duration" label={durationLabel} value={duration}
+								onchange={handleDurationChange} required="true" pattern="^\d{1,3}$" maxlength="3"
+								message-when-value-missing={durationValidationError}
+								message-when-pattern-mismatch={durationValidationError} class="validate"
+								disabled={isCsrFormSubmited}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+							<lightning-input name="expectedMarkup" label={expectedMarkupLabel}
+								value={expectedMarkup} onchange={handleExpectedMarkupChange} required="true"
+								pattern="^[a-zA-Z0-9%\s\.\-]{1,4}$" maxlength="4"
+								message-when-value-missing={markupValidationError}
+								message-when-pattern-mismatch={markupValidationError}
+								class="validate" disabled={isCsrFormSubmited}>
+							</lightning-input>
+							<lightning-helptext icon-name="utility:info" content={eDealerExpectedMarkupErrorMessage}></lightning-helptext>                            
+						</lightning-layout-item>
+					</template>
+				</lightning-layout>
+				<lightning-layout class="slds-wrap slds-is-relative">
+					<lightning-layout-item class=" slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+						<c-e-dealer-file-upload onfiles={handleFileUpload} dealer-user-name={getDealerCode}
+							csr-number={csrNumber} csr-phase={csrPhase} uploaded-files={fileDetails} disable-import={isCsrFormSubmited}>
+						</c-e-dealer-file-upload>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-card>
+		</div>
+	</template>
+	<template lwc:if={isEdit}>
+		<template lwc:if={partList}>
+			<c-e-dealer-csr-part-list mode={mode} editpartlist={partList} dealer-codes={getAllDealerCodes} is-csr-data-submitted={isCsrFormSubmited}
+				is-parent-validated={isValid} blockquantityfield={blockquantityfieldonsearch}
+				headerdealercode={getDealerCode} headercsrtype={csrType} headercompetitivetype={competitiveType}
+				headerdealertype={dealerType} headercustomername={customerName} dealer-code={getDealerCode}
+				division={division} dealer-user-name={dealerUserName} headerchassisnumber={chassisNumber}
+				headerinsurancecompany={insuranceCompany} headerwriteoffvalue={writeOffvalue}
+				headerdealerdiscount={dealerDiscount} headerduration={duration} headerexpectedmarkup={expectedMarkup} selectedlocation={selectedLocation}
+				onsavetodraft={validateAndSaveAllInputs} onsubmission={validateAndSaveAllInputs}
+				onsendcsrnumber={captureCSRNumber} onsendspinner={handleSpinner}
+				onchangecsrstatus={handleCurrentCsrStatus} ondisablecsrheader={handleDisableCsrHeader}
+				csr-number={csrNumber} csr-phase={csrPhase} file-details={receivedFile}  handle-parent-validation ={handleValidation}>
+			</c-e-dealer-csr-part-list>
+		</template>
+	</template>
+	<template lwc:else>
+		<template lwc:if={isView}>
+		<template lwc:if={partList}>
+			<c-e-dealer-csr-part-list mode={mode} editpartlist={partList} dealer-codes={getAllDealerCodes} is-csr-data-submitted={isCsrFormSubmited}
+				is-parent-validated={isValid} blockquantityfield={blockquantityfieldonsearch}
+				headerdealercode={getDealerCode} headercsrtype={csrType} headercompetitivetype={competitiveType}
+				headerdealertype={dealerType} headercustomername={customerName} dealer-code={getDealerCode}
+				division={division} dealer-user-name={dealerUserName} headerchassisnumber={chassisNumber}
+				headerinsurancecompany={insuranceCompany} headerwriteoffvalue={writeOffvalue}
+				headerdealerdiscount={dealerDiscount} headerduration={duration} headerexpectedmarkup={expectedMarkup} selectedlocation={selectedLocation}
+				onsavetodraft={validateAndSaveAllInputs} onsubmission={validateAndSaveAllInputs}
+				onsendcsrnumber={captureCSRNumber} onsendspinner={handleSpinner}
+				onchangecsrstatus={handleCurrentCsrStatus} ondisablecsrheader={handleDisableCsrHeader}
+				csr-number={csrNumber} csr-phase={csrPhase} file-details={receivedFile}  handle-parent-validation ={handleValidation}>
+			</c-e-dealer-csr-part-list>
+		</template>
+	</template>
+	<template lwc:else>
+		<c-e-dealer-csr-part-list mode={mode} parts={partList} editpartlist={partList} dealer-codes={getAllDealerCodes} is-csr-data-submitted={isCsrFormSubmited}
+			blockquantityfield={blockquantityfieldonsearch} is-parent-validated={isValid} headerdealercode={getDealerCode}
+			headercsrtype={csrType} headercompetitivetype={competitiveType} headerdealertype={dealerType}
+			headercustomername={customerName} dealer-code={getDealerCode} division={division}
+			dealer-user-name={dealerUserName} headerchassisnumber={chassisNumber}
+			headerinsurancecompany={insuranceCompany} headerwriteoffvalue={writeOffvalue}
+			headerdealerdiscount={dealerDiscount} headerduration={duration} headerexpectedmarkup={expectedMarkup} selectedlocation={selectedLocation}
+			onsavetodraft={validateAndSaveAllInputs} onsubmission={validateAndSaveAllInputs}
+			onsendcsrnumber={captureCSRNumber} onsendspinner={handleSpinner} onchangecsrstatus={handleCurrentCsrStatus}
+			ondisablecsrheader={handleDisableCsrHeader} csr-number={csrNumber} csr-phase={csrPhase}
+			file-details={receivedFile} handle-parent-validation ={handleValidation}>
+		</c-e-dealer-csr-part-list>
+	</template>
+	</template>
+</template>

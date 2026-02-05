@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Return Compliance Listing</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;grp_num&quot;,
+&quot;label&quot;: &quot;Groupe&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;dlrcode&quot;,
+&quot;label&quot;: &quot;Concessionnaire&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;rmatype&quot;,
+&quot;label&quot;: &quot;Type de Rma&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;po_number&quot;,
+&quot;label&quot;: &quot;No. du bon de commande&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;item&quot;,
+&quot;label&quot;: &quot;Article&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;suggested_date&quot;,
+&quot;label&quot;: &quot;Date suggérée&quot;,
+&quot;order&quot; : 6,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;suggested_qty&quot;,
+&quot;label&quot;: &quot;Quantité suggérée&quot;,
+&quot;order&quot; : 7,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;suggested_extnet&quot;,
+&quot;label&quot;: &quot;Net allongé suggéré&quot;,
+&quot;order&quot; : 8,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;returned_date&quot;,
+&quot;label&quot;: &quot;Date du retour&quot;,
+&quot;order&quot; : 9,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;returned_qty&quot;,
+&quot;label&quot;: &quot;Quantité retournée&quot;,
+&quot;order&quot; : 10,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;returned_extnet&quot;,
+&quot;label&quot;: &quot;Net allongé retourné&quot;,
+&quot;order&quot; : 11,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;avg_return_compliance&quot;,
+&quot;label&quot;: &quot;Statut de conformité de&quot;,
+&quot;order&quot; : 12,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;return_status&quot;,
+&quot;label&quot;: &quot; retour moyen&quot;,
+&quot;order&quot; : 13,
+&quot;datatype&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

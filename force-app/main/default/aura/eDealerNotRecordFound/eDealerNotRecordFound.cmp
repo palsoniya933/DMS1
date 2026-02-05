@@ -1,0 +1,23 @@
+<aura:component >
+    
+    <aura:attribute name="Message" type="String" default="{!$Label.c.No_Data_Found}" />
+    <aura:attribute name="iconName" type="String" default="utility:locker_service_api_viewer" />
+    <aura:attribute name="cssClassname" type="String" default="redicon" />
+    <aura:attribute name="warningBoxClassName" type="String" default="warningbox" />
+    
+    <div class="{!'slds-notify slds-notify_alert slds-alert_warning ' + v.warningBoxClassName}" role="alert">
+         <center>
+             <div class="info-msg">
+                 <!--<span class="slds-assistive-text">warning</span>
+                 <span class="{! 'slds-icon_container slds-icon-utility-warning slds-m-right_x-small ' + v.warningBoxClassName}" title="Description of icon when needed">
+                     
+                     <lightning:buttonIcon  size="medium" class="{!v.cssClassname}" iconName="utility:warning" variant="bare" alternativeText="checked" title="Not Record Found"/>
+                 </span>-->
+                 <h2>
+                    <lightning:icon  size="xx-small" class="{!v.cssClassname}" iconName="utility:warning" variant="bare" alternativeText="checked" title="Not Record Found"/>  {!v.Message}
+                 </h2> 
+             </div>
+        </center>
+          
+    </div>
+</aura:component>

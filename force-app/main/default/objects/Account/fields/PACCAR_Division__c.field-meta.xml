@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PACCAR_Division__c</fullName>
+    <label>PACCAR Division</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PPD</fullName>
+                <default>false</default>
+                <label>PPD</label>
+            </value>
+            <value>
+                <fullName>PPM</fullName>
+                <default>false</default>
+                <label>PPM</label>
+            </value>
+            <value>
+                <fullName>PPI</fullName>
+                <default>false</default>
+                <label>PPI</label>
+            </value>
+            <value>
+                <fullName>PPL</fullName>
+                <default>false</default>
+                <label>PPL</label>
+            </value>
+            <value>
+                <fullName>PPA</fullName>
+                <default>false</default>
+                <label>PPA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

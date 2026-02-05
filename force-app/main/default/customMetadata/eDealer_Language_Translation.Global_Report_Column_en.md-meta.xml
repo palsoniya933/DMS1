@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Global Report Column</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;% Stocking Availability&quot; : &quot;% Stocking Availability&quot;,
+&quot;% Recommend Acceptance&quot; : &quot;% Recommend Acceptance&quot;,
+&quot;% Planning Breadth&quot; : &quot;% Planning Breadth&quot;,
+&quot;Current Benefits Tier&quot; : &quot;Current Benefits Tier&quot;,
+&quot;MDI Turns (Period)&quot; : &quot;MDI Turns (Period)&quot;,
+&quot;MDI Tier Qualification and Benefits&quot; : &quot;MDI Tier Qualification and Benefits&quot;,
+&quot;Total Inventory Value&quot; : &quot;Total Inventory Value&quot;,
+&quot;Total Cost of Sales&quot; : &quot;Total Cost of Sales&quot;,
+&quot;% Hits Non-Stocking&quot; : &quot;% Hits Non-Stocking&quot;,
+&quot;% EM / TD Lines&quot; : &quot;% EM / TD Lines&quot;,
+&quot;% Auto Acceptance Utilization&quot; : &quot;% Auto Acceptance Utilization&quot;
+}</value>
+    </values>
+</CustomMetadata>

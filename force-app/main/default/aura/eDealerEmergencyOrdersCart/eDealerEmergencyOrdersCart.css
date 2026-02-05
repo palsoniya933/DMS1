@@ -1,0 +1,80 @@
+.THIS {   
+}
+
+.THIS .container{
+    
+}
+
+.THIS .invDatacontainer{
+    padding-top:2%
+}
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:3%;
+}
+
+.THIS .invDatacontainertable{
+    width:100%
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;
+    padding:1%
+}
+
+
+.THIS .invDatacontainertabledata{
+    padding:1%
+}
+
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:1%;
+}
+
+.THIS .ordertablefirstColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 1%;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorRed svg {
+    fill : red;
+}
+
+.THIS .slds-icon-action-remove {
+    background-color: red;
+}
+
+.THIS .button-Black {
+    background-color: black;
+        border-color: black;
+        color: white;
+}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profile__c</fullName>
+    <defaultValue>&quot;Paccar Customer Community Plus Login&quot;</defaultValue>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Profile</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Paccar Customer Community Plus Login</fullName>
+                <default>false</default>
+                <label>Paccar Customer Community Plus Login</label>
+            </value>
+            <value>
+                <fullName>Fleet</fullName>
+                <default>false</default>
+                <label>Fleet</label>
+            </value>
+            <value>
+                <fullName>System Administrator</fullName>
+                <default>false</default>
+                <label>System Administrator</label>
+            </value>
+            <value>
+                <fullName>Service User</fullName>
+                <default>false</default>
+                <label>Service User</label>
+            </value>
+            <value>
+                <fullName>Service Manager</fullName>
+                <default>false</default>
+                <label>Service Manager</label>
+            </value>
+            <value>
+                <fullName>eCommerce Team</fullName>
+                <default>false</default>
+                <label>eCommerce Team</label>
+            </value>
+            <value>
+                <fullName>Read Only - Community</fullName>
+                <default>false</default>
+                <label>Read Only - Community</label>
+            </value>
+            <value>
+                <fullName>Paccar Customer Community Plus</fullName>
+                <default>true</default>
+                <label>Paccar Customer Community Plus</label>
+            </value>
+            <value>
+                <fullName>Paccar Fleet Plus</fullName>
+                <default>false</default>
+                <label>Paccar Fleet Plus</label>
+            </value>
+            <value>
+                <fullName>Paccar Customer Community Plusv1</fullName>
+                <default>false</default>
+                <label>Paccar Customer Community Plusv1</label>
+            </value>
+            <value>
+                <fullName>Fleet_Original</fullName>
+                <default>false</default>
+                <label>Fleet_Original</label>
+            </value>
+            <value>
+                <fullName>Paccar eDealer Community Plus</fullName>
+                <default>false</default>
+                <label>Paccar eDealer Community Plus</label>
+            </value>
+            <value>
+                <fullName>Paccar TCS edealer Community Plus</fullName>
+                <default>false</default>
+                <label>Paccar TCS edealer Community Plus</label>
+            </value>
+            <value>
+                <fullName>eDealer TCS Testing</fullName>
+                <default>false</default>
+                <label>eDealer TCS Testing</label>
+            </value>
+            <value>
+                <fullName>DPM</fullName>
+                <default>false</default>
+                <label>DPM</label>
+            </value>
+            <value>
+                <fullName>MDI Analyst</fullName>
+                <default>false</default>
+                <label>MDI Analyst</label>
+            </value>
+            <value>
+                <fullName>Sales Executive</fullName>
+                <default>false</default>
+                <label>Sales Executive</label>
+            </value>
+            <value>
+                <fullName>Paccar DTM TCS edealer Community Plus</fullName>
+                <default>false</default>
+                <label>Paccar DTM TCS edealer Community Plus</label>
+            </value>
+            <value>
+                <fullName>Paccar DTM TCS Customer Community Plus</fullName>
+                <default>false</default>
+                <label>Paccar DTM TCS Customer Community Plus</label>
+            </value>
+            <value>
+                <fullName>Developer/BA Production Admin</fullName>
+                <default>false</default>
+                <label>Developer/BA Production Admin</label>
+            </value>
+            <value>
+                <fullName>Paccar Executive</fullName>
+                <default>false</default>
+                <label>Paccar Executive</label>
+            </value>
+            <value>
+                <fullName>PPD International</fullName>
+                <default>false</default>
+                <label>PPD International</label>
+            </value>
+            <value>
+                <fullName>Sales Support</fullName>
+                <default>false</default>
+                <label>Sales Support</label>
+            </value>
+            <value>
+                <fullName>Community Test</fullName>
+                <default>false</default>
+                <label>Community Test</label>
+            </value>
+            <value>
+                <fullName>TRP Group User</fullName>
+                <default>false</default>
+                <label>TRP Group User</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

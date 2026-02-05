@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XYTDAchievedMDIRecAccept__c</fullName>
+    <defaultValue>&apos;https://na2.salesforce.com/00O400000026VU4&apos;</defaultValue>
+    <description>https://na2.salesforce.com/00O400000026VU4</description>
+    <inlineHelpText>This Report shows the % to the Goal</inlineHelpText>
+    <label>2010 Achieved MDI Rec.Accept.</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

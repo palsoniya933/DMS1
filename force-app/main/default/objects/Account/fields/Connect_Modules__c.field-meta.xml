@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Modules__c</fullName>
+    <label>Connect Modules</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accounting Export Module</fullName>
+                <default>false</default>
+                <label>Accounting Export Module</label>
+            </value>
+            <value>
+                <fullName>Counter Sales Module</fullName>
+                <default>false</default>
+                <label>Counter Sales Module</label>
+            </value>
+            <value>
+                <fullName>Fuel Tracking Module</fullName>
+                <default>false</default>
+                <label>Fuel Tracking Module</label>
+            </value>
+            <value>
+                <fullName>Inland Ordering System</fullName>
+                <default>false</default>
+                <label>Inland Ordering System</label>
+            </value>
+            <value>
+                <fullName>McLeod Integration Module</fullName>
+                <default>false</default>
+                <label>McLeod Integration Module</label>
+            </value>
+            <value>
+                <fullName>Mileage Import Module</fullName>
+                <default>false</default>
+                <label>Mileage Import Module</label>
+            </value>
+            <value>
+                <fullName>Tire Tracking Module</fullName>
+                <default>false</default>
+                <label>Tire Tracking Module</label>
+            </value>
+            <value>
+                <fullName>WO History Export Module</fullName>
+                <default>false</default>
+                <label>WO History Export Module</label>
+            </value>
+            <value>
+                <fullName>WO Invoicing</fullName>
+                <default>false</default>
+                <label>WO Invoicing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

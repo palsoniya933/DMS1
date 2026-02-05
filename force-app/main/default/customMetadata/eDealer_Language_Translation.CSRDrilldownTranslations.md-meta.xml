@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSR Drilldown Translations</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+    &quot;CSRHeader&quot;: [
+    {
+        &quot;en_US&quot;: &quot;TOTAL CSR(S)&quot;,
+        &quot;fr_CA&quot;: &quot;CSR(S) TOTAL&quot;,
+        &quot;es_MX&quot;: &quot;CSR(S) TOTAL&quot;
+    },
+    {
+        &quot;en_US&quot;: &quot;POSTED STATUS&quot;,
+        &quot;fr_CA&quot;: &quot;ÉTAT PUBLIÉ&quot;,
+        &quot;es_MX&quot;: &quot;ESTADO PUBLICADO&quot;
+    },
+    {
+        &quot;en_US&quot;: &quot;DENIED STATUS&quot;,
+        &quot;fr_CA&quot;: &quot;ÉTAT REFUSÉ&quot;,
+        &quot;es_MX&quot;: &quot;ESTADO NEGADO&quot;
+    }
+],
+&quot;TableHeader&quot;:
+[
+    {
+        &quot;en_US&quot;: &quot;SR#&quot;,
+        &quot;fr_CA&quot;: &quot;Référence  SR&quot;,
+        &quot;es_MX&quot;: &quot;Número de SR &quot;,
+&quot;fieldName&quot;:&quot;sr&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+    },
+    {
+        &quot;en_US&quot;: &quot;Dealer Code&quot;,
+        &quot;fr_CA&quot;: &quot;Code du concessionnaire&quot;,
+        &quot;es_MX&quot;: &quot;Código del distribuidor&quot;,
+&quot;fieldName&quot;:&quot;dealercode&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+
+    },
+    {
+        &quot;en_US&quot;: &quot;Dealer Type&quot;,
+        &quot;fr_CA&quot;: &quot;Type de revendeur&quot;,
+        &quot;es_MX&quot;: &quot;Tipo de distribuidor&quot;,
+&quot;fieldName&quot;:&quot;dealertype&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+
+    },
+    {
+        &quot;en_US&quot;: &quot;CSR#&quot;,
+        &quot;fr_CA&quot;: &quot;CSR#&quot;,
+        &quot;es_MX&quot;: &quot;CSR#&quot;,
+&quot;fieldName&quot;:&quot;csrnumber&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+
+    },
+   {
+        &quot;en_US&quot;: &quot;Phase&quot;,
+        &quot;fr_CA&quot;: &quot;Phase&quot;,
+        &quot;es_MX&quot;: &quot;Fase&quot;,
+&quot;fieldName&quot;:&quot;phase&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+
+    },
+   {
+        &quot;en_US&quot;: &quot;CSR Type&quot;,
+        &quot;fr_CA&quot;: &quot;Type de CSR&quot;,
+        &quot;es_MX&quot;: &quot;Tipo de CSR&quot;,
+&quot;fieldName&quot;:&quot;csrtype&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+
+    },
+ 
+    {
+        &quot;en_US&quot;: &quot;Created By&quot;,
+        &quot;fr_CA&quot;: &quot;Créé par&quot;,
+        &quot;es_MX&quot;: &quot;Creado por&quot;,
+&quot;fieldName&quot;:&quot;createdby&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+    },
+    {
+        &quot;en_US&quot;: &quot;Last Updated&quot;,
+        &quot;fr_CA&quot;: &quot;Dernière mise à jour&quot;,
+        &quot;es_MX&quot;: &quot;Última actualización&quot;,
+&quot;fieldName&quot;:&quot;last_updated_at&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+    },
+    {
+        &quot;en_US&quot;: &quot;Expiration Date&quot;,
+        &quot;fr_CA&quot;: &quot;Date d&apos;expiration&quot;,
+        &quot;es_MX&quot;: &quot;Fecha de vencimiento&quot;,
+&quot;fieldName&quot;:&quot;expiration_date&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+    },
+    {
+        &quot;en_US&quot;: &quot;Comments/Files&quot;,
+        &quot;fr_CA&quot;: &quot;Commentaires / Archives&quot;,
+        &quot;es_MX&quot;: &quot;Comentarios/ Arquivos&quot;,
+&quot;fieldName&quot;:&quot;CommentsFiles&quot;,&quot;type&quot;:&quot;text&quot;,&quot;sortable&quot;:false
+    },
+{
+        &quot;en_US&quot;: &quot;Status&quot;,
+        &quot;fr_CA&quot;: &quot;Statut&quot;,
+        &quot;es_MX&quot;: &quot;Estado&quot;,
+&quot;fieldName&quot;:&quot;status&quot;,&quot;type&quot;:&quot;&quot;,&quot;sortable&quot;:false
+    },
+{
+        &quot;en_US&quot;: &quot;Actions&quot;,
+        &quot;fr_CA&quot;: &quot;Actions&quot;,
+        &quot;es_MX&quot;: &quot;Acciones&quot;,
+&quot;fieldName&quot;:&quot;Actions&quot;,&quot;type&quot;:&quot;&quot;,&quot;sortable&quot;:false
+    }
+],
+&quot;CSRList&quot;: {
+        &quot;en_US&quot;: &quot;CSR List&quot;,
+        &quot;fr_CA&quot;: &quot;Liste CSR&quot;,
+        &quot;es_MX&quot;: &quot;Lista de CSR&quot;
+     
+    },
+&quot;DraftCsrList&quot;: {
+        &quot;en_US&quot;: &quot;Draft CSR List&quot;,
+        &quot;fr_CA&quot;: &quot;Liste des CSR en projet&quot;,
+        &quot;es_MX&quot;: &quot;Lista de CSR en borrador&quot;
+},
+&quot;PendingCsrList&quot;: {
+        &quot;en_US&quot;: &quot;Pending CSR List&quot;,
+        &quot;fr_CA&quot;: &quot;Liste des CSR en attente&quot;,
+        &quot;es_MX&quot;: &quot;Lista de CSR en pendiente&quot;
+},
+&quot;Download&quot;: {
+        &quot;en_US&quot;: &quot;Download&quot;,
+        &quot;fr_CA&quot;: &quot;Télécharger&quot;,
+        &quot;es_MX&quot;: &quot;Descargar&quot;
+     
+    },
+&quot;DraftCsrHeader&quot;: [
+    
+    {
+        &quot;en_US&quot;: &quot;DRAFT STATUS&quot;,
+        &quot;fr_CA&quot;: &quot;ÉTAT DE L’ÉBAUCHE&quot;,
+        &quot;es_MX&quot;: &quot;ESTADO EN BORRADOR&quot;
+    }
+],
+&quot;PendingCsrHeader&quot;: [
+
+{
+&quot;en_US&quot;: &quot;TOTAL CSR&quot;,
+&quot;fr_CA&quot;: &quot;CSR TOTALE&quot;,
+&quot;es_MX&quot;: &quot;CSR TOTAL&quot;
+},
+{
+&quot;en_US&quot;: &quot;IN PROCESS&quot;,
+&quot;fr_CA&quot;: &quot;EN COURS&quot;,
+&quot;es_MX&quot;: &quot;EN PROCESO&quot;
+},
+{
+&quot;en_US&quot;: &quot;WAITING FOR DEALER RESPONSE&quot;,
+&quot;fr_CA&quot;: &quot;EN ATTENTE DE LA RÉPONSE DU CONCESSIONNAIRE&quot;,
+&quot;es_MX&quot;: &quot;ESPERANDO RESPUESTA DEL CONCESIONARIO&quot;
+}
+],
+&quot;renewalConfirmationMessage&quot;: 
+    
+    {
+        &quot;en_US&quot;: &quot;Are you sure do you want to submit for renewal?&quot;,
+        &quot;fr_CA&quot;: &quot;Êtes-vous sûr de vouloir soumettre cette CSR pour renouvellement?&quot;,
+        &quot;es_MX&quot;: &quot;¿Estás segura de que quieres enviar para renovación?&quot;
+    },
+&quot;cancelationConfirmationMessage&quot;: 
+    
+    {
+        &quot;en_US&quot;: &quot;Are you sure do you want to cancel this CSR?&quot;,
+        &quot;fr_CA&quot;: &quot;Êtes-vous sûr de vouloir annuler ce CSR?&quot;,
+        &quot;es_MX&quot;: &quot;¿Está seguro de que desea cancelar este CSR?&quot;
+    },
+&quot;successRenewalMessage&quot;: 
+    
+    {
+        &quot;en_US&quot;: &quot;Renewal for CSR has been processed. Please review this update in our Pending KPI&quot;,
+        &quot;fr_CA&quot;: &quot;Le renouvellement du CSR été traité. Veuillez consullter cette mise ä jour dans votre KPI en attente&quot;,
+        &quot;es_MX&quot;: &quot;Se ha tramitado la renovación del CSR. Revise esta actualización en su KPI pendiente&quot;
+    }
+
+}</value>
+    </values>
+</CustomMetadata>

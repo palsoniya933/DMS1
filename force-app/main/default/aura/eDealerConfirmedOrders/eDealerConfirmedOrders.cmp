@@ -1,0 +1,263 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global"
+                extends="c:edealerTracking"
+                controller="EDealerConfirmedOrders" >
+    
+    <!-- this will save the selected location -->    
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- this used for the current step number -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- this will save the current Dealer/user division -->
+    <aura:attribute name="division" type="String"/>
+    
+    <!-- used to hide / show the Part Screen -->
+    <aura:attribute name="displayParts" type="boolean" />
+    <aura:attribute name="partNumberDetail" type="String" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <aura:attribute name="PaginationList" type="Object[]" />
+    <aura:attribute name="tableData" type="List" />
+    
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    
+    <aura:attribute name="selectedmenu" type="string" />
+    <aura:attribute name="displayLoading" type="Boolean" default="false" />
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <aura:attribute name="summary" type="Object" />
+    
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <!-- table columns data -->
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="loadTime" type="Integer" />
+
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    <!-- markup container -->
+    <div class="container">
+        
+        <!-- tabs section -->
+        <div class="tabs">
+            <lightning:tabset selectedTabId="one">
+                
+                <!-- first Tab -->
+                <lightning:tab label='{!$Label.c.Confirmed_Order_File}' id="one">
+                    <aura:if isTrue="{!v.displayLoading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand" />
+                    </aura:if> 
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_12-of-12">
+                            <div class="wrapper slds-m-around_x-small">
+                                
+                                <div class="slds-m-around_x-small bgpad10 prodTopHead">
+                                    
+                                    <table class="slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                                        <tr>
+                                            <td>
+                                                <div class="headerName slds-truncate">{!$Label.c.Confirmed_Parts}</div>
+                                            </td>
+                                            <td>
+                                                <div class="headerName slds-truncate">{!$Label.c.Total_Parts_Qty}</div>
+                                            </td>
+                                            <td>
+                                                <div class="headerName slds-truncate">{!$Label.c.Grand_Total} ({!v.userDetail.currencyCode})</div>
+                                            </td>
+                                            <td>
+                                                <div class="headerName">{!$Label.c.COF_Created_Date_PST}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="headerCount slds-truncate">{!v.summary.confirmed_parts}</div>
+                                            </td>
+                                            <td>
+                                                <div class="headerCount slds-truncate">{!v.summary.total_confirmed_parts_qty}</div>
+                                            </td>
+                                            <td>
+                                                <div class="headerCount slds-truncate">{!v.summary.grandtotal}</div>
+                                            </td>
+                                            <td>
+                                                <div class="headerCount"> {!v.summary.confirmedon} </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- data part -->    
+                    <aura:if isTrue="{!v.PaginationList.length > 0 }">
+                        <div class="invDatacontainer">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <c:eDealerPagination totalRecords = "{!v.tableData}"
+                                                             totalNumberRecords = "{!v.tableData}"
+                                                             PaginationList = "{!v.PaginationList}"
+                                                             PageNumber="{!v.paginationPageNumber}"
+                                                             pageSize="{!v.paginationPageSize}"
+                                                             TotalPages="{!v.paginationTotalPages}"
+                                                             RecordStart="{!v.paginationRecordStart}"
+                                                             RecordEnd="{!v.paginationRecordEnd}"
+                                                             allPageNumber="{!v.paginationAllPageNumber}"
+                                                             disabledprevious="{!v.paginationDisabledPrevious}"
+                                                             disablednext="{!v.paginationDisabledNext}"
+                                                             displayPageButtons="false"></c:eDealerPagination>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <div class="invDatacontainertablecontainer">
+                                <table class="invDatacontainertable">
+                                    <tr>
+                                        <td class="invDatacontainertableheading width1" >
+                                            #
+                                        </td>
+                                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                                            <td class="invDatacontainertableheading" >
+                                                {!cd.value}
+                                            </td>
+                                        </aura:iteration>
+                                        
+                                        <!-- <td class="invDatacontainer
+
+
+leheading partsText" >
+                                            {!$Label.c.Parts} #
+                                        </td>
+                                        <td class="invDatacontainertableheading descriptionText">
+                                            {!$Label.c.Description}
+                                        </td>
+                                        <td class="invDatacontainertableheading onorderText">
+                                            {!$Label.c.Inventory}
+                                        </td>
+                                        <td class="invDatacontainertableheading onorderText">
+                                            {!$Label.c.Confirmed_Qty}
+                                        </td>
+                                        <td class="invDatacontainertableheading onorderText">
+                                            {!$Label.c.Dealer_Net} ({!v.userDetail.currencyCode})
+                                        </td>
+                                        <td class="invDatacontainertableheading onorderText">
+                                            {!$Label.c.Extended_Dealer_Net} ({!v.userDetail.currencyCode})
+                                        </td> -->
+                                    </tr>
+                                    
+                                    <!-- this is the iteration for rows -->
+                                    <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                                        <tr>
+                                            <td class="invDatacontainertabledata" >
+                                                {!index +1}
+                                            </td>
+                                            <aura:iteration items="{!v.columnLabelByApiName}" var="cd">
+                                                
+                                                <td>
+                                                    <aura:if isTrue="{!cd.key=='item'}">
+                                                        <a href="javascript:void(0);" onclick="{!c.openPart}" name="{!inv.item}">
+                                                            <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                        </a>
+                                                        &nbsp;
+                                                        <span name="{!inv.item}" onclick="{!c.handleOpenInNewWindow}" class="nav-text active">
+                                                            <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                                        </span> 
+                                                        <aura:set attribute="else">
+                                                            <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                            
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </td>
+                                            </aura:iteration>
+                                            
+                                        </tr>
+                                    </aura:iteration>
+                                </table>
+                                
+                                <!-- pagination cmp -->
+                                <div class="bottompagi">
+                                    <c:eDealerPagination totalRecords = "{!v.tableData}"
+                                                         totalNumberRecords = "{!v.tableData}"
+                                                         PaginationList = "{!v.PaginationList}"
+                                                         PageNumber="{!v.paginationPageNumber}"
+                                                         pageSize="{!v.paginationPageSize}"
+                                                         TotalPages="{!v.paginationTotalPages}"
+                                                         RecordStart="{!v.paginationRecordStart}"
+                                                         RecordEnd="{!v.paginationRecordEnd}"
+                                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                                         disablednext="{!v.paginationDisabledNext}"
+                                                         displayPageButtons="true"></c:eDealerPagination>  
+                                </div> 
+                                
+                            </div>
+                        </div>
+                        
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.APICalled}">
+                                <br/>
+                                <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </lightning:tab>
+                
+                
+            </lightning:tabset>
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!v.displayParts}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container modalContent partDetailModal">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! c.closePartModel }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">{!$Label.c.Close}</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    
+                    
+                    <c:eDealerPartDetailModal dealerCode="{!v.dealerCode}" 
+                                              division="{!v.division}"
+                                              partNumber = "{!v.partNumberDetail}"/>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Neutral action" onclick="{! c.closePartModel }"/>
+                </footer>                
+            </div>            
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

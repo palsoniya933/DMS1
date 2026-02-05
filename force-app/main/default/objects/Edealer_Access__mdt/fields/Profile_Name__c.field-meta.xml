@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profile_Name__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Profile Name</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>System Administrator</fullName>
+                <default>true</default>
+                <label>System Administrator</label>
+            </value>
+            <value>
+                <fullName>Service User</fullName>
+                <default>false</default>
+                <label>Service User</label>
+            </value>
+            <value>
+                <fullName>DPM</fullName>
+                <default>false</default>
+                <label>DPM</label>
+            </value>
+            <value>
+                <fullName>Service Manager</fullName>
+                <default>false</default>
+                <label>Service Manager</label>
+            </value>
+            <value>
+                <fullName>MDI Analyst</fullName>
+                <default>false</default>
+                <label>MDI Analyst</label>
+            </value>
+            <value>
+                <fullName>Sales Executive</fullName>
+                <default>false</default>
+                <label>Sales Executive</label>
+            </value>
+            <value>
+                <fullName>Developer/BA Production Admin</fullName>
+                <default>false</default>
+                <label>Developer/BA Production Admin</label>
+            </value>
+            <value>
+                <fullName>DTM Service manager</fullName>
+                <default>false</default>
+                <label>DTM Service manager</label>
+            </value>
+            <value>
+                <fullName>eCommerce Team</fullName>
+                <default>false</default>
+                <label>eCommerce Team</label>
+            </value>
+            <value>
+                <fullName>Marketing User</fullName>
+                <default>false</default>
+                <label>Marketing User</label>
+            </value>
+            <value>
+                <fullName>Paccar Executive</fullName>
+                <default>false</default>
+                <label>Paccar Executive</label>
+            </value>
+            <value>
+                <fullName>System Administrator Paccar</fullName>
+                <default>false</default>
+                <label>System Administrator Paccar</label>
+            </value>
+            <value>
+                <fullName>System Administrator New</fullName>
+                <default>false</default>
+                <label>System Administrator New</label>
+            </value>
+            <value>
+                <fullName>Product Marketing</fullName>
+                <default>false</default>
+                <label>Product Marketing</label>
+            </value>
+            <value>
+                <fullName>PPD International</fullName>
+                <default>false</default>
+                <label>PPD International</label>
+            </value>
+            <value>
+                <fullName>PMO Business User</fullName>
+                <default>false</default>
+                <label>PMO Business User</label>
+            </value>
+            <value>
+                <fullName>Sales Support</fullName>
+                <default>false</default>
+                <label>Sales Support</label>
+            </value>
+            <value>
+                <fullName>TRP Group User</fullName>
+                <default>false</default>
+                <label>TRP Group User</label>
+            </value>
+            <value>
+                <fullName>Community Test</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Community Test</label>
+            </value>
+            <value>
+                <fullName>Paccar DTM TCS edealer Community Plus</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Paccar DTM TCS edealer Community Plus</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

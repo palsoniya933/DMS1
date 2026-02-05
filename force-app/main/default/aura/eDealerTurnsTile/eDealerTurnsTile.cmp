@@ -1,0 +1,97 @@
+<aura:component controller="EDealerTurnsController" extends="c:edealerTracking" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will save the days On Hand api details -->
+    <aura:attribute name="totalDays" type="Integer" />
+    
+    <!-- this will save the days On Hand api details -->
+    <aura:attribute name="turnsData" type="Object" />
+    
+    <!-- this will save the days On Hand api details cache for based on multiple location -->
+    <aura:attribute name="turnsMapCache" type="Map" />
+    
+    <!-- this will save the title for the tile -->
+	<aura:attribute name="title" type="string" />    
+    
+    <aura:attribute name="selectoptions" type="List"/>
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="monthly"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="Object"/>
+     
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerLoc}" action="{!c.doInit}"/> 
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">{!v.title}</span>
+                        </div>
+                        
+                        <div class="tileInfo_Div">
+                            <span class="greenTextb">
+                                <lightning:formattedNumber value="{!v.totalDays}"/>
+                            </span>                        
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="{!$Label.c.Edealer_Inventory_turnover}"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

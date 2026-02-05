@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>vsQuoteToOrder</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+  &quot;DropFormMetadata&quot;: {
+&quot;deleteLable&quot;: {
+    &quot;en_US&quot;: &quot;Delete&quot;,
+    &quot;fr_CA&quot;: &quot;Supprimer&quot;,
+    &quot;es_MX&quot;: &quot;Eliminar&quot;
+},
+&quot;Cancel&quot;: {
+    &quot;en_US&quot;: &quot;Cancel&quot;,
+    &quot;fr_CA&quot;: &quot;Annuler&quot;,
+    &quot;es_MX&quot;: &quot;Cancelar&quot;
+},
+&quot;Confirm&quot;: {
+    &quot;en_US&quot;: &quot;Confirm&quot;,
+    &quot;fr_CA&quot;: &quot;Confirmer&quot;,
+    &quot;es_MX&quot;: &quot;Confirmar&quot;
+},
+&quot;DeleteDropConfirmationMessege&quot;: {
+    &quot;en_US&quot;: &quot;Are you sure, you want to delete the selected drop(s)?&quot;,
+    &quot;fr_CA&quot;: &quot;¿Está seguro de que desea eliminar la(s) ubicación(es) seleccionada(s)?&quot;,
+    &quot;es_MX&quot;: &quot;Êtes-vous sûr de vouloir supprimer le(s) élément(s) sélectionné(s)?&quot;
+},
+&quot;PlaceVolumeOrder&quot;: {
+    &quot;en_US&quot;: &quot;Place Volume Order&quot;,
+    &quot;fr_CA&quot;: &quot;Passez votre commande pour les Vente en Volume&quot;,
+    &quot;es_MX&quot;: &quot;Realizar pedido de Ventas de Volumen&quot;
+},
+&quot;EditDropLocation&quot;: {
+    &quot;en_US&quot;: &quot;Edit Drop Location&quot;,
+    &quot;fr_CA&quot;: &quot;Modifier l&apos;emplacement du dépôt&quot;,
+    &quot;es_MX&quot;: &quot;Editar ubicación de entrega&quot;
+},
+&quot;DropLines&quot;: {
+    &quot;en_US&quot;: &quot;Drop Lines&quot;,
+    &quot;fr_CA&quot;: &quot;Lignes de dépôt&quot;,
+    &quot;es_MX&quot;: &quot;Líneas de entrega&quot;
+},
+&quot;UpdateDrop&quot;: {
+    &quot;en_US&quot;: &quot;Update Drop&quot;,
+    &quot;fr_CA&quot;: &quot;Mettre à jour le dépôt&quot;,
+    &quot;es_MX&quot;: &quot;Actualizar entrega&quot;
+},
+&quot;RequiredInformation&quot;: {
+    &quot;en_US&quot;: &quot;Required Information&quot;,
+    &quot;fr_CA&quot;: &quot;Informations requises&quot;,
+    &quot;es_MX&quot;: &quot;Información requerida&quot;
+},
+&quot;VolumeOrder&quot;: {
+    &quot;en_US&quot;: &quot;Volume Order&quot;,
+    &quot;fr_CA&quot;: &quot;Volume de la commande&quot;,
+    &quot;es_MX&quot;: &quot;Pedido de Ventas de Volumen&quot;
+},
+&quot;DealerName&quot;: {
+    &quot;en_US&quot;: &quot;Dealer Name&quot;,
+    &quot;fr_CA&quot;: &quot;Nom du concessionnaire&quot;,
+    &quot;es_MX&quot;: &quot;Nombre del concesionario&quot;
+},
+&quot;Comments&quot;: {
+    &quot;en_US&quot;: &quot;Comments&quot;,
+    &quot;fr_CA&quot;: &quot;Commentaires&quot;,
+    &quot;es_MX&quot;: &quot;Comentarios&quot;
+},
+&quot;DealerGroup&quot;: {
+    &quot;en_US&quot;: &quot;Dealer Group&quot;,
+    &quot;fr_CA&quot;: &quot;Groupe de concessionnaires&quot;,
+    &quot;es_MX&quot;: &quot;Grupo del concesionario&quot;
+},
+    &quot;Suffix&quot;: {
+      &quot;en_US&quot;: &quot;Suffix&quot;,
+      &quot;fr_CA&quot;: &quot;Suffixe&quot;,
+      &quot;es_MX&quot;: &quot;Sufijo&quot;
+    },
+    &quot;DealerCode&quot;: {
+      &quot;en_US&quot;: &quot;Dealer Code&quot;,
+      &quot;fr_CA&quot;: &quot;Code du concessionnaire&quot;,
+      &quot;es_MX&quot;: &quot;Código de Concesionaria&quot;
+    },
+    &quot;DealerPO&quot;: {
+      &quot;en_US&quot;: &quot;Dealer PO&quot;,
+      &quot;fr_CA&quot;: &quot;Bon de commande conc.&quot;,
+      &quot;es_MX&quot;: &quot;OC de Concesionario&quot;
+    },
+    &quot;Channel&quot;: {
+      &quot;en_US&quot;: &quot;Channel&quot;,
+      &quot;fr_CA&quot;: &quot;Canal&quot;,
+      &quot;es_MX&quot;: &quot;Canal&quot;
+    },
+    &quot;ChannelNote&quot;: {
+      &quot;en_US&quot;: &quot;Note: This selection will apply to ALL parts added below.&quot;,
+      &quot;fr_CA&quot;: &quot;Remarque : Cette sélection s&apos;appliquera à TOUTES les pièces ajoutées ci-dessous.&quot;,
+      &quot;es_MX&quot;: &quot;Nota: Esta selección se aplicará a TODAS las piezas agregadas a continuación.&quot;
+    },
+    &quot;ChannelPicklist&quot;: [
+      {
+        &quot;value&quot;: &quot;NONE&quot;,
+        &quot;en_US&quot;: &quot;None&quot;,
+        &quot;fr_CA&quot;: &quot;Aucune&quot;,
+        &quot;es_MX&quot;: &quot;Ninguno&quot;
+      },
+      {
+        &quot;value&quot;: &quot;PDC&quot;,
+        &quot;en_US&quot;: &quot;PDC&quot;,
+        &quot;fr_CA&quot;: &quot;PDC&quot;,
+        &quot;es_MX&quot;: &quot;PDC&quot;
+      },
+      {
+        &quot;value&quot;: &quot;DSP&quot;,
+        &quot;en_US&quot;: &quot;DSP&quot;,
+        &quot;fr_CA&quot;: &quot;DSP&quot;,
+        &quot;es_MX&quot;: &quot;DSP&quot;
+      }
+    ],
+    &quot;AddDropInfoTitle&quot;: {
+      &quot;en_US&quot;: &quot;Add Drop Information&quot;,
+      &quot;fr_CA&quot;: &quot;Ajouter des informations de localisation&quot;,
+      &quot;es_MX&quot;: &quot;Añadir información de ubicación&quot;
+    },
+    &quot;AddDropButton&quot;: {
+      &quot;en_US&quot;: &quot;Add Drop&quot;,
+      &quot;fr_CA&quot;: &quot;Ajouter un localisation&quot;,
+      &quot;es_MX&quot;: &quot;Añadir ubicación&quot;
+    },
+    &quot;DropCreatedToast&quot;: {
+      &quot;en_US&quot;: &quot;Drop is created! Drop Name:&quot;,
+      &quot;fr_CA&quot;: &quot;Le localisation est créé ! Nom du localisation:&quot;,
+      &quot;es_MX&quot;: &quot;¡Ubicación creada! Nombre de ubicación:&quot;
+    },
+    &quot;QuantityValidationMessage&quot;: {
+      &quot;en_US&quot;: &quot;Quantity must be greater than 0&quot;,
+      &quot;fr_CA&quot;: &quot;La quantité doit être supérieure à 0&quot;,
+      &quot;es_MX&quot;: &quot;La cantidad debe ser mayor a 0&quot;
+    }
+  },
+  &quot;VolumeSalesQuoteLineMetadata&quot;: {
+    &quot;HeaderTitle&quot;: {
+      &quot;en_US&quot;: &quot;Volume Sales Quote Lines&quot;,
+      &quot;fr_CA&quot;: &quot;Ligne de devis des Ventes en Volume&quot;,
+      &quot;es_MX&quot;: &quot;Línea de cotización de Ventas por Volumen&quot;
+    },
+    &quot;MixAndMatch&quot;: {
+      &quot;en_US&quot;: &quot;Mix and Match&quot;,
+      &quot;fr_CA&quot;: &quot;Mélanger et assortir&quot;,
+      &quot;es_MX&quot;: &quot;Mezclar y combinar&quot;
+    },
+    &quot;PartNumber&quot;: {
+      &quot;en_US&quot;: &quot;Part Number&quot;,
+      &quot;fr_CA&quot;: &quot;Numéro de pièce&quot;,
+      &quot;es_MX&quot;: &quot;Número de parte&quot;
+    },
+    &quot;PromoCode&quot;: {
+      &quot;en_US&quot;: &quot;Promo Code&quot;,
+      &quot;fr_CA&quot;: &quot;Code promotionnel&quot;,
+      &quot;es_MX&quot;: &quot;Código promocional&quot;
+    },
+    &quot;Quantity&quot;: {
+      &quot;en_US&quot;: &quot;Quantity&quot;,
+      &quot;fr_CA&quot;: &quot;Quantité&quot;,
+      &quot;es_MX&quot;: &quot;Cantidad&quot;
+    },
+    &quot;UnallocatedQuantity&quot;: {
+      &quot;en_US&quot;: &quot;Unallocated Quantity&quot;,
+      &quot;fr_CA&quot;: &quot;Quantité non allouée&quot;,
+      &quot;es_MX&quot;: &quot;Cantidad sin asignar&quot;
+    }
+  },
+  &quot;VolumeOrderMetadata&quot;: {
+    &quot;CreateVolumeOrder&quot;: {
+      &quot;en_US&quot;: &quot;Create Volume Order&quot;,
+      &quot;fr_CA&quot;: &quot;Créer une commande en volume&quot;,
+      &quot;es_MX&quot;: &quot;Crear pedido por volumen&quot;
+    },
+    &quot;Subject&quot;: {
+      &quot;en_US&quot;: &quot;Subject&quot;,
+      &quot;fr_CA&quot;: &quot;Objet&quot;,
+      &quot;es_MX&quot;: &quot;Asunto&quot;
+    },
+    &quot;Description&quot;: {
+      &quot;en_US&quot;: &quot;Description&quot;,
+      &quot;fr_CA&quot;: &quot;Description&quot;,
+      &quot;es_MX&quot;: &quot;Descripción&quot;
+    },
+    &quot;CreateDraft&quot;: {
+      &quot;en_US&quot;: &quot;Create Draft&quot;,
+      &quot;fr_CA&quot;: &quot;Créer un brouillon&quot;,
+      &quot;es_MX&quot;: &quot;Crear borrador&quot;
+    },
+    &quot;DropQuantityValidation&quot;: {
+      &quot;en_US&quot;: &quot;Drop quantity is not equal or greater than quoted quantity for:&quot;,
+      &quot;fr_CA&quot;: &quot;La quantité livrée n&apos;est pas égale ou supérieure à la quantité indiquée pour :&quot;,
+      &quot;es_MX&quot;: &quot;La cantidad de entrega no es igual ni mayor que la cantidad cotizada para:&quot;
+    },
+    &quot;DraftCreatedSuccess&quot;: {
+      &quot;en_US&quot;: &quot;Draft order created successfully&quot;,
+      &quot;fr_CA&quot;: &quot;Brouillon de commande créé avec succès&quot;,
+      &quot;es_MX&quot;: &quot;Pedido borrador creado correctamente&quot;
+    },
+    &quot;DraftCreationFailed&quot;: {
+      &quot;en_US&quot;: &quot;Failed to create draft order.&quot;,
+      &quot;fr_CA&quot;: &quot;Échec de la création du brouillon de commande.&quot;,
+      &quot;es_MX&quot;: &quot;Error al crear el pedido borrador&quot;
+    },
+    &quot;ValidationFailed&quot;: {
+      &quot;en_US&quot;: &quot;Validation failed.&quot;,
+      &quot;fr_CA&quot;: &quot;Échec de la validation&quot;,
+      &quot;es_MX&quot;: &quot;Error de validación&quot;
+    },
+    &quot;MissingDropsFor&quot;: {
+      &quot;en_US&quot;: &quot;Missing drops for:&quot;,
+      &quot;fr_CA&quot;: &quot;Livraisons manquantes pour :&quot;,
+      &quot;es_MX&quot;: &quot;Entregas faltantes para:&quot;
+    },
+    &quot;DuplicateCheck&quot;: {
+      &quot;en_US&quot;: &quot;Suffix and Dealer code combination already exist on Quote&quot;,
+      &quot;fr_CA&quot;: &quot;La combinaison suffixe et code du concessionnaire existe déjà sur le devis&quot;,
+      &quot;es_MX&quot;: &quot;La combinación de sufijo y código de concesionario ya existe en la cotización&quot;
+    }
+  },
+  &quot;DropInformationTab&quot;: {
+    &quot;DealerSuffix&quot;: {
+      &quot;en_US&quot;: &quot;Dealer Suffix&quot;,
+      &quot;fr_CA&quot;: &quot;Suffixe du concessionnaire&quot;,
+      &quot;es_MX&quot;: &quot;Sufijo del concesionario&quot;
+    },
+    &quot;CaseDetails&quot;: {
+      &quot;en_US&quot;: &quot;Case Details&quot;,
+      &quot;fr_CA&quot;: &quot;Détails du dossier&quot;,
+      &quot;es_MX&quot;: &quot;Detalles del caso&quot;
+    },
+    &quot;DropInformation&quot;: {
+      &quot;en_US&quot;: &quot;Drop Information&quot;,
+      &quot;fr_CA&quot;: &quot;Informations sur le dépôt&quot;,
+      &quot;es_MX&quot;: &quot;Información del envío&quot;
+    },
+    &quot;SelectAll&quot;: {
+      &quot;en_US&quot;: &quot;Select All&quot;,
+      &quot;fr_CA&quot;: &quot;Tout sélectionner&quot;,
+      &quot;es_MX&quot;: &quot;Seleccionar todo&quot;
+    },
+    &quot;CollapseExpandAll&quot;: {
+      &quot;en_US&quot;: &quot;Collapse/ Expand All&quot;,
+      &quot;fr_CA&quot;: &quot;Réduire/Développer tout&quot;,
+      &quot;es_MX&quot;: &quot;Contraer/Expandir todo&quot;
+    },
+    &quot;EditDrop&quot;: {
+      &quot;en_US&quot;: &quot;Edit drop&quot;,
+      &quot;fr_CA&quot;: &quot;Modifier le dépôt&quot;,
+      &quot;es_MX&quot;: &quot;Editar envío&quot;
+    },
+    &quot;CreateOrder&quot;: {
+      &quot;en_US&quot;: &quot;Create Order&quot;,
+      &quot;fr_CA&quot;: &quot;Créer une commande&quot;,
+      &quot;es_MX&quot;: &quot;Crear pedido&quot;
+    },
+    &quot;DeleteDrop&quot;: {
+      &quot;en_US&quot;: &quot;Delete Drop&quot;,
+      &quot;fr_CA&quot;: &quot;supprimer l&apos;emplacement&quot;,
+      &quot;es_MX&quot;: &quot;Eliminar ubicación&quot;
+    }
+  }
+}</value>
+    </values>
+</CustomMetadata>

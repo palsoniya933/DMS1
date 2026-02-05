@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flotas_KW_Bajio</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>Program_PPM__c</columns>
+    <columns>UNIKO__c</columns>
+    <columns>DFM__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Registrado_con_Dealer_en_Programa_Flotas__c</field>
+        <operation>equals</operation>
+        <value>KW Bajio</value>
+    </filters>
+    <filters>
+        <field>Program_PPM__c</field>
+        <operation>equals</operation>
+        <value>Fleet Program</value>
+    </filters>
+    <label>Flotas - KW Bajio</label>
+    <sharedTo>
+        <group>MexicoFleets</group>
+    </sharedTo>
+</ListView>

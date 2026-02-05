@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rating__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE( 
+CASE( System_Usage__c,
+&quot;No recent use&quot;, &quot;/img/samples/stars_100.gif&quot;,
+&quot;Using Recg Only&quot;,&quot;/img/samples/stars_300.gif&quot;,
+&quot;Dealer Limited Access&quot;,&quot;/img/samples/stars_300.gif&quot;,
+&quot;Using WO Only&quot;,&quot;/img/samples/stars_400.gif&quot;,
+&quot;Using Wo &amp; Recg&quot;,&quot;/img/samples/stars_500.gif&quot;,
+&quot;Dealer Active use&quot;,&quot;/img/samples/stars_500.gif&quot;,
+&quot;/img/samples/stars_000.gif&quot;),
+ &quot;system usage&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>System Usage Rating</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

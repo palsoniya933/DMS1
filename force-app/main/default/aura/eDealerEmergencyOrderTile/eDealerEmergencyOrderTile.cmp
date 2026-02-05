@@ -1,0 +1,123 @@
+<aura:component controller="EDealerEmergencyOrderController" 
+                extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List"/>
+    
+    <!-- this will save the emergency api details -->
+    <aura:attribute name="emergencyOrder" type="Object" />
+    
+    <!-- this will save the emergency api details cache for based on multiple location -->
+    <aura:attribute name="emergencyOrderMapCache" type="Map" />
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="weekly"/>
+    
+    <!-- saving the percentage -->
+    <aura:attribute name="percentages" type="Decimal" default="0.00"/>
+    
+    <!-- this will save the measuring unit -->
+    <aura:attribute name="units" type="string" />
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="emergencyLoading" type="Boolean" default="false"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="Object"/>
+    
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.emergencyLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                                <span class="heading">
+                                    <a href="" onclick="{!c.openOrdersTile}">{!v.title}</a>
+                                </span>
+                                <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+
+                                &nbsp;&nbsp;
+                                <span onclick="{!c.handleOpenInNewWindow}" >                                
+                                    <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                </span>
+                            </aura:if>    
+                            <!-- 20-10-21 -->
+                        </div>
+                        <div class="tileInfo_Div">
+                            <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                            <span class="greenTextb" onclick="{!c.handleOpenInNewWindow}">
+                                <aura:if isTrue="{!v.units == '$'}" >
+                                    {!v.units}
+                                </aura:if>
+                                <aura:if isTrue="{!v.units == '%'}">
+                                    {!v.percentages}<span class="supHead"><sup style="top: -.2em; font-weight: 600;">%</sup></span>
+                                </aura:if>
+                            </span> 
+                                
+                                <aura:set attribute="else">
+                                    <span class="greenTextbNP">
+                                        <aura:if isTrue="{!v.units == '$'}" >
+                                            {!v.units}
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.units == '%'}">
+                                            {!v.percentages}<span class="supHead"><sup style="top: -.2em; font-weight: 600;">%</sup></span>
+                                        </aura:if>
+                                    </span> 
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content='{!$Label.c.emergency_ordered_lines_Info}'
+                                    />
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

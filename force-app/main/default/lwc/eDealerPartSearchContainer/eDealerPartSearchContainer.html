@@ -1,0 +1,373 @@
+<template>
+	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+		aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+		<div class="slds-modal__container">
+			<header class="slds-modal__header slds-modal__header_empty">
+				<div class="slds-m-around_x-small">
+					<div class="slds-grid slds-wrap">
+						<div class="slds-col slds-size_5-of-12">
+							<span>
+                            <div class="prodnameno slds-truncate align-partname">
+                                <h2 class="slds-text-heading_medium">
+                                   {label.EDealer_Part_Search}
+                                </h2>   
+                            </div>
+                            </span>
+						</div>
+						<div class="button-container">
+							<button  onclick={handleClosePartSearchModal} class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                            <lightning-icon icon-name="utility:close"  size="small" class="fill-color"></lightning-icon>  
+                        </button>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="slds-modal__content">
+				<div>
+					<template if:true={showSearchBox}>
+						<lightning-layout>
+							<lightning-layout-item size="3" padding="around-small">
+								<lightning-input type="text" id="partNumber" label={label.EDealer_Part_No}
+									name="partNumber" value={partNumberValue} onchange={handlePartNumberChange}
+									maxlength="999" required>
+								</lightning-input>
+							</lightning-layout-item>
+							<!--lightning-layout-item size="1" padding="around-small">
+								<lightning-input type="number" id="qty" name="qty" label={label.EDealer_QTY} value={qty}
+									onchange={handleqtyChange} max="999" min="1">
+								</lightning-input>
+							</lightning-layout-item-->
+							<lightning-layout-item class="part-search-button-slot">
+								<button onclick={handleSearch} class="slds-button slds-button_destructive btn-group" disabled={getDisableSearchButton}>{label.EDealer_Search}</button>
+							</lightning-layout-item>
+						</lightning-layout>
+					</template>
+					<template if:true={showSearchResults}>
+						<div class="margn">
+							<template lwc:if={getLoading}>
+								<div class="outer-div">
+									<lightning-spinner alternative-text="Loading" size="medium" variant="brand">
+									</lightning-spinner>
+								</div>
+							</template>
+							<template lwc:else>
+								<lightning-layout>
+									<div class="SetMaxHeight">
+										<table class="invDatacontainertable slds-table_striped slds-scrollable_y">
+											<thead class="invDatacontainertableheading">
+												<tr class="slds-line-height_reset">
+													<th></th>
+													<template for:each={columnNameByAPIName} for:item="columnName"
+														for:index="index">
+														<th key={columnName.label} scope="col">{columnName.label}</th>
+													</template>
+												</tr>
+											</thead>
+											<tbody>
+												<template lwc:if={dataFound}>
+													<template for:each={partSearchViewData} for:item="part"
+														for:index="index">
+														<tr key={part.part_number} class="row-design">
+															<td data-label="Select Row" class="csrpartstabledata">
+																<input type="radio" name="radiobutton" value={index} onchange={handleRadioSelection} checked={part.isSelected} />
+															</td>
+															<td class="csrpartstabledata">{part.part_number}</td>
+															<td class="csrpartstabledata">{part.decription}</td>
+
+														</tr>
+													</template>
+												</template>
+												<template lwc:else>
+													<c-edealer-no-record-found-lwc message={label.No_Parts_Found}>
+													</c-edealer-no-record-found-lwc>
+												</template>
+											</tbody>
+										</table>
+									</div>
+								</lightning-layout>
+								<div class="slds-grid slds-wrap padding12px">
+									<div class="slds-size_1-of-1 slds-medium-size_9-of-12 slds-large-size_9-of-12">
+										<c-edealer-pagination-lwc total-records={partSearchData}
+											pagination-list={partSearchData} page-number={pageNumber}
+											page-size={paginationPageSize} ontotalrecordchange={handleTotalRecordChange}
+											display-page-buttons="false" onhandlenext={handleNextButton}
+											onhandleprev={handlePrevButton} total-competitors={totalCompetitors}
+											onpagenumberchange={handleChangeInPageNumber}
+											onhandlepagenumberchange={handlePageNumberChange}>
+										</c-edealer-pagination-lwc>
+									</div>
+								</div>
+								<div class="button-container">
+									<button class="slds-button black-btn slds-button_small btn-group" onclick={handleClosePartSearchModal}>{label.EDealer_Cancel}</button>
+									<button class="slds-button slds-button_destructive btn-group" onclick={handlePrimaryPartSelection} disabled={getdisableSelectPrimaryPart}>{label.EDealer_Select_Part}</button>
+								</div>
+							</template>
+						</div>
+					</template>
+					<template if:true={showSearchErrorMessage}>
+						<p class="error-message">Please add more information in order to search part</p>
+					</template>
+					<template if:true={showSearchQTYErrorMessage}>
+						<p class="error-message">The minimum quantity is 1</p>
+					</template>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="slds-backdrop slds-backdrop_open"></div>
+
+	<!--Open AlternatePart Modal-->
+	<template lwc:if={openAlternativePartSearchModal}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header slds-modal__header_empty">
+					<div class="slds-m-around_x-small">
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size_5-of-12">
+								<span>
+                                 <div class="prodnameno slds-truncate align-partname">
+                                  <h2 class="slds-text-heading_medium">
+                                    {label.EDealer_Part_Search}
+                                  </h2> 
+                                 </div>
+                                </span>
+							</div>
+							<div class="button-container">
+								<button onclick={handleClosePartSearchModal} class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                                   <lightning-icon icon-name="utility:close"  size="small" class="fill-color"></lightning-icon>  
+                                </button>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="slds-modal__content">
+					<div>
+						<div class="margn">
+							<template lwc:if={getLoading}>
+								<div class="outer-div">
+									<lightning-spinner alternative-text="Loading" size="medium" variant="brand">
+									</lightning-spinner>
+								</div>
+							</template>
+							<template if:true={alternatePartData}>
+								<lightning-layout>
+									<div class="invDatacontainertablecontainer slds-table_striped">
+										<table class="invDatacontainertable slds-table_striped">
+											<thead class="invDatacontainertableheading">
+												<tr class="slds-line-height_reset">
+													<th></th>
+													<template for:each={columnNameByAPINameForAltPart}
+														for:item="columnName" for:index="index">
+														<th key={columnName.label} scope="col">{columnName.label}</th>
+													</template>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="csrpartstabledata">
+														<template if:true={primaryPartData.enableSelection}>
+															<input type="checkbox"
+															name = "primary"
+															onchange={handleCheckboxSelection}
+															/>
+														</template>
+													</td>
+													<td class="csrpartstabledata">{primaryPartData.PartNumber}</td>
+													<td class="csrpartstabledata">
+														<template if:true={primaryPartData.isTRP}>
+															<lightning-badge label="TRP" class="slds-badge badge-color">
+															</lightning-badge>
+														</template>
+														{primaryPartData.PartDescription}
+													</td>
+													<!--td class="csrpartstabledata">{primaryPartData.Quantity}</td-->
+													<td class="csrpartstabledata">
+														<div>
+															<template
+																if:true={primaryPartData.showPdcChannel}>
+																<input type="checkbox" id="primPartPdc" name = "primary" value="PDC" onchange={handleChannelOptionChangePrimaryPart}>
+																	&nbsp;<label for="primPartPdc" class = "check">PDC</label><br>
+															</template>
+															<!--<template
+																if:false={primaryPartData.isBestNetPdcGreaterThanThreshold}>
+																<input type="checkbox" disabled  name = "primary" value="PDC" onchange={handleChannelOptionChangePrimaryPart}>
+																	&nbsp;<label for="primPartPdc" class = "check">PDC</label><br>
+															</template>-->
+														</div>
+														<div>
+															<template
+																if:true={primaryPartData.showDspChannel}>
+																<input type="checkbox" id="primPartDsp" name = "primary" value="DSP" onchange={handleChannelOptionChangePrimaryPart}>
+																	&nbsp;<label for="primPartDsp" class = "check">DSP</label><br/>
+															</template>
+															<!--<template
+																if:false={primaryPartData.isBestNetDspGreaterThanThreshold}>
+																<input type="checkbox" disabled  name = "primary" value="DSP" onchange={handleChannelOptionChangePrimaryPart}>
+																	&nbsp;<label for="primPartDsp" class = "check">DSP</label><br/>
+															</template>-->
+														</div>
+													</td>
+													<td class="csrpartstabledata">
+														<template if:true={primaryPartData.showPdcChannel}>
+															<span>{primaryPartData.Pfnlnt}</span><br/>
+														</template>
+														<template if:true={primaryPartData.showDspChannel}>
+															<span>{primaryPartData.Dfnlnt}</span>
+														</template>
+													</td>
+													<td class="csrpartstabledata">{primaryPartData.Pdscpct}</td>
+													<td class="csrpartstabledata">{primaryPartData.LC}</td>
+													<td class="csrpartstabledata">{primaryPartData.UnitOfMeasure}
+													</td>
+													<td class="csrpartstabledata">{primaryPartData.SPQ}</td>
+													<td class="csrpartstabledata">
+														{primaryPartData.PrimePartsAvailableQty}</td>
+
+												</tr>
+
+												<tr></tr>
+												<tr>
+													<td class="csrpartstabledata">
+														<span><b>{label.EDealer_Alternate_Parts}</b></span>
+													</td>
+												</tr>
+												<tr></tr>
+												<tr></tr>
+												<template lwc:if={alternatePartsFound}>
+													<template for:each={alternatePartData} for:item="alternativeParts"
+														for:index="index">
+														<tr key={alternativeParts.partnumber}>
+															<td class="csrpartstabledata alternate-part-row">
+																<input type="checkbox"
+																	name = {index}
+																	data-index = {index}
+																	onclick={handleCheckboxSelection}/>
+															</td>
+															<td class="csrpartstabledata">
+																{alternativeParts.PartNumber}
+															</td>
+															<td class="csrpartstabledata">
+																<template if:true={alternativeParts.isTRP}>
+																	<lightning-badge label="TRP"
+																		class="slds-badge badge-color">
+																	</lightning-badge>
+																</template>
+																{alternativeParts.PartDescription}
+															</td>
+															<!--td class="csrpartstabledata">
+																{alternativeParts.Quantity}
+															</td-->
+															<td class="csrpartstabledata">
+																<div>
+																	<template
+																		if:true={alternativeParts.showPdcChannel}>
+																		<input type="checkbox" id="altPartPdc" name = {index} value="PDC" onchange={handleChannelOptionChangeAlternatePart} >
+																					&nbsp;<label for="altPartPdc">{alternativeParts.PChannel}</label><br>
+																	</template>
+
+																	<!--<template
+																		if:false={alternativeParts.isBestNetPdcGreaterThanThreshold}>
+																		<input type="checkbox"  disabled name = {index} value="PDC" onchange={handleChannelOptionChangeAlternatePart} >
+																					&nbsp;<label for="altPartPdc">{alternativeParts.PChannel}</label><br>
+																	</template>-->
+
+																	<template
+																		if:true={alternativeParts.showDspChannel}>
+																		<input  type="checkbox" id="altPartDsp" name = {index} value="DSP" onchange={handleChannelOptionChangeAlternatePart}>
+																					&nbsp;<label for="altPartDsp">{alternativeParts.Dchannel}</label><br>
+																	</template>
+
+																<!--	<template
+																		if:false={alternativeParts.isBestNetDspGreaterThanThreshold}>
+																		<input  type="checkbox" disabled name = {index} value="DSP" onchange={handleChannelOptionChangeAlternatePart}>
+																					&nbsp;<label for="altPartDsp">{alternativeParts.Dchannel}</label><br>
+																	</template>-->
+																</div>
+															</td>
+															<td class="csrpartstabledata">
+																<template
+																	if:true={alternativeParts.showPdcChannel}>
+																	<span>{alternativeParts.Pfnlnt}</span><br/>
+																</template>
+																<template
+																	if:true={alternativeParts.showDspChannel}>
+																	<span>{alternativeParts.Dfnlnt}</span>
+																</template>
+															</td>
+															<td class="csrpartstabledata">
+																<template
+																	if:true={alternativeParts.showPdcChannel}>
+																	<span>{alternativeParts.Pdscpct}</span><br/>
+																</template>
+																<template
+																	if:true={alternativeParts.showDspChannel}>
+																	<span>{alternativeParts.Ddscpct}</span>
+																</template>
+															</td>
+															<td class="csrpartstabledata">
+																<template
+																	if:true={alternativeParts.showPdcChannel}>
+																	<span>{alternativeParts.LC}</span><br/>
+																</template>
+																<template
+																	if:true={alternativeParts.showDspChannel}>
+																	<span>{alternativeParts.LC}</span>
+																</template>
+															</td>
+															<td class="csrpartstabledata">
+																{alternativeParts.UnitOfMeasure}
+															</td>
+															<td class="csrpartstabledata">{alternativeParts.SPQ}
+															</td>
+															<td class="csrpartstabledata">
+																<template
+																	if:true={alternativeParts.showPdcChannel}>
+																	<span>{alternativeParts.NonprimePartsAvailableQty}</span><br/>
+																</template>
+																<template
+																	if:true={alternativeParts.showDspChannel}>
+																	<span>{alternativeParts.PrimePartsAvailableQty}</span>
+																</template>
+															</td>
+
+														</tr>
+													</template>
+
+												</template>
+												<template lwc:else>
+													<tr>
+														<td colspan="10">
+															<span
+																class="slds-text-align_center slds-text-color_destructive">
+																{label.EDealer_No_alternate_part_available}</span>
+														</td>
+													</tr>
+												</template>
+											</tbody>
+										</table>
+									</div>
+								</lightning-layout>
+								<div class="button-container">
+									<button class="slds-button black-btn slds-button_small btn-group" onclick={handleCloseAlternativePartSearchModal}>{label.EDealer_Back}</button>
+									<button class="slds-button slds-button_destructive btn-group" onclick={handleAddToCSR} disabled={getdisableSelectAlternativePart}>{label.EDealer_Add_To_Csr}</button>
+								</div>
+							</template>
+							<template if:false={alternatePartData}>
+								<template if:false={getLoading}>
+									<c-edealer-no-record-found-lwc message={label.No_Parts_Found}>
+									</c-edealer-no-record-found-lwc>
+								</template>
+
+							</template>
+
+						</div>
+						<!-- <template if:true={showSearchErrorMessage}>
+							<p class="error-message">Please add more information in order to search part</p>
+						</template> -->
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</template>

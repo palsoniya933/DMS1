@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MyCSRTile Translations</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+ &quot;CSRType&quot;: [
+  {
+  &quot;en_US&quot;: &quot;All draft CSR(s)&quot;,
+  &quot;fr_CA&quot;: &quot;Toute le(s) ébauche CSR(s)&quot;,
+  &quot;es_MX&quot;: &quot;Todo(s) CSR(s) en borrador&quot;,
+  &quot;value&quot; : &quot;All&quot;
+  }
+ ], &quot;CSRTitle&quot;: 
+        {
+            &quot;en_US&quot;: &quot;Draft CSR(s)&quot;,
+            &quot;fr_CA&quot;: &quot;Ébauche CSR(s)&quot;,
+            &quot;es_MX&quot;: &quot;CSR(s) en borrador&quot;
+        },
+
+
+&quot;HelpText&quot;:
+{
+&quot;en_US&quot;: &quot;All CSRs on Draft status for the selected Dealer(s).&quot;,
+&quot;fr_CA&quot;: &quot;Tous les CSR au statut Ébauche pour le(s) concessionnaire(s) sélectionné(s).&quot;,
+&quot;es_MX&quot;: &quot;Todas las CSR en estado de borrador para los distribuidores seleccionados.&quot;
+},
+&quot;ErrorMessage&quot;:
+{
+&quot;en_US&quot;: &quot;Error loading data &quot;,
+&quot;fr_CA&quot;: &quot;Erreur de chargement des donnés &quot;,
+&quot;es_MX&quot;: &quot;Error al cargar datos &quot;
+}
+}</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,30 @@
+.dummy{
+	color : black;
+}
+.info-msg {
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    width: 100%;
+        border: 1px solid #fff36a;
+
+}
+.warningbox{
+    padding: 1%;
+    border-radius: 4px;
+    color:#898989;
+    background-color:#fff;
+    background-image: none;
+}
+.info-msg svg{
+    margin: 0px 5px 4px 5px;
+    vertical-align: middle;
+}
+.centered-alert {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; /* You can adjust the width as needed */
+  }

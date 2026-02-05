@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_State_for_Canada</fullName>
+    <active>false</active>
+    <description>Validates that the account Shipping State/Province is a valid two-character abbreviation if Shipping Country is CA.</description>
+    <errorConditionFormula>AND ( 
+OR(ShippingCountry = &quot;CA&quot;), 
+OR( 
+LEN( ShippingState )  &lt;&gt; 2, 
+NOT( 
+CONTAINS(&quot;AB:BC:MB:NB:NL:NT:NS:NU:ON:PC:PE:QC:SK:YT:PQ&quot;, ShippingState) 
+)))</errorConditionFormula>
+    <errorDisplayField>ShippingState</errorDisplayField>
+    <errorMessage>A valid two-letter province code is required.</errorMessage>
+</ValidationRule>

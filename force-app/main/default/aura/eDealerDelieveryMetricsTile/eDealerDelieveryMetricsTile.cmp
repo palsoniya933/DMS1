@@ -1,0 +1,128 @@
+<aura:component controller="EDealerDelieveryMetricsController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <ltng:require
+        styles="{!$Resource.EDealerResources  + '/JS/JQuery.js'}"
+        scripts="{!$Resource.EDealerResources + '/JS/piechart.js'}"
+        afterScriptsLoaded="{!c.myAction}" />
+    
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List" default="[
+                                                              {'label': 'Daily', 'value': 'D'},      
+                                                              {'label': 'Weekly', 'value': 'W'},
+                                                              {'label': 'Monthly', 'value': 'M'},
+                                                              {'label': 'Quarterly', 'value': 'Q'},
+                                                              {'label': 'Annually', 'value': '1Y'}]"/>
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Daily"/>
+    
+    <!-- saving the delay Delievery Metrics percentage -->
+    <aura:attribute name="delayP" type="String" default="0"/>
+    <!-- saving the onTime Delievery Metrics percentage -->
+    <aura:attribute name="ontimeP" type="String" default="0"/>
+    
+    <!-- this will save the measuring unit -->
+    <aura:attribute name="units" type="string" />
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    <aura:attribute name="listDealerLoc" type="LIST"/>
+    
+    <!-- this will save the Delievery Metrics api details -->
+    <aura:attribute name="delieveryMetricsData" type="Object" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- used to refresh the chart -->
+    <aura:attribute name="refresh" type="Boolean" default="true"/>
+    
+    <aura:attribute name="selectedMenu" type="String" />
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler name="change" value="{!v.dealerLoc}" action="{!c.dealerLocChange}"/>
+    
+    <aura:handler name="change" value="{!v.listDealerLoc}" action="{!c.listdealerLocChange}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">
+                                <a href="" 
+                                   onclick="{!c.openOrdersTile}">{!v.title}
+                                </a>
+                            </span>
+                            &nbsp;&nbsp;
+                                <span onclick="{!c.handleOpenInNewWindow}" >                                
+                                    <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                </span>
+                        </div>
+                        <!--<div class="tileName_Div pad-chart-title" data-aura-rendered-by="534:179;a"><span data-aura-rendered-by="535:179;a">PARTS DELEVERY METRICS</span></div>-->
+                        <aura:if isTrue="{!v.refresh}">
+                        <div class="chart-wrap">
+                                <div id="demo-pie-3" class="pie-title-center" data-percent="{!v.ontimeP}"> <span class="pie-value"></span>
+                                    <span class="align-time-text">ON TIME</span>  
+                                </div>
+                                
+                                <div id="demo-pie-4" class="pie-title-center" data-percent="{!v.delayP}" > <span class="pie-value"></span> 
+                                    <span class="align-time-text">DELAY</span>             
+                                    
+                                </div> 
+                        </div>
+                        </aura:if>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="Percentage of all the shipment deliveries which were delivered on time vs. delay in shipment deliveries on a Daily, Weekly, Monthly, Quarterly and Yearly basis"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

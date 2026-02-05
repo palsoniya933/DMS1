@@ -1,0 +1,37 @@
+<template>
+		<article class="slds-card">
+		<div class="slds-path cursor slds-card__body slds-card__body_inner">
+			<div class="slds-grid slds-path__track">
+				<div class="slds-grid slds-path__scroller-container">
+					<div class="slds-path__scroller">
+						<div class="slds-path__scroller_inner">
+							<ul class="slds-path__nav" role="listbox" aria-orientation="horizontal"
+								aria-labelledby="slds-path__stage-name">
+								<template for:each={getStages} for:item="step">
+									<template lwc:if={step.isSelected}>
+										<li key={step.value} class={isSelectedtab}
+											role="presentation">
+											<a aria-selected="true" class="slds-path__link" href="#"
+												role="option" tabindex="0">
+												<span class="slds-path__title">{step.label}</span>
+											</a>
+										</li>
+									</template>
+									<template lwc:else>
+										<li key={step.value} class={isIncomplete}
+											role="presentation">
+											<a aria-selected="true" class="slds-path__link" href="#"
+												role="option" tabindex="0">
+												<span class="slds-path__title">{step.label}</span>
+											</a>
+										</li>
+									</template>
+								</template>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+</template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profile_Notes_Last_Updated__c</fullName>
+    <description>This field is a timestamp of the last update to any of the fields within the profile notes section on the account.</description>
+    <label>Profile Notes Last Updated</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

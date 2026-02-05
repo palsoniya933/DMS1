@@ -1,0 +1,247 @@
+<aura:component controller="EDealerZeroOnHandController" 
+                extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- download Attributes -->    
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />
+    <aura:attribute name="listDealerCode" type="List" />
+    <!-- this used for the current Dealer Code/Location -->
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="dealerDivision" type="String" />
+    <aura:attribute name="reportdata" type="String" />
+    <aura:attribute name="showCRMA" type="boolean" default="false"/>
+    <aura:attribute name="datasetName" type="String" default="ZERO_ON_HAND_DataSet"/>
+    
+    <!-- Accessible Dealer with his Location/sub-Locations -->
+    <aura:attribute name="accessibleDealersLocs" type="List" />
+    
+    <!-- From Locations list -->
+    <aura:attribute name="fromLocList" type="List" />
+    
+    <!-- used to track id button as to be disabled -->
+    <aura:attribute name="disabledReportButton" type="boolean" default="true"/>
+    <aura:attribute name="isDisabledReportButton" type="boolean" default="false"/>
+    
+    <!-- this is used for store zeroOnHand Report  data into cache -->
+    <aura:attribute name="zeroOnHandReportDataMapCache" type="Map" />
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- for Filter Data -->
+    <aura:attribute name="selectedFilters" type="List" />
+    
+    <!-- filter section columns -->
+    <aura:attribute name="filterColumns" type="List" />
+    <aura:attribute name="filter" type="String"  />
+    <aura:attribute name="filterValue" type="String"  />
+    <aura:attribute name="operator" type="String"  />
+    
+    <!-- this is used for store data for zeroOnHand Report -->
+    <aura:attribute name="zeroOnHandReportData" type="List" />
+    <aura:attribute name="crmaData" type="List" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    <!-- pagination related attributes -->
+    <aura:attribute name="PaginationList" type="object[]"/>    
+    <aura:attribute name="paginationPageNumber" type="String" />    
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />    
+    <aura:attribute name="paginationTotalPages" type="Integer" />   
+    <aura:attribute name="paginationRecordStart" type="Integer" />   
+    <aura:attribute name="paginationRecordEnd" type="Integer" />    
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />   
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    <!-- For Search Functionality -->
+    <aura:attribute name="tableData" type="Object[]" />
+    
+    <!-- Lightning table Attributes -->
+    <aura:attribute name="data" type="Object[]" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="headerColumns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="activeFilter" type="string" default="all" access="PRIVATE" />
+    <aura:attribute name="staticFilters" type="string"/>
+    <aura:attribute name="sortMap" type="Map"/>
+    
+    
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- this is to handle the change for multi select -->
+    <aura:handler name="change" value="{!v.fromLocList}" action="{!c.handleToFilterChange}"/>
+    
+    <div class="reportContainerBox  slds-p-around_small">
+        <!-- Section Label -->
+        <div class="slds-text-heading_small slds-p-bottom_small ">
+            {!$Label.c.MDI_Report_Filters}
+        </div>
+        
+        <div class="reportFilters">
+            <p>
+                <span class="greyColor">{!$Label.c.Set_Parameter}</span> :
+                <span class="themecolor">{!$Label.c.Zero_On_Hand}</span>
+            </p>
+            <p class="filtertxt">{!$Label.c.Select_Dealers}</p>
+            <br/>
+            <hr class="seperatorclass"/>
+            
+            <!-- Filters input -->
+            <div class="slds-grid">
+                <table>
+                    <tr valign="top">
+                        <td valign="top"> 
+                            <span>
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <p class="greyColor">{!$Label.c.Dealer_Code}</p>   
+                                        <aura:if isTrue="{!v.fromLocList.length > 0}">
+                                            <c:eDealerCustomMultiSelect 
+                                                                        options="{!v.fromLocList}" 
+                                                                        isContainer="true">
+                                            </c:eDealerCustomMultiSelect>
+                                        </aura:if>
+                                    </div> 
+                                    <div class="slds-col slds-size_7-of-12">
+                                        <c:eDealerReportFilter 
+                                                               selectedFilter="{!v.selectedFilters}"
+                                                               reportName="Zero On-Hand Filter"/>
+                                    </div>
+                                </div>
+                            </span>
+                        </td>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- this is for the Manual LockDown Report -->
+    <div class="reportContainerBox">
+        <lightning:card>
+            <!--SPINNER-->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            <div class="slds-col slds-size_12-of-12 padding12px">
+                <div class="rFloat">
+                    <div align="right" class="" >
+                        <aura:if isTrue="{!v.showCRMA}">
+                            <c:getCRMAReportData aura:id="crmadataComponent"
+                                                 filter="{!v.filter}"
+                                                 filterValue="{!v.filterValue}"
+                                                 operator="{!v.operator}"
+                                                 loc="{!v.listDealerCode}"                                                      
+                                                 onsenddata="{!c.handleZeroOnHandReportData}"
+                                                 columns="{!v.headerColumns}"
+                                                 setName="{!v.datasetName}"
+                                                 staticFilters="{!v.staticFilters}"
+                                                 sortMap="{!v.sortMap}"
+                                                 >
+                            </c:getCRMAReportData>  
+                        </aura:if>
+                        <!--   Download Report Button csv format -->
+                        
+                        <c:edealerMdiReportDownloadInCSV reportLabel="{!$Label.c.Zero_On_Hand}"
+                                                         jsondata = "{!v.crmaData}"
+                                                         columns="{!v.headerColumns}"
+                                                         isDisabled="{!v.isDisabledReportButton}">
+                        </c:edealerMdiReportDownloadInCSV>
+                        <!--  Download Report Button -->
+                        
+                        <c:edealerMDIReportDownloadExcel reportLabel="{!$Label.c.Zero_On_Hand}"
+                                                         jsondata="{!v.crmaData}"
+                                                         columns="{!v.headerColumns}"
+                                                         isDisabled="{!v.isDisabledReportButton}"
+                                                         >
+                        </c:edealerMDIReportDownloadExcel>
+                        
+                        
+                        <button class="slds-button slds-button_destructive generateReportbutton" disabled="{!v.disabledReportButton}" onclick="{!c.fetchReportData}">
+                            <lightning:icon iconName="utility:side_list" size ="xx-small" alternativeText="side_list" title="" />{!$Label.c.Generate_Report}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- data part -->  
+            
+            <div class="slds-col slds-size_12-of-12 padding12px">
+                <aura:if isTrue="{!v.zeroOnHandReportData.length > 0 }">
+                    <table>
+                        <tr>
+                            <td>
+                                <c:eDealerPagination totalRecords = "{!v.zeroOnHandReportData}"
+                                                     totalNumberRecords = "{!v.zeroOnHandReportData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                                     disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="false"></c:eDealerPagination>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table style="table-layout:fixed;">
+                        <td>
+                            
+                            <lightning:datatable keyField="id"
+                                                 hideCheckboxColumn="true"
+                                                 columns="{!v.columns }"
+                                                 data="{!v.PaginationList}"
+                                                 defaultSortDirection="{!v.defaultSortDirection}"
+                                                 sortedDirection="{!v.sortDirection}"
+                                                 sortedBy="{!v.sortedBy}"
+                                                 onheaderaction="{! c.handleHeaderAction }"
+                                                 onsort="{!c.handleSort}"
+                                                 columnWidthsMode="auto"
+                                                 minColumnWidth="100">
+                            </lightning:datatable>
+                        </td>
+                    </table>
+                    
+                    <!-- pagination cmp -->
+                    <c:eDealerPagination totalRecords = "{!v.zeroOnHandReportData}"
+                                         totalNumberRecords = "{!v.zeroOnHandReportData}"
+                                         PaginationList = "{!v.PaginationList}"
+                                         PageNumber="{!v.paginationPageNumber}"
+                                         pageSize="{!v.paginationPageSize}"
+                                         TotalPages="{!v.paginationTotalPages}"
+                                         RecordStart="{!v.paginationRecordStart}"
+                                         RecordEnd="{!v.paginationRecordEnd}"
+                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                         displayPageButtons="true"
+                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                         disablednext="{!v.paginationDisabledNext}"></c:eDealerPagination>
+                    
+                    
+                    
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!v.APICalled}">
+                            <br/>
+                            <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                        </aura:if>
+                        
+                    </aura:set>
+                    
+                </aura:if>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

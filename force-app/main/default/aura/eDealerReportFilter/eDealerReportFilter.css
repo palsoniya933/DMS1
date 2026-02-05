@@ -1,0 +1,32 @@
+.THIS .slds-select_container::before { border-bottom: none;}
+.THIS .slds-select_container::after { border-top: none;}
+.THIS .slds-select_container .slds-select { -webkit-appearance : menuList}
+.THIS .greenBg svg {
+    background-color: #3cc936 !important;
+    fill: white !important;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.THIS .redBg svg {
+    background-color: red !important;
+    fill: white !important;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.THIS .applyFilterButton{
+    background: #c23934!important;
+}
+
+.THIS .labelclass{
+    color: #806d7a;
+    font-weight: 400;
+    font-size: small;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}

@@ -1,0 +1,179 @@
+<aura:component controller="EDealerSuggestedOrdersController" extends="c:edealerTracking" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <!-- this will save the selected location -->    
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="false"/>
+    
+    <!-- to show refresh sof confirmation modal -->
+    <aura:attribute name="isSofRefreshConfirm" type="Boolean" default="false" />
+    <!-- to show refresh sof promo confirmation modal -->
+    <aura:attribute name="isSofPromoRefreshConfirm" type="Boolean" default="false" />
+    
+    <!-- to show refresh sof confirmation modal (for SUggested Orders) -->
+    <aura:attribute name="isEnableSOFGenerateBtn" type="Boolean" default="false" />
+    <!-- to show refresh sof confirmation modal (for Promo sof orders) -->
+    <aura:attribute name="isEnableSOFPromoGenerateBtn" type="Boolean" default="false" />
+    
+    <!-- Selected tab id -->
+    <aura:attribute name="selecetdTabID" type="String" default="sofPartsTab" />
+    
+    <!-- if true that means promo available for the dealer location -->
+    <aura:attribute name="isSOFPromoAvailable" type="Boolean" default="false" />
+    <aura:attribute name="loadTime" type="Integer" />
+
+    
+    <!-- calling onload Method -->
+    <aura:handler name="init" value="{!this}" action="{!c.onload}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.selectedLoc}" action="{!c.onload}"/>
+    
+    
+    <aura:html tag="style">
+        .slds-popover_tooltip, 
+        .slds-popover--tooltip {
+        background-color: #FFFFFF !important; 
+        }
+        
+        .slds-popover__body, .slds-popover__header, .slds-popover__footer {
+        color: #444 !important;
+        }
+    </aura:html>
+    
+    <!-- markup container -->
+    <div style="background:white;" class="container slds-card">
+        
+        <!-- spinner -->
+        <div>
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+        </div>
+        
+        <!-- tabs section -->
+        <div class="tabs">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="{!v.selecetdTabID == 'sofPartsTab' ? 'slds-tabs_default__item slds-is-active' : 'slds-tabs_default__item'}" title="SUGGESTED ORDERS"
+                        role="presentation">
+                        <a class="slds-tabs_default__link" id="sofPartsTab"  onclick="{!c.selectTab}" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-1" >{!$Label.c.Suggested_Orders}</a>
+                    </li>
+                    <li class="{!v.selecetdTabID == 'sofSpecialPartsTab' ? 'slds-tabs_default__item slds-is-active' : 'slds-tabs_default__item'}" title="PROMO/INCENTIVE" role="presentation">
+                        <a class="slds-tabs_default__link" id="sofSpecialPartsTab"  onclick="{!c.selectTab}" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" >{!$Label.c.Promo_Incentive}</a>
+                    </li>
+                     <!-- list of sof buttons start here-->
+                    <li class="slds-tabs_default__item" title="" role="presentation">
+                        <div class="slds-tab-right-header">
+                          <div align="right">
+                                <table style="width: fit-content;">
+                                    <tr>
+                                        <td>
+                                            <lightning:input variant="label-hidden" class="slds-m-left_small" type="checkbox" checked="{!v.isEnableSOFGenerateBtn}" />
+                                        </td>
+                                        <td>
+                                            <lightning:button class="distructiveButton" variant="destructive" label='{!$Label.c.Get_SOF}' onclick="{! c.confirmRefreshSOF }" disabled="{!!v.isEnableSOFGenerateBtn}" />
+                                        </td>
+                                        <td>
+                                            <lightning:helptext class="helpTextParentDiv"  content='{!$Label.c.Please_see_if_you_click_on_the_Generate_SOF}' />
+                                        </td>
+                                        <td>
+                                            <lightning:input variant="label-hidden" class="slds-m-left_small" type="checkbox" checked="{!v.isEnableSOFPromoGenerateBtn}" />
+                                        </td>
+                                        <td>
+                                            <lightning:button class="distructiveButton" variant="destructive" label='{!$Label.c.Get_Promo_SOF}' onclick="{! c.confirmRefreshSOFPromo }" disabled="{!!v.isEnableSOFPromoGenerateBtn}" />
+                                        </td>
+                                        <td>
+                                            <lightning:helptext class="helpTextParentDiv"  content='{!$Label.c.Please_see_if_you_click_on_the_Get_Promo_SOF}' />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                     <!-- list of sof buttons end here-->
+                </ul>
+                <div  class="{!v.selecetdTabID == 'sofPartsTab' ? 'slds-tabs_default__content slds-show' : 'slds-tabs_default__content slds-hide'}"
+                     role="tabpanel" aria-labelledby="tab-default-1__item">
+                    <aura:if isTrue="{!v.selecetdTabID == 'sofPartsTab'}">
+                        <c:eDealerSuggestedOrders aura:id="sofPartsCmp"
+                                                  userDetail="{!v.userDetail}" 
+                                                  displayLoading="{!v.displayLoading}"
+                                                  selectedLocation="{!v.selectedLocation}"></c:eDealerSuggestedOrders>
+                    </aura:if>
+                </div>
+                <div  class="{!v.selecetdTabID == 'sofSpecialPartsTab' ? 'slds-tabs_default__content slds-show' : 'slds-tabs_default__content slds-hide'}" role="tabpanel" aria-labelledby="tab-default-2__item">
+                    <aura:if isTrue="{!v.selecetdTabID == 'sofSpecialPartsTab'}">
+                        <c:edealerSpecialSuggestedOrders aura:id="sofSpecialPartsCmp"
+                                                         userDetail="{!v.userDetail}" 
+                                                         displayLoading="{!v.displayLoading}"
+                                                         selectedLocation="{!v.selectedLocation}" />
+                    </aura:if>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    <!--- sof refresh confirmation MODAL -->
+    <aura:if isTrue="{!v.isSofRefreshConfirm}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container generateSOFDiv">
+                <header class="slds-modal__header">
+                    <span>{!$Label.c.Get_SOF}</span> 
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! c.closeSOFConfirmationModel }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">{!$Label.c.Close}</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    <p>
+                        <div class="fnt-size" align="center">
+                            {!$Label.c.Your_SOF_data_will_be_updated}
+                        </div>
+                    </p>
+                    </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="destructive" label='{!$Label.c.Close}'  onclick="{! c.closeSOFConfirmationModel }"/>
+                    <lightning:button variant="destructive" label='{!$Label.c.Get_SOF}' onclick="{! c.callToGenerateSOF }"/>
+                </footer>                
+            </div>            
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <!--- sof refresh confirmation MODAL for sof promo -->
+    <aura:if isTrue="{!v.isSofPromoRefreshConfirm}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container generateSOFDiv">
+                <header class="slds-modal__header">
+                    <span>{!$Label.c.Get_Promo_SOF}</span> 
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! c.closeSOFPromoConfirmationModel }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">{!$Label.c.Close}</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    <p>
+                        <div class="fnt-size" align="center">
+                            {!$Label.c.Please_contact_your_MDI_Analyst}
+                        </div>
+                    </p>
+                    </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="destructive" label='{!$Label.c.Close}'  onclick="{! c.closeSOFPromoConfirmationModel }"/>
+                    <lightning:button variant="destructive" label='{!$Label.c.Get_Promo_SOF}' onclick="{! c.generatePROMOSOF }"/>
+                </footer>                
+            </div>            
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+</aura:component>

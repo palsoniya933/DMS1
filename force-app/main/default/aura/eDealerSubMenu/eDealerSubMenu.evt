@@ -1,0 +1,12 @@
+<aura:event type="APPLICATION" 
+            description="This event will fire if we want to add sub menu" 
+            access="global">
+	
+    <!-- main menu -->
+    <aura:attribute name="menuName" type="String"/> 
+    
+    <!-- sub menu -->
+    <aura:attribute name="submenu" type="String"/> 
+    <aura:attribute name="selectedTab" type="String"/> 
+    <!-- selected tab -->
+</aura:event>

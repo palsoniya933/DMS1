@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Not on File</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; : &quot;NÚMERO DE GRUPO&quot;,
+&quot;dealer&quot; : &quot;CONCESIONARIO&quot;,
+&quot;saleable_ind&quot; : &quot;INDICADOR VENDIBLE&quot; ,
+&quot;abc&quot; : &quot;ABC&quot; ,
+&quot;item&quot; : &quot;NÚMERO DE PARTE&quot; ,
+&quot;item_desc&quot; : &quot;DESCRIPCIÓN&quot; ,
+&quot;stock_class&quot; : &quot;CLASE DE STOCK&quot; ,
+&quot;program&quot; : &quot;PROGRAMA&quot;,
+&quot;initialdate&quot; : &quot;FECHA INICIAL&quot; ,
+&quot;enddate&quot; : &quot;FECHA DE FINALIZACIÓN&quot; ,
+&quot;program_status&quot; : &quot;ESTADO DEL PROGRAMA&quot;
+}</value>
+    </values>
+</CustomMetadata>

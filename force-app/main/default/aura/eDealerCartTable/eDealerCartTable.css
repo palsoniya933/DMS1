@@ -1,0 +1,342 @@
+.THIS {   
+}
+
+.THIS .container{
+    
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS table td.invDatacontainertableheading {
+    border-right: 1px solid #b0adab;
+}
+.THIS .invDatacontainer{
+    padding-top:1%
+}
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:0px;
+}
+
+.THIS .invDatacontainertable{
+    width:100%;
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: Uppercase;
+     border-right: 1px solid #b0adab;
+}
+
+
+.THIS .invDatacontainertabledata{
+    padding:10px 5px
+}
+.THIS .bottompagi button.slds-button.slds-button_brand {
+    height: 20px;
+    padding: 11px 10px;
+}
+.THIS table tr.selectedRowBackground td {
+    background: #fffabe;
+}
+.THIS table tr.selectedRowBackground td {
+    background-color: rgb(255, 250, 191);
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:first-child {
+  
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /*border-left: 4px solid #ffa700;*/
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:last-child {
+      border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorYellow svg {
+    fill : yellow;
+}
+
+.THIS .emergencyorderMessage .slds-icon-action-approval {
+    background-color: green;
+}
+
+.THIS .action-superssion_orange {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: orange;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS .action-volumn_green {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: green;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS .action-volumn_red {
+      width: 26px;
+    padding: 0px;
+    margin: 0px;
+    height: 24px;
+    text-align: center;
+    background: red;
+    color: white;
+    vertical-align: middle;
+    font-size: 14px;
+    border-radius: 3px
+}
+.THIS .svgIcon svg {
+    fill: #0194c5;
+}
+.THIS div .tooltip {
+    display:inline-block;
+}
+.THIS tr:nth-child(odd) {
+    background: #fff;
+}
+.THIS tr:nth-child(even) {
+    background: #fafafa;
+}
+.THIS .tooltip span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .tooltip:hover span {
+    display: inline;
+    position: relative;
+    color: #000000;
+    z-index:10000;
+}
+
+.THIS .textalignbottom {
+    vertical-align: text-bottom;
+}
+
+.THIS .selectedOrderText {
+    width:170px;
+    font-size: 14px;
+}
+
+.THIS .placeOrderText {
+    width:115px;
+}
+
+.THIS .emOrderText {
+    width:167px;
+}
+
+.THIS .soOrderText {
+    width:130px;
+}
+
+.THIS .leadTimeText {
+    width:8%;
+}
+
+.THIS .stkText {
+    width:6%;
+}
+.THIS .onorderText {
+    width:8%;
+}
+
+.THIS .todaycartText {
+    width:12%;
+}
+.THIS table td .slds-input {
+    height: 20px;
+    padding: 2px;
+    line-height: 20px;
+    min-height: 25px;
+}
+.THIS .todaycartText {
+    width:12%;
+}
+
+.THIS .descriptionText {
+    width:17%;
+}
+
+.THIS .partsText {
+    width:15%;
+}
+
+
+.THIS .invDatacontainertable{
+    width:100%
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;
+}
+
+
+.THIS .invDatacontainertabledata{
+    padding:1%
+}
+
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:1%;
+}
+
+.THIS .ordertablefirstColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 1%;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorRed svg {
+    fill : red;
+}
+
+.THIS .slds-icon-action-remove {
+    background-color: red;
+}
+
+.THIS .button-Black {
+    background-color: black;
+        border-color: black;
+        color: white;
+}
+
+.THIS .button-Black_Disable {
+    background-color: rgb(202, 199, 197);
+        border-color: rgb(202, 199, 197);
+        color: white;
+}
+
+.THIS .iconcolr svg{
+    fill: red !important; 
+    color : red !important;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .customWarning {
+    background-color: #FFFABE;
+    color: #CF3642;
+    background-image: none;
+    align-items: unset;
+    justify-content: initial;
+}
+
+.THIS .customWarningIcon svg {
+    fill : #CF3642;
+}
+
+.THIS .tooltiptext{
+  visibility: hidden;
+}
+
+.THIS .cTooltip:hover .tooltiptext{
+  visibility: visible;
+}
+
+.THIS .nonpacar{ fill: #FFBC26; }
+
+.THIS .tooltip span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .tooltip:hover span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .slds-popover_tooltip{background:#e7fee7!important;top: -55px!important;
+    box-shadow: 0px 1px 2px 1px #83bc85!important;
+    border-radius: 6px!important;}
+
+.THIS .redBgColour {background: #FF7A87 !important;}
+.THIS .slds-popover__body{color:#000!important;width: 9rem;}
+.THIS .slds-nubbin_bottom-right:after{display:none!important;}
+.THIS .slds-nubbin_bottom-right::before{display:none!important;}
+.THIS .tooltip:hover span {
+    display: inline;
+    position: relative;
+    color: #000000 !important;
+    z-index:10000;
+}
+
+
+.THIS .slds-popover__body{color:#000!important;width: 9rem;}

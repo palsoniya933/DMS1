@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>YTD_CSR_Sales__c</fullName>
+    <description>Sales using a Salles Allowance (Include the Volume Sales that have a SA)</description>
+    <label>YTD CSR Sales</label>
+    <summarizedField>Competitive_Sales_Request__c.Total_PRC__c</summarizedField>
+    <summaryFilterItems>
+        <field>Competitive_Sales_Request__c.Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2017</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Competitive_Sales_Request__c.Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

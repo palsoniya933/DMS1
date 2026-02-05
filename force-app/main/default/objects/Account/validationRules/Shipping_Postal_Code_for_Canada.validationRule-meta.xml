@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Postal_Code_for_Canada</fullName>
+    <active>false</active>
+    <description>Validates that the account Shipping PostalCode is a valid for Canada.</description>
+    <errorConditionFormula>AND(
+OR(BillingCountry = &quot;CAN&quot;, BillingCountry = &quot;CA&quot;, BillingCountry = &quot;Canada&quot;),
+NOT(REGEX(BillingPostalCode, &quot;((?i)[ABCEGHJKLMNPRSTVXY]\\d[A-Z]?\\s?\\d[A-Z]\\d)?&quot;))
+)</errorConditionFormula>
+    <errorDisplayField>ShippingPostalCode</errorDisplayField>
+    <errorMessage>Canadian postal code must be in A9A 9A9 format.</errorMessage>
+</ValidationRule>

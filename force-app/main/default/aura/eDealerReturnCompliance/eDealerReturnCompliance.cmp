@@ -1,0 +1,284 @@
+<aura:component controller="EDealerReturnCompliance" 
+                extends="c:edealerTracking"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global"  >
+    
+    <!-- currency code for loged in user/edealer -->
+    <aura:attribute name="currencyCode" type="String" /> 
+    
+    <!-- months name translations  -->
+    <aura:attribute name="monthsNameTranslation" type="Map" />
+    
+    <!-- download Attributes -->    
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <!-- Accessible Dealer with his Location/sub-Locations -->
+    <aura:attribute name="accessibleDealersLocs" type="List" />
+    
+    <!-- FROM Locations list -->
+    <aura:attribute name="fromLocList" type="List" />
+    
+    <!-- this used for the current Dealer Code/Location -->
+    
+    <aura:attribute name="location" type="String" />
+    <aura:attribute name="month" type="String"/>
+    <aura:attribute name="quarter" type="String" />
+    <aura:attribute name="year" type="String"/>
+    <aura:attribute name="months" type="List"/>
+    <aura:attribute name="quarters" type="List" />
+    <aura:attribute name="years" type="List"/>
+    
+    <aura:attribute name="dealerCode" type="String"/>
+    <aura:attribute name="startdate" type="String" />
+    <aura:attribute name="enddate" type="String"/>
+    
+    <!-- this is used for store Not on File Report  data into cache -->
+    <aura:attribute name="returnComplinceFileReportDataMapCache" type="Map" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- for Filter Data -->
+    <aura:attribute name="selectedFilters" type="List" />
+    
+    <!-- filter section columns -->
+    <aura:attribute name="filterColumns" type="List" />
+    
+    <!-- this is used for store data for Not on File Report -->
+    <aura:attribute name="returnComplinceReportData" type="List" />
+    
+    <!-- rerender fields -->
+    <aura:attribute name="renderFilters" type="boolean" default="true"/>
+    
+    <!-- pagination related attributes -->
+    <aura:attribute name="PaginationList" type="object[]"/>
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    <!-- used t disabled next button -->
+    <aura:attribute name="disabledReportButton" type="boolean" default="true"/>
+    
+    <!-- For Search Functionality -->
+    <aura:attribute name="tableData" type="Object[]" />
+    
+    <!-- Lightning table Attributes -->
+    <aura:attribute name="data" type="Object[]" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="activeFilter" type="string" default="all" access="PRIVATE" />
+    <aura:attribute name="loadTime" type="Integer" />
+
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    
+    <!-- this is to handle the change for multi select -->
+    <aura:handler name="change" value="{!v.fromLocList}" action="{!c.handleToFilterChange}"/>
+    
+    
+    
+    <div class="reportContainerBox">
+        <lightning:accordion aura:id="accordion" 
+                             allowMultipleSectionsOpen="true"
+                             activeSectionName="report">
+            
+            <lightning:accordionSection name="report" label="{!$Label.c.MDI_Report_Filters}" class="testdemo">
+                <aura:set attribute="body">
+                    <div class="reportFilters">
+                        <p><span class="greyColor">{!$Label.c.Set_Parameter}</span> : <span class="themecolor">{!$Label.c.Return_Compliance}</span></p>
+                        <p class="filtertxt">{!$Label.c.Select_Dealers_Month_Quarter}</p>
+                        <br/>
+                        <hr class="seperatorclass"/>
+                        
+                        <!--  filters input -->
+                        <div class="slds-grid">
+                            <aura:if isTrue="{!v.renderFilters}">
+                                <table>
+                                    <tr valign="top">
+                                        <td valign="top">                                    
+                                            
+                                            <span>
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="returnCompliancSelect">
+                                                        <div class="slds-col slds-size_12-of-12">
+                                                            <p class="greyColor">{!$Label.c.Dealer_Code}</p>   
+                                                            <aura:if isTrue="{!v.fromLocList.length > 0}">
+                                                                <c:eDealerCustomMultiSelect options="{!v.fromLocList}" width="100%"></c:eDealerCustomMultiSelect>
+                                                            </aura:if>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="ds-clear"></div>
+                                                </div>
+                                                <div class="slds-grid slds-gutters marTop10px">
+                                                    
+                                                    <div class="slds-col slds-size_1-of-12">
+                                                        <lightning:select name="month" label="{!$Label.c.Edealer_month}" 
+                                                                          disabled="{!(not(empty(v.year)) || not(empty(v.quarter)))}"
+                                                                          value="{v.month}" onchange="{!c.monthChange}">
+                                                            <option value="">{!$Label.c.Edealer_Choose_One}</option>                                        
+                                                            <aura:iteration items="{!v.months}" var="monthObj">
+                                                                <option value="{!monthObj.value}">{!monthObj.label}</option>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                    </div>
+                                                    
+                                                    <div class="slds-col slds-size_1-of-12">
+                                                        <lightning:select name="quarter" label="{!$Label.c.Edealer_quarter}" 
+                                                                          disabled="{!(not(empty(v.month)) || not(empty(v.year)))}"
+                                                                          value="{v.quarter}" onchange="{!c.quarterChange}">
+                                                            <option value="">{!$Label.c.Edealer_Choose_One}</option>                                        
+                                                            <aura:iteration items="{!v.quarters}" var="quarter">
+                                                                <option value="{!quarter}">{!quarter}</option>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                    </div>
+                                                    
+                                                    <div class="slds-col slds-size_1-of-12 refresh-icon">
+                                                        <lightning:select name="year" label="{!$Label.c.Edealer_year}" 
+                                                                          disabled="{!(not(empty(v.month)) || not(empty(v.quarter)))}"
+                                                                          value="{v.year}" onchange="{!c.yearChange}">
+                                                            <option value="">{!$Label.c.Edealer_Choose_One}</option>                                        
+                                                            <aura:iteration items="{!v.years}" var="year">
+                                                                <option value="{!year}">{!year}</option>
+                                                            </aura:iteration>
+                                                        </lightning:select>
+                                                        <lightning:icon class="mr-lt-refresh" iconName="utility:refresh" 
+                                                                        size="x-small" 
+                                                                        alternativeText="reset" 
+                                                                        title="reset" 
+                                                                        onclick="{!c.reset}"/> 
+                                                    </div>
+                                                    <div class="slds-col slds-size_5-of-12">
+                                                        <c:eDealerReportFilter selectedFilter = "{!v.selectedFilters}"
+                                                                               reportName="Return Compliance Filter"/>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>                       
+                            </aura:if>
+                        </div>
+                    </div>
+                </aura:set>
+            </lightning:accordionSection>
+        </lightning:accordion> 
+    </div>
+    
+    
+    <!-- this is for the Manual LockDown Report -->
+    <div class="reportContainerBox">
+        <lightning:card>
+            <!--SPINNER-->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>   
+            
+            <div class="slds-col slds-size_12-of-12 padding12px">
+                <div class="rFloat">
+                    <div align="right">
+                        <!-- Download Report Button -->
+                        <c:eDealerDownloadReportInCsvButton reportName= "{!$Label.c.Return_Compliance}"
+                                                            invData = "{!v.invData}"
+                                                            columns = "{!v.columns}"
+                                                            isMasterInventoryData = 'false'/> 
+                        <c:eDealerDownloadReportButton aura:id="downloadcmp"
+                                                       reportName="{!$Label.c.Return_Compliance}"
+                                                       report="{!v.returnComplinceReportData}"
+                                                       columns="{!v.columns}"
+                                                       callapimethod = "{!c.downloadReportData}"/>
+                        <!--<button class="slds-button slds-button_destructive" disabled="{!v.downloadData.length > 0 ? false : true}" onclick="{!c.downloadData}">Download File</button>-->
+                        <button class="slds-button slds-button_destructive generateReportbutton" disabled="{!v.disabledReportButton}" onclick="{!c.fetchInternalReportData}">
+                            <lightning:icon iconName="utility:side_list" size ="xx-small" alternativeText="side_list" title="" />{!$Label.c.Generate_Report}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- data part -->    
+            <div class="slds-col slds-size_12-of-12 padding12px">
+                <aura:if isTrue="{!v.returnComplinceReportData.length > 0 }">      
+                    
+                    <div class="datacontainer">            
+                        <table>
+                            <tr>
+                                <td>
+                                    <c:eDealerPagination totalRecords = "{!v.returnComplinceReportData}"
+                                                         totalNumberRecords = "{!v.returnComplinceReportData}"
+                                                         PaginationList = "{!v.PaginationList}"
+                                                         PageNumber="{!v.paginationPageNumber}"
+                                                         pageSize="{!v.paginationPageSize}"
+                                                         TotalPages="{!v.paginationTotalPages}"
+                                                         RecordStart="{!v.paginationRecordStart}"
+                                                         RecordEnd="{!v.paginationRecordEnd}"
+                                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                                         disablednext="{!v.paginationDisabledNext}"
+                                                         displayPageButtons="false"></c:eDealerPagination>
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                        <table style="table-layout:fixed;">
+                            <td>
+                                
+                                <lightning:datatable keyField="id"
+                                                     hideCheckboxColumn="true"
+                                                     columns="{!v.columns }"
+                                                     data="{!v.PaginationList}"
+                                                     defaultSortDirection="{!v.defaultSortDirection}"
+                                                     sortedDirection="{!v.sortDirection}"
+                                                     sortedBy="{!v.sortedBy}"
+                                                     onsort="{!c.handleSort}"
+                                                     columnWidthsMode="auto"
+                                                     minColumnWidth="120">
+                                </lightning:datatable>
+                            </td></table>
+                    </div>
+                    
+                    <!-- pagination cmp -->
+                    <c:eDealerPagination totalRecords = "{!v.returnComplinceReportData}"
+                                         totalNumberRecords = "{!v.returnComplinceReportData}"
+                                         PaginationList = "{!v.PaginationList}"
+                                         PageNumber="{!v.paginationPageNumber}"
+                                         pageSize="{!v.paginationPageSize}"
+                                         TotalPages="{!v.paginationTotalPages}"
+                                         RecordStart="{!v.paginationRecordStart}"
+                                         RecordEnd="{!v.paginationRecordEnd}"
+                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                         displayPageButtons="true"
+                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                         disablednext="{!v.paginationDisabledNext}"></c:eDealerPagination>
+                    
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!v.APICalled}">
+                            <br/>
+                            <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                        </aura:if>
+                        
+                    </aura:set>
+                </aura:if>
+            </div>
+        </lightning:card>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- SOF Type --></label>
+    <name>SOF_Type__c</name>
+    <picklistValues>
+        <masterLabel>Adhoc</masterLabel>
+        <translation><!-- Adhoc --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MDI 360</masterLabel>
+        <translation><!-- MDI 360 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Overnight</masterLabel>
+        <translation><!-- Overnight --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

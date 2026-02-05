@@ -1,0 +1,131 @@
+<aura:component controller="EDealerManualLockdownController" 
+                extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    
+    <!-- this will save the manual Lockdown api details -->
+    <aura:attribute name="manualLockdownData" type="Object" />
+    
+    <!-- this will save the manual Lockdown api details cache for based on multiple location -->
+    <aura:attribute name="manualLockdownMapCache" type="Map" />
+    
+    <!-- this will save the title for the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- this will save the dealer division -->
+    <aura:attribute name="currentDealerDivision" type="string" />
+    
+    <!-- saving the Date -->
+    <aura:attribute name="date" type="Date" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <aura:attribute name="selectedSubMenu" type="String" />
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="Object"/>
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerLoc}" action="{!c.doInit}"/> 
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_8-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                                <span class="heading">
+                                    <a href="" 
+                                       onclick="{!c.openOrdersTile}">{!v.title}
+                                    </a>
+                                </span>
+                                <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+
+                                &nbsp;&nbsp;
+                                <span onclick="{!c.handleOpenInNewWindow}" >                                
+                                    <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                </span>
+                                
+                            </aura:if>
+                            
+                            <span class="slds-p-around_xx-small floatRight" style="margin-top: -4px;">
+                                <ul class="unOrderedList">
+                                    <li class="options selected"><lightning:formattedDateTime value="{!v.date}"/></li>
+                                </ul>
+                            </span>
+                        </div>
+                        
+                        <div class="top_Margin">
+                            <span>
+                                <table >
+                                    <tr>
+                                        <td class="{!v.selectedLocation.listSelectedLoc.length == 1?'greenTextb':'greenTextbNP'}">
+                                            <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                                                <div align="left" onclick="{!c.handleOpenInNewWindow}"><!--onclick="{!c.gotoManualLockDownReport}"-->
+                                                    <lightning:formattedNumber value="{!empty(v.manualLockdownData) ? 0 : v.manualLockdownData.sum_parts}"/><span class="sideText">{!$Label.c.Parts}</span>
+                                                </div>
+                                                <aura:set attribute="else">
+                                                    <div align="left" ><!--onclick="{!c.gotoManualLockDownReport}"-->
+                                                        <lightning:formattedNumber value="{!empty(v.manualLockdownData) ? 0 : v.manualLockdownData.sum_parts}"/><span class="sideText">{!$Label.c.Parts}</span>
+                                                    </div>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                        </td>
+                                        <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                                            <td class="redTextb" onclick="{!c.handleOpenInNewWindow}">
+                                                <div align="left">
+                                                    <lightning:formattedNumber value="{!empty(v.manualLockdownData) ? 0 : v.manualLockdownData.ex_parts}"/><span class="sideText">{!$Label.c.Parts}</span>
+                                                </div>
+                                            </td>
+                                            <aura:set attribute="else">
+                                                <td class="redTextbNP" >
+                                                    <div align="left">
+                                                        <lightning:formattedNumber value="{!empty(v.manualLockdownData) ? 0 : v.manualLockdownData.ex_parts}"/><span class="sideText">{!$Label.c.Parts}</span>
+                                                    </div>
+                                                </td>
+                                            </aura:set>
+                                        </aura:if>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><div align="left" class="fontSize">{!$Label.c.Edealer_Sum_of_Total_No_of_Parts}</div></td>
+                                        <td><div align="left" class="fontSize">{!$Label.c.Edealer_Expiring_in_A_Month}</div></td>
+                                    </tr>
+                                </table>
+                            </span>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="{!$Label.c.Edealer_manually_set_to_non_stock_for}"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

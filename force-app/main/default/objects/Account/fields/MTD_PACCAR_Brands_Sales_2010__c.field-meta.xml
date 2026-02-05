@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MTD_PACCAR_Brands_Sales_2010__c</fullName>
+    <label>MTD: PACCAR Brands Sales</label>
+    <summarizedField>Sales_Metrics__c.PACCAR_Brands_MTD_Sales__c</summarizedField>
+    <summaryFilterItems>
+        <field>Sales_Metrics__c.PACCAR_Brands_Sales_Year__c</field>
+        <operation>equals</operation>
+        <value>2017</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Sales_Metrics__c.Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

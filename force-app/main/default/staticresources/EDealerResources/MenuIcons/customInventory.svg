@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" 
+data-key="connected_apps" aria-hidden="true" viewBox="0 0 24 24" x="0px" y="0px" height="24" width="24" 
+class="slds-icon slds-icon-text-default">
+
+<g id="customInventory">
+
+
+<path d="M22,11H18V2a1,1,0,0,0-1-1H7A1,1,0,0,0,6,2V11H2a1,1,0,0,0-.68.28A1,1,0,0,0,1,12V22a1,1,0,0,0,1,1H22a1,1,0,0,0,1-1V12A1,1,0,0,0,22,11ZM16.88,13h.72V15l-1.17,0,0-2.1Zm-5-10h.72v2l-1.17,0,0-2Zm-3.92,0H9.66V5a1.62,1.62,0,0,0,1.62,1.61h1.44A1.62,1.62,0,0,0,14.34,5V2.92h1.72V11H7.94ZM6.84,13h.6V15l-1.17,0,0-2.1ZM11,21.08H2.92V13h1.6v2.2a1.62,1.62,0,0,0,1.62,1.61H7.58A1.62,1.62,0,0,0,9.2,15.16V13H11Zm10,0H13V13h1.72v2.2a1.62,1.62,0,0,0,1.62,1.61h1.44a1.62,1.62,0,0,0,1.62-1.61V13h1.72Z"/>
+</g>
+</svg>

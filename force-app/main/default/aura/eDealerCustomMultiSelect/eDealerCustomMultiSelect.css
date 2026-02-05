@@ -1,0 +1,23 @@
+.THIS.cEDealerCustomMultiSelect{
+      
+}
+
+
+
+.THIS .slds-pill{
+    /*border: 1px solid black;*/
+    border: 1px solid #cbc6c6;
+    background-color : white
+}
+.THIS .mr-stbox{margin: 10px 3px 5px 2px!important;} 
+
+.THIS .slds-button__icon{
+    fill:red;
+}
+
+.THIS .pillcontainer{
+    padding: 0px;
+    padding-right:2px; 
+    width: auto;
+    margin: 1px 1px 5px 2px;
+}

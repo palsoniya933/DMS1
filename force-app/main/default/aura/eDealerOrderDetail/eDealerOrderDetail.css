@@ -1,0 +1,14 @@
+.THIS .v1{
+    border-left: 3px solid green;
+    height: 94px;
+    position: absolute;
+    top: 32%;
+    left: 44.6%;
+}
+
+.THIS .twenty-order-comfirm{ width:20%!important;}
+.THIS .fourty-order-update{width:40%!important;}
+.THIS .sixty-per{width:60%!important;}
+.THIS .eighty-part-shipped{width:80%!important;}
+.THIS .eightysix-transit{width:89%!important;}
+.THIS .hundread-delivered{width:100%!important;}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MDI Excess</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;dlrcode&quot; : &quot;LOCATION&quot;,
+&quot;trnsdate&quot; : &quot;DATE&quot;,
+&quot;part&quot; : &quot;PART NUMBER&quot;,
+&quot;descr&quot; : &quot;DESCRIPTION&quot;,
+&quot;abcdecode&quot; : &quot;ABCDE CODE&quot;,
+&quot;dist_chnl&quot; : &quot;DISTRIBUTION CHANNEL&quot;,
+&quot;prim_sup_code&quot; : &quot;PRIM SUP CODE &quot;,
+&quot;alt_sup_comde&quot; : &quot;ALT SUP CODE &quot;,
+&quot;bin_loc&quot; : &quot;BIN LOCATION&quot;,
+&quot;rsl&quot; : &quot;RSL&quot;,
+&quot;rbq&quot; : &quot;RBQ&quot;,
+&quot;spq&quot; : &quot;SPQ&quot;,
+&quot;excessqty&quot; : &quot;EXCESS QUANTITY&quot;,
+&quot;est_dnet&quot; : &quot;EST DNET&quot;,
+&quot;est_ext_net&quot; : &quot;EST EXT DNET&quot;,
+&quot;refcode&quot; : &quot;REF CODE&quot;,
+&quot;reason_comment&quot; : &quot;REASON COMMENT&quot;
+}</value>
+    </values>
+</CustomMetadata>

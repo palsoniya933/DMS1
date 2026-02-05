@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Peterbilt_Dealers</fullName>
+    <columns>PACCARDivision__c</columns>
+    <columns>ACCOUNT.RECORDTYPE</columns>
+    <columns>Division_Name_OLD__c</columns>
+    <columns>Dealer_Group_Name__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Dealer_Code__c</columns>
+    <columns>Group_Code__c</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>District__c</columns>
+    <columns>DPM__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>PACCAR_Division__c</field>
+        <operation>equals</operation>
+        <value>PPD</value>
+    </filters>
+    <filters>
+        <field>PACCARDivision__c</field>
+        <operation>equals</operation>
+        <value>P</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>I</value>
+    </filters>
+    <label>Peterbilt Dealers</label>
+    <sharedTo>
+        <group>BusSegment</group>
+        <group>Connect</group>
+        <group>InsideSales</group>
+        <group>Marketing</group>
+        <group>PaccarExecutives</group>
+        <group>PeterbiltAllUsers</group>
+        <group>PeterbiltEast</group>
+        <group>PeterbiltExecutive</group>
+        <group>PeterbiltWest</group>
+    </sharedTo>
+</ListView>

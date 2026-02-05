@@ -1,0 +1,69 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+    
+    <aura:attribute name="activeOrderSummary" type="Object" />
+    <aura:attribute name="activeOrderWorkflow" type="List" />
+    <aura:attribute name="isDSPOrder" type="boolean" default="false"/>
+    
+    <div class="ordetailsummary">
+        <h1>{!$Label.c.Edealer_ORDER_SUMMARY}</h1>
+        <ul>
+           <!-- Title moved to top <li class="mar-right"></li>-->
+            
+            <li><a class="active" >{!$Label.c.Edealer_PACCAR_ORDER}<br></br>
+                <span>{!v.activeOrderSummary.paccer_order}</span> </a>     
+            </li>
+            
+            <li>
+                <a >{!$Label.c.Edealer_DEALER_PO}<br></br>
+                    <span>{!v.activeOrderSummary.dealerpo}</span>
+                </a>
+            </li>
+            
+            
+            <li>
+                <a >{!$Label.c.Edealer_PARTS_ORDERED}<br></br>
+                    <span>{!v.activeOrderSummary.parts_ordered}</span>
+                </a>
+            </li>
+            <li>
+                <a >{!$Label.c.Edealer_PARTS_SHIPPED}<br></br>
+                    <span>{!v.activeOrderSummary.parts_shipped}</span>
+                </a>
+            </li>
+            <li style="width:12.4%;">
+                <a >{!$Label.c.Edealer_PARTS_ALLOCATED}<br></br>
+                    <span>{!v.activeOrderSummary.parts_allocated}</span>
+                </a>
+            </li>
+            
+            <aura:if isTrue="{!v.activeOrderSummary.cancel > 0}">
+                <li style="width:12.4%;">
+                    <a>{!$Label.c.Edealer_PARTS_CANCELLED}<br></br>
+                        <span>{!v.activeOrderSummary.cancel}</span>
+                    </a>
+                </li>
+            </aura:if>
+            
+            <li style="width:13.99%;">
+                <a >{!$Label.c.Edealer_PARTS_BACKORDERED}<br></br>
+                    <span>{!v.activeOrderSummary.parts_backorder}</span>
+                </a>
+            </li>
+            <li style="width:11%;">
+                <a >{!$Label.c.Edealer_SHIPMENT_TYPE}<br></br>
+                    <span >
+                        <!-- <aura:if isTrue="{!and(not(empty(v.activeOrderWorkflow)), v.activeOrderWorkflow.length > 1)}"> -->                        
+                        <aura:if isTrue="{!v.activeOrderSummary.splitorder > 1}">    
+                            Split
+                            <aura:set attribute="else">
+                                Single
+                            </aura:set>
+                        </aura:if>
+                        <!-- &nbsp;&nbsp;<lightning:buttonIcon  class="red-font" size="large" iconName="utility:rules" variant="bare" alternativeText="checked" onclick="{!c.myAction}" />-->
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aura:component>

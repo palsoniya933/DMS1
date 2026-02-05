@@ -1,0 +1,139 @@
+<aura:component controller="EDealerMasterInventoryController" extends="c:edealerTracking" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="partsList" type="Object[]" />
+    <aura:attribute name="totalInventroyLines" type="Integer" default="0"/>
+    <aura:attribute name="lastRefreshDate" type="Date" /> 
+    <aura:attribute name="searchKeyword" type="String" />
+    <aura:attribute name="totalOrderSelected" type="Integer" default="0" />
+    <aura:attribute name="responseReceived" type="Boolean" />
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    <aura:attribute name="PaginationList" type="Object[]" />
+    
+    <!-- this used for the current Dealer Code/Location -->
+    <aura:attribute name="dealerCode" type="String" />
+   <!-- <aura:attribute name="dealerCurrencyCode" type="String" />  -->
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string" />
+    
+    <!-- Limit of get Records from api -->
+    <aura:attribute name="recordLimit" type="Integer" default="1000" />
+    
+    
+    <aura:attribute name="offset_value" type="Integer" default="0"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="true"/>
+    
+    <!-- this is for display the cart modals -->
+    <aura:attribute name="showEmergencyOrderAddCartModal" type="Boolean" default="false" />
+    <aura:attribute name="showStockOrderAddCartModal" type="Boolean" default="false" />
+    
+    
+    <!-- used to hide / show the Part Screen -->
+    <aura:attribute name="displayParts" type="boolean" />
+    
+    <!-- this will save the selected location -->    
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- used to save the selected parts -->
+    <aura:attribute name="partNumber" type="string" />
+    <aura:attribute name="loadTime" type="Integer" />
+
+    <!-- handler part click event --> 
+    <aura:handler event="c:OpenPartEvent" action="{!c.partClicked}"/>
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+    
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    
+    <aura:html tag="style">
+        .slds-modal__container {
+        margin: 0 auto;
+        width: 80%;
+        max-width:80%; 
+        min-width: 80%;
+        }
+    </aura:html>
+    
+    
+    <div class="tabBox"> 
+        <!-- spinner--> 
+        <div>
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner class="fixedPosition" alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+        </div> 
+        <!-- sub header -->
+        <c:eDealerMasterInventorySubHeader aura:id="SubHeaderComp" 
+                                           totalInventroyLines = "{!v.totalInventroyLines}"
+                                           lastRefreshDate = "{!v.lastRefreshDate}"
+                                           partsDetailList="{!v.partsList}"
+                                           totalOrderSelected="{!v.totalOrderSelected}"/>
+        
+        <!-- mark up for the data -->       
+        <c:eDealerMasterInventoryTable invData="{!v.partsList}"
+                                       dealerCode="{!v.dealerCode}"
+                                       currentDealerDivision="{!v.currentDealerDivision}"
+                                       searchKeyword = "{!v.searchKeyword}"
+                                       callSearchData="{!c.searchByKeyword}"
+                                       refresh="{!c.doInit}"
+                                       responseReceived = "{!v.responseReceived}"
+                                       totalOrderSelected="{!v.totalOrderSelected}"
+                                       isShowEstPrice="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Price_Inquiry__c)}"
+                                       currencyCode="{!v.userDetail.currencyCode}"
+                                       languageTranslation="{!v.languageTranslation}"
+                                       columnLabelByApiName="{!v.columnLabelByApiName}"
+                                    />
+        
+        
+    </div> 
+    
+    <aura:if isTrue="{!v.displayParts}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container modalContent">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! c.closePartModel }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    
+                    <c:eDealerPartDetailModal dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                              division="{!v.userDetail.division}"
+                                              partNumber = "{!v.partNumber}"/>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Neutral action" onclick="{! c.closePartModel }"/>
+                </footer>                
+            </div>            
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <!-- EM Order Popup/Modal
+    <c:eDealerSuggestedOrderConfirmationModal
+                                              showModal="{!v.showEmergencyOrderAddCartModal}"
+                                              message="SOF EMERGENCY order added to Shopping Cart"
+                                              callCheckout="{!c.checkoutEM}"
+                                              onClose="{!c.doInit}"
+                                              /> -->
+    
+    
+    <!-- Stock Order Popup/Modal 
+    <c:eDealerSuggestedOrderConfirmationModal
+                                              showModal="{!v.showStockOrderAddCartModal}"
+                                              message="SOF STOCK orders added to Shopping Cart"
+                                              callCheckout="{!c.checkoutSO}"
+                                              onClose="{!c.doInit}"
+                                              />-->
+</aura:component>

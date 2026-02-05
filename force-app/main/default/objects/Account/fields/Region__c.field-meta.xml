@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region__c</fullName>
+    <inlineHelpText>U001=KW West
+U002=KW Central
+U003=KW East
+U004=PB West
+U005=PB Central
+U006=PB East
+C001=KW Canada
+C002=PB Canada
+M001=Mexico
+121=Gulf
+131=Europe
+133=Mexico
+141=Africa
+151=Asia-Pacific
+16=China
+171=Russia
+181=South Am.
+191=Central Am.</inlineHelpText>
+    <label>Region</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>U001</fullName>
+                <default>false</default>
+                <label>U001</label>
+            </value>
+            <value>
+                <fullName>U002</fullName>
+                <default>false</default>
+                <label>U002</label>
+            </value>
+            <value>
+                <fullName>U003</fullName>
+                <default>false</default>
+                <label>U003</label>
+            </value>
+            <value>
+                <fullName>U004</fullName>
+                <default>false</default>
+                <label>U004</label>
+            </value>
+            <value>
+                <fullName>U005</fullName>
+                <default>false</default>
+                <label>U005</label>
+            </value>
+            <value>
+                <fullName>U006</fullName>
+                <default>false</default>
+                <label>U006</label>
+            </value>
+            <value>
+                <fullName>C001</fullName>
+                <default>false</default>
+                <label>C001</label>
+            </value>
+            <value>
+                <fullName>C002</fullName>
+                <default>false</default>
+                <label>C002</label>
+            </value>
+            <value>
+                <fullName>M001</fullName>
+                <default>false</default>
+                <label>M001</label>
+            </value>
+            <value>
+                <fullName>181</fullName>
+                <default>false</default>
+                <label>181</label>
+            </value>
+            <value>
+                <fullName>191</fullName>
+                <default>false</default>
+                <label>191</label>
+            </value>
+            <value>
+                <fullName>C004</fullName>
+                <default>false</default>
+                <label>C004</label>
+            </value>
+            <value>
+                <fullName>C003</fullName>
+                <default>false</default>
+                <label>C003</label>
+            </value>
+            <value>
+                <fullName>C005</fullName>
+                <default>false</default>
+                <label>C005</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

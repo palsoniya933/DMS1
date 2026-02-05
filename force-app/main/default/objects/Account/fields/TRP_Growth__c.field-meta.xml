@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TRP_Growth__c</fullName>
+    <externalId>false</externalId>
+    <formula>(   PACCAR_Brands_YTD_Purchases_Curr_Year__c  /   PACCAR_Brands_YTD_Purchases_Prev_Year__c )-1</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TRP Growth %</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

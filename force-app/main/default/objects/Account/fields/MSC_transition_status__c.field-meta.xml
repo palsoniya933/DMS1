@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MSC_transition_status__c</fullName>
+    <label>MSC transition status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Setup in process</fullName>
+                <default>false</default>
+                <label>Setup in process</label>
+            </value>
+            <value>
+                <fullName>Contract pending</fullName>
+                <default>false</default>
+                <label>Contract pending</label>
+            </value>
+            <value>
+                <fullName>Contract in negotiation</fullName>
+                <default>false</default>
+                <label>Contract in negotiation</label>
+            </value>
+            <value>
+                <fullName>Launch pending</fullName>
+                <default>false</default>
+                <label>Launch pending</label>
+            </value>
+            <value>
+                <fullName>Live</fullName>
+                <default>false</default>
+                <label>Live</label>
+            </value>
+            <value>
+                <fullName>On hold</fullName>
+                <default>false</default>
+                <label>On hold</label>
+            </value>
+            <value>
+                <fullName>Credit Denied</fullName>
+                <default>false</default>
+                <label>Credit Denied</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

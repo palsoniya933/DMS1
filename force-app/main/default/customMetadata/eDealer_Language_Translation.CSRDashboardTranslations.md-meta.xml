@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSR Dashboard Translations</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;Dashboard&quot;: 
+{
+&quot;en_US&quot;: &quot;DASHBOARD&quot;,
+&quot;fr_CA&quot;: &quot;TABLEAU DE BOARD&quot;,
+&quot;es_MX&quot;: &quot;TABLERO&quot;
+},
+&quot;ActiveCSR&quot;: 
+{
+&quot;en_US&quot;: &quot;Processed CSR(s) List&quot;,
+&quot;fr_CA&quot;: &quot;Liste des CSR traité&quot;,
+&quot;es_MX&quot;: &quot;Listado de CSR(s) Processada(s)&quot;
+},
+&quot;DraftCSR&quot;: 
+{
+&quot;en_US&quot;: &quot;Draft CSR(s) List&quot;,
+&quot;fr_CA&quot;: &quot;Liste des Ébauche CSR(s)&quot;,
+&quot;es_MX&quot;: &quot;Listado de CSR(s) en borrador&quot;
+},
+&quot;PendingCSR&quot;: 
+{
+&quot;en_US&quot;: &quot;Pending CSR(s) List&quot;,
+&quot;fr_CA&quot;: &quot;Liste des CSR(s) en attente&quot;,
+&quot;es_MX&quot;: &quot;Lista de CSR(s) pendientes&quot;
+},
+&quot;CSR&quot;: 
+{
+&quot;en_US&quot;: &quot;CSR(s)&quot;,
+&quot;fr_CA&quot;: &quot;CSR(s)&quot;,
+&quot;es_MX&quot;: &quot;CSR(s)&quot;
+}
+
+}</value>
+    </values>
+</CustomMetadata>

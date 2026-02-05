@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_City_Required</fullName>
+    <active>false</active>
+    <description>Accounts require a Shipping City to be added to the Shipping Address</description>
+    <errorConditionFormula>ISBLANK(ShippingCity)</errorConditionFormula>
+    <errorDisplayField>ShippingCity</errorDisplayField>
+    <errorMessage>Requires Shipping City</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XYTD_Achieved_Outside_Sales_Staff__c</fullName>
+    <formula>Current_of_Outside_Sales_Staff__c / XYTD_Outside_Sales_Staff_Goal__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Shows the % to the Goal</inlineHelpText>
+    <label>2010 Achieved Outside Sales Staff</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

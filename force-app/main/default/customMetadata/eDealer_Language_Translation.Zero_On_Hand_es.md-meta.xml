@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Zero On-Hand</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;mdi_comment&quot; : &quot;COMENTARIO DE MDI&quot;,
+&quot;dealer_response&quot; : &quot;RESPUESTA DEL CONCESIONARIO&quot;,
+&quot;grp_nbr&quot; : &quot;Número de grupo&quot;,
+&quot;loc&quot;:&quot;LOCALIZACIÓN&quot;,
+&quot;abc&quot; : &quot;ABC&quot;,
+&quot;item&quot; : &quot;NÚMERO DE PARTE&quot;,
+&quot;dlrsplrcode&quot; : &quot;CÓDIGO DEL PROVEEDOR&quot;,
+&quot;dist_chan&quot;:&quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;consecutive_days_stocked_out&quot;: &quot;DÍAS CONSECUTIVOS SIN EXISTENCIAS&quot;,
+&quot;oh&quot; : &quot;Disponible&quot;,
+&quot;dif_on_order&quot;:&quot;DIFERENCIA EN PEDIDO&quot;,
+&quot;distrb_on_order&quot;:&quot;DISTRIBUCIÓN EN PEDIDO&quot;,
+&quot;recent_stock_po&quot;:&quot;EXISTENCIA RECIENTE&quot;,
+&quot;recent_order&quot;:&quot;PEDIDO RECIENTE&quot;,
+&quot;ship_chan&quot;:&quot;CANAL DE ENVÍO&quot;,
+&quot;order_status&quot;:&quot;ESTADO DEL PEDIDO&quot;,
+&quot;order_date&quot; : &quot;FECHA DE PEDIDO&quot;,
+&quot;ship_date&quot;:&quot;FECHA DE ENVÍO&quot;,
+&quot;days_since_ship&quot;:&quot;DÍAS DESDE EL ENVÍO&quot;,
+&quot;minimum_name&quot; : &quot;MÍNIMO NOMBRE&quot;,
+&quot;rsl_csl_msl&quot;:&quot;RSL CSL MSL&quot;,
+&quot;manual_lock&quot;:&quot;BLOQUEO MANUAL&quot;,
+&quot;comment&quot;:&quot;COMENTARIO&quot;,
+&quot;sunset_date&quot;:&quot;FECHA DE VENCIMIENTO&quot;,
+&quot;mtd_dmd&quot; : &quot;DEMANDA DEL MES A LA FECHA&quot;,
+&quot;hits_12m&quot; : &quot;12M DE VISITAS&quot;,
+&quot;abc_tots&quot;:&quot;ABC TOTS&quot;,
+&quot;dmd_12m&quot;:&quot;DEMANDA DE 12 M&quot;,
+&quot;minss&quot;:&quot;Stock mínimo de seguridad&quot;,
+&quot;std_pkg_qty&quot;:&quot;CANTIDAD ESTÁNDAR DEL PAQUETE&quot;,
+&quot;distchan&quot;:&quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;stk_cls&quot;:&quot;CLASE DE STOCK&quot;,
+&quot;stk_cls_desc&quot;:&quot;DESCRIPCIÓN DE LA CLASE DE STOCK&quot;,
+&quot;est_lead_time_days&quot;:&quot;DÍAS DE PLAZO DE ENTREGA ESTIMADO&quot;,
+&quot;item_desc&quot; : &quot;DESCRIPCIÓN DE NÚMERO DE PARTE&quot;,
+&quot;sale_ind&quot; : &quot;INDICADOR DE VENTA&quot;,
+&quot;ssd_to&quot; : &quot;SUPERCESIÓN A&quot;,
+&quot;dlrnet&quot; : &quot;DEALERNET&quot;
+}</value>
+    </values>
+</CustomMetadata>

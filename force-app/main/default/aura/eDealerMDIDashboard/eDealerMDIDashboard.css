@@ -1,0 +1,120 @@
+.THIS {
+}
+
+.THIS .wid-cnr{width:19%!important;}
+.THIS .wid-qdr{width: 81%!important;}
+.THIS .wid-days-on-hand{width:19%!important;}
+.THIS .wid-turn{width:19.5%!important;}
+.THIS .wid-tinventory{width:28.1%!important;}
+.THIS .heading{color:#5a5a5a!important;font-size:14px;}
+.THIS .tileName_Div-headername{font-size:13px !important;}
+.THIS .heading a{font-size:14px;}
+
+.THIS a{color: #5a5a5a!important;}
+.THIS a:hover{color:#ee1420!important;}
+.THIS .selected {
+    background: #ededed!important;
+    border-radius: 4px;
+    color: #000 !important;
+}
+.THIS .options:hover {
+    background: #ededed!important;
+    cursor: pointer!important;
+    color: #000!important;
+}
+.THIS .fontSize
+{
+    color: #5a5a5a!important;
+    font-size:13px !important;
+}
+.THIS .dateSelected {
+    background: #ededed!important;
+}
+.THIS .tileName_Div-headername{color:#5a5a5a!important;}
+
+.THIS.dashboardcontainer{
+   background-color:#F5F6FA;
+   margin: 0px 11px 17px 11px;
+}
+/*
+.THIS.cEDealerMDIDashboard .tile{transition: box-shadow 0.3s ease-in-out;}
+.THIS.cEDealerMDIDashboard .tile:hover{
+ * box-shadow: 0 1px 5px rgba(0,0,0,0.3)!important;
+  border:1px solid #DA93FF!important;}*/
+
+.THIS .tile{
+    background: #fff !important;
+    /*transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 2px 5px #A4B6D4!important;*/
+    border: 1px solid #cccccc!important;
+    opacity: 1;
+}
+/*
+.THIS.cEDealerMDIDashboard .tile:hover{
+   box-shadow: 0 2px 5px #a4b6d4!important;
+    border: 1px solid #2C6FD5!important;
+}*/
+
+.THIS .dashboardheading{
+    font-weight: 600;
+    padding-left:4px;
+}
+.THIS .slds-accordion__list-item
+{
+    border-top:none !important;
+}
+ .THIS .tilePercentage_Div .greenTexts {
+     display: block;
+     margin-top: 15px;
+}
+ @media (max-width: 1050px) {
+     .THIS .greenTextb, .THIS .blackTextb, .THIS .redTextb {
+         font-size: 25px !important;
+         vertical-align: baseline;
+    }
+}
+ @media (max-width: 900px) {
+     .THIS .greenTextb, .THIS .blackTextb, .THIS .redTextb {
+         font-size: 26px !important;
+    }
+}
+ @media (max-width:767px) {
+     .THIS .greenTextb, .THIS .blackTextb, .THIS .redTextb {
+         font-size: 20px !important;
+    }
+     .THIS .top_Margin {
+         margin-top: 6%;
+    }
+     .THIS .redArrow svg, .THIS .greenArrow svg {
+         width: 13px;
+         height: 13px;
+    }
+     .THIS .tile {
+         height: 188px;
+    }
+     .THIS .tilePercentage_Div .greenTexts {
+         display: block;
+         margin-top: 20px;
+    }
+}
+ @media (max-width:600px) {
+     .THIS .greenTextb, .THIS .blackTextb, .THIS .redTextb {
+         font-size: 18px !important;
+    }
+}
+
+.THIS .infoIconPosition {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+
+.THIS .infoIconPosition svg {
+    fill: #5B9BF2;
+}
+
+.THIS .disabledEvent{
+    opacity: 0.6;
+    pointer-events: none;
+}

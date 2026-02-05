@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_Action_Notification__c</fullName>
+    <description>This email is maintained by Field Service teams to give the dealer another alert for all Technical assistant cases.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is maintained by Field Service teams.</inlineHelpText>
+    <label>Dealer Action Notification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Email</type>
+    <unique>false</unique>
+</CustomField>

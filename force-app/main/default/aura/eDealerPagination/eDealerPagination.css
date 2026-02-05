@@ -1,0 +1,46 @@
+.THIS {
+}
+
+
+.THIS .align-tr{   width:100%!important; display:block!important;
+}
+.THIS .pageNum{
+    width:100%
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .bgWhite{
+    background:white;    padding: 10px;
+}
+.THIS .pageTxthead {
+    width: 35%;
+    font-weight: 600;
+}
+
+.THIS .tenPer{
+    width:12%;
+    padding: 0px 4px!important;
+    min-width:70px;
+}
+.THIS .tenPer .slds-select_container .slds-select
+{
+    height:25px;
+}
+.THIS .slds-select_container:before{
+    border:none;
+}
+.THIS .fivePer{
+    width:5%
+}
+.THIS.slds-button{
+    height: 20px !important;
+    padding: 11px 10px !important;
+}
+
+.THIS .slds-button{
+    height: 20px !important;
+    padding: 11px 10px !important;
+}

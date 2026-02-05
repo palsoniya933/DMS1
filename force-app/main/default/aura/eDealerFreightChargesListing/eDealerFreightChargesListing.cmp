@@ -1,0 +1,204 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                controller="EDealerFreightChargesListingController" access="global">
+    
+    <aura:attribute name="downloadFileName" type="String" />
+    <aura:attribute name="division" type="String" />
+    <aura:attribute name="invData" type="Object[]" />
+    <aura:attribute name="masterData" type="string" />
+    <aura:attribute name="PaginationList" type="Object[]" />
+    
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />   
+   
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/> 
+    
+     <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    <aura:attribute name="selectedMenu" type="string" />
+    
+     <!-- Selected Order dropdown -->
+    <aura:attribute name="selectedOrder" type="string" default="All"/>
+    
+    <!-- this used for the current step number -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    
+    <aura:attribute name="totalFreightCharges" type="Integer" default="0"/>
+    <aura:attribute name="turckDown" type="Integer" default="0"/>
+    <aura:attribute name="Emergency" type="Integer" default="0"/>
+    <aura:attribute name="dspFreightCharges" type="Integer" default="0"/>
+    <aura:attribute name="monthlyReturns" type="Integer" default="0"/>
+    <aura:attribute name="other" type="Integer" default="0"/>
+    
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Week"/>
+    
+    <aura:attribute name="orderType" type="string" default="All"/>
+    
+    <aura:attribute name="orderTypes" type="List" />
+    
+    <aura:attribute name="frequency" type="string" default=""/>
+    
+    <aura:attribute name="columns" type="List" />
+    
+    <!-- to show as selected active-list (header column) -->
+    <aura:attribute name="activeColumnName" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- when dealer code change -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    
+    <div class="eDealerFreightChargesListing"> 
+    <lightning:card>
+        <!--SPINNER-->
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>  
+        
+        <div class="slds-grid slds-wrap ">
+            <div class="slds-col slds-size_12-of-12">
+                <div class="wrapper slds-m-around_x-small">  
+                    <aura:if isTrue="{!v.PaginationList.length > 0 }">
+                        <div class="slds-grid slds-wrap padding12px">
+                            <div class="slds-col slds-size_9-of-12">
+                                <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                     totalNumberRecords = "{!v.invData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                         			 disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="false"></c:eDealerPagination>
+                            </div>
+                            
+                            <div class="slds-col slds-size_3-of-12">
+                                <div class="rFloat">
+                                    <div align="right" class="buttoncontainer" >
+                                        
+                                        <c:eDealerDownloadReportInCsvButton reportName= "{!v.downloadFileName}"
+                                                                            invData = "{!v.invData}"
+                                                                            columns = "{!v.columns}"
+                                                                            isMasterInventoryData = 'false'/>
+                                        
+                                        <!-- Download Report Button -->
+                                        <c:eDealerDownloadReportButton aura:id="downloadcmp"
+                                                                       reportName="{!v.downloadFileName}"
+                                                                       report="{!v.invData}"
+                                                                       columns="{!v.columns}"
+                                                                       callapimethod = "{!c.downloadReportData}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="invDatacontainertablecontainer">
+                            
+                            <table class="invDatacontainertable">
+                                <tr>
+                                    
+                                     <td class="invDatacontainertableheading width1" >
+                                            #
+                                        </td>
+                                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                                            <td class="invDatacontainertableheading" >
+                                                {!cd.value}
+                                            </td>
+                                        </aura:iteration>                                
+                                </tr>
+                                
+                                <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                                    <tr>
+                                        <td class="invDatacontainertabledata" >
+                                            {!index + 1}
+                                        </td>
+                                        
+                                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd">
+                                            <td>
+                                                <aura:if isTrue="{!cd.key=='paccarorder'}">
+                                                    <a href="javascript:void(0);" onclick="{!c.openOrder}" name="{!inv.paccarorder}">
+                                                        <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                    </a>
+                                                    &nbsp;
+                                                    <span name="{!inv.paccarorder}" onclick="{!c.handleOpenInNewWindow}" class="nav-text active">
+                                                        <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                                    </span>
+                                                    <aura:set attribute="else">
+                                                        <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </td>
+                                        </aura:iteration>
+                                        
+                                    </tr>
+                                </aura:iteration>                            
+                            </table>
+                            
+                            <!-- pagination cmp -->
+                            <div class="bottompagi">
+                                <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                     totalNumberRecords = "{!v.invData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                         			 disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="true"></c:eDealerPagination>  
+                            </div> 
+                            
+                        </div>
+                        
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.APICalled}">
+                                <br/>
+                                <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                            </aura:if>
+                            
+                        </aura:set>
+                        
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </lightning:card>
+</div>
+    
+    
+</aura:component>

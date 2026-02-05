@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Remittance_Email__c</fullName>
+    <description>This field it the Roadside Payment team to use when they have a contact only for payment issue</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Email Address to Send Notification of Payment</inlineHelpText>
+    <label>Remittance Email</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Email</type>
+    <unique>false</unique>
+</CustomField>

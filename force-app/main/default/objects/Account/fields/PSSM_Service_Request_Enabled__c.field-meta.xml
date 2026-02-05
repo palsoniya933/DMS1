@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSSM_Service_Request_Enabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field if checked would enable the Integration to send Service record under a Roadside case to be sent to Devisiv Dealer Portal. This field is to be populated by Service Managers. It is read only for Service Users</description>
+    <inlineHelpText>TCS Will Automatically send a Service Request to an enabled dealer&apos;s Service Management Portal.</inlineHelpText>
+    <label>PSSM Service Request Enabled</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

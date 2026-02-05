@@ -1,0 +1,473 @@
+<!-- 
+@description 
+@Version Details
+1.0 Initial Version
+1.1 mitali.khidkikar@paccar.com June 28,2023 - Added title text for analytics dashboards: #CRMAnalytics
+@
+-->
+<aura:component implements="forceCommunity:availableForAllPageTypes" 
+                access="global" >
+    
+    <!-- this will save which menu is selected by the user -->
+    <aura:attribute name="selectedmenu" type="String" />
+    
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="division" type="String" />
+    
+    <!-- this will save the -->
+    <aura:attribute name="selectedUserName" type="String" />
+    <aura:attribute name="allUsers" type="String[]" />
+    <!-- saving User Type -->
+    <aura:attribute name="userType" type="String" default="community"/>
+    
+    <!-- this will save which menu is selected by the user -->
+    <aura:attribute name="submenu" type="String" />
+    
+    <!-- handler Menu item clicked Event --> 
+    <aura:handler event="c:eDealerSubMenu" action="{!c.handleSubMenuChange}"/>
+  
+    <!-- handler Menu item clicked Event --> 
+    <aura:handler event="c:eDealerMenuClickedEvent" action="{!c.handleMenuChange}"/>
+    <aura:registerEvent name="menuevent" type="c:eDealerMenuClickedEvent"/>
+    
+    <!-- display the current Date -->
+    <aura:attribute name="currentDate" type="Date"/>
+    
+    <!-- Accessible Dealer with his Location/sub-Locations -->
+    <aura:attribute name="accessibleDealersLocs" type="List" />
+    <aura:attribute name="changeAccessibleDealersLocs" type="List" />
+    <aura:attribute name="allAccessibleDealersLocs" type="List"/>
+    <!-- register event when menu is clicked -->
+    <aura:registerEvent name="locevent" type="c:eDealerLocationEvent"/>
+    
+    <!-- user change action -->
+    <aura:attribute name="userchangeAction" type="Aura.Action" />
+    
+    <!-- this will save the selectedtion location -->
+    <aura:attribute name="selectedLocation" type="string" default=""/> 
+    <aura:attribute name="preSearchDealerCode" type="String" />
+        <aura:attribute name="selectedTab" type="String" />
+
+    <aura:attribute name="isOrderScreenPageOpen" type="boolean" default="true"/>
+    <aura:attribute name="isSummerydetailsOpen" type="boolean" default="false"/>
+    <aura:attribute name="selectedRecord" type="sObject" default="{}" description="Use,for store SELECTED sObject Record"/>
+    
+    <!-- calling onload Method -->
+    <aura:handler name="init" value="{!this}" action="{!c.onload}"/>
+    
+    <!-- Change handler -->
+    <aura:handler name="change" value="{!v.selectedRecord.Dealer_Code__c}" action="{!c.updateSelectedDealerCode}"/>
+    
+    <aura:attribute name="csrHeader" type="String" default=""/>
+    <aura:attribute name="csrListHeader" type="String" default="" />
+    
+    <!-- Header -->
+    <div class="dashboardcontainer">
+        <div class="slds-grid slds-wrap bottompd mar-header-align">
+            <div class="{!v.userType == 'internal' ? 'slds-col slds-size_3-of-12 padding10px' : 'slds-col slds-size_3-of-12 padding10px'}">
+                <p class="dashboardheading ">
+                    <!-- based upon the menu we will display the heading --> 
+                    <aura:if isTrue="{!v.selectedmenu == 'dashboardDemo'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a>
+                            <aura:if isTrue="{!v.submenu == 'activeorders'}">
+                                /&nbsp;{!$Label.c.EDealer_Header_Active_Order_s_Listing}
+                            </aura:if>                           
+                            <aura:if isTrue="{!v.submenu == 'pendingorders'}">
+                                /&nbsp;{!$Label.c.EDealer_Header_Back_Order_s_Listing}
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'confirmedorders'}">
+                                /&nbsp;{!$Label.c.EDealer_Header_Closed_Order_s_Listing}
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'unconfirmedorders'}">
+                                /&nbsp;{!$Label.c.Edealer_Unconfirmed_Order_s_Listing}
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'intransitorders'}">
+                                /&nbsp;Shipment(s) In-Transit Listing
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'shippedorders'}">
+                                /&nbsp;Shipped Order(s) Listing
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'deliveredorders'}">
+                                /&nbsp;Shipment(s) Delivered Listing
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'partsdeliverymetrics'}">
+                                /&nbsp;Shipment Performance Metrics Listing
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'ordersummary'}">
+                                /&nbsp;{!$Label.c.EDealer_Header_Order_Summary_Listing}
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'freightcharges'}">
+                                /&nbsp;{!$Label.c.Freight_Charges_Listing}
+                            </aura:if>
+                            
+                        </h1>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'dashboardDivV2'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.Managed_Dealer_Inventory_KPI_s}</a>
+                            <aura:if isTrue="{!v.submenu == 'manuallockdownparts'}">
+                                /&nbsp;{!$Label.c.EDealer_Header_Manual_Parameter_s_Listing}
+                            </aura:if>
+                            <aura:if isTrue="{!v.submenu == 'returncompliance'}">
+                                /&nbsp;{!$Label.c.EDealer_Header_Return_Compliance_Listing}
+                            </aura:if>
+                        </h1>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'reportcenter'}">
+                        <h1>{!$Label.c.MDI_Report_Center}</h1>
+                    </aura:if> 
+                    <aura:if isTrue="{!v.selectedmenu == 'tcs365'}">
+                        <h1>TCS 365</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'orderSupport'}">
+                        <h1>{!$Label.c.EDealer_Menu_Order_Support}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'reverseLogistics'}">
+                        <h1>{!$Label.c.EDealer_Menu_Reverse_Logistics}</h1>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'managedealerinv'}">
+                        <h1>{!$Label.c.Suggested_Orders_Summary}</h1>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'cartpage'}">
+                        <h1>Shopping Cart</h1>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'masterinventory'}">
+                        <h1>{!$Label.c.EDealer_Menu_Master_Inventory}</h1>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'scorecard'}">
+                        <h1>Dealer Scorecard</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'partavailabledetail'}">
+                        <h1>{!$Label.c.Part_Availability}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'activeordersdetail'}">
+                        <h1>{!$Label.c.Edealer_Order_Details}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'activeorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / {!$Label.c.EDealer_Header_Active_Order_s_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'pendingorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / {!$Label.c.EDealer_Header_Back_Order_s_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'confirmedorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / {!$Label.c.EDealer_Header_Closed_Order_s_Listing}</h1>
+                    </aura:if>
+                    
+                     <aura:if isTrue="{!v.selectedmenu == 'confirmedorder'}">
+                        <h1><!--<a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> /--> {!$Label.c.EDealer_Menu_Confirmed_Order_File}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'unconfirmedorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / {!$Label.c.Edealer_Unconfirmed_Order_s_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'intransitorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / In-Transit Order(s) Listing</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'shippedorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / Shipped Order(s) Listing</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'deliveredorders'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / Delivered Order(s) Listing</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'partsdeliverymetrics'}">
+                        <h1>Shipment Performance Metrics Listing</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'ordersummary'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / {!$Label.c.EDealer_Header_Order_Summary_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'freightcharges'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Dashboard}</a> / {!$Label.c.Freight_Charges_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'manuallockdownparts'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.Managed_Dealer_Inventory_KPI_s}</a> / {!$Label.c.EDealer_Header_Manual_Parameter_s_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'cnrorderlisting'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">
+                            {!$Label.c.Managed_Dealer_Inventory_KPI_s}</a>
+                            / {!$Label.c.EDealer_Header_CNR_Order_s_Listing}</h1>
+                    </aura:if>
+
+
+                    <aura:if isTrue="{!v.selectedmenu == 'emergencyorderlisting'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.Managed_Dealer_Inventory_KPI_s}</a> / {!$Label.c.EDealer_Header_Emergency_Lines_Listing}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'returncompliance'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.Managed_Dealer_Inventory_KPI_s}</a> / {!$Label.c.EDealer_Header_Return_Compliance_Listing}</h1>
+                    </aura:if>
+                    <!--CRMAnalytics start-->
+                    <aura:if isTrue="{!v.selectedmenu == 'Analytics'}">
+                        <h1>{!$Label.c.EDealer_Menu_Analytics}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'fieldservice'}">
+                        <h1>{!$Label.c.EDealer_Menu_Field_Service}</h1>
+                        <!--<h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Field_Service}</a></h1> -->
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'aftermarket'}">
+                        <h1>{!$Label.c.After_Market}</h1>
+                        <!--<h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.After_Market}</a></h1> -->
+                    </aura:if>
+                    <!--End-->
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'OPCReport'}">
+                    	<h1>{!$Label.c.EDealer_Menu_OPC_Report}</h1>
+                        <!--<h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_OPC_Report}</a></h1> -->
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'dailyrebatesfile'}">
+                        <h1>{!$Label.c.EDealer_Menu_Daily_Rebates_Files}</h1>
+                        <!--<h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_Menu_Daily_Rebates_Files}</a></h1> -->
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.selectedmenu == 'csrandvolumnsales'}">
+                        <h1>{!$Label.c.EDealer_CSR_AND_VOLUME_SALES}</h1>
+                        <!--<h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_CSR_AND_VOLUME_SALES}</a></h1> -->
+                    </aura:if>
+                    
+                    <!-- Loyalty Section -->
+                    <aura:if isTrue="{!v.selectedmenu == 'loyalty'}">
+                        <h1>{!$Label.c.EDealer_Menu_Loyalty}</h1>
+                    </aura:if> 
+                    <aura:if isTrue="{!v.selectedmenu == 'offerPDF'}">
+                        <h1>{!$Label.c.EDealer_Menu_Offer_PDF}</h1>
+                    </aura:if>                     
+                    <aura:if isTrue="{!v.selectedmenu == 'currentPartsList'}">
+                        <h1>{!$Label.c.EDealer_Menu_Current_Parts_List}</h1>
+                    </aura:if> 
+                    <aura:if isTrue="{!v.selectedmenu == 'futurePartsList'}">
+                        <h1>{!$Label.c.EDealer_Menu_Future_Parts_List}</h1>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedmenu == 'serviceInspectionSheets'}">
+                        <h1>{!$Label.c.EDealer_Menu_Service_Inspection_Sheets}</h1>
+                    </aura:if>                    
+                  
+                    
+                    <aura:if isTrue="{!v.selectedmenu == 'csrlisting' }">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!v.csrHeader}</a> / {!v.csrListHeader}</h1>
+                    </aura:if>
+                    <!--RPM Score Card Start-->
+                    <aura:if isTrue="{!v.selectedmenu == 'RPMScoreCard' }">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_RPM_Score_Card}</a></h1>
+                    </aura:if>
+                    <!--RPM Score Card End-->
+                    <aura:if isTrue="{!v.selectedmenu == 'createCSR' }">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.EDealer_CSR_AND_VOLUME_SALES}</a> / {!$Label.c.EDealer_Menu_Create_CSR}</h1>
+                    </aura:if>
+                     <!--#Pricing Start-->
+                    <aura:if isTrue="{!v.selectedmenu == 'pricing'}">
+                        <h1>{!$Label.c.EDealer_Menu_Price}</h1>
+                    </aura:if>
+                    <!--#Pricing End-->
+                    <aura:if isTrue="{!v.selectedmenu == 'eDealerInvHealth'}">
+                        <h1><a href="" onclick="{!c.handleNavFromHeader}">{!$Label.c.Managed_Dealer_Inventory_KPI_s}</a> / {!$Label.c.Edealer_Inventory_Health_Report}</h1>
+                    </aura:if>
+                </p>
+            </div>
+            
+            <!-- location picklist -->
+            <div class="{!v.userType == 'internal' ? 'slds-col slds-size_5-of-12 padding10px' : (empty(v.division) ?  'slds-col slds-size_9-of-12 padding10px' : 'slds-col slds-size_5-of-12 padding10px') }">
+                
+                <table border="0">
+                    <tr>
+                        <!-- <td>
+                            <div style="font-weight: 500; margin-right:10px;">
+                                {!$Label.c.All_values}
+                                
+                            </div>
+                        </td>-->
+                        
+                        <aura:if isTrue="{!v.userType == 'internal'}">
+                            <td style="padding:5px 0px 0px 0px;">
+                                <table border="0">
+                                    <tr>
+                                        <td style="width:60%;">
+                                            <lightning:select name="nameId" label="Select a Name:" aura:id="nameId" value="{!v.selectedUserName}">
+                                                <option text="Select MDI Analyst" value="" />
+                                                <aura:iteration items="{!v.allUsers}" var="user">
+                                                    <option text="{!user}" value="{!user}" selected="{!user == selectedUserName}"/>
+                                                </aura:iteration>
+                                            </lightning:select>
+                                        </td>
+                                        <td style="padding-left:1%">
+                                            <lightning:button variant="brand" label="Access" title="Brand action"  onclick="{!v.userchangeAction}"/>
+                                            &nbsp;
+                                            <lightning:icon iconName="utility:refresh" alternativeText="Refresh" title="Refresh" size="x-small" onclick="{!c.resetValues}"/>
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+                                
+                            </td>
+                        </aura:if>
+                        <td class="td-date-align" style="min-width: max-content;padding-top:0px;">
+                            <div align="right curDatealign" class="curDatealign">
+                                <b>{!v.currentDate}</b>
+                                <!--<lightning:formattedDateTime value="{!v.currentDate}"
+                                                         year="numeric" 
+                                                         month="short" 
+                                                         day="2-digit" 
+                                                         weekday="short"
+                                                         class="dt"/> -->
+                                &nbsp;
+                                <lightning:icon iconName="utility:checkin" class="map-icon-align" style="display: contents;"
+                                                alternativeText="checkin" 
+                                                title="checkin" 
+                                                size="xx-small"/>
+                            </div>
+                        </td>
+                        
+                        <aura:if isTrue="{!and(v.userType != 'internal',v.userDetail.isNonDealer == true)}">
+                            <td class="picklistWidth" style="vertical-align: top;">
+                                <div align="right" class="slds-m-right_small">
+                                    <aura:if isTrue="{!v.userDetail.accessDivision == 'Peterbilt'}">
+                                        <lightning:select label="Select Dealer Type:" aura:id="dealerPicklist" value="{!v.division}" >
+                                            <option text="Select Dealer Type" value="" />
+                                            <option text="Peterbilt" value="P"/>
+                                        </lightning:select>   
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.userDetail.accessDivision == 'Kenworth'}">
+                                        <lightning:select label="Select Dealer Type:" aura:id="dealerPicklist" value="{!v.division}" >
+                                            <option text="Select Dealer Type" value="" />
+                                            <option text="Kenworth" value="K" />
+                                        </lightning:select>    
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.userDetail.accessDivision == 'All'}">
+                                        <lightning:select label="Select Dealer Type:" aura:id="dealerPicklist" value="{!v.division}" >
+                                            <option text="Select Dealer Type" value="" />
+                                            <option text="Kenworth" value="K" />
+                                            <option text="Peterbilt" value="P"/>
+                                        </lightning:select>
+                                    </aura:if>	
+                                </div> 
+                            </td>
+                        </aura:if>
+                    </tr>
+                </table>
+            </div>
+         
+            <aura:if isTrue="{!v.userDetail.isNonDealer != true}">
+                <aura:if isTrue="{!v.isOrderScreenPageOpen}" >
+                    <div class="slds-col slds-size_4-of-12 padding10px" >
+                        <aura:if isTrue="{!v.accessibleDealersLocs}">
+                          <aura:if isTrue="{!v.selectedmenu == 'dashboardDemo' || v.selectedmenu == 'dashboardDivV2'  || v.selectedmenu == 'eDealerInvHealth'}">
+                              <div class="ds-right">
+                                    <table>
+                                        <tr> 
+                                            <td style="width:80%">
+                                                <c:eDealerCustomMultiSelect options="{!v.changeAccessibleDealersLocs}"
+                                                                            isContainer="true"
+                                                                            />
+                                            </td>
+                                            <td>
+                                                <lightning:button variant="brand" class="slds-button_brandGo" label="GO"
+                                                                  title="GO" onclick="{! c.selectedLocations }" 
+                                                                  />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <aura:set attribute="else">
+                                    <lightning:select label="" variant="label-hidden"                                               
+                                                      onchange="{!c.handleLocationChange}" value="{!v.dealerCode}"
+                                                      class="selectlist" aura:id="singleSelectedLoc" disabled="{!v.isSummerydetailsOpen}">
+                                        <aura:iteration items="{!v.accessibleDealersLocs}" var="option">
+                                            <option style="padding:2px 2px;" text="{!not(empty(option.Sub_Code__c)) ? option.ASI_Dealer_Code__c +'-'+option.Sub_Code__c + ' '+option.Customer_Name__c : option.ASI_Dealer_Code__c + ' '+option.Customer_Name__c}" value="{!not(empty(option.Sub_Code__c)) ? option.ASI_Dealer_Code__c +'-'+option.Sub_Code__c : option.ASI_Dealer_Code__c}" />
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </aura:set>
+                            </aura:if>
+                        </aura:if>
+                    </div>
+                    <aura:set attribute="else">
+                        <div class="slds-col slds-size_4-of-12 padding10px">
+                            <!--<p class="greyColor">{!$Label.c.Dealer_Code}</p>--> 
+                            <div class="ds-right">
+                                <aura:if isTrue="{!v.allAccessibleDealersLocs.length > 0}">
+                                    <table>
+                                        <tr>
+                                            <td style="width:80%">
+                                                <c:eDealerCustomMultiSelect options="{!v.allAccessibleDealersLocs}"
+                                                                            isContainer="true"
+                                                                            />
+                                            </td>
+                                            <td>
+                                                <lightning:button variant="brand" 
+                                                                  
+                                                                  class="slds-button_brandGo" label="GO" title="GO" 
+                                                                  onclick="{! c.selectedLocations }"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </aura:if>
+                            </div>
+                        </div>
+                    </aura:set>
+                </aura:if>
+                
+            </aura:if>
+            <aura:if isTrue="{!and(v.userDetail.isNonDealer != false,not(empty(v.userDetail.division)))}">
+                <div class="slds-col slds-size_4-of-12 padding10px" >
+                    <c:eDealerLocationLookUp objectAPIName="Account" 
+                                             selectedRecord="{!v.selectedRecord}"
+                                             preSearchVal="{!v.preSearchDealerCode}"        
+                                             required="false"
+                                             division="{!v.userDetail.division}"
+                                             label="" />
+                </div>
+            </aura:if>    
+            
+        </div>
+        
+        <div class="ds-clear"></div>
+        <div class="subHeadingTExt">
+            
+            <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                <div style="font-weight: 500; margin-right:10px;">
+                    <aura:if isTrue="{!v.userDetail.country == 'MX'}">
+                        <lightning:icon iconName="utility:info" class="serch-icon-align headerInfo" alternativeText="info" 
+                                        title="info"  size="xx-small"/> {!$Label.c.All_values}&nbsp;{!$Label.c.EDealer_Country_Code_MXN}
+                    </aura:if> 
+                    <aura:if isTrue="{!v.userDetail.country == 'CA'}">
+                        <lightning:icon iconName="utility:info" class="serch-icon-align headerInfo" alternativeText="info" 
+                                        title="info"  size="xx-small"/> {!$Label.c.All_values}&nbsp;{!$Label.c.EDealer_Country_Code_CAD}
+                    </aura:if>
+                    <aura:if isTrue="{!and(v.userDetail.country != 'MX',v.userDetail.country != 'CA')}">
+                        <lightning:icon iconName="utility:info" class="serch-icon-align headerInfo" alternativeText="info" 
+                                        title="info"  size="xx-small"/> {!$Label.c.All_values}&nbsp;{!$Label.c.EDealer_Country_Code_USD}
+                    </aura:if>
+                </div>
+                <!--<aura:set attribute="else">
+                    {!$Label.c.All_values}<p class="additionalMsg">Limited features are available for multiple location selection</p>
+                </aura:set>-->
+                <aura:set attribute="else">
+                    <div>
+                        <!-- {!$Label.c.All_values}&nbsp;{!v.userDetail.currencyCode} -->
+                        <aura:if isTrue="{!v.userDetail.country == 'MX'}">
+                            {!$Label.c.All_values}&nbsp;{!$Label.c.EDealer_Country_Code_MXN}
+                        </aura:if>   
+                        <aura:if isTrue="{!v.userDetail.country == 'CA'}">
+                            {!$Label.c.All_values}&nbsp;{!$Label.c.EDealer_Country_Code_CAD}
+                        </aura:if>
+                        <aura:if isTrue="{!and(v.userDetail.country != 'MX',v.userDetail.country != 'CA')}">
+                            {!$Label.c.All_values}&nbsp;{!$Label.c.EDealer_Country_Code_USD}
+                        </aura:if>
+                    </div>
+                    <div style="font-weight: 500; margin-right:10px;float: right;    margin-top: 5px;">
+                        <aura:if isTrue="{!!v.isOrderScreenPageOpen}">
+                            <p class="additionalMsg">
+                                <lightning:icon iconName="utility:info" class="serch-icon-align headerInfo" alternativeText="info" 
+                                                title="info"  size="xx-small"/> {!$Label.c.Limited_features_are_available_for_multiple_location_selection}</p>
+                        </aura:if>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

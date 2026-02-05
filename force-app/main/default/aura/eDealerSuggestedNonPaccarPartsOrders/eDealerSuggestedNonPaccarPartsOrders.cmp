@@ -1,0 +1,218 @@
+<aura:component controller="EDealerSuggestedOrdersController" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- sof special or not -->
+    <aura:attribute name="isSpecialOrdersSOF" type="Boolean" default="false" />
+    
+    <!-- this will have rows to be displayed -->
+    <aura:attribute name="invData" type="Object[]" />
+    
+    <!-- this is used for the pagination -->    
+    <aura:attribute name="PaginationList" type="Object[]" />
+    <aura:attribute name="totalOrderSelected" type="Integer" default="0" />
+    
+    <!-- this used for the current step number -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="true"/>
+    
+    <!-- sof additional information -->
+    <aura:attribute name="sofInfo" type="Object" />
+    
+    <!-- Today Date String in PST timezone -->
+    <aura:attribute name="todayPSTDateString" type="String" />
+    
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    <!-- register event when menu is clicked -->
+    <aura:registerEvent name="menuevent" type="c:eDealerMenuClickedEvent"/> 
+    
+    <!-- register event when cart items created -->
+    <aura:registerEvent name="cartupdateevent" type="c:eDealerCartUpdateEvent"/>
+    
+    <!-- change handler -->
+    <aura:handler name="change" value="{!v.selectAll}" action="{!c.selectAllRows}"/>
+    
+    
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    <!--for translation -->
+    <aura:attribute name="noNonPaccarPartsToday" type="String" default = "{!$Label.c.No_Non_Paccar_parts_suggested_for_today}"/>
+    <aura:attribute name="mdiInfo" type="String" default = "{!$Label.c.Please_contact_your_MDI_Analyst_for_information}" />
+    
+    <!-- spinner--> 
+    <div>
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>
+    </div>
+    
+    <aura:if isTrue="{!v.invData != undefined}">
+        <!-- sub header -->
+        <c:eDealerInvSubHeader aura:id="SubHeaderComp" 
+                               tabName="DEALERSUGGESTEDNONPACCARPARTSORDERS" 
+                               suggestedOrders="{!v.invData}"
+                               sofInfo="{!v.sofInfo}"
+                               isSpecialOrdersSOF="{!v.isSpecialOrdersSOF}">
+        </c:eDealerInvSubHeader>
+        
+        <!-- if we ahve rows in table -->
+        <aura:if isTrue="{!v.invData.length > 0}">
+            <!-- mark up for the data -->   
+            <div class="invDatacontainer">
+                <table>
+                    <tr>
+                        <td>
+                            <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                 totalNumberRecords = "{!v.invData}"
+                                                 PaginationList = "{!v.PaginationList}"
+                                                 PageNumber="{!v.paginationPageNumber}"
+                                                 pageSize="{!v.paginationPageSize}"
+                                                 TotalPages="{!v.paginationTotalPages}"
+                                                 RecordStart="{!v.paginationRecordStart}"
+                                                 RecordEnd="{!v.paginationRecordEnd}"
+                                                 allPageNumber="{!v.paginationAllPageNumber}"
+                                                 disabledprevious="{!v.paginationDisabledPrevious}"
+                                                 disablednext="{!v.paginationDisabledNext}"
+                                                 displayPageButtons="false"></c:eDealerPagination>
+                        </td>
+                    </tr>
+                </table>
+                
+                <div class="invDatacontainertablecontainer">
+                    
+                    <table class="invDatacontainertable">
+                        <tr>
+                            <td class="invDatacontainertableheading ordertablefirstColumn" style="width:5%">
+                                #
+                            </td>
+                            
+                            <td class="invDatacontainertableheading">
+                                {!$Label.c.Suggested_Part}
+                            </td>
+                            
+                            <td class="invDatacontainertableheading">
+                                {!$Label.c.Description}
+                            </td>
+                            
+                            <td class="invDatacontainertableheading">
+                                {!$Label.c.Inventory}
+                            </td>
+                            
+                            <td class="invDatacontainertableheading "><!--ordertablelastColumn-->
+                                {!$Label.c.Suggested}
+                            </td>
+                            <td class="invDatacontainertableheading">
+                                {!$Label.c.VEL_Code}
+                            </td>
+                            <td class="invDatacontainertableheading">
+                                SPQ
+                            </td>
+                            
+                            <td class="invDatacontainertableheading">
+                                {!$Label.c.Lead_Time}
+                            </td>
+                            
+                            <td class="invDatacontainertableheading">
+                                {!$Label.c.Comments}
+                            </td>
+                        </tr>
+                        
+                        <!-- this is the iteration for rows -->
+                        <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                            
+                            <!-- odd row -->
+                            <tr>
+                                <td class="invDatacontainertabledata" >
+                                    {!add(index,1)}
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    {!inv.Part_Name}
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    {!inv.Part_Description}
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    <div style="color:red;">{!inv.Dealer_Ineventory_Qty}</div>
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    <div>{!inv.Suggested_Qty}</div>
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    <div>{!inv.velocity_code}</div>
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    <div>{!inv.spq}</div>
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    <div>{!inv.Lead_Time} Days</div>
+                                </td>
+                                
+                                <td class="invDatacontainertabledata">
+                                    <div>{!inv.sof_comments}</div>
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                        
+                    </table>
+                    
+                    <!-- pagination cmp -->
+                    <aura:if isTrue="{!v.invData.length > 0}">
+                        <c:eDealerPagination totalRecords = "{!v.invData}"
+                                             totalNumberRecords = "{!v.invData}"
+                                             PaginationList = "{!v.PaginationList}"
+                                             PageNumber="{!v.paginationPageNumber}"
+                                             pageSize="{!v.paginationPageSize}"
+                                             TotalPages="{!v.paginationTotalPages}"
+                                             RecordStart="{!v.paginationRecordStart}"
+                                             RecordEnd="{!v.paginationRecordEnd}"
+                                             allPageNumber="{!v.paginationAllPageNumber}"
+                                             disabledprevious="{!v.paginationDisabledPrevious}"
+                                             disablednext="{!v.paginationDisabledNext}"
+                                             displayPageButtons="true"></c:eDealerPagination>
+                    </aura:if>
+                    
+                </div>
+            </div>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.sofInfo.sofCount > 0}">
+                    <c:eDealerNotRecordFound Message="{! v.noNonPaccarPartsToday +' '+ v.todayPSTDateString + ' (PST). ' + v.mdiInfo }"></c:eDealerNotRecordFound>
+
+                    <aura:set attribute="else">
+                        <c:eDealerNotRecordFound Message='{!$Label.c.Sof_not_available_to_load_Pl_cont_your_MDI_Analyst}'></c:eDealerNotRecordFound> 
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+    </aura:if>
+    
+    
+</aura:component>

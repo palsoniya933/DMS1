@@ -1,0 +1,237 @@
+.THIS {
+}
+
+/*.THIS .redIcon {
+--sds-c-icon-color-background: red;
+}*/
+.THIS .slds-tabs_scoped__nav
+{
+    flex-direction:unset;
+    width:inherit;
+}
+.THIS .table-responsive {
+    width: 100%;
+    overflow-x: scroll;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.THIS .redIcon svg{
+    fill: red !important;
+}
+.THIS .slds-table_cell-buffer.th-bg thead th,
+.THIS .th-bg thead th
+{
+        border-right: 1px solid #959292;
+}
+.THIS .slds-table_cell-buffer.th-bg thead th:last-child,
+.THIS .th-bg thead th:last-child
+{
+    border-right: 1px solid #808080;
+}
+.THIS .info-msg{
+    /*position: absolute;
+    right: 50%;
+    top: 7%; 
+    */
+    color: #898989;
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    width:100%;
+        border: 1px solid #fff36a;
+}
+.THIS .info-msg svg{
+    margin: 0px 5px 4px 5px;
+    vertical-align: middle;
+    fill: #898989;
+}
+/*.THIS lightning-icon.redIcon > lightning-primitive-icon > svg > use{
+fill: red;
+}*/
+
+.THIS .wrapper{
+    background: #fff;
+/*box-shadow: 0 2px 5px #d2d2d2;*/
+    border:solid 1px #cccccc;
+    border-radius: 6px;
+}
+
+.THIS .tab-li-mar ul li{margin-right:5px!important;font-size: 14px;
+    font-weight: bold;}
+.THIS .slds-tabs_default__item.slds-is-active{color:red!important;}
+.THIS .slds-tabs_default__item.slds-is-active:after{border-bottom:3px solid red!important;}
+.THIS .padding-bt{
+    padding: 2.5% 1% 7% 0%;font-family: 'RobotoRegular'!important;
+}
+.THIS.padding-10{padding: 4px 10px!important;}
+.THIS .slds-tabs_default__link[tabindex="0"]:focus{text-decoration:none!important;}
+.THIS .slds-hint-parent .slds-truncate span{font-weight:bold;color:#000;padding: 1% 0%!important;}
+.THIS .slds-hint-parent .slds-truncate{padding: 1% 0%!important;}
+.THIS .pd-lft span:first-child{padding-left: 1.5rem!important;}
+.THIS .slds-hint-parent td{vertical-align:top!important;}
+.THIS .tab-li-mar .th-color .slds-truncate{     
+    font-size: 14px;   
+    font-weight: bold!important;
+    color: #9F9F9F!important;}
+.THIS .h1-tag-splits{font-size: 14px;
+    font-weight: bold;
+    color: #9F9F9F;
+    padding-left: 13px;
+    margin: 12px 1px;}
+.THIS .th-bg{margin-top:2%;}
+.THIS .th-bg thead th{
+    background: #808080!important;
+    color: #fff!important;}
+.THIS .divbg{background: #e6f9ff}
+.THIS .slds-tabs_default__nav{border:0!important;padding-left: 1%;}
+.THIS .slds-tabs_default__content{padding:1% 0.9%!important;}
+.THIS  .icon-style {vertical-align:baseline;
+    color: #fff!important;
+    width: 20px;
+    height: 20px;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    background: #bfbf15;}
+
+
+.THIS .shipmenttabs .slds-tabs_default__nav{border:0!important;padding-left: 1%;width:98%;display:inline-block;}
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+.THIS .scrollbar::-webkit-scrollbar {
+    background-color:#fff;
+    width:16px
+}
+
+/* background of the scrollbar except button or resizer */
+.THIS .scrollbar::-webkit-scrollbar-track {
+    background-color:#fff
+}
+.THIS .scrollbar::-webkit-scrollbar-track:hover {
+    background-color:#f4f4f4
+}
+
+/* scrollbar itself */
+.THIS .scrollbar::-webkit-scrollbar-thumb {
+    background-color:#babac0;
+    border-radius:16px;
+    border:5px solid #fff
+}
+.THIS .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color:#a0a0a5;
+    border:4px solid #f4f4f4
+}
+
+/* set button(top and bottom of the scrollbar) */
+.THIS .scrollbar::-webkit-scrollbar-button {display:none}
+
+/* div box */
+
+.THIS .scrollbar {
+    
+    /* width: 25vw; */
+    min-width: 150px;
+    background: #fff;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+
+.THIS .info-msg{
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    width:50%
+}
+
+.THIS .overflow{min-height: 100vh}
+
+.THIS .popheading {
+    background: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.THIS .invDatacontainertabledata a{color:#000;}
+
+.THIS .invDatacontainertabledata{
+    padding: 0px 5px;
+    height: 42px;
+}
+
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:first-child {
+    
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /*border-left: 4px solid #ffa700;*/
+}
+
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:last-child {
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: uppercase;
+}
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:0px;
+}
+
+.THIS .invDatacontainertable{
+    width:100%;
+}
+
+.THIS .blueBg svg {
+    fill:#3cc936!important;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.THIS .shipmenttabs{
+    width:1167px !important;
+    
+}
+.THIS .contentMin .shipmenttabs{
+    width:950px !important;
+    
+}
+.THIS .shipmenttabs  .slds-dropdown_length-with-icon-10
+{
+    max-height: calc((1.5rem + 1rem) * 5);
+}
+.THIS .slds-tabs_default__content .slds-table {
+    width: 100% !important;
+    /*table-layout: fixed;*/
+}
+
+.THIS .slds-tabs_default .slds-tabs_default__content {
+    width: 100%;
+}
+
+.THIS .tab-li-mar {
+    min-height: 370px;
+}
+
+.THIS .no-truncate {
+    text-overflow: initial;
+    overflow: initial !important;
+    white-space: normal !important;
+}

@@ -1,0 +1,135 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller="EDealerSuggestedOrdersController">
+    
+    <aura:html tag="style">
+        .slds-modal__container {
+        margin: 0 auto;
+        width: 80%;
+        max-width:80%; 
+        min-width: 80%;
+        }
+    </aura:html>
+    
+    
+    
+    <!-- this will save the selected location -->    
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- handler part click event --> 
+    <aura:handler event="c:OpenPartEvent" action="{!c.partClicked}"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="false"/>
+    
+    <!-- used to save the selected parts -->
+    <aura:attribute name="partNumber" type="string" />
+    
+    <!-- used to hide / show the Part Screen -->
+    <aura:attribute name="displayParts" type="boolean" />
+    
+    <!-- SOF file Created Date -->
+    <aura:attribute name="sofFileCreatedDate" type="Date" />
+    
+    <!-- Selected tab id -->
+    <aura:attribute name="selecetdTabID" type="String" default="ALLPARTS" />
+    
+    <!-- sof additional information -->
+    <aura:attribute name="sofInfo" type="Object" />
+    
+    <!-- calling apex class on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.selectedLoc}" action="{!c.doinit}"/>
+    
+    <aura:method name="refreshSOFTabData" action="{!c.defaultSOFTab}" />
+    
+    
+    <!-- Top section -->
+    <div class="container">
+        <aura:if isTrue="{!!v.displayLoading}">
+            <lightning:tabset aura:id="tabs" onselect="{!c.checkClickedTab}">
+                <lightning:tab label='{!$Label.c.All_Parts}' id="ALLPARTS">
+                    <aura:if isTrue="{!v.selecetdTabID == 'ALLPARTS'}">
+                        <c:eDealerSuggestedAllParts
+                                                    dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                    division="{!v.userDetail.division}"
+                                                    sofInfo="{!v.sofInfo}"
+                                                    isSpecialOrdersSOF="true"
+                                                    isShowEstPrice="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Price_Inquiry__c)}"
+                                                    currencyCode="{!v.userDetail.currencyCode}"
+                                                    />
+                    </aura:if>
+                </lightning:tab>
+                <lightning:tab label='{!$Label.c.PDC_Parts}' id="PDCPARTS">
+                    <aura:if isTrue="{!v.selecetdTabID == 'PDCPARTS'}">
+                        <c:eDealerSuggestedPDCStockOrders
+                                                          dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                          division="{!v.userDetail.division}"
+                                                          sofInfo="{!v.sofInfo}"
+                                                          isSpecialOrdersSOF="true"
+                                                          isUserAddPartsInCart="{!v.userDetail.accessibleDealersLocation[0].Interactive_Order_Entry__c}"
+                                                          isShowEstPrice="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Price_Inquiry__c)}"
+                                                          currencyCode="{!v.userDetail.currencyCode}"
+                                                          />
+                    </aura:if>
+                </lightning:tab>
+                <lightning:tab label='{!$Label.c.DSP_Parts}' id="DSPPARTS">
+                    <aura:if isTrue="{!v.selecetdTabID == 'DSPPARTS'}">
+                        <c:eDealerSuggestedDSPOrders
+                                                     dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                     division="{!v.userDetail.division}"
+                                                     sofInfo="{!v.sofInfo}"
+                                                     isSpecialOrdersSOF="true"
+                                                     isUserAddPartsInCart="{!v.userDetail.accessibleDealersLocation[0].Interactive_Order_Entry__c}"
+                                                     isShowEstPrice="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Price_Inquiry__c)}"
+                                                     currencyCode="{!v.userDetail.currencyCode}"
+                                                     />
+                    </aura:if>
+                </lightning:tab>
+                <lightning:tab label='{!$Label.c.Dual_Channel_Parts}' id="DUALPARTS">
+                    <aura:if isTrue="{!v.selecetdTabID == 'DUALPARTS'}">
+                        <c:eDealerSuggestedDualChannelOrders
+                                                             dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                             division="{!v.userDetail.division}"
+                                                             sofInfo="{!v.sofInfo}"
+                                                             isSpecialOrdersSOF="true" 
+                                                             isUserAddPartsInCart="{!v.userDetail.accessibleDealersLocation[0].Interactive_Order_Entry__c}"
+                                                             isShowEstPrice="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Price_Inquiry__c)}"
+                                                             currencyCode="{!v.userDetail.currencyCode}"
+                                                             />
+                    </aura:if>
+                </lightning:tab>
+            </lightning:tabset>
+        </aura:if>
+    </div>
+    
+    <aura:if isTrue="{!v.displayParts}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container modalContent partDetailModal">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! c.closePartModel }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">{!$Label.c.Close}</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    
+                    <c:eDealerPartDetailModal dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                              division="{!v.userDetail.division}"
+                                              partNumber = "{!v.partNumber}"/>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Neutral action" onclick="{! c.closePartModel }"/>
+                </footer>                
+            </div>            
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+</aura:component>

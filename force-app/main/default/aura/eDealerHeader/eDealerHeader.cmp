@@ -1,0 +1,219 @@
+<aura:component controller="EDealerHeaderController"  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+                access="global">
+    
+    <!-- register event when menu is clicked -->
+    <aura:registerEvent name="menuevent" type="c:eDealerMenuClickedEvent"/>
+    
+    <!-- saving entered -->
+    <aura:attribute name="enteredTxt" type="string" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- This will save the item present in cart -->
+    <aura:attribute name="cartSummary" type="object"/>
+    
+    <!-- Selected Dealer Location/code -->
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="selectedMenu" type="String" />
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- Selected Dealer Location/code -->
+    <aura:attribute name="selectedPicklistItem" type="String" default="All" />
+    
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- Event Handler  -->
+    <aura:handler event="c:eDealerCartUpdateEvent" action="{!c.doInit}"/>
+    
+    <aura:attribute name="isCsrEnabled" type="Boolean" />
+    
+    <aura:attribute name="showCsrAndPartNumber" type="Boolean" default="false"/>
+    
+    <aura:handler event="c:eDealerMenuClickedEvent" action="{!c.handleMenuChange}"/> 
+    
+    <!-- header component container -->
+    <div class="headerCmp">  
+        <div class="navbar_content">
+            <!-- company Logo -->
+            <div class="logos">
+                <div class="companylogo">
+                    <aura:if isTrue="{!v.userDetail.division == 'P'}">
+                        <img class="headerCmp-top-logo" src="{!$Resource.EDealerResources + '/Logos/1200px-Peterbilt_logo.svg.png'}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.userDetail.division == 'K'}">
+                        <div class="slds-m-right_small slds-m-left_small">
+                            <img class="headerCmp-top-logo" src="{!$Resource.EDealerResources + '/Logos/KENWORTH.png'}" />
+                        </div>
+                        
+                    </aura:if>
+                </div>
+                
+                <div class="dealername">
+                    <p class="compnyname">{!v.userDetail.dealerGroupName}</p>
+                </div> 
+                
+                <div class="rightSideHeader" >
+                    <ul>
+                        <li>
+                            <div class="search-form">
+                                <aura:if isTrue="{!(v.selectedMenu=='csrandvolumnsales'|| v.selectedMenu=='createCSR' || v.selectedMenu=='csrdetail'|| v.selectedMenu=='partnumberdetail' || v.selectedMenu=='csrlisting')}">
+                                    <select name="cars" id="cars" class="selectall" onchange="{!c.handlePicklist}"  >
+                                        <option value="All">{!$Label.c.Select}</option>  
+                                        
+                                        <aura:if isTrue="{!v.isCsrEnabled == true}">
+                                            <aura:if isTrue="{!(v.selectedMenu=='csrandvolumnsales'|| v.selectedMenu=='createCSR' || v.selectedMenu=='csrdetail'|| v.selectedMenu=='partnumberdetail' || v.selectedMenu=='csrlisting')}">
+                                                <option value="CSR">{!$Label.c.Search_csr}</option>
+                                            </aura:if>
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.isCsrEnabled == true}">
+                                            <aura:if isTrue="{!(v.selectedMenu=='csrandvolumnsales'|| v.selectedMenu=='createCSR' || v.selectedMenu=='partnumberdetail'|| v.selectedMenu=='csrdetail' || v.selectedMenu=='csrlisting')}">
+                                                <option value="CSR Part #">{!$Label.c.Search_csr_part_number}</option>
+                                            </aura:if>
+                                        </aura:if>
+                                    </select>                                
+                                    <input aura:id="gsearch"                                       
+                                           name="search here" 
+                                           placeholder= '{!$Label.c.Search}'
+                                           title="Enter search keyword"
+                                           value="{!v.enteredTxt}"
+                                           onkeyup="{!c.handleEntered}"
+                                           />     
+                                    <aura:set attribute="else">
+                                        <select name="cars" id="cars" class="selectall" onchange="{!c.handlePicklist}" disabled="{!v.selectedLocation.listSelectedLoc.length > 1?true : false}" >
+                                            <option value="All">{!$Label.c.Select}</option>  
+                                            <aura:if isTrue="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Availability_Inquiry__c)}">
+                                                <option value="Part Availability">{!$Label.c.Part_Availability}</option> 
+                                            </aura:if>
+                                            <aura:if isTrue="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Order_Inquiry__c)}">
+                                                <option value="Order Tracking">{!$Label.c.Order_Tracking}</option> 
+                                            </aura:if>
+                                            <option value="Dealer PO">{!$Label.c.Dealer_PO}</option>
+                                            
+                                        </select>                                
+                                        <input aura:id="gsearch"                                       
+                                               name="search here" 
+                                               placeholder= '{!$Label.c.Search}'
+                                               title="Enter search keyword"
+                                               value="{!v.enteredTxt}"
+                                               onkeyup="{!c.handleEntered}"
+                                               disabled="{!v.selectedLocation.listSelectedLoc.length > 1?true : false}"/>     
+                                    </aura:set>
+                                </aura:if> 
+                            </div>
+                            <lightning:icon iconName="utility:search" class="serch-icon-align select-order"
+                                            alternativeText="Search" 
+                                            title="search" 
+                                            onclick="{!c.handleEnteredValue}"
+                                            size="xx-small"/>                            
+                        </li>
+                        <li>
+                            
+                        </li>
+                       
+                        <li>
+                            <span class="{!or(v.selectedLocation.listSelectedLoc.length > 1, v.userDetail.accessibleDealersLocation[0].Interactive_Order_Entry__c != true)?'notification disabledEvent':'notification select-order'}" onclick="{!c.gotoCartPage}" >                                    
+                                <img src="{!$Resource.EDealerResources+'/MenuIcons/customShoppingCart.svg'}" alt="cart"/>
+                                <aura:if isTrue="{!v.cartSummary.total > 0}">
+                                    <span class="badge">{!v.cartSummary.total}</span>
+                                </aura:if>       
+                            </span>
+                        </li>
+                        
+                        <!--Announcements Starts--> 
+						<li>
+                        	<c:eDealerBellNotifications />
+                        </li>
+						<!--Announcements Ends-->
+                        
+                        <!--<li>
+                            <span class="notification">                                
+                                <img src="{!$Resource.EDealerResources+'/MenuIcons/customNotificationBell.svg'}" alt="notification" title="Connected"/>
+                                <span class="badge">3</span>
+                            </span> 
+                        </li>-->
+                        <!--<li>
+                            <span class="help">
+                                <img src="{!$Resource.EDealerResources+'/MenuIcons/customHelpOutline.svg'}" alt="help"/>
+                            </span> 
+                        </li>-->
+                        <li>
+                            <lightning:avatar variant="circle" 
+                                              src="{!v.userDetail.photoUrl}" 
+                                              initials="AW" 
+                                              fallbackIconName="standard:person_account" 
+                                              alternativeText="{!v.userDetail.userName}"
+                                              class="slds-m-right_small select-order"
+                                              onclick="{!c.handleClick}"/>  
+                            
+                            <div aura:id="myDropdown" 
+                                 class="dropdown-content userDropDown" 
+                                 onmouseleave="{!c.handleMouseOutButton}">
+                                <ul>
+                                    <li>
+                                        <a href="/s/profile/home" 
+                                           name="pofile" 
+                                           onclick="{!c.handleSelection}">
+                                            
+                                            <lightning:icon iconName="utility:user" size ="xx-small" alternativeText="user" title="user" />
+                                            {!$Label.c.Edealer_Header_User_Profile}</a></li>
+                                    <li>
+                                        <a href="/s/settings/home" 
+                                           name="Settings">
+                                            <lightning:icon iconName="utility:settings" size ="xx-small" alternativeText="settings" title="settings" />
+                                            {!$Label.c.Edealer_Header_User_Setting}</a>  
+                                    </li>
+                                    <li>
+                                        <a href="/s/comm-my-account" 
+                                           name="information" 
+                                           onclick="{!c.handleSelection}">
+                                            <lightning:icon iconName="utility:moneybag" size ="xx-small" alternativeText="moneybag" title="moneybag" />
+                                            {!$Label.c.Edealer_Header_User_Account_Information}</a>  
+                                    </li>
+                                    <li>
+                                        <a href="/s/account-management" 
+                                           name="management" 
+                                           onclick="{!c.handleSelection}">
+                                            <lightning:icon iconName="utility:money" size ="xx-small" alternativeText="money" title="money" />
+                                            {!$Label.c.Edealer_Header_User_Account_Management}</a>  
+                                    </li>
+                                    <li>
+                                        <a href="" 
+                                           name="message" 
+                                           onclick="{!c.handleSelection}">
+                                            <lightning:icon iconName="utility:email" size ="xx-small" alternativeText="email" title="email" />
+                                            {!$Label.c.Edealer_Header_User_Message}</a>  
+                                    </li>
+                                    <li>
+                                        <a href="" 
+                                           name="support" 
+                                           onclick="{!c.handleSelection}">
+                                            <lightning:icon iconName="utility:call" size ="xx-small" alternativeText="call" title="call" />
+                                            {!$Label.c.Edealer_header_user_Contact_Support}</a>  
+                                    </li>
+                                    <li>
+                                        <a href="../secur/logout.jsp" 
+                                           name="logout">
+                                            <lightning:icon iconName="utility:logout" size ="xx-small" alternativeText="logout" title="logout" />
+                                            {!$Label.c.Edealer_Header_User_Logout}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>   <!-- search Section -->
+            </div>  <!-- navbar_content -->
+            
+        </div>  <!-- logos -->   
+        
+        
+    </div>
+    
+    
+</aura:component>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Planning Breadth</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;action_required&quot; : &quot;ACCIÓN REQUERIDA&quot;,
+&quot;dealer_response_or_note&quot; : &quot;RESPUESTA O NOTA DEL CONCESIONARIO&quot;,
+&quot;grp_nbr&quot; : &quot;NÚMERO DE GRUPO&quot;,
+&quot;loc&quot; : &quot;LOCALIZACIÓN&quot;,
+&quot;item&quot; : &quot;NÚMERO DE GRUPO&quot;,
+&quot;current_abc&quot; : &quot;ABC ACTUAL&quot;,
+&quot;current_si&quot; : &quot;INDICADOR DE VENTA ACTUAL&quot;,
+&quot;distchan&quot; : &quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;dlrsplr_code&quot; : &quot;CÓDIGO DE PROVEEDOR DEL CONCESIONARIO&quot;,
+&quot;stock_class&quot; : &quot;CLASE DE STOCK&quot;,
+&quot;date_added_to_dif&quot; : &quot;FECHA AÑADIDA AL DIF&quot;,
+&quot;dnet&quot; : &quot;DNET&quot;,
+&quot;current_minss&quot; : &quot;STOCK MÍNIMO DE SEGURIDAD ACTUAL&quot;,
+&quot;current_mp&quot; : &quot;CURRENT MP&quot;,
+&quot;current_comment&quot; : &quot;ACTUAL COMENTARIO&quot;,
+&quot;sunset_date&quot; : &quot;FECHA DE VENCIMIENTO&quot;,
+&quot;current_12m_dmd&quot; : &quot;DEMANDA ACTUAL 12M&quot;,
+&quot;current_12m_hits&quot; : &quot;ACTUALES 12M DE VISITAS&quot;,
+&quot;abctots&quot; : &quot;TOTS ABC&quot;,
+&quot;maap_loc&quot; : &quot;LOCALIZACIÓN MAAP&quot;,
+&quot;item_desc&quot; : &quot;DESCRIPCIÓN DE NÚMERO DE PARTE&quot;,
+&quot;date_of_exception&quot; : &quot;FECHA DE PEDIDO&quot;,
+&quot;order_number&quot; : &quot;NÚMERO DE ORDEN&quot;,
+&quot;order_type&quot; : &quot;TIPO DE PEDIDO&quot;,
+&quot;planning_breadth_exception&quot; : &quot;PLANIFICACIÓN DE EXCEPCIONES DE AMPLIA&quot;
+}</value>
+    </values>
+</CustomMetadata>

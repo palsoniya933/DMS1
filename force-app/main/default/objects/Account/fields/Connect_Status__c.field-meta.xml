@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Status__c</fullName>
+    <label>Connect Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BBT SENT TO PERFIT</fullName>
+                <default>false</default>
+                <label>BBT SENT TO PERFIT</label>
+            </value>
+            <value>
+                <fullName>BBT FAILED</fullName>
+                <default>false</default>
+                <label>BBT FAILED</label>
+            </value>
+            <value>
+                <fullName>WAITING ON ADDENDUM</fullName>
+                <default>false</default>
+                <label>WAITING ON ADDENDUM</label>
+            </value>
+            <value>
+                <fullName>WAITING ON USER AGREEMENT</fullName>
+                <default>false</default>
+                <label>WAITING ON USER AGREEMENT</label>
+            </value>
+            <value>
+                <fullName>COLLECTING DATA FROM CUSTOMER</fullName>
+                <default>false</default>
+                <label>COLLECTING DATA FROM CUSTOMER</label>
+            </value>
+            <value>
+                <fullName>SYSTEM ORDER SENT TO PERFIT</fullName>
+                <default>false</default>
+                <label>SYSTEM ORDER SENT TO PERFIT</label>
+            </value>
+            <value>
+                <fullName>IMPLEMENTATION IN PROCESS</fullName>
+                <default>false</default>
+                <label>IMPLEMENTATION IN PROCESS</label>
+            </value>
+            <value>
+                <fullName>PENDING-CUSTOMER</fullName>
+                <default>false</default>
+                <label>PENDING-CUSTOMER</label>
+            </value>
+            <value>
+                <fullName>PENDING-PACCAR</fullName>
+                <default>false</default>
+                <label>PENDING-PACCAR</label>
+            </value>
+            <value>
+                <fullName>IMPLEMENTED</fullName>
+                <default>false</default>
+                <label>IMPLEMENTED</label>
+            </value>
+            <value>
+                <fullName>LOST-REASSIGNED</fullName>
+                <default>false</default>
+                <label>LOST-REASSIGNED</label>
+            </value>
+            <value>
+                <fullName>LOST-RETURNED</fullName>
+                <default>false</default>
+                <label>LOST-RETURNED</label>
+            </value>
+            <value>
+                <fullName>ABANDONED</fullName>
+                <default>false</default>
+                <label>ABANDONED</label>
+            </value>
+            <value>
+                <fullName>INLAND ORDERING SYSTEM</fullName>
+                <default>false</default>
+                <label>INLAND ORDERING SYSTEM</label>
+            </value>
+            <value>
+                <fullName>RETRAINING IN PROCESS</fullName>
+                <default>false</default>
+                <label>RETRAINING IN PROCESS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

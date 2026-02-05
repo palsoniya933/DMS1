@@ -1,0 +1,41 @@
+<template>
+	<lightning-spinner lwc:if={isLoading} alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+	<template lwc:if={commentFound}>
+		<table
+			class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-p-top_medium slds-p-left_small slds-p-right_medium">
+			<thead>
+				<tr class="slds-line-height_reset">
+					<template for:each={columnLabelByApiName} for:item="columnName" for:index="index">
+						<th key={columnName.label} scope="col" class="heading">{columnName.label}</th>
+					</template>
+				</tr>
+			</thead>
+			<tbody>
+				<template for:each={getComments} for:item="comment" for:index="index">
+					<tr class="slds-hint-parent" key={comment.cmtId}>
+						<td class="data">
+							<div class="slds-truncate">
+								<p>{comment.cmtDate} &nbsp; {comment.cmtTime}</p>
+								<!-- <p><lightning-formatted-date-time value={comment.cmtTime} hour="2-digit" minute="2-digit">
+								</lightning-formatted-date-time></p> -->
+							</div>
+						</td>
+						<td class="data">
+							<div class="slds-truncate">{comment.cmtUser}</div>
+						</td>
+						<td class="data custom-comment-cell">
+							{comment.cmt}
+						</td>
+						<td class="data custom-comment-cell">
+							 {comment.cmtDesc}
+						</td>
+					</tr>
+				</template>
+			</tbody>
+		</table>
+	</template>
+	<template if:true={showError}>
+		<c-edealer-no-record-found-lwc message={label.EDealer_CSR_Comments_Not_Found}>
+		</c-edealer-no-record-found-lwc>
+	</template>
+</template>

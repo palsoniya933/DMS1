@@ -1,0 +1,253 @@
+<template>
+    <div class = "slds-m-around_medium">
+    <lightning-card class="">
+        <!-- SPINNER -->
+        <template if:true={displayLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+        
+        <template if:false={displayLoading} >
+            <lightning-tabset>
+                <lightning-tab label={tabtitle}>
+
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_12-of-12 minMargin">
+                            <div class="slds-m-around_x-small">
+                                <div class="slds-scrollable_y scrollbarCls" >
+                                    <table class="slds-table_fixed-layout bgpad10 slds-table_resizable-cols" role="grid">
+                                        <tr>
+                                                <template for:each={headertilenames} for:item="tileName">
+                                                    <td key={tileName.label}>
+                                                        <div class="headerName slds-truncate">{tileName.label}</div>
+                                                    </td>
+                                                </template>
+                                                
+                                        </tr>
+                                        <tr>
+                                            <template if:true={isActiveListing}>
+                                                <td>
+                                                    <div class="headerCount slds-truncate" name="All">
+                                                        <lightning-formatted-number value={totalCsr}></lightning-formatted-number>
+
+                                                    </div>
+                                            </td>
+                                            <td>
+                                                <div class="headerCount slds-truncate" name="All">
+
+                                                    <lightning-formatted-number value={postedcsr}></lightning-formatted-number>
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="headerCount slds-truncate" name="All">
+                                                    <lightning-formatted-number value={deniedcsr}></lightning-formatted-number>
+        
+                                                </div>
+                                            </td>
+                                    
+                                            </template>
+                                            <template if:true={isDraftListing}>
+                                                <td>
+                                                    <div class="headerCount slds-truncate" name="All">
+                                                        <lightning-formatted-number value={draftcsr}></lightning-formatted-number>
+            
+                                                    </div>
+                                                </td>
+                                            </template>
+                                            <template if:true={isPendingListing}>
+                                                
+                                                <td>
+                                                    <div class="headerCount slds-truncate" name="All">
+                                                        <lightning-formatted-number value={totalpendingcsr}></lightning-formatted-number>
+            
+                                                    </div>
+                                                </td>
+                                            
+                                                <td>
+                                                    <div class="headerCount slds-truncate" name="All">
+                                                        <lightning-formatted-number value={inprocesscsr}></lightning-formatted-number>
+            
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="headerCount slds-truncate" name="All">
+                                                        <lightning-formatted-number value={waitingresponsecsr}></lightning-formatted-number>
+            
+                                                    </div>
+                                                </td>
+                                                
+                                                
+                                            </template>
+                                                
+                                                <td>
+                                                        
+                                                </td>
+                                                <td>
+                                                
+                                            </td>
+                                            <td>
+                                                
+                                        </td>
+                                        <td>
+                                        
+                                    </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <template if:true={showlisting}>
+
+                                <div class="slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12 right-content buttoncontainer">
+                                    <button class="download-btn" onclick={downloadCsv}><img src={excelDownloadLogo} class="imgicon-style-align"/>
+                                        {downloadlabel}</button>	
+                                        <span style="display:none">
+                                            <c-e-dealer-download-excel-l-w-c data-id="childLwcCompId" ></c-e-dealer-download-excel-l-w-c>
+                                        </span>
+                                
+                                    </div>
+                                    <!--pagination header-->
+                                    <div class="slds-size_1-of-1 slds-p-bottom_x-small slds-medium-size_9-of-12 slds-large-size_9-of-12">
+                                        <c-edealer-pagination-lwc total-records={CSRDataHeader}
+                                                                pagination-list={CSRDataHeader}
+                                                                page-number={pageNumberHeader}
+                                                                page-size={paginationPageSizeHeader}
+                                                                view-record={paginationPageSize}
+                                                                display-page-buttons="false"
+                                                                ontotalrecordchange={handleTotalRecordChange}
+                                                                onhandlenext={handleNextButton}
+                                                                onhandleprev={handlePrevButton}
+                                                                total-competitors={totalCsrHeader}
+                                                                onpagenumberchange={handleChangeInPageNumber}
+                                                                onhandlepagenumberchange={handlePageNumberChange}></c-edealer-pagination-lwc>
+                                    </div>
+                                    <!--dataTable-->
+                                         <div class="invDatacontainertablecontainer">
+                                        <table class="slds-table_cell-buffer invDatacontainertable">
+                                            <thead class="invDatacontainertableheading">
+                                                <tr class="slds-line-height_reset">
+                                                    <template for:each={detailtablecolumns} for:item="item">
+                                                        <td key={item.label} class="invDatacontainertableheading">{item.label}</td>
+                                                    </template>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template for:each={csrViewData} for:item="csr" for:index="index">
+                                                    <tr key={csr.CSRNumber} class="row-design">
+                                                        <td class="csrpartstabledata" data-label="SR#">{csr.sr}</td>
+                                                        <td class="csrpartstabledata" data-label="DealerId">
+                                                            {csr.dealercode}</td>
+                                                            <td class="csrpartstabledata" data-label="DealerType">
+                                                                {csr.dealertype}</td>  
+                                                                <td class="csrpartstabledata" data-label="CSR#">{csr.csrnumber}</td>
+                                                                <td class="csrpartstabledata" data-label="Phase">{csr.phase}</td>
+                                                                <td class="csrpartstabledata" data-label="CSR Type">{csr.csrtype}</td>
+                                                        <td class="csrpartstabledata" data-label="Created By">{csr.createdby}</td>
+                                                        <td class="csrpartstabledata" data-label="Last Updated">{csr.last_updated_at}</td>
+                                                        <td class="csrpartstabledata" data-label="Expiration Date">
+                                                            
+                                                            <template if:true={csr.isExpired}>
+                                                                <p class="expiredText">{csr.expiration_date} <lightning-icon class="expiration_icon" icon-name="utility:expired" variant="error" title="Expired" size="x-small"></lightning-icon></p>
+                                                                
+                                                            </template>
+                                                        <template if:false={csr.isExpired}>
+                                                            <template if:true={csr.renewalEnabled}>
+                                                                <p class="tobeexpiredText">{csr.expiration_date}</p>
+                                                            </template>
+                                                            <template if:false={csr.renewalEnabled}>
+                                                                {csr.expiration_date}
+                                                            </template>
+                                                            
+                                                        </template>
+                                                        </td>
+                                                        <td class="csrpartstabledata" data-label="CommentsFiles">
+                                                            <template if:true={csr.hascomments}>
+                                                                <button class="iconbutton" onclick={handleOpenCommentsModal} data-index={index}>
+                                                                    <lightning-icon icon-name="utility:chat" alternative-text="Comment" title="Comment" size="small"></lightning-icon>
+                                                                </button>
+                                                            </template>    
+                                                            <template if:true={csr.hasfiles}>
+                                                                <button class="iconbutton" onclick={handleOpenFilesModal} data-index={index}>
+                                                                    <lightning-icon icon-name="doctype:attachment" alternative-text="Files" title="Files" size="small"></lightning-icon>
+                                                                </button>
+                                                            </template>    
+                                                        </td>
+                                                        <td class="csrpartstabledata" data-label="Status">{csr.status}</td>
+                                                        <td class="csrpartstabledata" data-label="Actions">
+                                                            <div class="slds-size_1-of-1">
+                                                                <button class="iconbutton">
+                                                                    <lightning-icon onclick={handlePreview} data-index={index} icon-name="action:preview" alternative-text="Preview" title="Preview" size="xx-small"></lightning-icon>
+                                                                </button>	
+                                                                <template if:true={isDraftListing}>
+                                                                    <button class="iconbutton">
+                                                                        <lightning-icon onclick={handleEdit} data-index={index} icon-name="action:edit" alternative-text="Edit" title="Edit" size="xx-small"></lightning-icon>
+                                                                    </button >
+                                                                   
+                                                                    <!-- removed until we have the API to do this action -->
+                                                                    <button class="iconbutton">
+                                                                        <lightning-icon  onclick={cancelCsr} data-index={index}  name="delete_btn" icon-name="action:delete" alternative-text="Delete"  title="Delete" size="xx-small"></lightning-icon>
+                                                                    </button>
+                                                                </template>
+                                                            
+                                                                <template if:true={csr.showrenewbutton}> 
+                                                                    <button  disabled={isButtonDisabled} class="iconbutton">
+                                                                        <lightning-icon icon-name="action:refresh" onclick={renewCsr} name="renew_btn" alternative-text="Renew" title="Renew" size="xx-small"  data-index={index}></lightning-icon>
+                                                                    </button>
+                                                                </template>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                                
+                                            </tbody>
+                                        </table>                                
+                                    </div>
+
+                                    <!--pagination bottom-->
+                                    <div class="slds-size_1-of-1 slds-medium-size_9-of-12 slds-large-size_9-of-12">
+                                        <c-edealer-pagination-lwc total-records={CSRData}
+                                                                pagination-list={CSRData}
+                                                                page-number={pageNumber}
+                                                                page-size={paginationPageSize}
+                                                                view-record={paginationPageSize}
+                                                                display-page-buttons="false"
+                                                                ontotalrecordchange={handleTotalRecordChange}
+                                                                onhandlenext={handleNextButton}
+                                                                onhandleprev={handlePrevButton}
+                                                                total-competitors={totalCsr}
+                                                                onpagenumberchange={handleChangeInPageNumber}
+                                                                onhandlepagenumberchange={handlePageNumberChange}></c-edealer-pagination-lwc>
+                                    </div>
+        
+                                </template>
+                                <template if:true={APICalled}>
+                                    <br />
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </lightning-tab>
+            
+            </lightning-tabset>
+        
+    </template>
+    </lightning-card>
+    </div>
+    <template if:true={openCommentsModal}>
+        <c-e-dealer-csr-listing-comment-container csrnumber={csrNumber} phase={csrPhase} onclosecommentmodal={handleShowListing}></c-e-dealer-csr-listing-comment-container>
+    </template>
+    <template if:true={openFilesModal}>
+        <c-e-dealer-csr-listing-file-container csrnumber={csrNumber} phase={csrPhase} dealercode={csrDealerCode} onclosefilesmodal={handleShowListing}></c-e-dealer-csr-listing-file-container>
+    </template>
+
+    <c-edealer-confirmation-modal message={renewalConfirmationMessage} confirm-label={label.EDealer_Yes}
+		cancel-label={label.EDealer_No} visible={isDialogVisible_renew} name="confirmModal"
+		onconfirmation={renewCsr}>
+	</c-edealer-confirmation-modal>
+    
+    <c-edealer-confirmation-modal message={cancelationConfirmationMessage} confirm-label={label.EDealer_Yes}
+    cancel-label={label.EDealer_No} visible={isDialogVisible_cancel} name="confirmModal"
+    onconfirmation={cancelCsr}>
+    </c-edealer-confirmation-modal>
+    
+</template>

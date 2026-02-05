@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Supplier Cross Reference</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp&quot;:&quot;NÚMERO DE GRUPO&quot;,
+&quot;loc&quot; :&quot;LOCAL&quot;,
+&quot;dlrsplrcd&quot; :&quot;CÓDIGO DE PROVEEDOR DE CONCESIONARIO&quot;,
+&quot;splrname&quot; :&quot;NOMBRE DE PROVEEDOR&quot;,
+&quot;dmdgroup&quot; :&quot;CÓDIGO DE PROVEEDOR  &quot;,
+&quot;distchan&quot; :&quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;leadtime&quot; :&quot;TIEMPO DE ENTREGA&quot;,
+&quot;transittime&quot; :&quot;TIEMPO DE TRÁNSITO&quot;,
+&quot;minimumname&quot; :&quot;NOMBRE MÍNIMO&quot;,
+&quot;managedsw&quot; :&quot;SWADMINISTRADO&quot;,
+&quot;monday&quot; :&quot;LUNES&quot;,
+&quot;tuesday&quot; :&quot;MARTES&quot;,
+&quot;wednesday&quot; :&quot;MIÉRCOLES&quot;,
+&quot;thursday&quot; :&quot;JUEVES&quot;,
+&quot;friday&quot; :&quot;VIERNES&quot;,
+&quot;saturday&quot; :&quot;SÁBADO&quot;,
+&quot;sunday&quot; :&quot;DOMINGO&quot;
+}</value>
+    </values>
+</CustomMetadata>

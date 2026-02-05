@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>District_Brands__c</fullName>
+    <description>Paccar Brands District</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Paccar Brands District</inlineHelpText>
+    <label>District (Brands)</label>
+    <length>12</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

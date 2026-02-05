@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CNR RSV</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;dealer_code&quot;,
+&quot;label&quot;: &quot;Concessionnaire&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;part&quot;,
+&quot;label&quot;: &quot;# de pièce&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;partdescription&quot;,
+&quot;label&quot;: &quot;Description de la pièce&quot;,
+&quot;order&quot; : 3,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;saleableindicator&quot;,
+&quot;label&quot;: &quot;Indicateur de commercialisation&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;limitqty&quot;,
+&quot;label&quot;: &quot;Quantité limite&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Number&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

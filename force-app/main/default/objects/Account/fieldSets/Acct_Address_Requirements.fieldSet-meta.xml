@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Acct_Address_Requirements</fullName>
+    <description>Require Shipping City, State/Prov, Zip code in the Account Address Information.</description>
+    <displayedFields>
+        <field>ShippingCity</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>true</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>ShippingState</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>true</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>ShippingPostalCode</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>true</isRequired>
+    </displayedFields>
+    <label>Acct Address Requirements</label>
+</FieldSet>

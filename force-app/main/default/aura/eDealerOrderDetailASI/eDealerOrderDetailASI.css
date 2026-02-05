@@ -1,0 +1,76 @@
+.THIS .v1{
+    border-left: 3px solid green;
+    height: 94px;
+    position: absolute;
+    top: 32%;
+    left: 44.6%;
+}
+
+
+.THIS .twenty-order-comfirm{ width:20%!important;}
+.THIS .fourty-order-update{width:40%!important;}
+.THIS .sixty-per{width:60%!important;}
+.THIS .eighty-part-shipped{width:80%!important;}
+.THIS .eightysix-transit{width:89%!important;}
+.THIS .hundread-delivered{width:100%!important;}
+
+
+.THIS .ul-li-style{
+    height: auto;
+    position: absolute;
+    overflow: auto;
+    width: 25%;top: 100%;}   
+  .THIS .ul-li-style ul li{margin: 3% 3%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #a2a2a2;}           
+.THIS .ul-li-style ul li span{font-weight: bold;font-size: 0.9rem;color: #000;line-height: 2rem;}  
+
+.THIS .twenty-order-comfirm{ width:20%!important;}
+.THIS .fourty-order-update{width:40%!important;}
+.THIS .sixty-per{width:60%!important;}
+.THIS .eighty-part-shipped{width:80%!important;}
+.THIS .eightysix-transit{width:89%!important;}
+.THIS .hundread-delivered{width:100%!important;}
+
+
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+.THIS .scrollbar::-webkit-scrollbar {
+    background-color:#fff;
+    width:16px
+}
+
+/* background of the scrollbar except button or resizer */
+.THIS .scrollbar::-webkit-scrollbar-track {
+    background-color:#fff
+}
+.THIS .scrollbar::-webkit-scrollbar-track:hover {
+    background-color:#f4f4f4
+}
+
+/* scrollbar itself */
+.THIS .scrollbar::-webkit-scrollbar-thumb {
+    background-color:#babac0;
+    border-radius:16px;
+    border:5px solid #fff
+}
+.THIS .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color:#a0a0a5;
+    border:4px solid #f4f4f4
+}
+
+/* set button(top and bottom of the scrollbar) */
+.THIS .scrollbar::-webkit-scrollbar-button {display:none}
+
+/* div box */
+ 
+.THIS .scrollbar {
+    height: 75vh;
+    width: 25vw;
+    min-width: 150px;
+    background: #fff;
+    overflow-y: scroll}
+.THIS .overflow{min-height: 100vh}

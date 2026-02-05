@@ -1,0 +1,61 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- This will save the Tab Name -->
+    <aura:attribute name="tabName" type="string"/>
+    <aura:attribute name="isSpecialOrdersSOF" type="Boolean" />
+    <aura:attribute name="totalSuggestedParts" type="Integer" default="0"/>
+    <aura:attribute name="totalSuggestedPartsQty" type="Integer" default="0"/>
+    <aura:attribute name="totalQtyAddedInCart" type="Integer" default="0"/>
+    <aura:attribute name="totalQtyOrderedToday" type="Integer" default="0"/>
+    
+    <aura:attribute name="suggestedOrders" type="Object[]" />
+    
+    <!-- SOF file Created Date -->
+    <aura:attribute name="sofFileCreatedDate" type="Date" />
+    
+    <!-- sof additional information -->
+    <aura:attribute name="sofInfo" type="Object" />
+     
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <aura:method name="callChild" action="{!c.doInit}" />
+    
+    
+    <div class="container">
+            <div class="sugOrderSubHead">
+              <ul>
+                  <li>
+                      <div class="heading">{!$Label.c.Suggested_Parts}</div>
+                      <div class="amtTxt">{!v.totalSuggestedParts}</div>
+                  </li> 
+                  <li>
+                     <div class="heading">{!$Label.c.Total_Suggested_Part_Qty}</div>
+                     <div class="amtTxt">{!v.totalSuggestedPartsQty}</div>
+                  </li> 
+                  <li>
+                     <div class="heading">{!$Label.c.Qty_Ordered_Today}</div>
+                     <div class="amtTxt">{!v.totalQtyOrderedToday}</div>
+                  </li>
+                  <li>
+                  <!--    <div align="left" class="rightTxt"> -->
+                          <div class="heading">{!$Label.c.SOF_Created_Date_PST}</div>
+                          <div class="amtTxt">{!v.sofInfo.sofCreatedDate}</div>
+                  <!--    </div>  -->
+                  </li>
+                  <li>
+                      <div class="heading">{!$Label.c.SOF_Type}</div>
+                      <div class="amtTxt">
+                      		<aura:if isTrue="{!v.isSpecialOrdersSOF == true}">
+                          		{!$Label.c.Special_Order}
+                                <aura:set attribute="else">
+                                    {!v.sofInfo.sofType}
+                                </aura:set>
+                          	</aura:if>  
+                      </div>
+                  </li>
+                </ul>
+            </div>
+    </div>
+</aura:component>

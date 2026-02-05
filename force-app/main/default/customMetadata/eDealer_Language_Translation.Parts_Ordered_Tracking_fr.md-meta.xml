@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Parts Ordered Tracking</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;ordln&quot;,
+&quot;label&quot;: &quot;# DE LIGNE DU SYSTÈME&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;itmid&quot;,
+&quot;label&quot;: &quot;NO. DE PIÈCE&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;itmdesc&quot;,
+&quot;label&quot;: &quot;DESCRIPTION&quot;,
+&quot;order&quot; : 3,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;display_qty&quot;,
+&quot;label&quot;: &quot;QTÉ EXPÉDIÉE&quot;,
+&quot;order&quot; : 4,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;totalqty&quot;,
+&quot;label&quot;: &quot;Quantité totale commandée&quot;,
+&quot;order&quot; : 5,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;shipped_status&quot;,
+&quot;label&quot;: &quot;STATUT DE LIGNE&quot;,
+&quot;order&quot; : 6,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;prono&quot;,
+&quot;label&quot;: &quot;# PROFORMA&quot;,
+&quot;order&quot; : 7,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;bolno&quot;,
+&quot;label&quot;: &quot;# DE CONNAISSEMENT&quot;,
+&quot;order&quot; : 8,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;lineComm&quot;,
+&quot;label&quot;: &quot;COMMENTAIRES DE LIGNE&quot;,
+&quot;order&quot; : 9,
+&quot;type&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

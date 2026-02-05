@@ -1,0 +1,588 @@
+<!-- 
+ Name        : eDealerContainer
+ Description : This is an aura component eDealer/Gateway main menu.
+ Version History:
+ 1.0 Initial Version
+ 1.1 mitali.khidkikar@paccar.com, June 28,2023 - Conditionally shows analytics dashboards: #CRMAnalytics
+ 1.2 vivian.mirador@paccar.com 12/13/2023 - Added Pricing for PFM : #Pricing
+ -
+@description 
+@Version Details
+1.0 Initial Version
+1.1 mitali.khidkikar@paccar.com, June 28,2023 - Conditionally shows analytics dashboards: #CRMAnalytics
+@
+-->
+<aura:component controller="EDealerContainerController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable" 
+                access="global"
+                extends="c:edealerTracking">
+    
+    <ltng:require scripts="{!$Resource.EDealerResources  + '/JS/JQuery.js'}" afterScriptsLoaded="{!c.myAction}"/>
+    
+    <!-- this will be used to fix the refresh issue of header -->
+    <aura:attribute name="displayHeader" type="Boolean" default="true"/>  
+    
+    <!-- handler Menu item clicked Event --> 
+    <aura:handler event="c:eDealerMenuClickedEvent" action="{!c.handleMenuChange}"/> 
+    
+    <!--announcements-->
+	<aura:attribute name="showAnnouncements" type="Boolean" default="false"/>  
+    
+    <!-- part Name -->
+    <aura:attribute name="partNumber" type="string" /> 
+    <aura:attribute name="csrNum" type="string" />
+    <aura:attribute name="csrPartNumber" type="string" />
+    
+    
+    <!-- PO number -->
+    <aura:attribute name="poNumber" type="string" />  
+    
+    <!-- this will save the added items to cart -->
+    <aura:attribute name="cartitems" type="Object" /> 
+    
+    <!-- handle location change event -->    
+    <aura:handler event="c:eDealerLocationEvent" action="{!c.handleLocationChange}"/>
+    
+    <!-- this attribute will be used to save the data in cache -->
+    <aura:attribute name="cacheData" type="object" />
+    
+    <!-- this will save the menu name which is clicked -->
+    <aura:attribute name="selectedMenu" type="String"/>
+    
+    <!-- this will save the selected report name -->
+    <aura:attribute name="selectedReport" type="String" />
+    
+    <!-- this will save the Tab name which should open (for ex, using on CART page ) -->
+    <aura:attribute name="selectedTab" type="String" />
+    <aura:attribute name="selectedTabLabel" type="String" />
+    <!-- searched Track Order Number -->
+    <aura:attribute name="orderNumber" type="String"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object"/>
+    <aura:attribute name="selectedLocationObjString" type="String"/>
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Week"/>
+    <aura:attribute name="orderType" type="string" default="All"/>
+    <aura:attribute name="calledFromOnLoad" type="Boolean" default="false"/>
+    <aura:attribute name="isOrderScreenPageOpen" type="Boolean"/>
+    <aura:attribute name="isSummerydetailsOpen" type="boolean" default="false"/>
+    <!-- this will save which menu is selected by the user -->
+    <aura:attribute name="submenu" type="String" />
+    <aura:attribute name="month" type="string" />
+    <aura:attribute name="quarter" type="string" />
+    <aura:attribute name="year" type="string" />
+    <aura:attribute name="monthDate" type="Date" />
+    <aura:attribute name="quarterDate" type="Date" />
+    <aura:attribute name="allAccessibleDealersLocs" type="List"/>
+    <!-- logged in user/dealer currency code -->
+    <aura:attribute name="currencyCode" type="String" />
+    
+    <!-- to get menu expened or closed -->
+    <aura:attribute name="ismenuClosed" type="Boolean" default="true" />
+    
+    <!-- calling onrender Method -->
+    <aura:handler name="render" value="{!this}" action="{!c.onRender}"/> 
+    <!-- calling onload Method -->
+    <aura:handler name="init" value="{!this}" action="{!c.onload}"/> 
+    <!-- this will save the list of sub menus for which multiselect should be displayed -->
+    <aura:attribute name="menuNameForMultiDealerSelection" type="List" default="['dashboardDemo','dashboardDivV2','eDealerInvHealth','createCSR','csrandvolumnsales','loyalty','offerPDF','emergencyorderlisting','manuallockdownparts','RPMScoreCard']"/>
+    
+    <!-- this will save the csrnumber clicked in eDealerCsrListin cmp -->
+    <aura:attribute name="csrnumber" type="Integer" />
+    <!-- this will save the csrstatus clicked in eDealerCsrListin cmp -->
+    <aura:attribute name="csrstatus" type="String" />
+    <!-- this will save the csrdraftcount clicked in eDealerDraftCsrTile cmp -->
+    <aura:attribute name="csrsdraftcount" type="String" />
+    <!-- this will save the dealercodes selected in eDealerDraftCsrTile cmp -->
+    <aura:attribute name="dealercodes" type="String" />
+    <!-- this will save the phase of csr selected in eDealerCsrListing cmp -->
+    <aura:attribute name="csrphase" type="Integer" />
+    <lightning:messageChannel type="eDealerCSR__c" aura:id="eDealerCSR" onMessage="{!c.handleMessageChannel}" scope="APPLICATION"/>
+    
+    <!-- this will get translation for csr header using custom metadata instead of labels -->
+    <aura:attribute name="eDealer_CSR_Dashboard_Label" type="String" default=""/>
+    <!-- this will get translation for csr header using custom metadata instead of labels -->
+    <aura:attribute name="eDealer_CSR_List_Label" type="String" default=""/>
+    
+    <aura:attribute name="csrlistingtype" type="String" default="" />
+    <aura:attribute name="csrlistingsubtype" type="String"  default=""/>
+    <aura:attribute name="csrlistingfrequency" type="String"  default=""/>
+    <aura:attribute name="enableCsrEditing" type="Boolean" default="" />
+    <aura:attribute name="subTabName" type="String" description = "this will save the tab name which will be displayed under main menu"/>
+    <aura:attribute name="unavailableDealerLoc" type="boolean"  default=""/>
+    
+    
+    
+    
+    <aura:html tag="style">
+        .hero { 
+        display: none !important;
+        } 
+        
+        .header { 
+        display: none !important;
+        }
+        
+        .footer { 
+        display: none !important;
+        } 
+        
+        .slds-col--padded {
+        padding-right:0 !important;
+        padding-left: 0 !important;
+        }
+        
+    </aura:html>
+    
+    <!--announcements-->
+    <aura:if isTrue="{!v.showAnnouncements}">
+        <c:eDealerGatewayAnnouncements aura:id="announcementComp"/>
+    </aura:if>
+     
+    <aura:if isTrue="{!and(v.userDetail != undefined, or(v.userDetail.isNonDealer == true, and(v.userDetail.accessibleDealersLocation[0].Dealer_Doe_Status__c == true, v.userDetail.isNonDealer == false) ) )}">
+        <div class="slds-grid slds-wrap contentPage">
+            <!-- Header -->
+            <div class="slds-col slds-size_12-of-12">
+                <span>
+                    
+                    <c:eDealerHeader userDetail="{!v.userDetail}" 
+                                     dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                     selectedLocation="{!v.selectedLocation}"
+                                     selectedMenu="{!v.selectedMenu}"
+                                     />
+                    
+                </span>
+            </div>
+            
+            <div class="slds-col slds-size_12-of-12" >
+                <div id="test" class="pad" >
+                    <div id="a" class="fif sidebarBox">
+                        <!-- menu -->
+                        <c:eDealerMenu userDetail="{!v.userDetail}"
+                                       selectedmenu="{!v.selectedMenu}"
+                                       selectedLocation="{!v.selectedLocation}"
+                                       ismenuClosed="{!v.ismenuClosed}"
+                                       />
+                        
+                        
+                    </div>
+                    <div id="b" class="{!v.ismenuClosed ? 'fif contentBox' : 'fif contentBox contentMin'}" >
+                        <div class="slds-grid slds-wrap">
+                            <!-- Container Sub-Header/header for select/change Dealer Location/code -->
+                            <div class="slds-col slds-size_12-of-12">
+                                
+                                <aura:if isTrue="{!v.displayHeader}">
+                                    <c:eDealerContainerHeader selectedmenu = "{!v.selectedMenu}" 
+                                                              userDetail="{!v.userDetail}" 
+                                                              division="{!v.userDetail.division}"
+                                                              submenu="{!v.submenu}"
+                                                              accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                              selectedLocation="{!v.selectedLocation}"
+                                                              isOrderScreenPageOpen="{!v.isOrderScreenPageOpen}"
+                                                              isSummerydetailsOpen="{!v.isSummerydetailsOpen}"
+                                                              dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                              allAccessibleDealersLocs="{!v.allAccessibleDealersLocs}"
+                                                              csrHeader = "{!v.eDealer_CSR_Dashboard_Label}"
+                                                              csrListHeader = "{!v.eDealer_CSR_List_Label}"
+                                                              />
+                                </aura:if>
+                                
+                            </div>
+                            <!-- Display component based on selected Menu item -->
+                            <aura:if isTrue="{!!v.unavailableDealerLoc}">
+                                <div class="slds-col slds-size_12-of-12 minPadReq">  
+                                    <aura:if isTrue="{!v.selectedMenu == 'dashboardDemo'}">
+                                        <c:eDealerDashboard selectedMenu = "{!v.selectedMenu}" 
+                                                            selectedLocation = "{!v.selectedLocation}"
+                                                            division="{!v.userDetail.division}"
+                                                            accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                            isNonDealer = "{!v.userDetail.isNonDealer}"
+                                                            />
+                                    </aura:if>
+                                    <!--OPC Report Start -->
+                                    <aura:if isTrue="{!v.selectedMenu == 'OPCReport'}">
+                                        <c:eDealerODCReportDashboardCenter userDetail="{!v.userDetail}"
+                                                                           division="{!v.userDetail.division}"
+                                                                           dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                           country ="{!v.userDetail.country}"
+                                                                           />
+                                    </aura:if>  
+                                    <!---OPC Report END-->
+                                    
+                                    <!--CRMAnalytics Start-->
+                                    <aura:if isTrue="{!v.selectedMenu == 'Analytics'}">
+                                        <c:eDealerAnalyticsDashboardCenter userDetail="{!v.userDetail}"/>
+                                    </aura:if>
+                                    <!---END-->
+                                    <!--Field Service Start-->
+                                    <aura:if isTrue="{!v.selectedMenu == 'fieldservice'}">
+                                        <c:eDealerAnalyticsDashboardCenter userDetail="{!v.userDetail}" selectedMenu="{!v.selectedMenu}"/>
+                                    </aura:if>
+                                    <!--After Market Start-->
+                                    <aura:if isTrue="{!v.selectedMenu == 'aftermarket'}">
+                                        <c:eDealerAnalyticsDashboardCenter userDetail="{!v.userDetail}" selectedMenu="{!v.selectedMenu}"/>
+                                    </aura:if>
+                                    <!---END-->
+                                    
+                                    <!--#Pricing Start-->
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'monthlyPriceFile'}">
+                                        <c:eDealerPricingFilesMonthly userDetail="{!v.userDetail}"
+                                                                      dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                                      selectedLocation="{!v.selectedLocation}"/>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'dailyPriceFile'}">
+                                        <c:eDealerPricingFilesDaily userDetail="{!v.userDetail}"
+                                                                    dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                                    selectedLocation="{!v.selectedLocation}"/>
+                                    </aura:if>
+                                    
+                                    
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'dailyrebatesfile'}">
+                                        <c:eDealerPricingRebateReport dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                                      selectedLocation="{!v.selectedLocation}"/>
+                                    </aura:if>
+                                    <!---#Pricing End-->
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'dashboardDivV2'}">                                    
+                                        <c:eDealerMDIDashboard selectedMenu = "{!v.selectedMenu}"
+                                                               selectedLocation = "{!v.selectedLocation}"
+                                                               userDetail="{!v.userDetail}"
+                                                               selectedTab="{!v.selectedTab}"
+                                                               />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'eDealerInvHealth'}">                                    
+                                        <c:edealerInventoryHealthReport 
+                                                                        selectedTab="{!v.selectedTab}"
+                                                                        selectedTabName = "{!v.subTabName}"
+                                                                        selectedTabLabel="{!v.selectedTabLabel}"
+                                                                        selectedLocation = "{!v.selectedLocation}"/>
+                                    </aura:if>
+                                    
+                                    
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'cnrorderlisting'}">
+                                        <c:eDealerCNRListing selectedMenu = "{!v.selectedMenu}" 
+                                                             dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                             division="{!v.userDetail.division}"
+                                                             selectedLocation = "{!v.selectedLocation.listSelectedLoc}"
+                                                             />
+                                    </aura:if>
+                                    <!--20-10-21-->
+                                    <aura:if isTrue="{!v.selectedMenu == 'emergencyorderlisting'}">
+                                        <c:eDealerEmergencyListing selectedMenu = "{!v.selectedMenu}" 
+                                                                   dealerCode="{!v.selectedLocation}"
+                                                                   selectedoption="{!v.selectedoption}"
+                                                                   />
+                                    </aura:if>
+                                    <!--20-10-21-->
+                                    <aura:if isTrue="{!v.selectedMenu == 'reportcenter'}">
+                                        <c:eDealerMDIReportCenter selectedLocation = "{!v.selectedLocation}" 
+                                                                  selectedReport="{!v.selectedReport}"
+                                                                  userDetail="{!v.userDetail}"
+                                                                  internalTransferDataMapCache="{!v.cacheData.internalTransferDataMapCache}"
+                                                                  manualLockDownReportDataMapCache = "{!v.cacheData.manualLockDownReportDataMapCache}"
+                                                                  zeroOnHandReportDataMapCache = "{!v.cacheData.zeroOnHandReportDataMapCache}"
+                                                                  quarterToDateReportDataMapCache = "{!v.cacheData.quarterToDateReportDataMapCache}"
+                                                                  backOrdersReportDataMapCache = "{!v.cacheData.backOrdersReportDataMapCache}"
+                                                                  ABCCriteriaReportDataMapCache = "{!v.cacheData.ABCCriteriaReportDataMapCache}"
+                                                                  notOnFileReportDataMapCache = "{!v.cacheData.notOnFileReportDataMapCache}"
+                                                                  MDIExcessReportDataMapCache = "{!v.cacheData.MDIExcessReportDataMapCache}"
+                                                                  GlobalMDIReportDataMapCache = "{!v.cacheData.GlobalMDIReportDataMapCache}"
+                                                                  MSL_CSL_RSLReportDataMapCache = "{!v.cacheData.MSL_CSL_RSLReportDataMapCache}"
+                                                                  StockingTemplateReportDataMapCache = "{!v.cacheData.StockingTemplateReportDataMapCache}"
+                                                                  dealerSupplierReportDataMapCache = "{!v.cacheData.dealerSupplierReportDataMapCache}"
+                                                                  planningBreadthReportDataMapCache = "{!v.cacheData.planningBreadthReportDataMapCache}"
+                                                                  />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'managedealerinv'}">
+                                        <c:eDealerInv userDetail="{!v.userDetail}" 
+                                                      selectedLocation="{!v.selectedLocation}"></c:eDealerInv>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'confirmedorder'}">
+                                        <c:eDealerConfirmedOrders userDetail="{!v.userDetail}" 
+                                                                  division="{!v.userDetail.division}" 
+                                                                  selectedLocation="{!v.selectedLocation}"
+                                                                  dealerCode="{!v.selectedLocation.selectedLoc}"></c:eDealerConfirmedOrders>
+                                    </aura:if>
+                                    
+                                    <!--<aura:if isTrue="{!v.selectedMenu == 'activeorders'}">
+                                            <c:EDealerActiveOrderCmp userDetail="{!v.userDetail}" 
+                                                                    division="{!v.userDetail.division}" 
+                                                                    selectedLocation="{!v.selectedLocation}"
+                                                                    dealerCode="{!v.selectedLocation.selectedLoc}"></c:EDealerActiveOrderCmp>
+                                        </aura:if>-->
+                                    
+                                    <div class="padding-10">
+                                        <aura:if isTrue="{!v.selectedMenu == 'partdetail'}">
+                                            <c:eDealerPartDetail dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                                 division="{!v.userDetail.division}"
+                                                                 dealerUserName ="{!v.userDetail.asiUserName}"
+                                                                 partNumber = "{!v.partNumber}"
+                                                                 currencyCode="{!v.userDetail.currencyCode}"
+                                                                 isShowPricingInfoSection = "{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Price_Inquiry__c)}"
+                                                                 isShowPartAvailabilityPage="{!(v.userDetail.isNonDealer == true ? true : v.userDetail.accessibleDealersLocation[0].Availability_Inquiry__c)}"
+                                                                 />
+                                        </aura:if>
+                                    </div>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'cartpage'}">  
+                                        <c:eDealerShoppingCart selectedTab="{!v.selectedTab}" 
+                                                               selectedLocation="{!v.selectedLocation}" 
+                                                               userDetail="{!v.userDetail}"/>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'masterinventory'}">                                
+                                        <c:eDealerMasterInventory userDetail="{!v.userDetail}" 
+                                                                  selectedLocation="{!v.selectedLocation}"
+                                                                  dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                  currentDealerDivision = "{!v.userDetail.division}"/>
+                                    </aura:if>
+                                    
+                                    <!-- <aura:if isTrue="{!v.selectedMenu == 'scorecard'}">                                
+                                            <c:eDealerScorecard />
+                                        </aura:if> -->
+                                    
+                                    <!--<aura:if isTrue="{!v.selectedMenu == 'activeordersdetail'}">                                
+                                        <c:eDealerActiveOrdersReport dealerCode="{!v.selectedLocation.selectedLoc}"/>
+                                        </aura:if>-->
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'activeordersdetail'}">                                     
+                                        <c:eDealerActiveOrderDetailASI orderNumber="{!v.orderNumber}" 
+                                                                       dealerCode="{!v.selectedLocation.selectedLoc}" />
+                                    </aura:if>
+                                    
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'partavailabledetail'}">                                                                
+                                        <c:eDealerPartSearch partNumber = "{!v.partNumber}" 
+                                                             dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                             division="{!v.userDetail.division}"
+                                                             currencyCode="{!v.userDetail.currencyCode}"/>
+                                    </aura:if>    
+                                    <aura:if isTrue="{!v.selectedMenu == 'csrdetail'}">
+                                        <c:eDealerCsrSearch aura:id = "csrnumbersearch"
+                                                            csrNum = "{!v.csrNum}" 
+                                                            dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                            division="{!v.userDetail.division}"
+                                                            currencyCode="{!v.userDetail.currencyCode}"
+                                                            csrtype = "{!v.csrlistingtype}"
+                                                            csrfrequency = "{!v.csrlistingfrequency}"
+                                                            selectedlocationlist =  "{!v.selectedLocation.listSelectedLoc}"
+                                                            onopencsrdetail = "{!c.handleOpenCSRDetail}"
+                                                            onupdateheaderkpicontainer = "{!c.handleupdateheaderkpicontainer}"
+                                                            onopencsreditscreen = "{!c.handleOpenCSREdit}"/>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'partnumberdetail'}">
+                                        <c:eDealerPartNumberSearch aura:id = "csrpartnumbersearch"
+                                                                   partNumber = "{!v.partNumber}"
+                                                                   csrPartNumber = "{!v.csrPartNumber}"
+                                                                   dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                                   division="{!v.userDetail.division}"
+                                                                   currencyCode="{!v.userDetail.currencyCode}"
+                                                                   csrtype = "{!v.csrlistingtype}"
+                                                                   csrfrequency = "{!v.csrlistingfrequency}"
+                                                                   selectedlocationlist =  "{!v.selectedLocation.listSelectedLoc}"
+                                                                   onopencsrdetail = "{!c.handleOpenCSRDetail}"
+                                                                   onupdateheaderkpicontainer = "{!c.handleupdateheaderkpicontainer}"
+                                                                   onopencsreditscreen = "{!c.handleOpenCSREdit}"/>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!and(v.selectedMenu == 'POrderDetails', not(empty(v.poNumber)))}">  
+                                        <c:eDealerPOSearch 	 poNumber = "{!v.poNumber}" 
+                                                           dealerCode="{!v.selectedLocation.selectedLoc}"/>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!and((v.selectedMenu == 'activeorders' 
+                                                     || v.selectedMenu == 'pendingorders' 
+                                                     || v.selectedMenu == 'confirmedorders'
+                                                     || v.selectedMenu == 'unconfirmedorders'),
+                                                     v.calledFromOnLoad)}">
+                                        <c:eDealerOrderListing selectedMenu = "{!v.selectedMenu}"
+                                                               dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                               selectedoption="{!v.selectedoption}"
+                                                               orderType="{!v.orderType}"
+                                                               division="{!v.userDetail.division}"/> 
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'ordersummary'}">                                    
+                                        <c:eDealerOrderSummaryListing selectedMenu = "{!v.selectedMenu}"
+                                                                      dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                      selectedoption="{!v.selectedoption}"
+                                                                      orderType="{!v.orderType}"  
+                                        							  division="{!v.userDetail.division}"/> 
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'freightcharges'}">                                    
+                                        <c:eDealerFreightChargesListing selectedMenu = "{!v.selectedMenu}"
+                                                                        dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                        selectedoption="{!v.selectedoption}"
+                                                                        orderType="{!v.orderType}"
+                                                                        division="{!v.userDetail.division}"/>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!and(v.selectedMenu == 'ordersearch', not(empty(v.orderNumber)))}">  
+                                        <c:eDealerOrderSearch orderNumber = "{!v.orderNumber}" 
+                                                              dealerCode="{!v.selectedLocation.selectedLoc}" 
+                                                              division="{!v.userDetail.division}"/> 
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!and((v.selectedMenu == 'intransitorders' 
+                                                     || v.selectedMenu == 'shippedorders' 
+                                                     || v.selectedMenu == 'deliveredorders'
+                                                     || v.selectedMenu =='partsdeliverymetrics'), 
+                                                     v.calledFromOnLoad)}">
+                                        
+                                        <c:eDealerTMSOrderListing selectedMenu = "{!v.selectedMenu}"
+                                                                  dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                  selectedoption="{!v.selectedoption}"
+                                                                  division="{!v.userDetail.division}"   
+                                                                  />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'manuallockdownparts'}">
+                                        <c:edealerManualLockdownListing dealerCode="{!v.selectedLocation}"
+                                                                        division="{!v.userDetail.division}"   
+                                                                        />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!and(v.selectedMenu == 'returncompliance', v.calledFromOnLoad)}">
+                                        <c:eDealerReturnComplianceListing dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                          division="{!v.userDetail.division}"
+                                                                          month="{!v.month}"
+                                                                          quarter="{!v.quarter}"
+                                                                          year="{!v.year}"
+                                                                          monthDate="{!v.monthDate}"
+                                                                          quarterDate="{!v.quarterDate}"
+                                                                          />
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.selectedMenu == 'createCSR'}">
+
+                                        <c:eDealerCreateCSR dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                            selectedLocation = "{!v.selectedLocation}"
+                                                            selectedlocationstring = "{!v.selectedLocationObjString}"
+                                                            division="{!v.userDetail.division}"
+                                                            dealerUserName ="{!v.userDetail.asiUserName}"
+                                                            accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                            isNonDealer = "{!v.userDetail.isNonDealer}"
+                                                            lstSelectedLocation="{!v.selectedLocation.listSelectedLoc}"
+                                                            csrNumber="{!v.csrnumber}"
+                                                            csrPhase="{!v.csrphase}"
+                                                            enableCsrEditing = "{!v.enableCsrEditing}"
+                                                            onopencsrlisting = "{!c.handleOpenCSRListing}"
+                                                            />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'csrandvolumnsales'}">                                        
+                                        <c:eDealerCsrKpiContainer 
+                                                                  selectedlocation = "{!v.selectedLocation}"
+                                                                  selectedlocationstring = "{!v.selectedLocationObjString}"
+                                                                  division="{!v.userDetail.division}"
+                                                                  dealerusername ="{!v.userDetail.asiUserName}"
+                                                                  accessibledealerslocs="{!v.userDetail.accessibleDealersLocation}"
+                                                                  isnondealer = "{!v.userDetail.isNonDealer}"
+                                                                  onopencsrlisting = "{!c.handleOpenCSRListing}"
+                                                                  onopencsrlistingnewwindow = "{!c.handleOpenCSRListingOnNewWindow}"
+                                                                  onopendraftcsrs = "{!c.handleOpenDraftList}"
+                                                                  onupdateheaderkpicontainer = "{!c.handleupdateheaderkpicontainer}"
+                                                                  dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                  />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'csrlisting'}">
+                                        <c:eDealerCsrListing 
+                                                             selectedlocation = "{!v.selectedLocation}"
+                                                             selectedlocationlist =  "{!v.selectedLocation.listSelectedLoc}"
+                                                             selectedlocationstring = "{!v.selectedLocationObjString}"
+                                                             division="{!v.userDetail.division}"
+                                                             dealerusername ="{!v.userDetail.asiUserName}"
+                                                             accessibledealerslocs="{!v.userDetail.accessibleDealersLocation}"
+                                                             isnondealer = "{!v.userDetail.isNonDealer}"
+                                                             onopencsrdetail = "{!c.handleOpenCSRDetail}"
+                                                             onupdateheaderkpicontainer = "{!c.handleupdateheaderkpicontainer}"
+                                                             onopencsreditscreen = "{!c.handleOpenCSREdit}"
+                                                             csrfrequency = "{!v.csrlistingfrequency}" 
+                                                             csrtype = "{!v.csrlistingtype}"       
+                                                             csrsubtype = "{!v.csrlistingsubtype}"       
+                                                             /> 
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.selectedMenu == 'loyalty'}">
+                                        <c:loyaltyKPIAnalyticsDashboardContainer 
+                                                                                 dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                                 lstSelectedLocation="{!v.selectedLocation.listSelectedLoc}"/> 
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.selectedMenu == 'offerPDF'}">
+                                        <c:loyalty_OfferPdfs 
+                                                             dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                             lstSelectedLocation="{!v.selectedLocation.listSelectedLoc}" /> 
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.selectedMenu == 'currentPartsList'}">
+                                        <c:loyalty_CurrentPartList
+                                                                   dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                   lstSelectedLocation="{!v.selectedLocation.listSelectedLoc}" /> 
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.selectedMenu == 'futurePartsList'}">
+                                        <c:loyalty_FuturePartList 
+                                                                  dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                  lstSelectedLocation="{!v.selectedLocation.listSelectedLoc}" /> 
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.selectedMenu == 'serviceInspectionSheets'}">
+                                        <c:inspectionSheetContainer dealerCode="{!v.selectedLocation.selectedLoc}"/> 
+                                    </aura:if>
+                                    
+                                    <!-- RPM Score Card Start -->
+                                    <aura:if isTrue="{!v.selectedMenu == 'RPMScoreCard'}">
+                                        <c:rpmScoreCardContainer
+                                                                 dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                 lstSelectedLocation="{!v.selectedLocation.listSelectedLoc}"/> 
+                                    </aura:if>
+                                    <!-- RPM Score Card End -->
+                                    
+                                    <!--TCS365 Start -->
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'tcs365'}">
+                                        <c:eDealerTCS365Container userDetail="{!v.userDetail}"
+                                                                  division="{!v.userDetail.division}"
+                                                                  dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                  />
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!v.selectedMenu == 'orderSupport'}">
+                                        <c:eDealerOrderSupportContainer userDetail="{!v.userDetail}"
+                                                                        division="{!v.userDetail.division}"
+                                                                        dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                        />
+                                    </aura:if> 
+                                    <aura:if isTrue="{!v.selectedMenu == 'reverseLogistics'}">
+                                        <c:eDealerReverseSupportContainer userDetail="{!v.userDetail}"
+                                                                          division="{!v.userDetail.division}"
+                                                                          dealerCode="{!v.selectedLocation.selectedLoc}"
+                                                                          />
+                                    </aura:if> 
+                                    
+                                    <!---TCS365 END-->
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!v.unavailableDealerLoc}">
+                                <div class="info-msg slds-align_absolute-center .padding-bt">
+                                    {!$Label.c.	eDealer_unavailable_dealer}
+                                </div>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--   Footer -->
+            <c:eDealerFooter />
+        </div>
+    </aura:if>
+</aura:component>

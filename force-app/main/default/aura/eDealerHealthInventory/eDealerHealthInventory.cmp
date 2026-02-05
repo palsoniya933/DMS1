@@ -1,0 +1,77 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="eDealerHealthInventoryController" access="global">
+    <aura:attribute name="healthInventory" type="Object"/>
+    <aura:attribute name="dealerInventory" type="List"/>
+    <aura:attribute name="currentDate" type="String"/>
+    <aura:attribute name="selectedLocation" type="List" />
+    <aura:attribute name="division" type="String" />
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.selectedLocation}" action="{!c.doInit}"/>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="filter">
+                <span>{!v.currentDate}</span>
+                <button class="refresh-button" onclick="{!c.handleRefresh}">GO</button>
+            </div>
+        </header>
+        
+        <!-- HEALTH INVENTORY SECTION -->
+        <section class="data-table">
+            <aura:if isTrue="{!not(empty(v.healthInventory))}"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">{!$Label.c.Edealer_Total}</th>                            
+                            <th style="width: 20%;">{!$Label.c.Edealer_Inventory_Value}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_Percentage_of_Total_Inventory}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_PDC}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_DSP}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="total-row">
+                            <td rowspan="3">{!$Label.c.Edealer_Total_Health_Inventory}</td>
+                            <td>$<lightning:formattedNumber value="{!v.healthInventory.inventory}" /></td>
+                            <td>{!v.healthInventory.percentage}</td>
+                            <td>$<lightning:formattedNumber value="{!v.healthInventory.pdc}" /></td>
+                            <td>$<lightning:formattedNumber value="{!v.healthInventory.dsp}" /></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </aura:if>
+        </section>
+        
+        <!-- DEALER CODE BREAKDOWN SECTION -->
+        <section class="data-table">
+            <aura:if isTrue="{!not(empty(v.dealerInventory))}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">{!$Label.c.EDealer_Dealer}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_Inventory_Value}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_Percentage_of_Total_Inventory}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_PDC}</th>
+                            <th style="width: 20%;">{!$Label.c.Edealer_DSP}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.dealerInventory}" var="dealer">
+                            <tr class="total-row">
+                                <td rowspan="3">{!dealer.dealerCode}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.inventory}" /></td>
+                                <td>{!dealer.percentage}</td>
+                                <td>$<lightning:formattedNumber value="{!dealer.pdc}" /></td>
+                                <td>$<lightning:formattedNumber value="{!dealer.dsp}" /></td>                                                   
+                            </tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </aura:if>
+        </section>
+    </div>
+</aura:component>

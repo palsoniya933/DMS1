@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Zero On-Hand Filter</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{&quot;ITEM|text&quot;:&quot;Artículo&quot;,
+&quot;ABC|text&quot;:&quot;ABC&quot;,
+&quot;STATUS DESC|text&quot;:&quot;DESCRIPCIÓN DE ESTATUS&quot;,
+&quot;ORDER DATE|text&quot;:&quot;FECHA DE ORDEN&quot;,
+&quot;DLRSPLRCODE|text&quot;:&quot;CÓDIGO DE PROVEEDOR DE CONCESIONARIO&quot;,
+&quot;DISTCHAN|text&quot;:&quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;SALE_IND|text&quot;:&quot;ÍNDICE VENDIBLE&quot;
+}</value>
+    </values>
+</CustomMetadata>

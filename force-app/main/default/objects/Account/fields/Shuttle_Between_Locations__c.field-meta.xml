@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shuttle_Between_Locations__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Does this dealer group have the capability to shuttle product between locations?</description>
+    <label>Shuttle Between Locations</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

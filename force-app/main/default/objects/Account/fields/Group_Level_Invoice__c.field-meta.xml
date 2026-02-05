@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Group_Level_Invoice__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>These locations are invoiced monthly at the group level</description>
+    <label>Group Level Invoice</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

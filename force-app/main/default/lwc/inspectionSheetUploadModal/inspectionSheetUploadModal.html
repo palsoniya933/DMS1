@@ -1,0 +1,60 @@
+<template>
+  <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+    class="slds-modal slds-fade-in-open slds-modal_medium">
+    <div class="slds-modal__container">
+      <div class="slds-modal__header">
+        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">{labels.modalTitle}</h1>
+      </div>
+      <div class="slds-modal__content slds-p-around_medium slds-is-relative" id="modal-content-id-1">
+        <template if:true={showSpinner}>
+          <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium">
+          <div class="slds-col slds-size_1-of-3">
+            <lightning-input type="file" label={labels.englishFile} data-id="english"
+              accept={acceptedFileExtensions} disabled={isDisabled} required
+              message-when-value-missing={labels.fileMissingError} class="validate"
+              onchange={handleFilesChange}></lightning-input>
+          </div>
+          <div class="slds-col slds-size_1-of-3">
+            <lightning-input type="file" label={labels.spanishFile} data-id="spanish" accept={acceptedFileExtensions}
+              disabled={isDisabled} required message-when-value-missing={labels.fileMissingError} class="validate"
+              onchange={handleFilesChange}></lightning-input>
+          </div>
+          <div class="slds-col slds-size_1-of-3">
+            <lightning-input type="file" label={labels.frenchFile} data-id="french" accept={acceptedFileExtensions}
+              disabled={isDisabled} required message-when-value-missing={labels.fileMissingError} class="validate"
+              onchange={handleFilesChange}></lightning-input>
+          </div>
+          <div class="slds-col slds-size_1-of-1 slds-m-vertical_medium">
+            <div class="slds-grid slds-wrap slds-gutters">
+              <div class="slds-col slds-size_2-of-12">
+                <div class="slds-text-heading_small">
+                  {labels.division}
+                </div>
+              </div>
+              <div class="slds-col slds-size_6-of-12 slds-align-center">
+                <lightning-combobox name="Division" variant="label-hidden" placeholder="Select Division"
+                  class="validate" value={selectedDivision} options={divisionOptions} onchange={handleComboBoxChange}
+                  disabled={isDisabled} required></lightning-combobox>
+              </div>
+            </div>
+          </div>
+          <template for:each={files} for:item="file">
+            <div key={file.title} class="slds-col slds-size_1-of-1 slds-m-vertical_medium">
+              <c-inspection-sheet-document document-name={file.name} document-extension={file.extension}
+                title={file.title} display-only={isDisplayOnly} document-language={file.language}
+                oneditmodeenabled={handleEditMode} oneditmodedisabled={handleSaveMode}></c-inspection-sheet-document>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div class="slds-modal__footer">
+        <button class="slds-button slds-button_neutral" aria-label="Cancel and close" disabled={isDisabled}
+          onclick={handleClose}>{labels.cancel}</button>
+        <button class="slds-button slds-button_brand" disabled={isDisabled} onclick={handleSave}>{labels.save}</button>
+      </div>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

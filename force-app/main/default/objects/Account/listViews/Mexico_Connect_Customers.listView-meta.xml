@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mexico_Connect_Customers</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>Connect_Status__c</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ADDRESS1_COUNTRY</field>
+        <operation>contains</operation>
+        <value>MX,Mex,Mexico</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.TYPE</field>
+        <operation>equals</operation>
+        <value>National Account,Fleet,Fleet &amp; Repair Shop</value>
+    </filters>
+    <filters>
+        <field>Connect_Status__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Clientes Conexion</label>
+    <sharedTo>
+        <group>Connect</group>
+        <group>MexicoAllUsers</group>
+        <group>MexicoExecutives</group>
+        <role>GeneralManager</role>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>YTD_Ad_Retention__c</fullName>
+    <label>YTD Average Ad Retention %</label>
+    <summarizedField>Sales_Metrics__c.YTD_Average_Ad_Retention__c</summarizedField>
+    <summaryForeignKey>Sales_Metrics__c.Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

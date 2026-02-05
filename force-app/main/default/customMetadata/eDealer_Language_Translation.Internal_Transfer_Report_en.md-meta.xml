@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Internal Transfer Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; : &quot;GROUP&quot;,
+&quot;Part_Number&quot; : &quot;ITEM&quot;,
+&quot;from_loc&quot; : &quot;FROM&quot;,
+&quot;from_abc&quot; : &quot;FROM ABC&quot;,
+&quot;FROM_12_Mth_Dmd&quot; : &quot;FROM 12 MONTH DEMAND&quot;,
+&quot;FROM_12_Mth_Hits&quot; : &quot;FROM 12 MONTH HITS&quot;,
+&quot;oh&quot; : &quot;FROM ON HAND&quot;,
+&quot;from_ohoo&quot; : &quot;FROM ON HAND + OO&quot;,
+&quot;from_dealernet&quot; : &quot;DEALERNET&quot;,
+&quot;from_distchan&quot; : &quot;DISTRIBUTION CHANNEL&quot; ,
+&quot;to_loc&quot; : &quot;TO&quot; ,
+&quot;to_distchan&quot; : &quot;TO DISTRIBUTION CHANNEL&quot; ,
+&quot;to_abc&quot; : &quot;TO ABC&quot;,
+&quot;TO_12_Mth_Dmd&quot; : &quot;TO 12 MONTH DEMAND&quot; ,
+&quot;TO_12_Mth_Hits&quot; : &quot;TO 12 MONTH HITS&quot; ,
+&quot;to_ohoo&quot; : &quot;TO ON HAND + ON ORDER&quot; ,
+&quot;Opportunity_Qty&quot; : &quot;OPPORTUNITY QUANTITY&quot; ,
+&quot;Transfer_Qty&quot; : &quot;TRANSFER QUANTITY&quot; ,
+&quot;Transfer_Value&quot; : &quot;TRANSFER VALUE&quot;
+}</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_PPM__c</fullName>
+    <label>Program PPM</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>National Account</fullName>
+                <default>false</default>
+                <label>National Account</label>
+            </value>
+            <value>
+                <fullName>Fleet Program</fullName>
+                <default>false</default>
+                <label>Fleet Program</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Retail</fullName>
+                <default>false</default>
+                <label>Retail</label>
+            </value>
+            <value>
+                <fullName>Supplier</fullName>
+                <default>false</default>
+                <label>Supplier</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

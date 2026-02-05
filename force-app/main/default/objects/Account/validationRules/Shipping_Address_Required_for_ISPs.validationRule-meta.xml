@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Address_Required_for_ISPs</fullName>
+    <active>true</active>
+    <description>The shipping address is required for new ISP accounts.</description>
+    <errorConditionFormula>AND( 
+     RecordType.DeveloperName  = &quot;Independent_Service_Provider&quot;,
+ISNEW(),
+OR(
+    ISBLANK(ShippingStreet) || ISBLANK(ShippingCity) || ISBLANK(ShippingState) || ISBLANK(ShippingPostalCode) || ISBLANK(ShippingCountry)
+)
+)</errorConditionFormula>
+    <errorMessage>A valid shipping address is required.</errorMessage>
+</ValidationRule>

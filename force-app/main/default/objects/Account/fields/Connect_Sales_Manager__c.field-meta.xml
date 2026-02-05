@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Sales_Manager__c</fullName>
+    <label>eCommerce Sales Manager</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Devon Graff</fullName>
+                <default>false</default>
+                <label>DEVON GRAFF</label>
+            </value>
+            <value>
+                <fullName>Ray Hider</fullName>
+                <default>false</default>
+                <label>RAY HIDER</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

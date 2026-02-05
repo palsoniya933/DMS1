@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Int_l_Sales_Administrator__c</fullName>
+    <label>Int&apos;l Sales Administrator</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ENRIGUE, L.</fullName>
+                <default>false</default>
+                <label>ENRIGUE, L.</label>
+            </value>
+            <value>
+                <fullName>KERAUTRET, G.</fullName>
+                <default>false</default>
+                <label>KERAUTRET, G.</label>
+            </value>
+            <value>
+                <fullName>MASHBURN, M.</fullName>
+                <default>false</default>
+                <label>MASHBURN, M.</label>
+            </value>
+            <value>
+                <fullName>POUANI, C.</fullName>
+                <default>false</default>
+                <label>POUANI, C.</label>
+            </value>
+            <value>
+                <fullName>REYES, B.</fullName>
+                <default>false</default>
+                <label>REYES, B.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

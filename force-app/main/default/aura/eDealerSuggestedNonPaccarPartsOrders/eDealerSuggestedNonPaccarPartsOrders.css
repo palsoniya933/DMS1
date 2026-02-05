@@ -1,0 +1,152 @@
+.THIS {   
+}
+
+.THIS .container{
+    
+}
+
+.THIS .invDatacontainer{
+    padding-top:2%
+}
+.THIS table tr.selectedRowBackground td {
+    background: #fffabe;
+}
+.THIS table tr.selectedRowBackground td {
+    background-color: rgb(255, 250, 191);
+}
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:0%;
+}
+
+.THIS .invDatacontainertable{
+    width:100%
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;
+    padding:1%;
+        border-right: 1px solid #b0adab;
+}
+
+.THIS .invDatacontainertableheading:first-child {
+    border-top-left-radius: 10px;
+}
+.THIS .invDatacontainertableheading:last-child{
+    border-right: 0px solid #b0adab;
+    border-top-right-radius: 10px;
+}
+
+
+
+.THIS .invDatacontainertabledata{
+    padding:1%
+}
+
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:1%;
+}
+.THIS tr:nth-child(odd) {
+    background: #fff;
+}
+.THIS tr:nth-child(even) {
+    background: #fafafa;
+}
+.THIS .ordertablefirstColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 1%;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 1%;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorYellow svg {
+    fill : yellow;
+}
+
+.THIS .emergencyorderMessage .slds-icon-action-approval {
+    background-color: green;
+}
+
+.THIS .action-superssion_orange {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: orange;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS .action-volumn_green {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: green;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS .action-volumn_red {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: red;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS div .tooltip {
+    display:inline-block;
+}
+
+.THIS .tooltip span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .tooltip:hover span {
+    display: inline;
+    position: relative;
+    color: #000000;
+    z-index:10000;
+}

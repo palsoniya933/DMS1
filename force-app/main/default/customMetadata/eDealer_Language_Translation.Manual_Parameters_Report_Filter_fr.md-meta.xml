@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Manual Parameters Report Filter</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;ITEM|text&quot; : &quot;Article&quot;,
+&quot;SALEIND|text&quot; : &quot;INDICATEUR DE VENTE&quot;,
+&quot;ABC|text&quot; : &quot;ABC&quot;,
+&quot;P_DLRSPLRCD|text&quot; : &quot;P_DLRSPLRCD&quot;
+}</value>
+    </values>
+</CustomMetadata>

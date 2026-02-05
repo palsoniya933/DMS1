@@ -1,0 +1,321 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:appHostable" 
+                access="global" 
+                controller="EDealerPartDetails">
+    
+    <!-- currency code for loged in user/edealer -->
+    <aura:attribute name="currencyCode" type="String" /> 
+    
+    <!-- this will used to show/hide the part availability component -->
+    <aura:attribute name="isShowPartAvailabilityPage" type="Boolean" /> 
+    
+    <!-- this will used to show/hide the Pricing Information Section -->
+    <aura:attribute name="isShowPricingInfoSection" type="Boolean" /> 
+    
+    <!-- this will save the active tab name -->
+    <aura:attribute name="PricingInformationActiveTAB" type="String" />   
+    
+    <!-- flag to shw part details -->
+    <aura:attribute name="showPartDetails" type="boolean" />
+    
+    <!-- saving pricing information -->
+    <aura:attribute name="pricingInfo" type="object" />
+    
+    <!-- this will save the current Dealer Code -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- this will save the asi name of the current logged-in Dealer -->
+    <aura:attribute name="dealerUserName" type="String" />
+    
+    <!-- this will save the current Dealer/user division -->
+    <aura:attribute name="division" type="String"/>
+    
+    <!-- this is used for calling onload apex method -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- when part number changes then reload the part details -->
+    <aura:handler name="change" value="{!v.partNumber}" action="{!c.doInit}"/>
+    
+    <!-- handle location change event -->    
+    <aura:handler event="c:eDealerLocationEvent" action="{!c.doInit}"/>
+    
+    <!-- this will save the part number whose details ha to be pulled -->
+    <aura:attribute name="partNumber" type="String" /> 
+    
+    <!-- this will save the part details like part description, source type, etc... -->
+    <aura:attribute name="partDetail" type="Object" />
+    
+    <!-- this will save the part alternate detail like part description, source type, etc... -->
+    <aura:attribute name="alternateDetail" type="Object" />
+    <aura:attribute name="partDetailObj" type="Object" />
+    <aura:attribute name="dealerDataDetail" type="Object" />
+    
+    <!-- Language in which part details will show -->
+    <aura:attribute name="language" type="String" default="EN"/>
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <!-- this is used to save the list of images to be displayed -->
+    <aura:attribute name="imagelist" type="List"/>
+    <aura:attribute name="videolist" type="List"/>
+    <aura:attribute name="documentlist" type="List"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="false"/>
+    
+    <!-- this is for display the cart modals -->
+    <aura:attribute name="showEmergencyOrderAddCartModal" type="Boolean" default="false" />
+    <aura:attribute name="showStockOrderAddCartModal" type="Boolean" default="false" />
+    
+    <!-- (UI) 
+    <aura:attribute name="stnintestButton" type="boolean" default="false" />
+    <aura:attribute name="emintestButton" type="boolean" default="false" />-->
+    
+    <!-- SPINNER -->
+    <aura:if isTrue="{!v.displayLoading}">
+        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+    </aura:if>
+    
+    
+    <!-- MAIN -->
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_12-of-12">
+            <div class="wrapper slds-m-around_x-small">
+                <!-- part detail header / Part Image info -->
+                <c:eDealerPartDetailSection partDetail="{!v.partDetail}" 
+                                            imagelist="{!v.imagelist}"
+                                            pricingInfo = "{!v.pricingInfo}"
+                                            currencyCode="{!v.currencyCode}"/>
+                
+                <!-- Part Details -->
+                <div class="slds-grid slds-wrap slds-m-around_x-small mar-align-accordian">
+                    <lightning:accordion aura:id="accordion" 
+                                         allowMultipleSectionsOpen="true"
+                                         activeSectionName="detail" class="accordingBorder">
+                        <lightning:accordionSection name="detail" label="{!$Label.c.Edealer_PART_DETAILS}" >
+                            <aura:set attribute="actions">               
+                            </aura:set>
+                            <aura:set attribute="body">
+                                <div class="slds-grid slds-wrap">
+                                    
+                                    <div class="slds-col slds-size_2-of-12 slds-m-bottom_x-small gridTxt">
+                                        <div class="gridheadtxt">{!$Label.c.Edealer_UNIT_OF_MEASURE}</div>
+                                        <span>{!v.partDetail.unit_of_measure}</span>
+                                    </div>
+                                    
+                                    <div class="slds-col slds-size_2-of-12 slds-m-bottom_x-small gridTxt">
+                                        <div class="gridheadtxt">{!$Label.c.Edealer_STOCKING_INDICATOR}</div>
+                                        <span>{!v.partDetail.stocking_indicator}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12 slds-m-bottom_x-small gridTxt">
+                                        <div class="gridheadtxt">{!$Label.c.Edealer_STOCKING_CLASS}</div>
+                                        <span>{!v.partDetail.stocking_class}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-12 slds-m-bottom_x-small gridTxt">
+                                        <div class="gridheadtxt">{!$Label.c.Edealer_WEIGHT}</div>
+                                        <span>{!v.partDetail.weight}</span>
+                                    </div>
+                                    <aura:iteration items="{!v.partDetailObj}" var="ad"> 
+                                        <div class="slds-col slds-size_2-of-12 slds-m-bottom_x-small gridTxt">
+                                            
+                                            <div class="gridheadtxt">{!ad.attributename}</div>
+                                            <span>{!ad.value}</span>
+                                        </div>                                     
+                                    </aura:iteration>                                    
+                                </div>
+                            </aura:set>
+                        </lightning:accordionSection>
+                    </lightning:accordion>
+                </div>
+                
+                <!-- Pricing Information -->
+                <aura:if isTrue="{!v.isShowPricingInfoSection}" >
+                    <div class="slds-grid slds-wrap slds-m-around_x-small mar-align-accordian">
+                        <lightning:accordion aura:id="accordion" 
+                                             allowMultipleSectionsOpen="true"
+                                             activeSectionName="PricingInfo" class="accordingBorder">
+                            <lightning:accordionSection name="PricingInfo" label="{!$Label.c.Edealer_PRICING_INFORMATION}" >
+                                <aura:set attribute="actions">
+                                    <aura:if isTrue="{!v.PricingInformationActiveTAB == 'VOLUME_PROMO_PRICING'}">
+                                        <lightning:button class="slds-m-around_x-small" variant="destructive" label="{!$Label.c.ASK_VOLUME_DESK}"/>
+                                    </aura:if>
+                                    <!-- <lightning:button class="slds-m-around_x-small" variant="destructive" label="CUSTOMER VIEW"/> -->
+                                </aura:set>
+                                <aura:set attribute="body">
+                                    <aura:if isTrue="{!v.showPartDetails}">
+                                        <c:eDealerPartsPricing pricingInfo = "{!v.pricingInfo}" 
+                                                               currencyCode="{!v.currencyCode}" />
+                                    </aura:if>
+                                </aura:set>
+                            </lightning:accordionSection>
+                        </lightning:accordion>
+                    </div>
+                </aura:if>
+                
+                <!-- parts avaliability section -->
+                <aura:if isTrue="{!v.showPartDetails}"> 
+                    <c:eDealerPartAvailabilityDetails dealerCode="{!v.dealerCode}" 
+                                                      partNumber="{!v.partNumber}"
+                                                      dealerDataDetail="{!v.dealerDataDetail}"
+                                                      dealerUserName ="{!v.dealerUserName}"
+                                                      isShowPartAvailabilitySectionOnPage="{!v.isShowPartAvailabilityPage}"
+                                                      />
+                </aura:if>
+                
+                
+                <!--   <c:eDealerSuggestedOrderConfirmationModal
+                                                          showModal="{!v.showEmergencyOrderAddCartModal}"
+                                                          message="SOF EMERGENCY order added to Shopping Cart"
+                                                          callCheckout="{!c.checkoutEM}"
+                                                          onClose="{!c.refresh}"
+                                                          />-->
+                
+                
+                <!-- Stock Order Popup/Modal 
+                <c:eDealerSuggestedOrderConfirmationModal
+                                                          showModal="{!v.showStockOrderAddCartModal}"
+                                                          message="SOF STOCK orders added to Shopping Cart"
+                                                          callCheckout="{!c.checkoutSO}"
+                                                          onClose="{!c.refresh}"
+                                                          />-->
+                
+                <div class="slds-grid slds-wrap feature">
+                    <lightning:tabset>
+                        
+                        <lightning:tab label="{!$Label.c.Edaler_RESOURCES}" id="RESOURCES">
+                            <p class="fsize15">
+                                <table>
+                                    <tr>                                    	
+                                        <td style="width:50%">  
+                                            <!--testing
+                                            <br/>
+                                            <iframe width="1366" height="625" src="https:/www.youtube.com/embed/tYkBP5CRLqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                                            <br/>
+                                            <br/>-->
+                                            
+                                            <aura:iteration items="{!v.videolist}" var="items">
+                                                <p>                                                    
+                                                    <iframe width="560" height="315" src="{!items}"  
+                                                            frameborder="0" 
+                                                            id="theIframe"
+                                                            sfEnvironment="sandbox"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                                                </p>
+                                            </aura:iteration>
+                                        </td>
+                                        
+                                        <td style="vertical-align: top;padding-left: 1%;">
+                                            <aura:iteration items="{!v.documentlist}" var="items" indexVar="indx">
+                                                <p>
+                                                    {!$Label.c.Edealer_Document} : &nbsp;
+                                                    <lightning:icon iconName="utility:file" alternativeText="File" title="File" />
+                                                    <a href="{!items}" target="_blank">{!$Label.c.Edealer_link}</a>
+                                                </p>
+                                            </aura:iteration>
+                                        </td>                                        
+                                    </tr>  
+                                </table>
+                                
+                                <aura:if isTrue="{!and(v.documentlist.length == 0, v.videolist.length == 0)}">
+                                    <c:eDealerNotRecordFound Message = "{!$Label.c.Edealer_No_Resources_Found}"></c:eDealerNotRecordFound>
+                                </aura:if>
+                            </p>
+                        </lightning:tab>
+                        <lightning:tab label="{!$Label.c.Edealer_ALTERNATIVE_PARTS}" id="ALTERNATIVE_PARTS">
+                            <p class="fsize15">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_12-of-12">
+                                        <div class="pricingTable">
+                                            
+                                                
+                                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                                                    <thead>
+                                                        <tr class="slds-line-height_reset">
+                                                            <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                                                                <th class="invDatacontainertableheading" >
+                                                                    <div class="slds-truncate">
+                                                                        {!cd.value}
+                                                                    </div>
+                                                                </th>
+                                                            </aura:iteration>
+                                                        </tr>
+                                                    </thead>
+                                                                <!--<th class="" scope="col">
+                                                            <div class="slds-truncate">PART NUMBER</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">DESCRIPTION</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">SALEABLE INDICATOR</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">RELATIONSHIP TYPE</div>
+                                                        </th>-->
+                                                    
+                                                    <tbody>
+                                                        <aura:if isTrue="{!v.alternateDetail.length > 0}">
+                                                            <aura:iteration items="{!v.columnLabelByApiName}" var="cd">
+                                                                <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>                                                          
+                                                            </aura:iteration>
+                                                            <aura:set attribute="else">                                                                
+                                                                <tr>
+                                                                    <td colspan="4">
+                                                                        <c:eDealerNotRecordFound Message = "{!$Label.c.Edealer_No_Alternate_Parts_Found}"></c:eDealerNotRecordFound>
+                                                                    </td>
+                                                                </tr>                                             
+                                                            </aura:set>
+                                                        </aura:if> 
+                                                    
+                                                    <!--<aura:iteration items="{!v.alternateDetail}" var="ad"> 
+                                                        <tr>
+                                                            <td>
+                                                                <div class="slds-truncate">
+                                                                    {!ad.part_number}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="slds-truncate">
+                                                                    {!ad.description}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="slds-truncate">
+                                                                    {!ad.saleableindicator}
+                                                                </div>
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                <div class="slds-truncate">
+                                                                    {!ad.relationship_type}                                                                    
+                                                                </div>
+                                                            </td>                                                
+                                                        </tr>
+                                                    </aura:iteration>
+                                                    
+                                                    <aura:if isTrue="{!v.alternateDetail.length == 0}">
+                                                        <tr>
+                                                         <td colspan="4">
+                                                             <c:eDealerNotRecordFound Message = "No Alternate Parts Found"></c:eDealerNotRecordFound>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </aura:if>-->
+                                                        
+                                                    </tbody>
+                                                </table>                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </lightning:tab>
+                    </lightning:tabset>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</aura:component>

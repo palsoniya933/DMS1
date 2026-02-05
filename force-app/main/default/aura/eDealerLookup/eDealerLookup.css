@@ -1,0 +1,20 @@
+.THIS .leftPaddingClass {
+    padding-left: 2rem;
+}
+
+.THIS .pillSize{
+    width:100%;
+    justify-content: unset;
+}
+
+.THIS .required{
+    color:red;
+}
+
+.THIS .boldSize{
+    font-size:600;
+}
+
+.THIS .showDisabled {
+    background: lightgray;
+}

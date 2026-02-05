@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="isMasterInventoryData" type="Boolean" default="false"/>
+    <aura:attribute name="invData" type="Object[]"/>
+    <aura:attribute name="columns" type="Object[]"/>
+    <aura:attribute name="reportName" type="String"/>
+    
+    <!-- this used to save the method which will call api to get data -->
+    <aura:attribute name="callapimethod" type="Aura.Action" />
+    
+    <!-- used to track id button as to be disabled -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+       
+    <lightning:button iconName="doctype:csv"
+                      onclick="{!c.downloadCsv}"
+                      label='{!$Label.c.Download_Button}'
+                      class="csvbutton"
+                      disabled ="{!v.invData.length > 0 ? false : true}">                    
+    </lightning:button>
+    
+  
+</aura:component>

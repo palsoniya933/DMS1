@@ -1,0 +1,44 @@
+.THIS {   
+}
+
+.THIS .partDetailModal .slds-modal__close{
+    top: 1.4rem;
+    z-index: 999;
+    right: 1.7rem;
+     
+    }
+.THIS .partDetailModal .slds-icon {
+    width: 25px!important;
+    height: 25px!important;
+    fill: red!important;}
+.THIS .partDetailModal .slds-modal__footer{display:none!important;}
+
+
+.THIS .container{
+   padding:0px 
+}
+
+
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorYellow svg {
+    fill : yellow;
+}
+
+.THIS .modalContent {
+    width: 48%;
+    min-width: 48%;
+}

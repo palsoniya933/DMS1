@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>eDealerFrequency</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;Weekly&quot;:[
+{
+&quot;en_US&quot;: &quot;Weekly&quot;,
+&quot;fr_CA&quot;: &quot;Hebdomadaire&quot;,
+&quot;es_MX&quot;: &quot;Semanal&quot;
+}
+],
+&quot;Monthly&quot;:[
+{
+&quot;en_US&quot;: &quot;Monthly&quot;,
+&quot;fr_CA&quot;: &quot;Mensuel&quot;,
+&quot;es_MX&quot;: &quot;Mensual&quot;
+}
+],
+&quot;Quarterly&quot;:[
+{
+&quot;en_US&quot;: &quot;Quarterly&quot;,
+&quot;fr_CA&quot;: &quot;Trimestre&quot;,
+&quot;es_MX&quot;: &quot;Trimestral&quot;
+}
+],
+&quot;All&quot;:[
+{
+&quot;en_US&quot;: &quot;All&quot;,
+&quot;fr_CA&quot;: &quot;Tous&quot;,
+&quot;es_MX&quot;: &quot;Todos&quot;
+}
+],
+&quot;Annually&quot;:[
+{
+&quot;en_US&quot;: &quot;Annually&quot;,
+&quot;fr_CA&quot;: &quot;Annuel&quot;,
+&quot;es_MX&quot;: &quot;Anual&quot;
+}
+]
+}</value>
+    </values>
+</CustomMetadata>

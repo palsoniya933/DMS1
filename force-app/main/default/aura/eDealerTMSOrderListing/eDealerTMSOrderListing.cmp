@@ -1,0 +1,256 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                controller="EDealerOrderListingController">
+    
+    <aura:attribute name="division" type="String" />
+    <aura:attribute name="invData" type="Object[]" />
+    <aura:attribute name="PaginationList" type="Object[]" />
+	
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/> 
+    
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    
+    <aura:attribute name="selectedMenu" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Week"/>
+    
+    <!-- this used for the current step number -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <aura:attribute name="totalOrders" type="Integer" default="0"/>
+    
+    <aura:attribute name="orderTypes" type="List" />
+       
+    <aura:attribute name="columns" type="List" />
+    
+    <aura:attribute name="downloadReportName" type="String" />
+    
+    <!-- DO INIT -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- when dealer code change -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    
+    <div style="background:white;" class="trsnsitConatiner">
+        
+        <!--SPINNER-->
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>  
+        
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_12-of-12">
+                <div class="wrapper slds-m-around_x-small">
+                    
+                    <div class="slds-m-around_x-small bgpad10 prodTopHead">
+                        
+                        <table class="slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                            <tr>
+                                <td>
+                                    <div class="headerName slds-truncate">
+                                        <aura:if isTrue="{!v.selectedMenu == 'intransitorders'}">
+                                            Shipment(s) In-Transit
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!v.selectedMenu == 'shippedorders'}">
+                                                    Shipped Order(s)
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!v.selectedMenu == 'deliveredorders'}">
+                                                            Shipment(s) Delivered
+                                                            <aura:set attribute="else">
+                                                                <aura:if isTrue="{!v.selectedMenu == 'partsdeliverymetrics'}">
+                                                                    Shipment Performance Metrics
+                                                                </aura:if>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </td>
+                                
+                                <td>
+                                    <div class="headerName slds-truncate">Frequency</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="headerCount slds-truncate">{!v.totalOrders}</div>
+                                </td> 
+                                <td>
+                                    <div class="headerCount slds-truncate">{!v.selectedoption}</div>
+                                </td> 
+                            </tr>
+                        </table>          
+                    </div>
+                    <aura:if isTrue="{!v.invData.length > 0 }">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_9-of-12">
+                                <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                     totalNumberRecords = "{!v.invData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                         			 disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="false"></c:eDealerPagination>
+                            </div>
+                            <div class="slds-col slds-size_3-of-12">
+                                <div class="rFloat">
+                                    <div align="right" class="buttoncontainer" >
+                                        <c:eDealerDownloadReportButton aura:id="downloadcmp"
+                                                                       reportName="{!v.downloadReportName}"
+                                                                       report="{!v.invData}"
+                                                                       columns="{!v.columns}"
+                                                                       callapimethod = "{!c.downloadReportData}"/>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        
+                        <div class="invDatacontainertablecontainer">
+                            
+                            <table class="invDatacontainertable">
+                                <tr>
+                                    <th class="invDatacontainertableheading" >
+                                        Sequence#
+                                    </th>
+                                    <th class="invDatacontainertableheading" >
+                                        Order#
+                                    </th>
+                                    <th class="invDatacontainertableheading" >
+                                        Status
+                                    </th>
+                                    
+                                    <aura:if isTrue="{!or(v.selectedMenu == 'intransitorders', v.selectedMenu == 'deliveredorders')}">
+                                        <th class="invDatacontainertableheading">
+                                            PRO#
+                                        </th>
+                                    </aura:if>
+                                    
+                                    <aura:if isTrue="{!or(v.selectedMenu == 'intransitorders', v.selectedMenu == 'shippedorders')}">
+                                        <th class="invDatacontainertableheading">
+                                            Pickup Date
+                                        </th>
+                                    </aura:if>
+                                    
+                                    <th class="invDatacontainertableheading">
+                                        Estimated Arrival
+                                    </th>
+                                    <aura:if isTrue="{!or(v.selectedMenu == 'deliveredorders', v.selectedMenu == 'partsdeliverymetrics')}">
+                                        <th class="invDatacontainertableheading">
+                                            Delivered Date
+                                        </th>
+                                    </aura:if>
+                                </tr>
+                                
+                                <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                                    <tr>
+                                        <td class="invDatacontainertabledata" >
+                                            {!index + 1}
+                                        </td>
+                                        <td class="invDatacontainertabledata" >
+                                            <a href="javascript:void(0);" onclick="{!c.openOrder}" name="{!inv.PPD_ORDER}">
+                                                {!inv.PPD_ORDER}
+                                            </a>
+                                            &nbsp;
+                                            <span name="{!inv.PPD_ORDER}" onclick="{!c.handleOpenInNewWindow}" class="nav-text active">
+                                                <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                            </span>
+                                        </td>
+                                        <td class="invDatacontainertabledata" >
+                                            {!inv.status}
+                                        </td>
+                                        <aura:if isTrue="{!or(v.selectedMenu == 'intransitorders', v.selectedMenu == 'deliveredorders')}">
+                                            <td class="invDatacontainertabledata" >
+                                                {!inv.PRO_NUM}
+                                            </td>
+                                    </aura:if>
+                                        <aura:if isTrue="{!or(v.selectedMenu == 'intransitorders', v.selectedMenu == 'shippedorders')}">
+                                            <td class="invDatacontainertabledata">
+                                                <lightning:formattedDateTime value="{!inv.EST_PICKED_UP_DATE_PST}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                             minute="2-digit" timeZone="PST" hour12="true"/>
+                                                
+                                            </td>
+                                        </aura:if>
+                                        <td class="invDatacontainertabledata">
+                                            <lightning:formattedDateTime value="{!inv.EST_ARRIVAL_SF_DT}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                         minute="2-digit" timeZone="PST" hour12="true"/>
+                                        </td>
+                                        <aura:if isTrue="{!or(v.selectedMenu == 'deliveredorders', v.selectedMenu == 'partsdeliverymetrics')}">
+                                            <td class="invDatacontainertabledata">
+                                                <aura:if isTrue="{!v.selectedMenu == 'deliveredorders'}">
+                                                <lightning:formattedDateTime value="{!inv.EST_DELIVERED_DATE_PST_DT}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                 minute="2-digit" timeZone="PST" hour12="true"/>
+                                                    
+                                                </aura:if>    
+                                                <aura:if isTrue="{!v.selectedMenu == 'partsdeliverymetrics'}">
+                                                    <lightning:formattedDateTime value="{!inv.DELIVERED_DATE_SF_DT}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                 minute="2-digit" timeZone="PST" hour12="true"/>
+                                                </aura:if>  
+                                            </td>
+                                        </aura:if>
+                                    </tr>
+                                </aura:iteration>                            
+                            </table>
+                            
+                            <!-- pagination cmp -->
+                            <div class="bottompagi">
+                                <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                     totalNumberRecords = "{!v.invData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                         			 disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="true"></c:eDealerPagination>    
+                            </div> 
+                            
+                        </div>
+                        
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.APICalled}">
+                                <br/>
+                                <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                            </aura:if>
+                            
+                        </aura:set>
+                        
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+</aura:component>

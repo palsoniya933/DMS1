@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSL RSL Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+    &quot;extended_yes_no&quot;: &quot;EXTENDIDO&quot;,
+    &quot;grp_nbr&quot;: &quot;NÚMERO DE GRUPO&quot;,
+    &quot;dealer&quot;: &quot;CONCESIONARIO&quot;,
+    &quot;program&quot;: &quot;PROGRAMA&quot;,
+    &quot;type&quot;: &quot;TIPO&quot;,
+    &quot;initialdate&quot;: &quot;FECHA INICIAL&quot;,
+    &quot;enddate&quot;: &quot;FECHA DE FINALIZACION&quot;,
+    &quot;renewable&quot;: &quot;RENOVABLE&quot;,
+    &quot;item&quot;: &quot;NÚMERO DE PARTE&quot;,
+    &quot;rbq&quot;: &quot;CANTIDAD REQUERIDA&quot;,
+    &quot;minss&quot;: &quot;STOCK MÍNIMO DE SEGURIDAD&quot;,
+    &quot;abc&quot;: &quot;ABC&quot;,
+    &quot;oh&quot;: &quot;DISPONIBLE&quot;,
+    &quot;month_12_hits&quot;: &quot;DEMANDA DE 12 MECES&quot;,
+    &quot;month_12_demand&quot;: &quot;12 M DE VISITAS&quot;,
+    &quot;dnet&quot;: &quot;DNET&quot;,
+    &quot;ext_dnet&quot;: &quot;NET EXTENDIDO&quot;,
+    &quot;Estimated_ABC_Once_Expired&quot;: &quot;ABC ESTIMADO UNA VEZ VENCIDO&quot;,
+    &quot;dealer_supplier_code&quot;: &quot;CÓDIGO DE SUMINISTRO DE CONCESIONARIO&quot;,
+    &quot;stock_class&quot;: &quot;CLASE DE STOCK&quot;,
+    &quot;stock_class_description&quot;: &quot;DESCRIPCION DE CLASE DE STOCK&quot;
+}</value>
+    </values>
+</CustomMetadata>

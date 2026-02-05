@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Refusal_Notifications_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This is the dealer group contact who will receive refusal notification emails when one of their individual dealers refuses a service.</description>
+    <label>Refusal Notifications Contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Accounts (Refusal Notifications Contact)</relationshipLabel>
+    <relationshipName>Accounts7</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

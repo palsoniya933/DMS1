@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CNR-RSV-Parts</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{&quot;dealer_code&quot; : &quot;Concesionario&quot; ,
+&quot;part&quot; : &quot;# Parte&quot; ,
+&quot;partdescription&quot; : &quot;Descripción de la Parte&quot;,
+&quot;limitqty&quot; : &quot;Cantidad Límite&quot;,
+&quot;saleableindicator&quot; : &quot;Indicador de Comerciabilidad&quot;
+}</value>
+    </values>
+</CustomMetadata>

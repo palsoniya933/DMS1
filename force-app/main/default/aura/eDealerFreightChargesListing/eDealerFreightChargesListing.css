@@ -1,0 +1,486 @@
+.THIS {   
+}
+.THIS.EDealerOrderSummaryListing
+{
+   margin: 0 15px 17px 16px!important;
+    box-shadow: 0 2px 5px #a4b6d4!important;
+    border: 1px solid #a5c9ff!important;
+    border-radius: 6px!important;
+    display: block;
+    width: 98%;
+}
+.THIS.cEDealerOrderListing{
+    margin: 0 15px 17px 16px!important;
+    box-shadow: 0 2px 5px #a4b6d4!important;
+    border: 1px solid #a5c9ff!important;
+    border-radius: 6px!important;
+    border: 0!important;
+    display: block;
+    width: 98%;
+}
+
+.THIS .imgicon-style-align{
+    width: 20px;
+    height: 19px;
+    vertical-align: top;
+    margin-left: 2px;
+}
+
+.THIS .invDatacontainer{
+    padding-top:1%
+}
+
+.THIS .slds-nubbin_bottom-left:before, 
+.THIS .slds-nubbin_bottom-left:after,
+.THIS .slds-nubbin--bottom-left:before, 
+.THIS .slds-nubbin--bottom-left:after, 
+.THIS .slds-nubbin_bottom-left-corner:before, 
+.THIS .slds-nubbin_bottom-left-corner:after
+{
+    background: #FFFABE;
+}
+
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:0px;
+}
+
+.THIS .invDatacontainertable{
+    width:100%;
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: capitalize;
+}
+
+/*.THIS .invDatacontainertabledata a{width:109px!important;display:block!important;float: left!important;}*/
+.THIS .invDatacontainertabledata{
+    padding: 0 12px;
+    height: 42px;
+}
+
+.THIS .invDatacontainertabledata a{color:#000!important;}
+.THIS .invDatacontainertabledata a:hover{color:#ee1420!important;}
+.THIS .bottompagi button.slds-button.slds-button_brand {
+    height: 20px;
+    padding: 11px 10px;
+}
+.THIS table tr.selectedRowBackground td {
+    background: #fffabe;
+}
+.THIS table tr.selectedRowBackground td {
+    background-color: rgb(255, 250, 191);
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:first-child {
+  
+     
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /*border-left: 4px solid #ffa700;*/
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:last-child {
+     
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.THIS .invDatacontainertableheading:first-child{border-top-left-radius:10px;}
+.THIS .invDatacontainertableheading:last-child{
+    border-right: 0px solid #808080;
+    border-top-right-radius:10px;
+}
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:10px 5px;
+    width:100px;
+    text-transform: uppercase;
+}
+
+.THIS .ordertablefirstColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width:2%;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorYellow svg {
+    fill : #f1b328;
+}
+
+.THIS .emergencyorderMessage .slds-icon-action-approval {
+    background-color: green;
+}
+
+.THIS .action-superssion_orange {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: orange;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS .greenClrAction {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #00DE40;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .redClrAction {
+        width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #FF0000;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .svgIcon svg {
+    fill: #0194c5;
+}
+.THIS div .tooltip {
+    display:inline-block;
+}
+.THIS tr:nth-child(odd) {
+    background: #fff;
+}
+.THIS tr:nth-child(even) {
+    background: #fafafa;
+}
+.THIS .tooltip span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .tooltip:hover span {
+    display: inline;
+    position: relative;
+    color: #000000;
+    z-index:10000;
+}
+
+.THIS .textalignbottom {
+    vertical-align: text-bottom;
+}
+
+.THIS .selectedOrderText {
+    width:155px;
+    font-size: 14px;
+}
+
+.THIS .placeOrderText {
+    width:125px;
+}
+
+.THIS .emOrderText {
+    width:175px;
+}
+
+.THIS .soOrderText {
+    width:123px;
+}
+
+.THIS .leadTimeText {
+    width:8%;
+}
+
+.THIS .stkText {
+    width:6%;
+}
+.THIS .onorderText {
+    width:8%;
+}
+
+.THIS .todaycartText {
+    width:12%;
+}
+.THIS table td .slds-input {
+    height: 20px;
+    padding: 2px;
+    line-height: 20px;
+    min-height: 25px;
+}
+.THIS .todaycartText {
+    width:12%;
+}
+
+.THIS .descriptionText {
+    width:17%;
+}
+
+.THIS .partsText {
+    width:15%;
+}
+
+.THIS .lFloat
+{
+    float:left;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .iconcolr svg{
+    fill: red !important; 
+    color : red !important;
+}
+
+.THIS .hideSelectLabel > .slds-form-element__label {
+    display:none;
+}
+
+.THIS .defaultSelectWidth {
+    min-width: max-content;
+}
+
+.THIS .tooltiptext{
+  visibility: hidden;
+}
+
+.THIS .cTooltip:hover .tooltiptext{
+  visibility: visible;
+}
+
+.THIS .grayimg svg {
+    fill : gray;
+}
+
+.THIS .floatRight{
+    float:right;
+}
+
+.THIS .noImageClass{
+    width: 95%;
+    margin-bottom: 18px;
+}
+
+.THIS .greenClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #00DE40;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .redClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #FF0000;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .yellowClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+    margin: 5px;
+    display: inline !important; 
+}
+
+.THIS.fixedPosition {
+    position: fixed !important;
+}
+
+.THIS .tooltiptext{
+  visibility: hidden;
+}
+
+.THIS .cTooltip:hover .tooltiptext{
+  visibility: visible;
+   
+}
+
+.THIS .emergencyclass{
+    color:red;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .iconcolr svg{
+    fill: red !important; 
+    color : red !important;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: capitalize;
+}
+
+/*.THIS .wrapper{
+    background: #fff;
+    box-shadow: 0 2px 5px #bdb4b4;
+    border-radius: 6px;
+    padding: 10px 15px;
+    
+}*/
+
+.THIS .invDatacontainertabledata{
+    padding: 0px 5px;
+    height: 42px;
+}
+
+.THIS .bgpad10{
+    padding: 15px 10px;
+    width: 100%;
+    background:#F8F8F8;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.THIS .headerName {
+    font-family: 'RobotoMedium'!important;
+    font-size: 14px;
+    color: #5a5a5a;
+    padding: 0px 24px;
+    background: #f8f8f8;
+}
+
+.THIS .headerCount {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0 24px;
+    color:#000000;
+}
+
+.THIS .liwidth {
+    margin: 0 !important;
+    width: 200px !important;
+}
+
+
+.THIS .yellow{
+	background-color: #f1b328;
+    border-radius: 9px;
+}
+
+.THIS .yellow > lightning-primitive-icon > svg{
+    fill: white;
+}
+
+.THIS .green{
+	background-color: green;
+    border-radius: 9px;
+}
+
+.THIS .green > lightning-primitive-icon > svg{
+    fill: white;
+}
+
+.THIS .uppercase{
+    text-transform:uppercase;
+}
+
+.THIS .slds-page-header .align-tr {
+    width: 100% !important;
+}
+
+.THIS .padding12px {
+    padding: 0px 12px;
+}
+
+.THIS.buttoncontainer{
+    text-align: right; 
+}
+
+.THIS .download-btn {
+    background: #c23934!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #c23934;
+    margin-right: 6px;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+.THIS .slds-card__header{margin-bottom:0px;}
+.THIS .info-msg {
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+}
+.THIS .invDatacontainertableheading:first-child{border-top-left-radius:10px;}
+.THIS .select-order{
+    cursor: pointer;
+}
+
+.THIS .select-order:hover{
+    cursor: pointer;
+        color: #c23934;
+}
+
+.THIS .active-order_list {
+    color: #c23934;
+}

@@ -1,0 +1,250 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                extends="c:edealerTracking"
+                access="global" >
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- this is used for the saving the selected report -->    
+    <aura:attribute name="selectedReport" type="string" /> 
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />    
+    
+    <!-- this is used for store internal transfer report data into cache -->
+    <aura:attribute name="internalTransferDataMapCache" type="Map" />
+    
+    <!-- this is used for store Manual LockDown Report  data into cache -->
+    <aura:attribute name="manualLockDownReportDataMapCache" type="Map" />
+    <aura:attribute name="planningBreadthReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store quarterToDate Report  data into cache -->
+    <aura:attribute name="quarterToDateReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store Back Orders Report  data into cache -->
+    <aura:attribute name="backOrdersReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store zeroOnHand Report  data into cache -->
+    <aura:attribute name="zeroOnHandReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store ABC Criteria Report  data into cache -->
+    <aura:attribute name="ABCCriteriaReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store Not on File Report  data into cache -->
+    <aura:attribute name="notOnFileReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store MDI EXCESS Report  data into cache -->
+    <aura:attribute name="MDIExcessReportDataMapCache" type="Map" />  
+    
+    <!-- this is used for store Global MDI Report  data into cache -->
+    <aura:attribute name="GlobalMDIReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store MSL CSL RSL Report  data into cache -->
+    <aura:attribute name="MSL_CSL_RSLReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store Stocking Template Report  data into cache -->
+    <aura:attribute name="StockingTemplateReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store Return Complince Report  data into cache -->
+    <aura:attribute name="returnComplinceFileReportDataMapCache" type="Map" />
+    
+    <!-- this is used for store Dealer SUpplier  Report  data into cache -->
+    <aura:attribute name="dealerSupplierReportDataMapCache" type="Map" />
+    
+    
+    
+    <!-- this is used for store Non-Y Saleable  Report  data into cache -->
+    <aura:attribute name="nonYSaleableReportDataMapCache" type="Map" />
+    <!-- this is used for store Non-Y Saleable  Report  data into cache -->
+    <aura:attribute name="toggleNOFReportMapCache" type="Map" />
+    
+    
+    
+    <!-- Change handler -->
+    <aura:handler name="change" value="{!v.userDetail.accessibleDealersLocation}" action="{!c.refresh}"/>
+    
+    
+    <div class="reportContainerBox">
+        <div class=" slds-theme_default slds-p-around_small">
+            <h2 class="slds-text-heading_medium slds-m-bottom_small testdemo">{!$Label.c.Reports}</h2>
+            <div class="slds-grid slds-wrap reportcontainer">
+                
+                    <!-- Report Markup -->
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Zero On-Hand'? 'selectedReport report' : 'report'}"
+                               name="Zero On-Hand">{!$Label.c.Zero_On_Hand}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Quarter-to-Date'? 'selectedReport report' : 'report'}"
+                               name="Quarter-to-Date">{!$Label.c.Quarter_to_Date}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Planning Breadth'? 'selectedReport report' : 'report'}"
+                               name = 'Planning Breadth'>{!$Label.c.Planning_Breadth}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Not on File'? 'selectedReport report' : 'report'}"
+                               name="Not on File">{!$Label.c.Not_on_File}</a> 
+                        </p>
+                    </div>
+                    
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Manual Parameters Report'? 'selectedReport report' : 'report'}"
+                               name="Manual Parameters Report">{!$Label.c.Manual_Parameters_Report}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'CSL RSL Report'? 'selectedReport report' : 'report'}"
+                               name="CSL RSL Report">{!$Label.c.CSL_RSL_Report}</a>
+                        </p>
+                    </div>
+                    <!--  <div class="slds-col slds-size_1-of-4">
+                            <p class="button">
+                                <a onclick="{!c.handleReportSelection}" 
+                                   class="{!v.selectedReport == 'MDI Excess'? 'selectedReport report' : 'report'}"
+                                   name="MDI Excess">{!$Label.c.MDI_Excess}</a> 
+                            </p>
+                        </div> -->
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Non-Y Saleable Report'? 'selectedReport report' : 'report'}"
+                               name="Non-Y Saleable Report"> {!$Label.c.eDealerNonYSaleableReport}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Dealer Supplier Report'? 'selectedReport report' : 'report'}"
+                               name = 'Dealer Supplier Report'>{!$Label.c.Supplier_Cross_Reference}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Toggle NOF Report'? 'selectedReport report' : 'report'}"
+                               name ='Toggle NOF Report'>{!$Label.c.eDealerToggleNOFReport}</a> 
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <p class="button">
+                            <a onclick="{!c.handleReportSelection}" 
+                               class="{!v.selectedReport == 'Transfer Report'? 'selectedReport report' : 'report'}"
+                               name ='Transfer Report'>{!$Label.c.Internal_Transfer_Report}</a> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+            
+            
+            
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_12-of-12">
+                    
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Manual Parameters Report'}">        
+                        <c:eDealerManualLockDownReport  accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                       dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                       dealerDivision = "{!v.userDetail.division}"
+                                                       manualLockDownReportDataMapCache = "{!v.manualLockDownReportDataMapCache}"
+                                                       currencyCode="{!v.userDetail.currencyCode}"/>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Zero On-Hand'}">        
+                        <c:eDealerZeroOnHandReport  accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                   dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                   zeroOnHandReportDataMapCache = "{!v.zeroOnHandReportDataMapCache}"
+                                                   dealerDivision = "{!v.userDetail.division}"/>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Quarter-to-Date'}">        
+                        <c:eDealerQuarterToDateReport  dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                      accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                      divisionType = "{!v.userDetail.division}"
+                                                      quarterToDateReportDataMapCache = "{!v.quarterToDateReportDataMapCache}"/>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Planning Breadth'}">        
+                        <c:eDealerPlanningBreadth  dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                  accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                  divisionType = "{!v.userDetail.division}"
+                                                  planningBreadthReportDataMapCache = "{!v.planningBreadthReportDataMapCache}"/>
+                    </aura:if>
+                    
+                    
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Not on File'}">        
+                        <c:eDealerNotOnFileReport  accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                  dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                  dealerDivision = "{!v.userDetail.division}"
+                                                  notOnFileReportDataMapCache = "{!v.notOnFileReportDataMapCache}"
+                                                  currencyCode="{!v.userDetail.currencyCode}"/>
+                    </aura:if>
+                    
+                    <!-- <aura:if isTrue="{!v.selectedReport == 'MDI Excess'}">        
+                <c:eDealerExcessInventoryReport  accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                dealerDivision = "{!v.userDetail.division}"
+                                                MDIExcessReportDataMapCache = "{!v.MDIExcessReportDataMapCache}"
+                                                currencyCode="{!v.userDetail.currencyCode}"/>
+            </aura:if> -->
+                    
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'CSL RSL Report'}">        
+                        <c:eDealerMSL_CSL_RSLReport  dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                    accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                    dealerDivision = "{!v.userDetail.division}"
+                                                    MSL_CSL_RSLReportDataMapCache = "{!v.MSL_CSL_RSLReportDataMapCache}"
+                                                    currencyCode="{!v.userDetail.currencyCode}"/>
+                    </aura:if> 
+                    
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Dealer Supplier Report'}">        
+                        <c:eDealerSupplierCrossReference accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                         dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                         dealerDivision = "{!v.userDetail.division}"
+                                                         dealerSupplierReportDataMapCache = "{!v.dealerSupplierReportDataMapCache}"/>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Non-Y Saleable Report'}">        
+                        <c:eDealerNonYSaleableReport accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                     dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                     dealerDivision = "{!v.userDetail.division}"
+                                                     nonYSaleableReportDataMapCache = "{!v.nonYSaleableReportDataMapCache}"
+                                                     currencyCode="{!v.userDetail.currencyCode}"/>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Toggle NOF Report'}">        
+                        <c:eDealerToggleNOFReport accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                  dealerCode = "{!v.selectedLocation.selectedLoc}"
+                                                  dealerDivision = "{!v.userDetail.division}"
+                                                  toggleNOFReportMapCache = "{!v.toggleNOFReportMapCache}"
+                                                  currencyCode="{!v.userDetail.currencyCode}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedReport == 'Transfer Report'}">        
+                        <c:eDealerInternalTransferReport accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                                         selectedReport="{!v.selectedReport}"
+                                                         divisionType = "{!v.userDetail.division}"
+                                                         internalTransferDataMapCache = "{!v.internalTransferDataMapCache}"
+                                                         currencyCode="{!v.userDetail.currencyCode}"/>
+                    </aura:if>
+                </div> 
+            </div>
+        
+    </aura:component>

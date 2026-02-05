@@ -1,0 +1,445 @@
+<aura:component >    
+    <aura:attribute name="isFirstOrderDetails" type="boolean" />
+    <aura:attribute name="isLastOrder" type="boolean" />
+    <aura:attribute name="totalRecords" type="integer" />
+    <aura:attribute name="showBlockedCancelled" type="boolean" />
+    <aura:attribute name="activeOrderSummary" type="Object" />
+    <aura:attribute name="activeOrderWorkflowRec" type="Object" />
+    <aura:attribute name="orderTrackName" type="String" />
+    <aura:attribute name="progressBarCls" type="String" default="slds-progress-bar slds-progress-bar_x-small" />
+    <aura:attribute name="firstProgressCls" type="String" default="slds-first-row-progress" />
+    <aura:attribute name="secondProgressCls" type="String" default="slds-second-row-progress" />
+    <aura:attribute name="statusTMSOrder" type="String" />
+    <aura:attribute name="trackingStatus" type="String" />
+    <aura:attribute name="trackingNumber" type="String"/>
+    <aura:attribute name="trackingUrl" type="String" access="private"  />
+    <aura:attribute name="showTracking" type="Boolean" default="true" />
+    <aura:attribute name="result" type="Object" />
+    
+    <aura:attribute name="firstrowgreenlinewidth" type="string" />
+    <aura:attribute name="secondrowgreenlinewidth" type="string" />
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- display the First Order -->
+    <aura:if isTrue="{!v.isFirstOrderDetails}">
+        
+        <!--Maya start here-->
+        <!--First row start here-->
+        <div class="{!v.firstProgressCls}">
+            <div class="slds-progress">
+                <ol class="slds-progress__list">
+                    <li class="slds-progress__item">  
+                        <div class="slds-progress-status">
+                            <div class="slds-progress-status-top">{!$Label.c.Edealer_Order_Placed} <img src="{!$Resource.EDealerResources + '/orderIcons/order-placed.png'}"/></div>
+                            
+                            <div class="slds-progress-status-bottom">
+                                <div class="ul-li-style">
+                                    <ul>
+                                        <li><span>{!v.activeOrderSummary.order_date}</span></li>
+                                        <li>{!$Label.c.Edealer_PACCAR_ORDER}<br></br><span>{!v.activeOrderSummary.paccer_order}</span></li>                        
+                                        <li>{!$Label.c.Edealer_DEALER_PO}<br></br><span>{!v.activeOrderSummary.dealerpo}</span></li>
+                                        <li>{!$Label.c.Edealer_SHIPPING_METHOD}</li>
+                                        <li><span>{!v.activeOrderSummary.allshipments}</span></li>
+                                    </ul>
+                                </div> 
+                            </div>
+                        </div> 
+                        <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                    </li>
+                    
+                    <li class="slds-progress__item">   
+                        <div class="slds-progress-status">
+                            <div class="slds-progress-status-top uppercase">{!v.orderTrackName} <img src="{!$Resource.EDealerResources + '/orderIcons/shipment.png'}"/></div>
+                            
+                            <div class="slds-progress-status-bottom">
+                                <div>{!$Label.c.Edealer_PDC}</div>
+                                <div>
+                                    <lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/><b>{!v.activeOrderWorkflowRec.SOURCE_LOCATION}<!--Las Vegas,NV--></b>
+                                </div>
+                                <div>
+                                    <lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                    <b> {!v.activeOrderWorkflowRec.PICKED_UP_DATE_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                                </div>
+                            </div>
+                        </div>
+                        <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                    </li>
+                    <aura:if isTrue="{!v.showTracking}">
+                        <li class="slds-progress__item">     
+                            <div class="slds-progress-status">
+                                <div class="slds-progress-status-top uppercase">{!v.trackingStatus} <img src="{!$Resource.EDealerResources + '/orderIcons/parts-shipped.png'}"/></div>
+                                
+                                <div class="slds-progress-status-bottom">
+                                    {!$Label.c.Edealer_Tracking}<br/>
+                                    
+                                    <!-- If ENCRYPTED_URL is blank then showing as text otherwise it will show as link-->
+                                    <aura:if isTrue="{!empty(v.trackingUrl)}">
+                                        <span><b>{!v.trackingNumber}</b></span>
+                                        <aura:set attribute="else">
+                                            <lightning:buttonIcon  class="" iconName="utility:search" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                            <b><lightning:formattedUrl 
+                                                value="{!v.trackingUrl}"
+                                                label="{!v.trackingNumber}"
+                                                target="_blank"/>
+                                                <!--<a href="{!v.trackingUrl}" target="_blank">{!v.trackingNumber}</a>--></b>
+                                        </aura:set>
+                                    </aura:if>
+                                    
+                                </div>
+                            </div>
+                            <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                        </li>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!not(empty(v.activeOrderWorkflowRec.orderWorkflowTMS))}">
+                        <li class="slds-progress__item">  
+                            <div class="slds-progress-status">
+                                <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_INTRANSIT} <img src="{!$Resource.EDealerResources + '/orderIcons/in-transit.png'}"/></div>
+                                
+                                <div class="slds-progress-status-bottom">
+                                    <b>{!v.activeOrderWorkflowRec.orderWorkflowTMS.EVENT_STATUS}</b>
+                                </div>
+                            </div>
+                            <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                        </li>
+                        <li class="slds-progress__item">    
+                            <div class="slds-progress-status">
+                                <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_Delivery} <img src="{!$Resource.EDealerResources + '/orderIcons/delivered.png'}"/></div>
+                                
+                                <div class="slds-progress-status-bottom">
+                                    <!-- added below aura:if fpr TMS data --> 
+                                    <aura:if isTrue="{!not(empty(v.activeOrderWorkflowRec.orderWorkflowTMS))}">
+                                        <div><b>
+                                            <lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/> 
+                                            {!v.activeOrderWorkflowRec.orderWorkflowTMS.DESTINATION_LOCATION}<br/>
+                                            <lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                            
+                                            <!-- check if status is 'Shipment Delivered' or not -->
+                                            <aura:if isTrue="{!v.activeOrderWorkflowRec.orderWorkflowTMS.STAT == 'Shipment Delivered'}">
+                                                {!v.statusTMSOrder} : {!v.activeOrderWorkflowRec.orderWorkflowTMS.DELIVERED_ON_PST}<br/>
+                                                <aura:set attribute="else">
+                                                    {!v.statusTMSOrder} : {!v.activeOrderWorkflowRec.orderWorkflowTMS.EST_ARRIVAL_PST}<br/>
+                                                </aura:set>
+                                            </aura:if>
+                                            </b>
+                                        </div>
+                                    </aura:if>
+                                </div>
+                            </div>
+                            <aura:if isTrue="{!v.activeOrderWorkflowRec.orderWorkflowTMS.STAT == 'Shipment Delivered'}">
+                                <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                                <aura:set attribute="else">
+                                    <lightning:icon iconName="utility:record"  alternativeText="checked"/>
+                                </aura:set>
+                            </aura:if>
+                        </li>
+                        
+                        <aura:set attribute="else">
+                            <li class="slds-progress__item">  
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_INTRANSIT} <img src="{!$Resource.EDealerResources + '/orderIcons/in-transit.png'}"/></div>
+                                </div>
+                                <lightning:icon  class="slds-button" iconName="utility:clock" variant="warning" alternativeText="clock" />
+                            </li>
+                            
+                            <li class="slds-progress__item">    
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_Delivery} <img src="{!$Resource.EDealerResources + '/orderIcons/delivered.png'}"/></div>                                    
+                                    <div class="slds-progress-status-bottom"></div>
+                                </div>
+                                <lightning:icon iconName="utility:record"  alternativeText="checked"/>
+                            </li>                            
+                        </aura:set>
+                    </aura:if>
+                </ol>
+                <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="{{Placeholder for description of progress bar}}" role="progressbar">
+                    <span class="slds-progress-bar__value" style="{!'width:'+v.firstrowgreenlinewidth}">
+                        <span class="slds-assistive-text">{!$Label.c.Progress}: 50%</span>
+                    </span>
+                </div>
+            </div>
+            
+        </div>
+        
+        <aura:if isTrue="{!v.isLastOrder}">
+            
+            <aura:if isTrue="{!v.result.hasProcessingOrder}">
+                <!--backward row start here-->
+                <div class="slds-second-row-progress slds-cancel-row-progress sldc-backward-row">
+                    <div>
+                        <div class="vertical-progress-bar"></div>                
+                    </div>
+                    <div class="slds-progress">
+                        <ol class="slds-progress__list">                      
+                            <li class="slds-progress__item slds-has-back">   
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">
+                                         {!$Label.c.Edealer_Processing}
+                                    </div>
+                                </div>
+                                
+                                <lightning:icon  class="slds-button_icon slds-progress__marker slds-progress__marker_icon" iconName="utility:clock" variant="bare" alternativeText="checked" />
+                                
+                                <!--  <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />-->
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!--backwardaya end here-->
+            </aura:if>
+            
+            <aura:if isTrue="{!v.result.hasBackOrder}">
+                <!--backward row start here-->
+                <div class="slds-second-row-progress slds-cancel-row-progress sldc-backward-row">
+                    <div>
+                        <div class="vertical-progress-bar"></div>                
+                    </div>
+                    <div class="slds-progress">
+                        <ol class="slds-progress__list">                      
+                            <li class="slds-progress__item slds-has-back">   
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">
+                                        {!$Label.c.Edealer_BackOrder}
+                                    </div>
+                                </div>
+                                
+                                <lightning:icon  class="slds-button_icon slds-progress__marker slds-progress__marker_icon" iconName="utility:clock" variant="bare" alternativeText="checked" />
+                                
+                                <!--  <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />-->
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!--backwardaya end here-->
+            </aura:if>
+            
+            <aura:if isTrue="{!v.result.hasCancelOrder}">
+                <!--Cancel row start here-->
+                <div class="slds-second-row-progress slds-cancel-row-progress sldc-cancel-row">
+                    <div>
+                        <div class="vertical-progress-bar"></div>                
+                    </div>
+                    <div class="slds-progress">
+                        <ol class="slds-progress__list">                      
+                            <li class="slds-progress__item slds-has-cancel">   
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">
+                                        {!$Label.c.Edealer_Cancelled_Tracking}
+                                    </div>
+                                </div>
+                                
+                                <lightning:icon  class="slds-button_icon slds-progress__marker slds-progress__marker_icon" iconName="utility:close" variant="bare" alternativeText="checked" />
+                                
+                                <!--  <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />-->
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </aura:if>
+        </aura:if>
+        <!--First row end here-->
+        
+        <aura:set attribute="else">
+            <!--Second row start here-->
+            <div class="{!v.secondProgressCls}">
+                <div>
+                    <div class="vertical-progress-bar"></div>                
+                </div>
+                <div class="slds-progress">
+                    <ol class="slds-progress__list">                      
+                        <li class="slds-progress__item">   
+                            <div class="slds-progress-status">
+                                <div class="slds-progress-status-top uppercase">
+                                    {!v.orderTrackName} <img src="{!$Resource.EDealerResources + '/orderIcons/shipment.png'}"/>
+                                </div>
+                                
+                                <div class="slds-progress-status-bottom">
+                                    <div>PDC</div>
+                                    <div>
+                                        <lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/><b>{!v.activeOrderWorkflowRec.SOURCE_LOCATION}<!--Las Vegas,NV--></b>
+                                    </div>
+                                    <div>
+                                        <lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                        <b> {!v.activeOrderWorkflowRec.PICKED_UP_DATE_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                                    </div>
+                                </div>
+                            </div>
+                            <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                        </li>
+                        <aura:if isTrue="{!v.showTracking}">
+                            <li class="slds-progress__item">  
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">{!v.trackingStatus} <img src="{!$Resource.EDealerResources + '/orderIcons/parts-shipped.png'}"/></div>
+                                    
+                                    <div class="slds-progress-status-bottom">
+                                        {!$Label.c.Edealer_Tracking} <br/>
+                                        <!-- If ENCRYPTED_URL is blank then showing as text otherwise it will show as link-->
+                                        <aura:if isTrue="{!empty(v.trackingUrl)}">
+                                            <span><b>{!v.trackingNumber}</b></span>
+                                            <aura:set attribute="else">
+                                                <lightning:buttonIcon  class="" iconName="utility:search" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                                <b><lightning:formattedUrl 
+                                                value="{!v.trackingUrl}"
+                                                label="{!v.trackingNumber}"
+                                                target="_blank"/><!--<a href="{!v.trackingUrl}" target="_blank">{!v.trackingNumber}</a>--></b>
+                                            </aura:set>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                                <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                            </li> 
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!not(empty(v.activeOrderWorkflowRec.orderWorkflowTMS))}">
+                            <li class="slds-progress__item"> 
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_INTRANSIT} <img src="{!$Resource.EDealerResources + '/orderIcons/in-transit.png'}"/></div>
+                                    
+                                    <div class="slds-progress-status-bottom">
+                                        <b>{!v.activeOrderWorkflowRec.orderWorkflowTMS.EVENT_STATUS}</b>
+                                    </div>
+                                </div>
+                                <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                            </li>
+                            <li class="slds-progress__item">  
+                                <div class="slds-progress-status">
+                                    <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_Delivery} <img src="{!$Resource.EDealerResources + '/orderIcons/delivered.png'}"/></div>
+                                    
+                                    <div class="slds-progress-status-bottom">
+                                        <aura:if isTrue="{!not(empty(v.activeOrderWorkflowRec.orderWorkflowTMS))}">
+                                            <div><b>
+                                                <lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/> 
+                                                {!v.activeOrderWorkflowRec.orderWorkflowTMS.DESTINATION_LOCATION}<br/>
+                                                <lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                                <!-- check if status is 'Shipment Delivered' or not -->
+                                                <aura:if isTrue="{!v.activeOrderWorkflowRec.orderWorkflowTMS.STAT == 'Shipment Delivered'}">
+                                                    {!v.statusTMSOrder} : {!v.activeOrderWorkflowRec.orderWorkflowTMS.DELIVERED_ON_PST}<br/>
+                                                    <aura:set attribute="else">
+                                                        {!v.statusTMSOrder} : {!v.activeOrderWorkflowRec.orderWorkflowTMS.EST_ARRIVAL_PST}<br/>
+                                                    </aura:set>
+                                                </aura:if>
+                                                </b>
+                                            </div>
+                                        </aura:if>
+                                    </div>
+                                </div>
+                                <aura:if isTrue="{!v.activeOrderWorkflowRec.orderWorkflowTMS.STAT == 'Shipment Delivered'}">
+                                    <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                                    <aura:set attribute="else">
+                                        <lightning:icon iconName="utility:record"  alternativeText="checked"/>
+                                    </aura:set>
+                                </aura:if>
+                            </li>
+                            
+                            <aura:set attribute="else">
+                                <li class="slds-progress__item">  
+                                    <div class="slds-progress-status">
+                                        <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_INTRANSIT} <img src="{!$Resource.EDealerResources + '/orderIcons/in-transit.png'}"/></div>
+                                    </div>
+                                    <lightning:icon  class="slds-button" iconName="utility:clock" variant="warning" alternativeText="clock" />
+                                </li>
+                                
+                                <li class="slds-progress__item">    
+                                    <div class="slds-progress-status">
+                                        <div class="slds-progress-status-top uppercase">{!$Label.c.Edealer_Delivery} <img src="{!$Resource.EDealerResources + '/orderIcons/delivered.png'}"/></div>                                    
+                                        <div class="slds-progress-status-bottom"></div>
+                                    </div>
+                                    <lightning:icon  iconName="utility:record" alternativeText="checked"/>
+                                </li>                            
+                            </aura:set>
+                            
+                        </aura:if>
+                    </ol>
+                    <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="{{Placeholder for description of progress bar}}" role="progressbar">
+                        <span class="slds-progress-bar__value" style="{!'width:'+v.secondrowgreenlinewidth}">
+                            <span class="slds-assistive-text">{!$Label.c.Progress}: 50%</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--second row end here-->            
+            
+            <aura:if isTrue="{!v.isLastOrder}">
+                
+                <aura:if isTrue="{!v.result.hasProcessingOrder}">
+                    <!--backward row start here-->
+                    <div class="slds-second-row-progress slds-cancel-row-progress sldc-backward-row">
+                        <div>
+                            <div class="vertical-progress-bar"></div>                
+                        </div>
+                        <div class="slds-progress">
+                            <ol class="slds-progress__list">                      
+                                <li class="slds-progress__item slds-has-back">   
+                                    <div class="slds-progress-status">
+                                        <div class="slds-progress-status-top uppercase">
+                                            {!$Label.c.Edealer_Processing}
+                                        </div>
+                                    </div>
+                                    
+                                    <lightning:icon  class="slds-button_icon slds-progress__marker slds-progress__marker_icon" iconName="utility:clock" variant="bare" alternativeText="checked" />
+                                    
+                                    <!--  <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />-->
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!--backwardaya end here-->
+                </aura:if>
+                
+                <aura:if isTrue="{!v.result.hasBackOrder}">
+                    <!--backward row start here-->
+                    <div class="slds-second-row-progress slds-cancel-row-progress sldc-backward-row">
+                        <div>
+                            <div class="vertical-progress-bar"></div>                
+                        </div>
+                        <div class="slds-progress">
+                            <ol class="slds-progress__list">                      
+                                <li class="slds-progress__item slds-has-back">   
+                                    <div class="slds-progress-status">
+                                        <div class="slds-progress-status-top uppercase">
+                                            {!$Label.c.Edealer_BackOrder} 
+                                        </div>
+                                    </div>
+                                    
+                                    <lightning:icon  class="slds-button_icon slds-progress__marker slds-progress__marker_icon" iconName="utility:clock" variant="bare" alternativeText="checked" />
+                                    
+                                    <!--  <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />-->
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!--backwardaya end here-->
+                </aura:if>
+                
+                <aura:if isTrue="{!v.result.hasCancelOrder}">
+                    <!--Cancel row start here-->
+                    <div class="slds-second-row-progress slds-cancel-row-progress sldc-cancel-row">
+                        <div>
+                            <div class="vertical-progress-bar"></div>                
+                        </div>
+                        <div class="slds-progress">
+                            <ol class="slds-progress__list">                      
+                                <li class="slds-progress__item slds-has-cancel">   
+                                    <div class="slds-progress-status">
+                                        <div class="slds-progress-status-top uppercase">
+                                            {!$Label.c.Edealer_Cancelled_Tracking}
+                                        </div>
+                                    </div>
+                                    
+                                    <lightning:icon  class="slds-button_icon slds-progress__marker slds-progress__marker_icon" iconName="utility:close" variant="bare" alternativeText="checked" />
+                                    
+                                    <!--  <lightning:icon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />-->
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </aura:if>
+            </aura:if>
+            <!--Cancel end here-->
+        </aura:set>
+        
+        
+    </aura:if>
+</aura:component>

@@ -1,0 +1,730 @@
+<!-- 
+ Name        : eDealerMenu
+ Description : This is an aura component for the eDealer/Gateway main menu.
+ Version History:
+ 1.0 Initial Version
+ 1.1 mitali.khidkikar@paccar.com June 28,2023 - Added "Analytics" menu to display CRM analytics reports/dashboards: #CRMAnalytics @CRMAnalytics
+ 1.2 mitali.khidkikar@paccar.com July 6,2023 - Replace fa fa-bars with fa fa-chevron Because instead of this '>' ,bars is showing  on UI.
+ 1.3 vivian.mirador@paccar.com 12/13/2023 - Added Pricing for PFM : #Pricing
+-->
+
+<aura:component controller="eDealerToggle" implements="forceCommunity:availableForAllPageTypes" access="global">
+
+    <!-- register event when menu is clicked -->
+    <aura:registerEvent name="menuevent" type="c:eDealerMenuClickedEvent" />
+
+    <!-- this will use the selected menu -->
+    <aura:attribute name="selectedmenu" type="string" />
+
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object" />
+
+    <aura:attribute name="ismenuClosed" type="Boolean" default="false" />
+    <aura:attribute name="ismenuClosed2" type="Boolean" default="false" />
+
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    <aura:attribute name="clickedBarName" type="string" />
+    <aura:attribute name="fullHeight" type="string" />
+
+    <!-- calling onload Method -->
+    <aura:handler name="init" value="{!this}" action="{!c.onload}" />
+
+    <!-- on Change of selected menu -->
+    <aura:handler name="change" value="{!v.selectedmenu}" action="{!c.onload}"/>
+    <aura:attribute name="isToggleOnForLoggedInUser" type="Boolean"  default="false"/>
+    <aura:attribute name="isLoyaltyMenuVisible" type="Boolean"  default="false"/>
+    <aura:attribute name="hideScoreCardMenuItem" type="Boolean"  default="false"/>
+    <aura:attribute name="hideMDIDashboardMenuItem" type="Boolean" default="false"/>
+    <aura:attribute name="isPricingToogleOn" type="Boolean" default="false"/>
+	<aura:attribute name="isRPMScoreCardToggleOn" type="Boolean"  default="false"/>
+    <aura:attribute name="childNavState" type="Object"/>
+   
+    <!-- Attribute is used to enable and disable TCS365 menu on Gateway -->
+    <aura:attribute name="isTCS365ToogleOn" type="Boolean"  default="false" description="It is used for displaying TCS365 Dashboard Functionality"/>
+    <lightning:messageChannel type="eDealerCSR__c" aura:id="eDealerCSR"/>
+    
+    <div id="wrapper">
+        <!--<nav class="main-menu" aura:id="myDIV" id="myDIV" style="{!('min-height:'+v.fullHeight+'px;'+'max-height:'+v.fullHeight+'px;')}">-->
+        <nav class="main-menu expanded" aura:id="myDIV" id="myDIV" >
+            <div class="buttonbox">
+                <div class="custom-menu">
+                    <button type="button" onclick="{!c.myFunction}" class="btn btn-primary">
+<!--
+                        <i class="fa fa-chevron">
+                            <lightning:icon
+                                iconName="{!v.ismenuClosed == true ? 'utility:chevronright' : 'utility:chevronleft'}"
+                                size="small" />
+                        </i>-->
+                        <i class="custom-icon"> 
+                            
+                            <img src="{!$Resource.threeDots}" alt="Toggle Menu" style="width: 16px; height: 16px;" /></i>
+
+                      <span class="sr-only">Toggle Menu</span> 
+                    </button>
+                </div>
+            </div>
+            <ul>
+
+                <li>
+                   <div  class="{!v.selectedmenu == 'dashboardDemo' ? 'mainNavItem active' : 'mainNavItem'}" >
+                    <a href="" name="dashboardDemo" class="{!v.selectedmenu == 'dashboardDemo' ? 'active' : ''}">
+                        <i class="menu-icon1" name="dashboardDemo" id="{!$Label.c.EDealer_Menu_Suggested_Order_File}"
+                            onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources  + '/MenuIcons/customDashboard.svg'+'#customDashboard'}" />
+                        </i>
+                        <span name="dashboardDemo" id="DASHBOARD" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'dashboardDemo' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Dashboard}
+                        </span>
+                        
+                         <button type="button" onclick="{!c.myFunction2}" name = "dashboard" class="btn btn-primaryN">
+
+                                    <i class="fa fa-chevrons"> 
+                                        <lightning:icon
+                                            iconName="{!v.ismenuClosed2 == true ? 'utility:jump_to_bottom' : 'utility:jump_to_top'}"
+                                                        size="x-small" />
+                                       
+                                    </i>
+            
+                                  <span class="sr-only">Toggle Menu</span> 
+                                </button>
+                    </a>
+                    </div>
+                </li>
+               
+                <!-- <aura:if isTrue="{!!v.hideScoreCardMenuItem}">
+                    <li class="padding: 0px;">
+                        <aura:if isTrue="{!!v.ismenuClosed}">
+                            <ul class="dropmenu">
+                                <li class="has-subnav" name="scorecard" >
+                                    <a href="">
+                                        <span name="scorecard" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'scorecard' ? 'nav-text active' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Dealer_Scorecard}
+                                        </span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                        </aura:if>
+                    </li>
+                </aura:if>-->
+                <aura:if isTrue="{!!v.hideMDIDashboardMenuItem}">
+                    <li class="" name="dashboardDivV2">
+                         <div  class="{!v.selectedmenu == 'dashboardDivV2' ? 'mainNavItem active' : 'mainNavItem'}" >
+                             
+                        <a href="" class="{!v.selectedmenu == 'dashboardDivV2' || v.selectedmenu == 'managedealerinv' || v.selectedmenu == 'confirmedorder' ||  v.selectedmenu == 'masterinventory' || v.selectedmenu == 'reportcenter' ? 'active' : ''}">
+                            <i class="menu-icon1" name="dashboardDivV2" onclick="{!c.handleMenu}">
+                                <lightning:icon
+                                    src="{!$Resource.EDealerResources  + '/MenuIcons/customInventory.svg'+'#customInventory'}" />
+                            </i>
+                            <span name="dashboardDivV2" id="MANAGED DEALER INVENTORY" onclick="{!c.handleMenu}"
+                                class="{!v.selectedmenu == 'dashboardDivV2' ? 'nav-text active' : 'nav-text'}">
+                                {!$Label.c.EDealer_Menu_Managed_Dealer_Inventory}
+                            </span>
+                        		
+                             <button type="button" onclick="{!c.myFunction2}" name ="mdi" class="btn btn-primaryN">
+
+                                    <i class="fa fa-chevron">
+                                        <lightning:icon
+                                            iconName="{!v.childNavState.mdiChildNav.isOpen == false ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                            size="xx-small" />
+                                    </i>
+            
+                                  <span class="sr-only">Toggle Menu</span> 
+                                </button>
+						
+                           
+                        </a>
+                        </div>
+                    <!-- submenu moved to main menu li -->   
+                        <div class="{!v.childNavState.mdiChildNav.isOpen == false ? 'ChildNav2' : ''}">
+                        	<div class="{!v.selectedLocation.listSelectedLoc.length > 1?'disable-menu':'' }">
+                        	<aura:if isTrue="{!!v.ismenuClosed	}">
+                            <ul class="dropmenu">
+                                <li class="has-subnav" name="managedealerinv">
+                                    <a href="">
+                                        <span name="managedealerinv" id="Suggested Order File (SOF)"
+                                            onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'managedealerinv' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Suggested_Order_File}
+                                        </span>
+                                    </a>
+    
+                                </li>
+    
+                                <li class="has-subnav" name="managedealerinv">
+                                    <a href="">
+                                        <span name="confirmedorder" id="Confirmed Order File (COF)"
+                                            onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'confirmedorder' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Confirmed_Order_File}
+                                        </span>
+                                    </a>
+    
+                                </li>
+    
+                                <li class="has-subnav" name="masterinventory">
+                                    <a href="">
+    
+                                        <span name="masterinventory" id="Master Inventory" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'masterinventory' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Master_Inventory}
+                                        </span>
+                                    </a>
+                                </li>
+    
+                                <!-- <li class="has-subnav" name="requestchanges" >
+                                    <a href="">
+                                        
+                                        <span name="requestchanges" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'requestchanges' ? 'nav-text active' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Request_Changes}
+                                        </span>
+                                    </a>
+                                </li>-->
+    
+                                <li class="has-subnav" name="reportcenter">
+                                    <!-- class="{!v.userDetail.isNonDealer ? 'has-subnav disable-menu' : 'has-subnav'}" -->
+                                    <a href="">
+    
+                                        <span name="reportcenter" id="MDI Report Center" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'reportcenter' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_MDI_Report_Center}
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+    
+                        </aura:if>
+                        </div>
+                        </div>
+              		<!-- submenu moved to main menu li -->
+                    </li>
+                </aura:if>
+                
+                  
+                 <!--OPC Report START-->
+                <li class=" " name="OPCReport">
+                    <div  class="{!v.selectedmenu == 'OPCReport' ? 'mainNavItem active' : 'mainNavItem'}" >
+                    <a href="" class="{!v.selectedmenu == 'OPCReport' ? 'active' : ''}">
+                        <i class="menu-icon1" name="OPCReport" onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources  + '/MenuIcons/customOrderparts.svg'+'#customOrderparts'}" />
+                        </i>
+                        <span name="OPCReport" id="OPC Report" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'OPCReport' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_OPC_Report}
+                        </span>
+                    </a>
+                    </div>
+                </li>
+                <!--OPC Report END  -->
+
+                <!-- CRMAnalytics START-->
+                <li class=" " name="Analytics">
+                    <div  class="{!v.selectedmenu == 'Analytics' ? 'mainNavItem active' : 'mainNavItem'}" >
+                    <a href="" class="{!v.selectedmenu == 'Analytics'||v.selectedmenu == 'aftermarket'||v.selectedmenu == 'fieldservice' ? 'active' : ''}">
+                       
+                        <i class="menu-icon1" name="Analytics" onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources  + '/MenuIcons/customDashboard.svg'+'#customDashboard'}" />
+                        </i>
+                        <span name="Analytics" id="ANALYTICS" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'Analytics' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Analytics}
+                        </span>
+                        
+                           <button type="button" onclick="{!c.myFunction2}" name ="analytics" class="btn btn-primaryN">
+
+                                    <i class="fa fa-chevron">
+                                        <lightning:icon
+                                            iconName="{!v.childNavState.analyticsChildNav.isOpen == false ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                            size="xx-small" />
+                                    </i>
+            
+                                  <span class="sr-only">Toggle Menu</span> 
+                         </button>
+						 
+                    </a>
+                    </div>
+                
+                <!---END-->
+                    <div class="{!v.childNavState.analyticsChildNav.isOpen == false ? 'ChildNav2' : ''}">
+                        	<div class="{!v.selectedLocation.listSelectedLoc.length > 1?'disable-menu':'' }">
+                <aura:if isTrue="{!!v.ismenuClosed}">
+                    <ul class="dropmenu">
+                        <li class="has-subnav" name="managedealerinv" >
+                            <a href="">                                    
+                                <span name="aftermarket" id="Analytics Field Service" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'aftermarket' ? 'nav-text Cactive' : 'nav-text'}" >
+                                    - {!$Label.c.After_Market} <!--{!$Label.c.EDealer_Menu_Field_Service}-->
+                                </span>
+                            </a>
+                            
+                        </li>
+                   <!-- </ul>
+                    
+                    <ul class="dropmenu">-->
+                        <li class="has-subnav" name="managedealerinv">
+                            <a href="">
+                                <span name="fieldservice" id="Analytics Field Service" onclick="{!c.handleMenu}"
+                                      class="{!v.selectedmenu == 'fieldservice' ? 'nav-text Cactive' : 'nav-text'}">
+                                    - {!$Label.c.EDealer_Menu_Field_Service}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </aura:if>	
+                        </div></div>
+                </li>
+                
+                <!-- #Pricing Start-->
+                 <aura:if isTrue="{!v.isPricingToogleOn==true}">
+                <li class=" " name="pricing"  >
+                    <div  class="{!v.selectedmenu == 'pricing' ? 'mainNavItem active' : 'mainNavItem'}" >
+                    <a href="" class="{!v.selectedmenu == 'pricing' || v.selectedmenu == 'dailyrebatesfile' ? 'active' : ''}">                              
+                        <i class="menu-icon1" name="pricing" onclick="{!c.handleMenu}">
+                           <!--<lightning:icon src="{!$Resource.EDealerResources+ '/MenuIcons/newPrice_new.svg'+'#newPrice_new'}"/>  -->
+                           <lightning:icon src="{!$Resource.EDealerResources+ '/MenuIcons/customClaims.svg'+'#customClaims'}"/>
+                        </i>
+                        <span name="pricing" id="PRICING" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'pricing' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Price}
+                        </span>
+                       
+                           <button type="button" onclick="{!c.myFunction2}" name = "pricing" class="btn btn-primaryN">
+
+                                    <i class="fa fa-chevron">
+                                        <lightning:icon
+                                            iconName="{!v.childNavState.pricingChildNav.isOpen == false ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                            size="xx-small" />
+                                    </i>
+            
+                                  <span class="sr-only">Toggle Menu</span> 
+                                </button>
+                         
+                        
+                    </a>
+                    </div>
+                
+                <div class="{!v.childNavState.pricingChildNav.isOpen == false ? 'ChildNav2' : ''}">
+                <div class="{!v.selectedLocation.listSelectedLoc.length > 1?'disable-menu':''}">
+                    <aura:if isTrue="{!!v.ismenuClosed}">
+                        <ul class="dropmenu">
+<!--                            <li class="has-subnav" name="monthlyPriceFile" >
+                                <a href="">                                    
+                                    <span name="monthlyPriceFile" id="Monthly Files" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'monthlyPriceFile' ? 'nav-text active' : 'nav-text'}" >
+                                        - {!$Label.c.EDealer_Menu_Monthly_Price_Files}
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="has-subnav" name="dailyPriceFile" >
+                                <a href="">                                    
+                                    <span name="dailyPriceFile" id="Daily Files" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'dailyPriceFile' ? 'nav-text active' : 'nav-text'}" >
+                                        - {!$Label.c.EDealer_Menu_Daily_Price_Files}
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="has-subnav" name="weeklyFleetPriceFile" >
+                                <a href="">                                    
+                                    <span name="weeklyFleetPriceFile" id="Weekly Fleet Price File" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'weeklyFleetPriceFile' ? 'nav-text active' : 'nav-text'}" >
+                                        - {!$Label.c.EDealer_Menu_Weekly_Fleet_Price_Files}
+                                    </span>
+                                </a>
+                            </li>
+-->
+                            <li class="has-subnav" name="dailyrebatesfile" >
+                                <a href="javascript:void(0);">                                    
+                                    <span name="dailyrebatesfile" id="Daily Rebates File" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'dailyrebatesfile' ? 'nav-text Cactive' : 'nav-text'}" >
+                                        - {!$Label.c.EDealer_Menu_Daily_Rebates_Files}
+                                    </span>
+                                </a>                 
+                            </li>       
+                        </ul>
+                    </aura:if>
+                </div>
+</div>
+                    </li>
+                </aura:if>
+                     
+                <!---#Pricing End-->
+                <!-- hidden on 03/04/2025 by designer start -->
+                <!--<li class="has-subnav disable-menu" name="orderparts" >
+                    <a href="" class="{!v.selectedmenu == 'orderparts' ? 'active' : ''}">
+
+                        <i class="menu-icon1" name="orderparts" onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources  + '/MenuIcons/customOrderparts.svg'+'#customOrderparts'}" />
+                        </i>
+                        <span name="orderparts" id="ORDER PARTS" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'orderparts' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Order_Parts}
+                        </span>
+                    </a>
+                </li>-->
+               <!-- <li>
+                    <aura:if isTrue="{!!v.ismenuClosed}">
+                        <ul class="dropmenu">-->
+                            <!--
+                            <li class="has-subnav" name="activeordersdetail" >
+                                <a href="">
+                                    <span name="activeordersdetail" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'activeordersdetail' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Active_Orders}
+                                    </span>
+                                </a>
+                            </li>                            
+                            -->
+                            <!--
+                            <li class="has-subnav" name="partdetail" >
+                                <a href="">
+                                    <span name="partdetail" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'partdetail' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Parts_Availability}
+                                    </span>
+                                </a>
+                            </li>                            
+                            -->
+<!--
+                            <li class="has-subnav disable-menu" name="partsonline">
+                                <a href="">
+                                    <span name="partsonline" id="Parts Online" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'partsonline' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Parts_Online}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </aura:if>
+                </li>-->
+                <!-- hidden on 03/04/2025 by designer end -->
+                
+                <!-- hidden on 03/04/2025 by designer start -->
+                <!--<li class="has-subnav disable-menu" name="claims">
+                    <a href="" class="{!v.selectedmenu == 'claims' ? 'active' : ''}">
+                        <i class="menu-icon1" name="claims" onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources  + '/MenuIcons/customClaims.svg'+'#customClaims'}" />
+                        </i>
+                        <span name="claims" id="CLAIMS" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'claims' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Claims}
+                        </span>
+                    </a>
+                </li>
+-->
+                <!--
+                <li class="disable-menu">
+                    <aura:if isTrue="{!!v.ismenuClosed}">
+                        <ul class="dropmenu">
+                            <li class="has-subnav" name="submitclaim">
+                                <a href="">
+
+                                    <span name="submitclaim" id="Submit a Claim" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'submitclaim' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Submit_Claim}
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="has-subnav disable-menu" name="trackclaim">
+                                <a href="">
+
+                                    <span name="trackclaim" id="Track a Claim" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'trackclaim' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Track_Claim}
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="has-subnav disable-menu" name="claimhistory">
+                                <a href="">
+
+                                    <span name="claimhistory" id="Claim History" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'claimhistory' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Claim_History}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </aura:if>
+                </li>-->
+                
+                <!-- hidden on 03/04/2025 by designer end -->
+                
+                
+                <aura:if isTrue="{!v.isToggleOnForLoggedInUser==true}">
+                    <li class=" " name="csrandvolumnsales">
+                        <div  class="{!v.selectedmenu == 'csrandvolumnsales' ? 'mainNavItem active' : 'mainNavItem'}" >
+                        <a href="" class="{!v.selectedmenu == 'csrandvolumnsales' || v.selectedmenu == 'createCSR'|| v.selectedmenu =='csrdetail' || v.selectedmenu == 'partnumberdetail'? 'active' : ''}">
+                            <i class="menu-icon1" name="csrandvolumnsales" onclick="{!c.handleMenu}">
+                                <lightning:icon
+                                    src="{!$Resource.EDealerResources+ '/MenuIcons/customSales.svg'+'#customSales'}" />
+                            </i>
+                            <span name="csrandvolumnsales" id="CSR AND VOLUME SALES" onclick="{!c.handleMenu}"
+                                class="{!v.selectedmenu == 'csrandvolumnsales' ? 'nav-text active' : 'nav-text'}">
+                                {!$Label.c.EDealer_CSR_AND_VOLUME_SALES}
+                            </span>
+                                <button type="button" name = "csr" onclick="{!c.myFunction2}" class="btn btn-primaryN">
+
+                                    <i class="fa fa-chevron">
+                                        <lightning:icon
+                                            iconName="{!v.childNavState.csrChildNav.isOpen == false ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                            size="xx-small" />
+                                    </i>
+            
+                                  <span class="sr-only">Toggle Menu</span> 
+                                </button>
+ 
+                        </a>
+                        </div>
+                   
+                    <div class="{!v.childNavState.csrChildNav.isOpen == false ? 'ChildNav2' : ''}">
+                        <aura:if isTrue="{!!v.ismenuClosed}">
+                            <ul class="dropmenu">
+                                <li class="has-subnav" name="createCSR">
+                                    <a href="">
+                                        <span name="createCSR" id="Create CSR" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'createCSR' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Create_CSR}
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aura:if>
+                    </div>
+                         </li>
+                </aura:if>
+                
+                
+              <!-- hidden on 03/04/2025 by designer start -->
+                <!--<li class="has-subnav disable-menu" name="marketingandpromotions">
+                    <a href="" class="{!v.selectedmenu == 'marketingandpromotions' ? 'active' : ''}">-->
+                        <!-- <i class="fa fa-list fa-2x" name="mandpDev">
+                            <img src="{!$Resource.customPromotion}" name="marketingandpromotions" onclick="{!c.handleMenu}"/>
+                            <lightning:icon iconName="utility:checkin" size="small"/> 
+                        </i> -->
+                      <!--  <i class="menu-icon1" name="marketingandpromotions" onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources+'/MenuIcons/customPromotion.svg'+'#promotion'}" />
+                        </i>
+                        <span name="marketingandpromotions" id="MARKETING AND PROMOTIONS" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'marketingandpromotions' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Marketing_And_Promotions}
+                        </span>
+                    </a>
+                </li>
+                -->
+                <!--<li class="disable-menu">
+                    <aura:if isTrue="{!!v.ismenuClosed}">
+                        <ul class="dropmenu">
+                            <li class="has-subnav" name="currentoffers">
+                                <a href="">
+
+                                    <span name="currentoffers" id="	Current Offers" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'currentoffers' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Current_Offers}
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="has-subnav disable-menu" name="loyality">
+                                <a href="">
+
+                                    <span name="loyality" id="Loyality" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'loyality' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Loyality}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </aura:if>
+
+                </li>-->
+                <!--
+                <li class="has-subnav disable-menu" name="truckspecs">
+                    <a href="" class="{!v.selectedmenu == 'truckspecs' ? 'active' : ''}">
+                        <i class="menu-icon1" name="truckspecs" onclick="{!c.handleMenu}">
+                            <lightning:icon
+                                src="{!$Resource.EDealerResources+'/MenuIcons/customTruck.svg'+'#customTruck'}" />
+                        </i>
+                        <span name="truckspecs" id="TRUCK SPECS" onclick="{!c.handleMenu}"
+                            class="{!v.selectedmenu == 'truckspecs' ? 'nav-text active' : 'nav-text'}">
+                            {!$Label.c.EDealer_Menu_Truck_Specs}
+                        </span>
+                    </a>
+                </li>-->
+                <!--
+                <li class="disable-menu">
+                    <aura:if isTrue="{!!v.ismenuClosed}">
+                        <ul class="dropmenu">
+                            <li class="has-subnav" name="ecatcollect">
+                                <a href="">
+
+                                    <span name="ecatcollect" id="Ecat/Collectix" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'ecatcollect' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_Ecat_Collectix}
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="has-subnav disable-menu" name="rmi">
+                                <a href="">
+
+                                    <span name="rmi" id="RMI" onclick="{!c.handleMenu}"
+                                        class="{!v.selectedmenu == 'rmi' ? 'nav-text active' : 'nav-text'}">
+                                        - {!$Label.c.EDealer_Menu_RMI}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </aura:if>
+                </li>-->
+                <aura:if isTrue="{!v.isLoyaltyMenuVisible==true}">
+                    <li class=" " name="loyalty">
+                        <div  class="{!v.selectedmenu == 'loyalty' ? 'mainNavItem active' : 'mainNavItem'}" >
+                        <a href="" class="{!v.selectedmenu == 'loyalty' ||v.selectedmenu =='offerPDF'||v.selectedmenu =='currentPartsList'||v.selectedmenu =='futurePartsList'||v.selectedmenu =='serviceInspectionSheets'||v.selectedmenu =='linkToLoyalty' ? 'active' : ''}">
+                                                        <i class="menu-icon1" name="loyalty" onclick="{!c.handleMenu}">
+                                <lightning:icon
+                                    src="{!$Resource.EDealerResources+'/MenuIcons/mikeIcon.svg'+'#mikeIcon'}" />
+                            </i>
+                            <span name="loyalty" id="LOYALTY CARD" onclick="{!c.handleMenu}"
+                                class="{!v.selectedmenu == 'loyalty' ? 'nav-text active' : 'nav-text'}">
+                                {!$Label.c.EDealer_Menu_Loyalty}
+                            </span>
+                            
+                            <button type="button" name="loyalty" onclick="{!c.myFunction2}" class="btn btn-primaryN">
+
+                                    <i class="fa fa-chevron">
+                                        <lightning:icon
+                                            iconName="{!v.childNavState.loyaltyChildNav.isOpen == false ? 'utility:chevrondown' : 'utility:chevronup'}"
+                                            size="xx-small" />
+                                    </i>
+            
+                                  <span class="sr-only">Toggle Menu</span> 
+                                </button>
+							 
+                        </a>
+                        </div>
+                     
+
+                    <div class="{!v.childNavState.loyaltyChildNav.isOpen == false ? 'ChildNav2' : ''}">
+                        <aura:if isTrue="{!!v.ismenuClosed}">
+                            <ul class="dropmenu">
+
+                                <li class="has-subnav" name="offerPDF">
+                                    <a href="">
+                                        <span name="offerPDF" id="Offer PDF" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'offerPDF' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Offer_PDF}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="has-subnav" name="currentPartsList">
+                                    <a href="">
+                                        <span name="currentPartsList" id="Current Parts List" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'currentPartsList' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Current_Parts_List}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="has-subnav" name="futurePartsList">
+                                    <a href="">
+                                        <span name="futurePartsList" id="Future Parts List" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'futurePartsList' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Future_Parts_List}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="has-subnav" name="serviceInspectionSheets">
+                                    <a href="">
+                                        <span name="serviceInspectionSheets" id="Service Inspection Sheets"
+                                            onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'serviceInspectionSheets' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Service_Inspection_Sheets}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="has-subnav" name="linkToLoyalty">
+                                    <a href="">
+                                        <span name="linkToLoyalty" id="Link To Loyalty" onclick="{!c.handleMenu}"
+                                            class="{!v.selectedmenu == 'linkToLoyalty' ? 'nav-text Cactive' : 'nav-text'}">
+                                            - {!$Label.c.EDealer_Menu_Link_to_Loyalty_Site}
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aura:if>
+                    </div></li>
+
+                </aura:if>
+
+<!-- RPM Score Card start -->
+                 <aura:if isTrue="{!v.isRPMScoreCardToggleOn==true}">
+                <li class=" " name="RPMScoreCard" >
+                    <div  class="{!v.selectedmenu == 'RPMScoreCard' ? 'mainNavItem active' : 'mainNavItem'}" >
+                        <a href="" class="{!v.selectedmenu == 'RPMScoreCard' ? 'active' : ''}">                       
+                            <i class="menu-icon1" name="RPMScoreCard"  onclick="{!c.handleMenu}">
+                                <lightning:icon src="{!$Resource.EDealerResources  + '/MenuIcons/customSales.svg'+'#customSales'}"/>
+                            </i>
+                            <span name="RPMScoreCard" id="RPM Score CARD" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'RPMScoreCard' ? 'nav-text Cactive' : 'nav-text'}">
+                                {!$Label.c.EDealer_RPM_Score_Card}
+                            </span>
+                        </a>
+                    </div>
+                    </li>
+                   </aura:if>
+				   <!-- RPM Score Card End -->
+                <!-- redirect to support/home page here -->
+
+                <aura:if isTrue="{!v.isTCS365ToogleOn==true}">
+                <li class="has-subnav" name="tcs365">
+                    <a href="" class="{!v.selectedmenu == 'tcs365' ? 'active' : ''}">                        
+                        <i class="menu-icon1"  name="tcs365" onclick="{!c.handleMenu}">
+                            <lightning:icon src="{!$Resource.EDealerResources+'/MenuIcons/customSupport.svg'+'#customSupport'}"/>
+                        </i> 
+                        <span name="tcs365" id="TCS 365" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'tcs365' ? 'nav-text active' : 'nav-text'}">
+                            TCS 365
+                        </span>
+                    </a>
+                    
+                </li>
+                <ul class="dropmenu">
+                    <li class="has-subnav" name="orderSupport" >
+                        <a href="">                                    
+                            <span name="orderSupport" id="Order Support" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'orderSupport' ? 'nav-text active' : 'nav-text'}" >
+                                - {!$Label.c.EDealer_Menu_Order_Support}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="has-subnav disable-menu" name="paccarCustomerCenter" >
+                        <a href="">                                    
+                            <span name="paccarCustomerCenter" id="PACCAR Customer Center" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'paccarCustomerCenter' ? 'nav-text active' : 'nav-text'}" >
+                                - {!$Label.c.EDealer_Menu_PACCAR_Customer_Center}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="has-subnav disable-menu" name="partSupport" >
+                        <a href="">                                    
+                            <span name="partSupport" id="Part Support" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'partSupport' ? 'nav-text active' : 'nav-text'}" >
+                                - {!$Label.c.EDealer_Menu_Part_Support}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="has-subnav" name="reverseLogistics" >
+                        <a href="">                                    
+                            <span name="reverseLogistics" id="Reverse Logistics" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'reverseLogistics' ? 'nav-text active' : 'nav-text'}" >
+                                - {!$Label.c.EDealer_Menu_Reverse_Logistics}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="has-subnav disable-menu" name="vehicleSupport" >
+                        <a href="">                                    
+                            <span name="vehicleSupport" id="Vehicle Support" onclick="{!c.handleMenu}" class="{!v.selectedmenu == 'vehicleSupport' ? 'nav-text active' : 'nav-text'}" >
+                                - {!$Label.c.EDealer_Menu_Vehicle_Support}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                </aura:if>
+            </ul>                       
+        </nav>
+    </div>
+</aura:component>

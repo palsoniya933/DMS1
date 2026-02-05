@@ -1,0 +1,262 @@
+<aura:component >    
+    <aura:attribute name="isFirstOrderDetails" type="boolean" />
+    <aura:attribute name="showBlockedCancelled" type="boolean" />
+    <aura:attribute name="activeOrderSummary" type="Object" />
+    <aura:attribute name="activeOrderWorkflowRec" type="Object" />
+    <aura:attribute name="orderTrackName" type="String" />
+    <aura:attribute name="progressBarCls" type="String" default="slds-progress-bar slds-progress-bar_x-small" />
+    
+    <!-- display the First Order -->
+    <aura:if isTrue="{!v.isFirstOrderDetails}">
+        <div class="slds-progress">
+            
+            <ol class="slds-progress__list">            
+                <span style="position: absolute;
+                             display: flex;
+                             top: -54px;
+                             font-weight: bold;
+                             color: #9F9F9F;    padding-left: 3px;">
+                    <lightning:buttonIcon  size="large" iconName="utility:drag" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                </span>
+                <span style="position: absolute;
+                             display: flex;
+                             top: -20px;
+                             font-weight: bold;
+                             color: #9F9F9F;padding-left: 3px;">ORDER PLACED</span>
+                
+                
+                <li class="slds-progress__item">                
+                    <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                </li>
+                
+                <div  style="width: 25%;position: absolute;top: 141%;font-weight: bold;padding-left: 3px;" >{!v.activeOrderSummary.order_date}<!--10 Aug '20:09:32 AM--></div>            
+                
+                <div  style="position: absolute;
+                             left: 20.1%;
+                             top: -80%;
+                             display: block;
+                             width: 120px;">
+                    <span style="font-weight: bold;color: #9F9F9F;">{!v.orderTrackName}</span></div> 
+                <li class="slds-progress__item slds-is-completed">
+                    <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked"  />
+                    
+                </li>            
+                <div class="check-icon-align" style="width: 19%;
+                                                     position: absolute;
+                                                     left: 19.8%;
+                                                     top: 91%;
+                                                     /*border-left: 2px solid #bfbf15;*/
+                                                     overflow: auto;
+                                                     height: 90px;">
+                    <div style="position: relative;
+                                top: 3%;
+                                font-weight: bold;padding-left: 23px;">
+                        <a href="#" style="color:#3cc936;text-decoration: none;"><!--ALLOCATED-->PICK UP LOCATION</a></div>
+                    <div style="position: absolute;
+                                top: 24%;
+                                padding-left: 21px;">
+                        <lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                        <b>{!v.activeOrderWorkflowRec.SOURCE_LOCATION}<!--Las Vegas,NV--></b></div> 
+                    
+                    <div style="text-align: left;
+                                font-size: 13px;
+                                margin-left: 1.5rem;
+                                margin-top: 16%;"><lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                        <b> {!v.activeOrderWorkflowRec.PICKED_UP_DATE_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                    </div>
+                </div> 
+                
+                <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 39.4%;top:-81%;">ORDER UPDATES</span>
+                <c:eDealerOrderDetailStatusIcons iconName = 'status' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />        
+                
+                <div  style="width: 25%;position: absolute;top: 106%;font-weight: bold;padding-left:3px;left: 39.7%;">{!v.activeOrderWorkflowRec.STAT}</div>
+                
+                <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 59.1%;top:-81%;">PARTS SHIPPED</span> 
+                <li class="slds-progress__item slds-is-completed">
+                    <c:eDealerOrderDetailStatusIcons iconName = 'ship' 
+                                                     activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                    
+                </li> 
+                <div  style="width: 25%;position: absolute;top: 106%;font-weight: bold;padding-left: 3px;left: 59.5%;">TRACKING #</div>
+                
+                <div style="
+                            position: absolute;
+                            top: 182%;
+                            left: 59.8%;
+                            "><lightning:buttonIcon  class="" iconName="utility:search" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                    <b><lightning:formattedUrl 
+                                                value="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}"
+                                                label="{!v.activeOrderWorkflowRec.TRACKING_ID}"
+                                                target="_blank"/>
+                        <!--<a href="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}" target="_blank">{!v.activeOrderWorkflowRec.TRACKING_ID}</a>-->
+                    </b>
+                    
+                    
+                </div> 
+                
+                <c:eDealerOrderDetailStatusIcons iconName = 'intransit' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" /> 
+                
+                <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 78%;top: -81%;">IN-TRANSIT</span> 
+                <li class="slds-progress__item">
+                    <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 98%;top: -81%;">DELIVERY</span>   
+                    <c:eDealerOrderDetailStatusIcons iconName = 'delivery' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                </li>
+                <div class="delevery" style="
+                                             width: 27%;
+                                             position: absolute;
+                                             right:-15%;
+                                             text-align: right;
+                                             top: 91%;">
+                    
+                    <div style="
+                                position: relative;text-align: left;
+                                top: 3%;left: 28%;
+                                font-weight: bold;">
+                        <a href="#" style="color:#3cc936;text-decoration: none;">EST. DELIVERY DATE</a></div>
+                    <div style="text-align: left;margin-left: 5rem;word-break: break-all;text-overflow: ellipsis;
+                                overflow: hidden;width: 44%;white-space: nowrap;"><lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/><b>{!v.activeOrderWorkflowRec.DESTINATION_LOCATION}<!--Fresno,CA--></b>
+                        
+                        
+                    </div> 
+                    
+                    <div style="
+                                width: 175px;
+                                text-align: left;
+                                font-size: 13px;
+                                margin-left: 5rem;"><lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                        <b> {!v.activeOrderWorkflowRec.EST_ARRIVAL_PST}</b>
+                    </div> 
+                </div> 
+            </ol>
+            
+            
+            <c:eDealerOrderDetailEventStatusLine activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}"/>          
+            
+        </div>
+    </aura:if>
+    
+    <!-- non first Order details -->
+    <aura:if isTrue="{!!v.isFirstOrderDetails}">
+        
+        <div class="slds-progress" style="max-width:70%!important;margin: 9% 0% 0% 17.99%!important;">  
+            <span style=" border-left: 3px solid green;
+                         height: 421%;
+                         position: absolute;
+                         display: block;
+                         margin: -14% 1%;"></span>
+            <ol class="slds-progress__list" style="margin: 0px -3px;">
+                <div  style="position: absolute;
+                             left: 3%;
+                             top: -81%;
+                             display: block;
+                             width: 120px;">
+                    <span style="font-weight: bold;
+                                 color: #9F9F9F;">{!v.orderTrackName}<!--ORDER CONFIRM--></span></div> 
+                <li class="slds-progress__item slds-is-completed">
+                    <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" onclick="{!c.myAction}" />
+                </li>
+                
+                
+                <!-- div added on july 10 and changed with to 20% from 13%- start -->
+                <div class="check-icon-align" style="width: 25%;
+                                                     position: absolute;
+                                                     top: 91%;
+                                                     /*border-left: 2px solid #bfbf15;*/
+                                                     overflow: auto;
+                                                     height: 90px;">
+                    <div style="position: relative;
+                                top: 3%;
+                                font-weight: bold;padding-left: 23px;">
+                        <a href="#" style="color:#3cc936;text-decoration: none;"><!--ALLOCATED-->PICK UP LOCATION</a></div>
+                    <div style="position: absolute;
+                                top: 24%;
+                                padding-left: 21px;"><lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/><b>{!v.activeOrderWorkflowRec.SOURCE_LOCATION}<!--Las Vegas,NV--></b></div> 
+                    
+                    <div style="text-align: left;
+                                font-size: 13px;
+                                margin-left: 1.5rem;
+                                margin-top: 16%;"><lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                        <b> {!v.activeOrderWorkflowRec.PICKED_UP_DATE_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                    </div> 
+                </div>
+                <!-- div added on july 10 - end -->
+                <div>
+                    <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 24.4%;top: -81%;">ORDER UPDATES</span>
+                    <c:eDealerOrderDetailStatusIcons iconName = 'update' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                    <div style="width:25%;position: absolute;top: 106%;font-weight: bold;padding-left: 3px;left: 27%;">{!v.activeOrderWorkflowRec.STAT}<!--ORDER PROCESSING--></div>
+                </div>
+                <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 49.4%;top: -81%;" >PARTS SHIPPED</span> 
+                
+                <!-- added on 10 july - start -->
+                <c:eDealerOrderDetailStatusIcons iconName = 'ship' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                <div  style="width: 25%;position: absolute;top: 106%;font-weight: bold;padding-left: 3px;left: 49.5%;">TRACKING #</div>
+                
+                <div style="
+                            position: absolute;
+                            top: 182%;
+                            left: 49.8%;
+                            "><lightning:buttonIcon  class="" iconName="utility:search" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                    <b>
+                        <lightning:formattedUrl 
+                                                value="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}"
+                                                label="{!v.activeOrderWorkflowRec.TRACKING_ID}"
+                                                target="_blank"/>
+                        <!--<a href="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}" target="_blank">{!v.activeOrderWorkflowRec.TRACKING_ID}</a>-->
+                    </b>
+                    
+                    
+                </div>
+                <!-- added on 10 july - end -->
+                <!--<div style="width: 25%;position: absolute;top: 106%;font-weight: bold;padding-left: 3px;left: 51%;">F129373040298</div>-->
+                
+                <li class="slds-progress__item">
+                    <c:eDealerOrderDetailStatusIcons iconName = 'intransit' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                </li>
+                
+                <span class="slds-is-completed" style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 73%;top: -81%;">IN-TRANSIT</span> 
+                <li class="slds-progress__item">
+                    <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left:97%;top: -81%;">DELIVERY</span>   
+                    <c:eDealerOrderDetailStatusIcons iconName = 'delivery' 
+                                                 activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                </li>
+                <!-- added below div on 10 july and changed width to 35% from 26%;-->
+                <div class="delevery" style="
+                                             width: 27%;
+                                             position: absolute;
+                                             right: -13%;
+                                             text-align: right;
+                                             top: 91%;">
+                    
+                    <div style="
+                                position: relative;text-align: left;
+                                top: 3%;left: 33%;
+                                font-weight: bold;">
+                        <a href="#" style="color:#3cc936;text-decoration: none;">EST. DELIVERY DATE</a></div>
+                    <div style="text-align: left;margin-left: 5rem;word-break: break-all;text-overflow: ellipsis;
+                                overflow: hidden;width: 44%;white-space: nowrap;"><lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/><b>{!v.activeOrderWorkflowRec.DESTINATION_LOCATION}<!--Fresno,CA--></b>
+                        
+                        
+                    </div> 
+                    
+                    <div style="
+                                width: 175px;
+                                text-align: left;
+                                font-size: 13px;
+                                margin-left: 5rem;"><lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                        <b> {!v.activeOrderWorkflowRec.EST_ARRIVAL_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                    </div> 
+                </div>
+                
+            </ol>
+            <c:eDealerOrderDetailEventStatusLine activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}"/>
+            
+            
+        </div> 
+    </aura:if>
+</aura:component>

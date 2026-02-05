@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Percentage_of_Month_Passed__c</fullName>
+    <formula>if (MONTH(today()-1)=1, DAY(today()-1) /31,if (MONTH(today()-1)=2, DAY(today()-1) /28,if (MONTH(today()-1)=3, DAY(today()-1) /31,if (MONTH(today()-1)=4, DAY(today()-1) /30,if (MONTH(today()-1)=5, DAY(today()-1) /31,if (MONTH(today()-1)=6, DAY(today()-1) /30,if (MONTH(today()-1)=7, DAY(today()-1) /31,if (MONTH(today()-1)=8, DAY(today()-1) /31,if (MONTH(today()-1)=9, DAY(today()-1) /30,if (MONTH(today()-1)=10, DAY(today()-1) /31,if (MONTH(today()-1)=11, DAY(today()-1) /30,if (MONTH(today()-1)=12, DAY(today()-1) /31,0))))))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>% of Month Passed</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

@@ -1,0 +1,120 @@
+<aura:component controller="EDealerSuggestedOrdersController" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- to show est. price on sof tables -->
+    <aura:attribute name="isShowEstPrice" type="Boolean" />
+    
+    <!-- Dealer currency code for price -->
+    <aura:attribute name="currencyCode" type="String" />
+    
+    <!-- enable/disable add to cart parts functionality -->
+    <aura:attribute name="isUserAddPartsInCart" type="Boolean" default="false" />
+    
+    <!-- sof special or not -->
+    <aura:attribute name="isSpecialOrdersSOF" type="Boolean" default="false" />
+    
+    <!-- dealer division -->
+    <aura:attribute name="division" type="String" />
+    
+    <!-- this will have rows to be displayed -->
+    <aura:attribute name="invData" type="Object[]" />
+    <!-- this is used for the pagination -->    
+    <aura:attribute name="PaginationList" type="Object[]" />
+    <aura:attribute name="totalOrderSelected" type="Integer" default="0" />
+    <!-- this is for display the cart modals -->
+    <aura:attribute name="showEmergencyOrderAddCartModal" type="Boolean" default="false" />
+    <aura:attribute name="showStockOrderAddCartModal" type="Boolean" default="false" />
+    <!-- this used for the current step number -->
+    <aura:attribute name="dealerCode" type="String" />
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="true"/>
+    
+    <!-- sof additional information -->
+    <aura:attribute name="sofInfo" type="Object" />
+    
+    <!-- Today Date String in PST timezone -->
+    <aura:attribute name="todayPSTDateString" type="String" />
+    
+    <!--for translation -->
+    <aura:attribute name="noDualPartsToday" type="String" default = "{!$Label.c.No_Dual_channel_parts_suggested_for_today}"/>
+    <aura:attribute name="mdiInfo" type="String" default = "{!$Label.c.Please_contact_your_MDI_Analyst_for_information}" />
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    <!-- register event when menu is clicked  --> 
+    <aura:registerEvent name="menuevent" type="c:eDealerMenuClickedEvent"/>  
+    <!-- register event when cart items created -->
+    <aura:registerEvent name="cartupdateevent" type="c:eDealerCartUpdateEvent"/>
+    <!-- spinner--> 
+    <div>
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>
+    </div>
+    
+    <!-- if we ahve rows in table -->
+    <aura:if isTrue="{!v.invData != undefined}">
+        
+        <!-- sub header -->
+        <c:eDealerInvSubHeader aura:id="SubHeaderComp" 
+                               tabName="DEALERSUGGESTEDPDCSTOCKORDERS" 
+                               suggestedOrders="{!v.invData}"
+                               sofInfo="{!v.sofInfo}"
+                               isSpecialOrdersSOF="{!v.isSpecialOrdersSOF}">
+        </c:eDealerInvSubHeader>
+        
+        <!-- mark up for the data -->             
+        <aura:if isTrue="{!v.invData.length > 0}">
+            <c:eDealerSuggestedOrdersTable dealerCode="{!v.dealerCode}"
+                                           invData="{!v.invData}"
+                                           PaginationList="{!v.PaginationList}"
+                                           totalOrderSelected="{!v.totalOrderSelected}"
+                                           division="{!v.division}"
+                                           addOrdersInEMCart="{!c.addEmergencyOrderInCart}"
+                                           addOrdersInSOCart="{!c.addStockOrderInCart}"
+                                           isdisableForAllParts="{!!v.isUserAddPartsInCart}"
+                                           showEMOrderButton="{!!v.isSpecialOrdersSOF}"
+                                           isShowEstPrice="{!v.isShowEstPrice}"
+                                           currencyCode="{!v.currencyCode}"
+                                           />
+            
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.sofInfo.sofCount > 0}">
+                    <c:eDealerNotRecordFound Message="{! v.noDualPartsToday +' '+ v.todayPSTDateString + ' (PST). ' + v.mdiInfo }"></c:eDealerNotRecordFound>
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!v.isSpecialOrdersSOF}">
+                            <c:eDealerNotRecordFound Message='{!$Label.c.Promo_Incentive_not_available_ple_cont_MDI}'></c:eDealerNotRecordFound>
+                            <aura:set attribute="else">
+                                <c:eDealerNotRecordFound Message='{!$Label.c.Sof_not_available_to_load_Pl_cont_your_MDI_Analyst}'></c:eDealerNotRecordFound>   
+                            </aura:set>
+                        </aura:if>
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+            
+        </aura:if>
+        
+    </aura:if>
+    
+    
+    <!-- EM Order Popup/Modal -->
+    <c:eDealerSuggestedOrderConfirmationModal
+                                              showModal="{!v.showEmergencyOrderAddCartModal}"
+                                              message="SOF Part(s) added to Emergency order shopping cart successfully"
+                                              callCheckout="{!c.checkoutEM}"
+                                              onClose="{!c.refresh}"
+                                              />
+    
+    
+    <!-- Stock Order Popup/Modal  -->
+    <c:eDealerSuggestedOrderConfirmationModal
+                                              showModal="{!v.showStockOrderAddCartModal}"
+                                              message="SOF Part(s) added to Stock order shopping cart successfully"
+                                              callCheckout="{!c.checkoutSO}"
+                                              onClose="{!c.refresh}"
+                                              />
+    
+    
+    
+</aura:component>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>VS_CommunityCustomButtons</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;CaseComment&quot;: {
+&quot;en_US&quot;: &quot;Case Comment&quot;,
+&quot;fr_CA&quot;: &quot;Commentaire sur l’affaire&quot;,
+&quot;es_MX&quot;: &quot;Comentario de Caso&quot;
+},
+&quot;NewCaseComment&quot;: {
+&quot;en_US&quot;: &quot;New Case Comment&quot;,
+&quot;fr_CA&quot;: &quot;Nouveau Commentaire sur l’affaire&quot;,
+&quot;es_MX&quot;: &quot;Nuevo Comentario de Caso&quot;
+},
+&quot;SuccessLabel&quot;: {
+&quot;en_US&quot;: &quot;Record Created&quot;,
+&quot;fr_CA&quot;: &quot;Enregistrement créé&quot;,
+&quot;es_MX&quot;: &quot;Registro creado&quot;
+},
+&quot;ErrorLabel&quot;: {
+&quot;en_US&quot;: &quot;Error&quot;,
+&quot;fr_CA&quot;: &quot;Erreur&quot;,
+&quot;es_MX&quot;: &quot;Error&quot;
+},
+&quot;NewVSQuoteLine&quot;: {
+&quot;en_US&quot;: &quot;New Volume Sales Quote Line&quot;,
+&quot;fr_CA&quot;: &quot;Nouvelle ligne de devis de vente en volume&quot;,
+&quot;es_MX&quot;: &quot;Nueva línea de cotización de ventas por volumen&quot;
+},
+&quot;AddPart&quot;: {
+&quot;en_US&quot;: &quot;Add Part&quot;,
+&quot;fr_CA&quot;: &quot;Ajouter une pièce&quot;,
+&quot;es_MX&quot;: &quot;Agregar pieza&quot;
+},
+&quot;NewLabel&quot;: {
+&quot;en_US&quot;: &quot;New&quot;,
+&quot;fr_CA&quot;: &quot;Nouveau&quot;,
+&quot;es_MX&quot;: &quot;Nuevo&quot;
+},
+&quot;SaveLabel&quot;: {
+&quot;en_US&quot;: &quot;Save&quot;,
+&quot;fr_CA&quot;: &quot;Enregistrer&quot;,
+&quot;es_MX&quot;: &quot;Salvar&quot;
+},
+&quot;AddDrops&quot;: {
+&quot;en_US&quot;: &quot;Add Drop&quot;,
+&quot;fr_CA&quot;: &quot;Ajouter Lieu d&apos;expédition&quot;,
+&quot;es_MX&quot;: &quot;Agregar Ubicacíon&quot;
+},
+&quot;NewDrops&quot;: {
+&quot;en_US&quot;: &quot;New Drop&quot;,
+&quot;fr_CA&quot;: &quot;Nouvel lieu d&apos;expédition&quot;,
+&quot;es_MX&quot;: &quot;Nueva ubicacíon&quot;
+},
+&quot;AddDropLine&quot;: {
+&quot;en_US&quot;: &quot;Add Drop Line&quot;,
+&quot;fr_CA&quot;: &quot;Ajouter  ligne par emplacement&quot;,
+&quot;es_MX&quot;: &quot;Agregar Línea por ubicación&quot;
+},
+&quot;NewDropLine&quot;: {
+&quot;en_US&quot;: &quot;New Drop Line&quot;,
+&quot;fr_CA&quot;: &quot;Nouvelle ligne par emplacement&quot;,
+&quot;es_MX&quot;: &quot;Nueva línea por ubicación&quot;
+}
+,
+&quot;FileErrorMessage&quot;: {
+&quot;en_US&quot;: &quot;The file cannot be deleted as case is not on Draft Status&quot;,
+&quot;fr_CA&quot;: &quot;Le fichier ne peut pas être supprimé car il n&apos;est pas en statut de brouillon.&quot;,
+&quot;es_MX&quot;: &quot;El archivo no puede ser eliminado ya que el caso no está en estado de borrador.&quot;
+}
+}</value>
+    </values>
+</CustomMetadata>

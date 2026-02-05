@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Why__c</fullName>
+    <description>Why did they return/abandon the system</description>
+    <label>Why</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accounting Issues</fullName>
+                <default>false</default>
+                <label>Accounting Issues</label>
+            </value>
+            <value>
+                <fullName>Business Sold</fullName>
+                <default>false</default>
+                <label>Business Sold</label>
+            </value>
+            <value>
+                <fullName>Conflict</fullName>
+                <default>false</default>
+                <label>Conflict</label>
+            </value>
+            <value>
+                <fullName>Difficult</fullName>
+                <default>false</default>
+                <label>Difficult</label>
+            </value>
+            <value>
+                <fullName>Expensive</fullName>
+                <default>false</default>
+                <label>Expensive</label>
+            </value>
+            <value>
+                <fullName>Features-Missing</fullName>
+                <default>false</default>
+                <label>Features-Missing</label>
+            </value>
+            <value>
+                <fullName>Invalid Account</fullName>
+                <default>false</default>
+                <label>Invalid Account</label>
+            </value>
+            <value>
+                <fullName>Out of business</fullName>
+                <default>false</default>
+                <label>Out of business</label>
+            </value>
+            <value>
+                <fullName>Slow</fullName>
+                <default>false</default>
+                <label>Slow</label>
+            </value>
+            <value>
+                <fullName>Time-Resource Issues</fullName>
+                <default>false</default>
+                <label>Time-Resource Issues</label>
+            </value>
+            <value>
+                <fullName>Too Small</fullName>
+                <default>false</default>
+                <label>Too Small</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

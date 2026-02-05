@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technical_Assistance_Case_Notification__c</fullName>
+    <description>Emails to added and maintained by Field Service team. this email would be used to send 48 hrs and 96 hrs emails when the case is stuck in &apos;Dealer Action Required&apos; status.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Email to receive 48 hrs and 96 hrs notification when the Engine Support case is stuck in &apos;Dealer Action Required&apos; status.</inlineHelpText>
+    <label>Technical Assistance Case Notification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Email</type>
+    <unique>false</unique>
+</CustomField>

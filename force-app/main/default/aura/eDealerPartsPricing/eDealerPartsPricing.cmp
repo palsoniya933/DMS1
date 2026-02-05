@@ -1,0 +1,435 @@
+<aura:component >
+
+	<!-- currency code for loged in user/edealer -->
+    <aura:attribute name="currencyCode" type="String" /> 
+    
+    <!-- saving pricing information -->
+    <aura:attribute name="pricingInfo" type="object" />
+    
+    <!-- this is used for calling onload apex method -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <div class="slds-grid slds-wrap">
+        
+        <!-- GENERAL PRICING -->
+        <aura:if isTrue="{!or(v.pricingInfo.PriceDetail.WhsQtyBreak.length > 0,v.pricingInfo.PriceDetail.DspQtyBreak.length > 0 )}">
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <span class="slds-page-header__title">{!$Label.c.Edealer_GENERAL_PRICING}</span>
+            </div>
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <div class="pricingTable">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Edealer_DIS_CHANNEL}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Std_Net}({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Incentive}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.FNL_Net}({!v.currencyCode})</div>
+                                </th>                                                                          
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <aura:if isTrue="{!v.pricingInfo.PriceDetail.WhsQtyBreak.length > 0}">
+                            <tr>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.WhsQtyBreak[0].DISChannel}
+                                </td>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.WhsQtyBreak[0].StdNet}
+                                </td>
+                                <td class="slds-truncate">
+                                    1
+                                </td>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.WhsQtyBreak[0].INCENTIVE}%
+                                </td>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.WhsQtyBreak[0].FNLNET}
+                                </td>
+                            </tr>
+                            </aura:if>
+                            <aura:if isTrue="{!v.pricingInfo.PriceDetail.DspQtyBreak.length > 0}">
+                            <tr>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.DspQtyBreak[0].DISChannel}
+                                </td>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.DspQtyBreak[0].StdNet}
+                                </td>
+                                <td class="slds-truncate">
+                                    1
+                                </td>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.DspQtyBreak[0].INCENTIVE}%
+                                </td>
+                                <td class="slds-truncate">
+                                    {!v.pricingInfo.PriceDetail.DspQtyBreak[0].FNLNET}
+                                </td>
+                            </tr>
+                            </aura:if>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aura:if>
+        
+        
+        	
+        
+		
+        <!-- CSR -->
+        <aura:if isTrue="{!or(not(empty(v.pricingInfo.PriceDetail.DspCsr)),not(empty(v.pricingInfo.PriceDetail.WhsCsr)) )}">
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <span class="slds-page-header__title">{!$Label.c.Competitive_Sales_Request_CSR}</span>
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{!not(empty(v.pricingInfo.PriceDetail.WhsCsr))}">
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <div class="pricingTable">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="bgWhite" scope="col" colspan="8">
+                                    <div class="slds-truncate">PDC CSR</div>
+                                </th>
+                            </tr>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Edealer_DIS_CHANNEL}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Number}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Phase}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Line}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Base_Qty}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Bestnet}&nbsp;({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Effective_Date}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Expiry_Date}</div>
+                                </th>                                                                          
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <aura:iteration items="{!v.pricingInfo.PriceDetail.WhsCsr}" var="item">
+                                <tr>
+                                    <td class="slds-truncate">
+                                        {!item.DISChannel}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrNumber}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrPhase}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrLine}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrQty}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrBestNet}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrEffectiveDate}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrExpiryDate}
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{!not(empty(v.pricingInfo.PriceDetail.DspCsr))}">
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <div class="pricingTable">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="bgWhite" scope="col" colspan="8">
+                                    <div class="slds-truncate">DSP CSR</div>
+                                </th>
+                            </tr>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Edealer_DIS_CHANNEL}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Number}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Phase}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Line}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Base_Qty}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Bestnet}&nbsp;({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Effective_Date}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.CSR_Expiry_Date}</div>
+                                </th>                                                                          
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <aura:iteration items="{!v.pricingInfo.PriceDetail.DspCsr}" var="item">
+                                <tr>
+                                    <td class="slds-truncate">
+                                        {!item.DISChannel}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrNumber}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrPhase}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrLine}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrQty}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrBestNet}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrEffectiveDate}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CsrExpiryDate}
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aura:if>
+        
+
+		<!-- QUANTITY BREAKDOWN PRICING -->         
+        <aura:if isTrue="{!or(v.pricingInfo.PriceDetail.WhsFlag == 'Y', v.pricingInfo.PriceDetail.DspFlag == 'Y')}">
+            <aura:if isTrue="{!and(v.pricingInfo.PriceDetail != undefined,or(or(and(v.pricingInfo.PriceDetail.WhsQtyBreak.length > 0, v.pricingInfo.PriceDetail.WhsQtyBreak.length != 1), and(v.pricingInfo.PriceDetail.WhsQtyBreak.length == 1, greaterthan(v.pricingInfo.PriceDetail.WhsQtyBreak[0].QtyDiscPerc, 0))), or(and(v.pricingInfo.PriceDetail.DspQtyBreak.length > 0, v.pricingInfo.PriceDetail.DspQtyBreak.length != 1), and(v.pricingInfo.PriceDetail.DspQtyBreak.length == 1, greaterthan(v.pricingInfo.PriceDetail.DspQtyBreak[0].QtyDiscPerc, 0))) ) )}">
+                <div class="slds-col slds-size_12-of-12">
+                    <br/>
+                    <span class="slds-page-header__title">{!$Label.c.QUANTITY_BREAKDOWN_PRICING}</span>
+                </div>
+            </aura:if>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.pricingInfo.PriceDetail.WhsFlag == 'Y'}">
+            <aura:if isTrue="{!or(and(v.pricingInfo.PriceDetail.WhsQtyBreak.length > 0, v.pricingInfo.PriceDetail.WhsQtyBreak.length != 1), and(v.pricingInfo.PriceDetail.WhsQtyBreak.length == 1, greaterthan(v.pricingInfo.PriceDetail.WhsQtyBreak[0].QtyDiscPerc, 0)))}">
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <div class="pricingTable">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="bgWhite" scope="col" colspan="10">
+                                    <div class="slds-truncate">PDC - &nbsp;{!$Label.c.QUANTITY_BREAKDOWN_PRICING}</div>
+                                </th>
+                            </tr>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.DIS_Channel}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Std_Net}&nbsp; ({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Best_Code}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">	{!$Label.c.Qty_Disc}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty_Price}&nbsp; ({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">	{!$Label.c.Qty_Final}&nbsp; ({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Incentive}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">CSR</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.FNL_Net}&nbsp; ({!v.currencyCode})</div>
+                                </th>                                                                          
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <aura:iteration items="{!v.pricingInfo.PriceDetail.WhsQtyBreak}" var="item">
+                                <tr>
+                                    <td class="slds-truncate">
+                                        {!item.DISChannel}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.StdNet}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.BeatCode}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyBreak}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyDiscPerc}%
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyPrice}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyFinal}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.INCENTIVE}%
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CSR}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.FNLNET}
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aura:if>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.pricingInfo.PriceDetail.DspFlag == 'Y'}">
+            <aura:if isTrue="{!or(and(v.pricingInfo.PriceDetail.DspQtyBreak.length > 0, v.pricingInfo.PriceDetail.DspQtyBreak.length != 1), and(v.pricingInfo.PriceDetail.DspQtyBreak.length == 1, greaterthan(v.pricingInfo.PriceDetail.DspQtyBreak[0].QtyDiscPerc, 0)))}">
+            <div class="slds-col slds-size_12-of-12">
+                <br/>
+                <div class="pricingTable">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="bgWhite" scope="col" colspan="10">
+                                    <div class="slds-truncate">DSP - &nbsp;{!$Label.c.QUANTITY_BREAKDOWN_PRICING}</div>
+                                </th>
+                            </tr>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.DIS_Channel}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Std_Net}&nbsp; ({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Best_Code}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty_Disc}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty_Price}&nbsp; ({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Qty_Final}&nbsp; ({!v.currencyCode})</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.Incentive}</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">CSR</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate">{!$Label.c.FNL_Net}&nbsp; ({!v.currencyCode})</div>
+                                </th>                                                                          
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <aura:iteration items="{!v.pricingInfo.PriceDetail.DspQtyBreak}" var="item">
+                                <tr>
+                                    <td class="slds-truncate">
+                                        {!item.DISChannel}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.StdNet}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.BeatCode}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyBreak}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyDiscPerc}%
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyPrice}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.QtyFinal}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.INCENTIVE}%
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.CSR}
+                                    </td>
+                                    <td class="slds-truncate">
+                                        {!item.FNLNET}
+                                    </td>
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aura:if>
+        </aura:if>
+
+        
+    </div>
+    
+</aura:component>

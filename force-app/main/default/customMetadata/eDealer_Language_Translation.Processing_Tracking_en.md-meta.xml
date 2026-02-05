@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Processing Tracking</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;ordln&quot;,
+&quot;label&quot;: &quot;SYSTEM LINE #&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;itmid&quot;,
+&quot;label&quot;: &quot;PART NUMBER&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;itmdesc&quot;,
+&quot;label&quot;: &quot;DESCRIPTION&quot;,
+&quot;order&quot; : 3,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;totalqty&quot;,
+&quot;label&quot;: &quot;Tot Qty Ordered&quot;,
+&quot;order&quot; : 4,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qtyalc&quot;,
+&quot;label&quot;: &quot;Qty. Alc.&quot;,
+&quot;order&quot; : 5,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qty_future&quot;,
+&quot;label&quot;: &quot;Qty. Future&quot;,
+&quot;order&quot; : 6,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qty_pickverified&quot;,
+&quot;label&quot;: &quot;Qty. Pick Ver.&quot;,
+&quot;order&quot; : 7,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qty_pickprinted&quot;,
+&quot;label&quot;: &quot;Qty. Pick Print&quot;,
+&quot;order&quot; : 8,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qty_packed&quot;,
+&quot;label&quot;: &quot;Qty. Pckd.&quot;,
+&quot;order&quot; : 9,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qty_invoice&quot;,
+&quot;label&quot;: &quot;Qty. Invoice&quot;,
+&quot;order&quot; : 10,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;qty_shipped&quot;,
+&quot;label&quot;: &quot;Qty.Shipped&quot;,
+&quot;order&quot; : 11,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;line_status&quot;,
+&quot;label&quot;: &quot;LINE STATUS&quot;,
+&quot;order&quot; : 12,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;lineComm&quot;,
+&quot;label&quot;: &quot;LINE Comment&quot;,
+&quot;order&quot; : 13,
+&quot;type&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

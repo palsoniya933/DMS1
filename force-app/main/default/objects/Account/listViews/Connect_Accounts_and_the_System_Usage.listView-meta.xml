@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Accounts_and_the_System_Usage</fullName>
+    <columns>PACCAR_Division__c</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.ACCOUNT_NUMBER</columns>
+    <columns>Connect_Dealer_Code__c</columns>
+    <columns>Connect_Dealer_Group__c</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>Rating__c</columns>
+    <columns>Connect_Sales_Manager__c</columns>
+    <columns>Vehicle_Management_Communication__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ACCOUNT_NUMBER</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Connect Accounts - System Usage</label>
+    <sharedTo>
+        <group>Connect</group>
+        <role>Administrator</role>
+    </sharedTo>
+</ListView>

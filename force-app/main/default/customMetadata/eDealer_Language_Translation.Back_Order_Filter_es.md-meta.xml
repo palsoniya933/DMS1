@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Back Order Filter</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;ITEM|text&quot; : &quot;NÚMERO DE PARTE&quot;,
+&quot;ORDER DATE|text&quot; : &quot;FECHA DE ORDEN&quot;,
+&quot;ORDER TYPE|text&quot; : &quot;TIPO DE ORDEN&quot;,
+&quot;STATUS DESCR|text&quot; : &quot;DESCRIPCIÓN DE ESTATUS&quot;,
+&quot;VENDOR ID|text&quot; : &quot;CÓDIGO DE PROVEEDOR&quot;,
+&quot;SALEABLE IND|text&quot; : &quot;SALEABLE INDEX&quot;,
+&quot;DISTCHAN|text&quot; : &quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;ABC|text&quot; : &quot;ABC&quot;
+}</value>
+    </values>
+</CustomMetadata>

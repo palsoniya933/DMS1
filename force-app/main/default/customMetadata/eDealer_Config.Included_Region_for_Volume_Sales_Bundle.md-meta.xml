@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Included Region for Volume Sales Bundle</label>
+    <protected>false</protected>
+    <values>
+        <field>Long_Value__c</field>
+        <value xsi:type="xsd:string">[
+  &quot;U001&quot;,
+  &quot;U002&quot;,
+  &quot;U003&quot;,
+  &quot;U004&quot;,
+  &quot;U005&quot;,
+  &quot;U006&quot;,
+  &quot;U007&quot;,
+  &quot;C001&quot;,
+  &quot;C002&quot;,
+  &quot;C003&quot;,
+  &quot;C004&quot;,
+  &quot;C005&quot;
+]</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

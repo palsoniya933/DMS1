@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>MDI Excess</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;dlrcode&quot; : &quot;LOCAL&quot;,
+&quot;trnsdate&quot; : &quot;FECHA&quot;,
+&quot;part&quot; : &quot;NÚMERO DE PARTE&quot;,
+&quot;descr&quot; : &quot;DESCRIPCIÓN&quot;,
+&quot;abcdecode&quot; : &quot;CÓDIGO ABCDE&quot;,
+&quot;dist_chnl&quot; : &quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;prim_sup_code&quot; : &quot;CÓDIGO DE PROVEEDOR PRINCIPAL&quot;,
+&quot;alt_sup_comde&quot; : &quot;CÓDIGO DE PROVEEDOR ALTERNATIVO&quot;,
+&quot;bin_loc&quot; : &quot;LOCAL DE COMPARTIMIENTO&quot;,
+&quot;rsl&quot; : &quot;RSL&quot;,
+&quot;rbq&quot; : &quot;RBQ&quot;,
+&quot;spq&quot; : &quot;SPQ&quot;,
+&quot;excessqty&quot; : &quot;CANTIDAD EXCESO&quot;,
+&quot;est_dnet&quot; : &quot;DNET ESTIMADO&quot;,
+&quot;est_ext_net&quot; : &quot;DNET EXTENDIDO ESTIMADO&quot;,
+&quot;refcode&quot; : &quot;CÓDIGO DE REFERENCIA&quot;,
+&quot;reason_comment&quot; : &quot;COMENTARIO CON RAZÓN&quot;
+}</value>
+    </values>
+</CustomMetadata>

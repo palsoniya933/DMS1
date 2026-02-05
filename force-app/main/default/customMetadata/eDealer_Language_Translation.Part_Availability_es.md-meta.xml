@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Part Availability</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;PdcCode&quot;,
+&quot;label&quot;: &quot;PDC&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;AvailQty&quot;,
+&quot;label&quot;: &quot;Cant. Disponible&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;IntranQty&quot;,
+&quot;label&quot;: &quot;Cant. En Tránsito&quot;,
+&quot;order&quot; : 3,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;EstDate&quot;,
+&quot;label&quot;: &quot;Llegada Estimada&quot;,
+&quot;order&quot; : 4,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;OrderQty&quot;,
+&quot;label&quot;: &quot;Cant. Ordenada&quot;,
+&quot;order&quot; : 5,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;EstAvail&quot;,
+&quot;label&quot;: &quot;Llegada Estimada&quot;,
+&quot;order&quot; : 6,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;PdcLeadTm&quot;,
+&quot;label&quot;: &quot;Tiempo de Entrega Histórico&quot;,
+&quot;order&quot; : 7,
+&quot;type&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

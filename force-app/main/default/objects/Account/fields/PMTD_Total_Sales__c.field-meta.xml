@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PMTD_Total_Sales__c</fullName>
+    <description>Prior Month to Date Total Sales</description>
+    <label>PMTD: Total Sales</label>
+    <summarizedField>Sales_Metrics__c.MTD_Sales_Total_2007__c</summarizedField>
+    <summaryFilterItems>
+        <field>Sales_Metrics__c.MTD_Sales_Total_2007__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Sales_Metrics__c.Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

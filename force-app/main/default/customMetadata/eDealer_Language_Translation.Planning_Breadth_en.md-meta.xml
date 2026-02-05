@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Planning Breadth</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;action_required&quot; : &quot;ACTION REQUIRED&quot;,
+&quot;dealer_response_or_note&quot; : &quot;DEALER RESPONSE OR NOTE&quot;,
+&quot;grp_nbr&quot; : &quot;GROUP NUMBER&quot;,
+&quot;loc&quot; : &quot;LOC&quot;,
+&quot;item&quot; : &quot;ITEM&quot;,
+&quot;current_abc&quot; : &quot;CURRENT ABC&quot;,
+&quot;current_si&quot; : &quot;CURRENT SI&quot;,
+&quot;distchan&quot; : &quot;DISTCHAN&quot;,
+&quot;dlrsplr_code&quot; : &quot;DLRSPLR CODE&quot;,
+&quot;stock_class&quot; : &quot;STOCK CLASS&quot;,
+&quot;date_added_to_dif&quot; : &quot;DATE ADDED TO DIF&quot;,
+&quot;dnet&quot; : &quot;DNET&quot;,
+&quot;current_minss&quot; : &quot;CURRENT MINSS&quot;,
+&quot;current_mp&quot; : &quot;CURRENT MP&quot;,
+&quot;current_comment&quot; : &quot;CURRENT COMMENT&quot;,
+&quot;sunset_date&quot; : &quot;SUNSET DATE&quot;,
+&quot;current_12m_dmd&quot; : &quot;CURRENT 12M DMD&quot;,
+&quot;current_12m_hits&quot; : &quot;CURRENT 12M HITS&quot;,
+&quot;abctots&quot; : &quot;ABCTOTS&quot;,
+&quot;maap_loc&quot; : &quot;MAAP LOC&quot;,
+&quot;item_desc&quot; : &quot;ITEM DESC&quot;,
+&quot;date_of_exception&quot; : &quot;ORDER DATE&quot;,
+&quot;order_number&quot; : &quot;ORDER NUMBER&quot;,
+&quot;order_type&quot; : &quot;ORDER TYPE&quot;,
+&quot;planning_breadth_exception&quot; : &quot;PLANNING BREADTH EXCEPTION&quot;
+}</value>
+    </values>
+</CustomMetadata>

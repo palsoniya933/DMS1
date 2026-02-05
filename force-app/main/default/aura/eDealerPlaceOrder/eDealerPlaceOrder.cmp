@@ -1,0 +1,213 @@
+<aura:component controller="EDealerPlaceOrderController" implements="forceCommunity:availableForAllPageTypes" access="global">    
+    
+    <!-- total Est. price -->
+    <aura:attribute name="totalEstPrice" type="Double" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- Selected Delear Loc/ code -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- Selected Delear location with customer name -->
+    <aura:attribute name="dealerLocionWithCustomerName" type="String" />
+    
+    <!-- this will save the orderType -->
+    <aura:attribute name="orderType" type="string" />
+    
+    <!-- this will save the purchase order-->
+    <aura:attribute name="po" type="string" />
+    
+    <!-- this will save the purchase order (for Place Holder)-->
+    <aura:attribute name="po_PlaceHolder" type="string" />
+    
+    <!-- used to hide / show the Modal for Place Order -->
+    <aura:attribute name="showPlaceOrderModal" type="boolean" />
+    
+    <!-- this will save the requested ship date -->
+    <aura:attribute name="requestedShipDate" type="Date" />
+    
+    <aura:attribute name="todayDate" type="String" />
+    
+    <!-- this will save the Carrier (default value : BWG ) -->
+    <aura:attribute name="selectCarrier" type="string" default="BWG" />
+    
+    <!-- this will save the comments -->
+    <aura:attribute name="comments" type="string" />
+    
+    <!-- this will save the items to be dispalyed -->
+    <aura:attribute name="cartOrders" type="Object[]" />
+    
+    <!-- used to save the ASI Order Creation Response -->
+    <aura:attribute name="asiOrderCreationRes" type="Object" />
+    
+    <!-- used to save the DSI Order update Response -->
+    <aura:attribute name="dsiOrderUpdateRes" type="Object" access="global" />
+    
+    <!-- used to pass the true/false to Parent cmp -->
+    <aura:attribute name="isShowModal" type="Boolean" />
+    
+    <!-- Total Price of all parts which in selected cart 
+    <aura:attribute name="partsTotalPrice" type="Double" /> -->
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- this will holder the method which will be used on click of button -->
+    <aura:attribute name="cancel" type="Aura.action"/>
+    
+    <aura:attribute name="refresh" type="Aura.action"/>
+    
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- It false when no PO Generate API use -->
+    <aura:attribute name="disablePO" type="Boolean" default="false"/>
+    
+    <aura:attribute name="selectedRecord" type="sObject" default="{}" description="Use,for store SELECTED sObject Record"/>
+    
+    <!-- register event when cart items created -->
+    <aura:registerEvent name="cartupdateevent" type="c:eDealerCartUpdateEvent"/>
+    
+    
+    <!-- method which call from parent cmp 
+    <aura:method name="sampleMethod" action="{!c.placeConfirmOrder}" />
+    
+    <aura:handler name="change" value="{!v.showPlaceOrderModal}" action="{!c.doInit}"/>-->
+    
+    
+    
+        <!-- mark up for the modal -->
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">               
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="position: relative;">
+                    <!-- SPINNER -->
+                    <aura:if isTrue="{!v.displayLoading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+                    </aura:if> 
+                    
+                    <div class="paddingCls">
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat popheading">
+                            PLACE ORDER
+                            <lightning:icon class="iconcolr slds-float--right" size="small" iconName="utility:close" variant="bare" alternativeText="close" title="close" onclick="{! c.closePlaceOrderModal }" />
+                        </div>
+                        
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat">
+                            <div class="slds-col slds-medium-size_4-of-12 lFloat">
+                                <div class="form-group">
+                                    <label>ORDER TYPE</label>
+                                    <div class="control controlLabel">
+                                        <aura:if isTrue="{!v.orderType == 'EM'}">
+                                            EM - Emergency Order
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.orderType == 'ST'}">
+                                            ST - Stock Order
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.orderType == 'XS'}">
+                                            XS - DSP Stock Order
+                                        </aura:if>
+                                        <aura:if isTrue="{!v.orderType == 'XE'}">
+                                            XE - DSP Emergency Order
+                                        </aura:if>
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>REQUESTED SHIP DATE <abbr title="required" class="slds-required">*</abbr></label>
+                                    <div class="control ">
+                                        <aura:if isTrue="{!v.todayDate}">
+                                            <lightning:input aura:id="field" type="date" 
+                                                             value="{!v.requestedShipDate}" 
+                                                             variant="label-hidden" 
+                                                             class="label-hidden"
+                                                             required="true"
+                                                             min="{!v.todayDate}"/> 
+                                        </aura:if>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>SHIP TO LOCATION</label>
+                                    <div class="control ">
+                                        {!v.dealerLocionWithCustomerName}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="slds-col slds-medium-size_4-of-12 lFloat seperatorright">
+                                <div class="form-group">
+                                    <label>PO# <abbr title="required" class="slds-required">*</abbr></label>
+                                    <div class="control">
+                                        <lightning:input aura:id="field" type="text" value="{!v.po}" 
+                                                         variant="label-hidden" 
+                                                         class="label-hidden"
+                                                         required="true"
+                                                         placeholder="{!v.disablePO ? 'Auto Generate on Order' : 'Please fill PO Number'}"
+                                                         maxlength='21'
+                                                         disabled="{!v.disablePO}"/> 
+                                    </div>
+                                </div>
+                                <div class="form-group selectCarrierdrop">
+                                    <div class="control">
+                                        <c:eDealerLookup objectAPIName="eDealer_Carrier__c"
+                                                         selectedRecord="{!v.selectedRecord}"
+                                                         required="true"
+                                                         preSearchVal = "{!if(or(v.orderType == 'ST', v.orderType == 'XS'), 'BWG', '')}"
+                                                         label="SELECT CARRIER" />
+                                    </div>
+                                </div>
+                            </div>            
+                            <div class="slds-col slds-medium-size_4-of-12 lFloat pricepadding">
+                                <div class="slds-grid slds-wrap pricepadding priceBG">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_7-of-12">
+                                        <span><strong>ESTIMATED TOTAL PRICE</strong></span>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_5-of-12 ">
+                                        <span class="rFloat">
+                                            <strong>{!v.userDetail.currencyCode}&nbsp;{!v.totalEstPrice}</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="clear"></div>
+                            <div class="slds-col slds-medium-size_12-of-12 lFloat">
+                                <br/>
+                                <div class="form-group">
+                                    <label>COMMENT</label>
+                                    <div class="control">
+                                        <lightning:textarea name="input1" label="Enter some text" 
+                                                            value="{!v.comments}"
+                                                            variant="label-hidden" 
+                                                            class="label-hidden"
+                                                            placeholder="Enter Comments Here"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        
+                        <br/>
+                        
+                        <!-- this is the button section -->
+                        <div align="right">
+                            <lightning:button class="buttonclr" 
+                                              variant="brand" 
+                                              label="Cancel Order"  
+                                              onclick="{!c.closePlaceOrderModal}"/>
+                            
+                            <!-- Confirm Order button disabled for user which no have access to order -->
+                            <!-- and removed the class="buttoncnfclr"  -->
+                            <lightning:button class="" 
+                                              variant="brand" 
+                                              label="Confirm Order"  
+                                              onclick="{!c.placeConfirmOrder}"
+                                              disabled="{!v.userDetail.isNonDealer}"/> 
+                            
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    
+</aura:component>

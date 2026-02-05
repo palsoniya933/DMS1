@@ -1,0 +1,98 @@
+.THIS .width12 {
+  width: 1440px;
+    /* width: 1659px;*/
+    margin-left: -5%;  
+}
+
+.THIS .btnClass{
+    background-color: #d10000;
+    border-color: #d10000;
+    color:white;
+}
+
+.THIS .annoucement{
+    padding: 1%;
+    background-color: #f5efef;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: initial;
+}
+
+.THIS .contentMin .shipmenttabs{
+    width:1000px !important;
+    
+}
+.THIS .slds-button_destructive[disabled].slds-button_destructive:disabled{background-color: #c9c7c5!important;border: 1px!important; height:26px}
+.THIS .slds-button_destructive:focus{background:#c23934!important; height:26px !important; }
+.THIS .secondary-btn{background:#000;color:#fff;border:1px solid #000;}
+.THIS .padding-10{padding:0px 10px;}
+.THIS .siteforceContentArea .comm-layout-column{padding-bottom:0px!important;}
+.THIS .contentBox{height: 500px!important;padding-bottom:3%!important;}
+.THIS .sidebarBox{background:#fff!important;transition: width .05s linear;padding-bottom:3%!important;
+    -webkit-transform: translateZ(0) scale(1,1);
+    z-index: 1;
+    box-shadow: 1px -1px 0px 1px #cecece;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.THIS .EDealerContainer
+{
+    background: #f5f6fa;
+    font-family: 'RobotoRegular'!important;
+
+}
+.THIS.contentPage
+{
+    background: #f5f6fa 0% 0% no-repeat padding-box;
+   /* opacity: 1;
+    -webkit-box-shadow: inset 10px 2px 5px -3px rgba(245, 250, 254, 1);
+    -moz-box-shadow:    inset 10px 2px 5px -3px rgba(245, 250, 254, 1);
+       box-shadow:         inset 10px 2px 5px -3px rgba(245, 250, 254, 1);*/
+    font-family: 'RobotoRegular'!important;
+        border-left:1px solid #ddd;
+     border-right:1px solid #ddd;
+}
+.THIS .menuLeft .slds-m-around_xx-small {
+    margin: 0px;
+}
+.THIS .slds-size_1-of-12-new
+{
+   width: 4.50%;
+}
+.THIS .slds-size_11-of-12-new
+{
+    width: 95.50%;
+}
+
+/*.THIS .pad {
+    padding: 4px;
+}*/
+.THIS .fif {
+    display: table-cell;
+    vertical-align: top;
+  /*  margin: 0 -4px 0 0;*/
+}
+
+.THIS #b{width:100%!important;}
+
+.THIS .align-part-search{
+    margin: 4px 20px;
+    padding: 15px 18px;
+    background: #fff;
+    border-radius: 6px;
+    
+}
+.THIS .info-msg {
+    color: #898989;
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid #fff36a;
+    width: 50%;
+  }
+  .THIS .padding-bt {
+    padding: 2.5% 1% 7% 0%;
+    font-family: "RobotoRegular" !important;
+  }

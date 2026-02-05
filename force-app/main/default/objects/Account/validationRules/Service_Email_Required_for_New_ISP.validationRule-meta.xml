@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Email_Required_for_New_ISP</fullName>
+    <active>true</active>
+    <description>Requires the Service Email to be entered when creating a new account with ISP record type.</description>
+    <errorConditionFormula>AND( 
+     RecordType.DeveloperName  = &quot;Independent_Service_Provider&quot;,
+ISNEW(),
+OR(
+    ISBLANK(Service_Email__c)
+)
+)</errorConditionFormula>
+    <errorDisplayField>Service_Email__c</errorDisplayField>
+    <errorMessage>Service Email field is required.</errorMessage>
+</ValidationRule>

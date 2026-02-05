@@ -1,0 +1,99 @@
+.THIS {
+}
+.THIS .emptyTxt {
+    float: left;
+    width: 100%;
+}
+.THIS .emptyTxt svg
+{
+    vertical-align: middle;
+    margin: 5px 0px;
+    fill: #a7a0a0;
+}
+
+.THIS .sugOrderSubHead ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px 10px;
+}
+/*.THIS .sugOrderSubHead ul li:nth-child(1) {
+    width: 22%;
+}
+.THIS .sugOrderSubHead ul li:nth-child(2) {
+    width: 23%;
+}
+.THIS .sugOrderSubHead ul li:nth-child(4) {
+    width: 42%;
+    background: #9dfd91;
+}*/
+
+
+.THIS .amtTxt {
+    font-size: 15px;
+    font-weight: 600;
+}
+.THIS.container{ 
+    border-radius: 9px;
+}
+
+.THIS .heading{
+    font-family: 'RobotoMedium'!important;
+    color: #9f9f9f!important;
+}
+
+.THIS .columnheight{  
+    background-color: #f3f3f3;
+    padding: 10px;    
+}
+
+.THIS .lastColumn{  
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.THIS .secondLastColumn{  
+    background-color: #FFF7B5;
+    padding: 10px;
+}
+
+.THIS .firstColumn{  
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.THIS .sugOrderSubHead ul li:last-child {
+    margin-left: 8px;
+    float: right;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .datetxt
+{
+    font-weight:600;
+    color:#000;
+}
+
+.THIS .placeOrderText {
+    width:125px;
+}
+
+.THIS .tdOrderText {
+    width:185px;
+}
+
+.THIS .emOrderText {
+    width:175px;
+}
+
+.THIS .soOrderText {
+    width:145px;
+}

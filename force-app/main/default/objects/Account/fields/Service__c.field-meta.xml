@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service__c</fullName>
+    <label>Service</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>In-House</fullName>
+                <default>false</default>
+                <label>In-House</label>
+            </value>
+            <value>
+                <fullName>Outsourced</fullName>
+                <default>false</default>
+                <label>Outsourced</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>In-House</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Outsourced</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

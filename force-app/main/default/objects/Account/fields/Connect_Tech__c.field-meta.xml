@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connect_Tech__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Check this box if this Customer has the Connect Tech KONA Module?</inlineHelpText>
+    <label>Connect Tech</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

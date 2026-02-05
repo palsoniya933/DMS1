@@ -1,0 +1,256 @@
+.THIS {
+}
+.THIS .generateReportbutton
+{
+    padding:0px 10px !important;
+}
+.THIS .generateReportbutton svg
+{
+  
+    fill: white;
+    margin: 0px 8px 0px 0px;
+}
+.THIS.reportContainerBox
+{
+   margin: 0 15px 17px 16px;
+    background: #fff;
+    
+    border-radius: 6px!important;
+}
+.THIS .partBack
+{
+ background-color: #e61a1a !important;    
+}
+.THIS .partBack {
+    background-color: #777272!important;
+    color: #fff !important;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+        border-bottom: 1px solid #888585;
+}
+.THIS .partBack .slds-truncate.tocolumn {
+    color: #fff;
+}
+.THIS.reportcontainer{
+    padding:5%;
+    padding-left:1%;
+    padding-top:2%;
+    background-color:#F5F6FA;
+    border-bottom: solid 1px #c2c3ca;
+}
+
+.THIS .selectedReport {
+    text-decoration: none;
+    background-color: #e61a1a;
+    color: #fffbfb !important;    
+    border-radius: 5px;
+}
+
+.THIS .report{
+    padding: 5px;
+        color: #080808;
+    font-size: 14px;
+}
+
+.THIS.reportFilters{
+    background-color: #e61a1a;
+    margin-top: 2%;
+    padding: 2%;
+}
+
+.THIS .themecolor{    
+    color: #ea1313;
+    font-weight: 600;
+    font-size: small;
+}
+.THIS a.report:hover {
+    background: #ee1451;
+    color: #fffbfb !important;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.THIS .greyColor{
+    color: #adabab;    
+    font-weight: 400;
+    font-size: small;
+}
+
+.THIS .filtertxt{
+    font-weight: 600;
+}
+
+.THIS .seperatorclass{
+    padding: 1%;
+    margin: 0px;
+    border-top: 1px solid #b4b0a5;
+}
+
+.THIS .filterseperator{
+    border-right: 2px solid #b4b0a5;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS.buttoncontainer{
+    text-align: right;
+    
+}
+
+.THIS .button{
+    margin:2%
+}
+
+.THIS.datacontainer{
+    width:100%;  
+    padding:0px 12px;
+}
+.THIS .invDatacontainer{
+    padding-top:1%
+}
+
+.THIS .slds-nubbin_bottom-left:before, 
+.THIS .slds-nubbin_bottom-left:after,
+.THIS .slds-nubbin--bottom-left:before, 
+.THIS .slds-nubbin--bottom-left:after, 
+.THIS .slds-nubbin_bottom-left-corner:before, 
+.THIS .slds-nubbin_bottom-left-corner:after
+{
+    background: #FFFABE;
+}
+
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:0px;
+}
+
+.THIS .invDatacontainertable{
+    width:100%;
+}
+.THIS .slds-truncate.tocolumn {
+    color: #ee104e;
+}
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: capitalize;
+    font-weight:500;
+    /**** fix header ****/
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.THIS .thBorderRadius{
+     border-radius: 6px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.THIS thBorderRadiuslast
+{
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.THIS .scrollTable table th {
+    white-space: nowrap;
+}
+.THIS .scrollTable {
+    /* padding: 0px 12px; */
+    overflow: scroll;
+    height: 600px;
+    margin: 0px 12px;
+    width: 98%;
+}
+.THIS .invDatacontainertabledata{
+    padding:5px 5px
+}
+.THIS .tdInput table td {
+    padding: 3px 2px !important;
+    color: #000;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+.THIS h3.slds-accordion__summary-heading {
+    color: #000;
+    font-weight: 600;
+}
+.THIS .padding12px {
+    padding: 0px 12px;
+}
+.THIS .bottompagi button.slds-button.slds-button_brand {
+    height: 20px;
+    padding: 11px 10px;
+}
+.THIS table tr.selectedRowBackground td {
+    background: #fffabe;
+}
+.THIS table tr.selectedRowBackground td {
+    background-color: rgb(255, 250, 191);
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:first-child {
+  
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /*border-left: 4px solid #ffa700;*/
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:last-child {
+      border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:10px 5px;
+    width:100px;
+}
+
+.THIS.slds-accordion{
+    background-color: #F5F6FA;
+}
+
+.THIS .slds-accordion__content{
+    padding-top:1%
+}
+
+.THIS .tocolumn{
+   /* color: #dc6464;*/
+}
+
+.THIS tr:nth-child(odd) {
+    background: #fff;
+}
+.THIS tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.THIS .table-wrapper{
+    overflow-y: scroll;
+    height: 150px;
+}
+
+.THIS .table-wrapper th{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.THIS .testdemo{
+       border:solid 1px #ccc;
+}
+
+.THIS .fixedColumn {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.THIS .inputTextMaxWidth {
+    max-width: 300px;
+}

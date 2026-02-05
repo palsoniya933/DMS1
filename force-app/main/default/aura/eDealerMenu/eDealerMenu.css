@@ -1,0 +1,469 @@
+.THIS .active {
+    color:#fff !important;
+        background: #d10000;
+    height: 49px;
+    display: table;
+}
+ 
+
+.THIS .disable-menu{    
+    pointer-events: none!important;
+    color: #bababa!important;}
+.THIS .disable-menu .nav-text{    
+    
+    color: #ccc!important;
+
+}
+.THIS .disable-menu a{color:#bababa!important;}
+
+.THIS .disable-menu svg{fill:#bababa!important}
+.THIS .custom-menu {
+   display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    /*margin-right: -10px;*/
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+.THIS .custom-menu .btn.btn-primary {
+    background:#fff;
+   /* border-color: transparent;*/
+    border:solid 1px #ccc;
+    
+}
+
+.THIS .custom-menu .btn.btn-primary:hover {
+    background:#c3c3c3;
+   /* border-color: transparent;*/
+    border:solid 1px #333;
+    
+}
+.THIS .custom-menu .btn i {
+    margin-right: -2px;
+    font-size: 4px;
+    display: inline;
+    height: 25px;
+}
+.THIS .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+.THIS .custom-menu .btn i svg {
+    width: 14px;
+    fill: #d10000;
+}
+.THIS .custom-menu .btn {
+    width: 12px;
+    height: 48px;
+    border-radius: 0 4px 4px 0;
+    padding:0px;
+    position: relative;
+    border:solid 1px #ccc;
+    cursor:pointer;
+}
+/*
+.THIS .custom-menu .btn.btn-primary:after {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background: #ffffff;
+    border-radius: 100%;
+        
+}*/
+.THIS nav.main-menu ul li
+{
+   color : #CF3642; 
+}
+.THIS .topmargn{
+ position: relative;
+    top: 12px;   
+    left: 4%;
+}
+.THIS .fullmenupadding {
+  padding: 4px 6px;  
+}
+
+.THIS .fullmenupadding:hover{
+    color : #CF3642;    
+    cursor: pointer !important;
+}
+
+.THIS .subheading{
+    color:#5F5F5F; 
+}
+
+.THIS .menuheading{
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+}
+
+.THIS.icn svg {
+  fill : red;
+}
+
+
+.THIS.menucontainer{
+	-webkit-box-shadow: 20px 5px 6px -16px rgba(222, 226, 240, 1);
+	-moz-box-shadow: 20px 5px 6px -16px rgba(222, 226, 240, 1);
+	box-shadow: 20px 5px 6px -16px rgba(222, 226, 240, 1);
+    padding: 0px 10px 0px 10px;
+    background: #fff;
+}
+
+.THIS .buttonbox{
+    position: absolute;
+    right: -12px;
+    z-index: 500;
+    top: 0px;
+}
+
+/**************/
+
+.THIS .fa-2x {
+font-size: 2em;
+}
+.THIS .fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:12px;
+}
+
+.THIS .menu-icon1 {
+position: relative;
+display: table-cell;
+width: 54px;
+height: 36px;
+padding-top: 8px;
+padding-left: 8px;
+text-align: center;
+vertical-align: middle;
+font-size:12px;
+}
+
+
+.THIS .menu-icon1 svg {
+    fill : #363636;
+	/*fill : #6b6d70;*/    
+}
+.THIS #wrapper {
+    padding-left: 50px;
+}
+.THIS #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+/*.main-menu:hover,nav.main-menu.expanded {
+width:250px;
+overflow:visible;
+}*/
+.THIS nav.main-menu.expanded {
+width:270px;
+overflow:visible;
+}
+
+
+
+.THIS .custom-menu .btn.btn-primary:focus, 
+.THIS .custom-menu .btn.btn-primary:active, 
+.THIS .custom-menu .btn.btn-primary:hover {
+    border-color: transparent;
+    /*background: 0 0;*/
+   
+    outline: none;
+        box-shadow: none;
+    height: 49px;
+    width: 12px;
+    border-radius:0px 4px 4px 0px;
+     border:solid 1px #ccc;
+}
+.THIS nav.main-menu ul li
+{
+    padding:0px 0px;
+}
+.THIS .main-menu li>a.active svg {
+    fill: #fff;
+}
+.THIS .main-menu {
+/*background:#212121;
+border-right:1px solid #e5e5e5;
+position:relative; //absolute  
+top:0;
+bottom:0;
+height:100%;
+left:0;
+width:60px;
+overflow:hidden;
+-webkit-transition:width .05s linear;
+transition:width .05s linear;
+-webkit-transform:translateZ(0) scale(1,1);
+z-index:1000;*/
+    
+    background: #ffffff;
+    /* border-right: 1px solid #e5e5e5; */
+    position: relative;
+    /*top: 3px; */
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 50px;
+   /* overflow: hidden;*/
+    transition: width .05s linear;
+    -webkit-transform: translateZ(0) scale(1,1);
+    z-index: 1;
+    /*box-shadow: 1px 2px 3px #cecece;*/
+    
+}
+
+.THIS .main-menu>ul {
+margin:0px 0px 7px 0;
+padding-top:0px;
+}
+
+.THIS .main-menu li {
+position:relative;
+display:block;
+width:270px;
+}
+
+.THIS .main-menu li>a {
+position:relative;
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+/*roboto medium*/
+  font-family: 'RobotoBold' !important;
+/*roboto medium end
+color:#000;*/
+    color : #363636; 
+font-size: 12px;
+    /*font-weight: 600;*/
+text-decoration:none;
+-webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .1s linear;
+transition:all .1s linear;
+width:100%; 
+}
+
+/* for roboto medium*/
+@font-face {
+   font-family: 'RobotoBold';
+   src: url(/resource/RobotoBold); 
+}
+/* for roboto medium end*/
+
+.THIS .dropmenu li>a{
+    font-family: 'RobotoRegular' !important;
+    color:#5F5F5F; 
+}
+
+/* for roboto regular*/
+@font-face {
+   font-family: 'RobotoRegular';
+   src: url(/resource/RobotoRegular); 
+}
+/* for roboto regular*/
+
+.THIS .main-menu ul {
+    overflow: hidden;
+}
+.THIS .main-menu .nav-icon {
+position:relative;
+display:table-cell;
+width:60px;
+height:36px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
+}
+
+.THIS .main-menu .nav-text {
+position:relative;
+display:table-cell;
+vertical-align:middle;
+width:220px;
+    color:#555
+ 
+}
+.THIS .main-menu .has-subnav a:hover .nav-text {
+    color:#cf3642;
+}
+.THIS .main-menu .active{
+    color:#fff;
+/*background-color:#d10000;*/
+}
+
+.THIS .main-menu>ul.logout {
+position:absolute;
+bottom:0;
+}
+
+.THIS .main-menu ul.logout li:hover{
+    background: #d10000;
+}
+
+.THIS .main-menu>ul.logoutV2 {
+position:absolute;
+/* bottom:0; */
+}
+
+.THIS .main-menu ul.logoutV2 li:hover{
+    background: none;
+}
+
+
+
+
+.THIS .no-touch .scrollable.hover {
+overflow-y:hidden;
+}
+
+.THIS .no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
+}
+
+.THIS a:hover, .THIS a:focus {
+text-decoration:none;
+}
+
+.THIS nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
+}
+
+.THIS nav ul, .THIS nav li {
+outline:0;
+margin:0;
+padding:0;
+}
+/*
+.THIS .main-menu li:hover>a,.THIS nav.main-menu li.active>a,.THIS .dropdown-menu>li>a:hover,.THIS .dropdown-menu>li>a:focus,.THIS .dropdown-menu>.active>a,.THIS .dropdown-menu>.active>a:hover,.THIS .dropdown-menu>.active>a:focus,.THIS .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.THIS .dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+color:#d10000;
+}*/
+
+.THIS .active  .nav-text, .THIS .active  .btn i svg, .THIS .active  .menu-icon1 svg, .THIS .active .btn-primaryN {
+    color:#fff!important;
+    background-color: #d10000;
+    fill: #fff;
+    
+}
+
+
+.THIS .mainNavItem{
+    background:#f9f9f9; 
+    border-top:solid 1px #efefef;
+}
+.THIS .mainNavItem .navText{
+    font-weight: 600;
+}
+.THIS .mainNavItem a{
+    height:40px;
+ /* width:270px;*/
+    display:table;
+}
+.THIS .mainNavItem:hover{
+  background:#d10000;
+    /*  color:#fff;*/
+}
+
+.THIS .mainNavItem:hover .nav-text, .THIS .mainNavItem:hover .btn i svg, .THIS .mainNavItem:hover  .menu-icon1 svg{
+    
+    color:#fff;
+    fill: #fff;
+}
+ .THIS .mainNavItem:hover .btn-primaryN{
+    background: #ba0517;
+}
+
+.THIS .main-menu li:hover>a svg
+{
+    fill:#fff;
+}
+.THIS .main-menu ul.dropmenu li:hover{
+    color: #d10000;
+}
+.THIS .main-menu ul.dropmenu li {
+    padding: 4px 0 4px 50px;
+    
+}
+.THIS .has-subnav  .nav-text{
+    font-weight:normal;
+ 
+}
+.THIS .mainNavItem .nav-text{
+    font-weight:bold ;
+ 
+}
+
+.THIS .Cactive{
+    font-weight:bold !important;
+    color:#cf3642 !important;
+}
+ 
+.THIS .has-subnav .Cactive .nav-text{
+    font-weight:bold !important;
+    color:red;
+}
+.THIS .area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+height: 100%;
+}
+
+/*.THIS .main-menu li:hover>img svg
+{
+    fill:green;
+}*/
+
+/*
+.THIS .childNav a:first-child::after{
+    content:"[>]";
+}
+
+.THIS .ChildNav{
+    display:none;
+}
+
+.THIS .has-subnav:hover > .ChildNav{
+    display:block;
+}*/
+
+.THIS .ChildNav2{
+    display:none !important;
+}
+.THIS .btn-primaryN{
+	border: none;
+    background: transparent;
+    padding:5px;
+    width:30px;
+    }

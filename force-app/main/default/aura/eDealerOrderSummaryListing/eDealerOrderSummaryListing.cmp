@@ -1,0 +1,363 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                controller="EDealerOrderSummaryListingCtrl" access="global">
+    
+    <aura:attribute name="downloadFileName" type="String" />
+    <aura:attribute name="division" type="String" />
+    <aura:attribute name="invData" type="Object[]" />
+    <aura:attribute name="masterData" type="string" />
+    <aura:attribute name="PaginationList" type="Object[]" />
+    <aura:attribute name="selectedFrequencies" type="Map" />
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>    
+    
+    <!-- Cart  for emergency orders -->
+    <aura:attribute name="cartEmergencyOrders" type="Object[]" />
+    <aura:attribute name="totalOrderSelected" type="Integer" default="0" />
+    <aura:attribute name="selectAll" type="Boolean" default="false" />
+    <aura:attribute name="showEmergencyOrderAddCartModal" type="Boolean" default="false" />
+    <aura:attribute name="showStockOrderAddCartModal" type="Boolean" default="false" />
+    <aura:attribute name="showQTYONOrder" type="Boolean" default="false" />
+    
+    <!-- Qty Break Detail of Selected SOF Part by selcted Part Details -->
+    <aura:attribute name="sofPartDetailWithQtyBreak" type="Object" />
+    <aura:attribute name="showBreakPrice" type="Boolean" default="false" />
+    <aura:attribute name="showLoyality" type="Boolean" default="false" />
+    
+    <!-- add order to EM Cart -->
+    <aura:attribute name="addOrdersInEMCart" type="Aura.action"/>
+    <!-- add order to SO Cart -->
+    <aura:attribute name="addOrdersInSOCart" type="Aura.action"/>
+    
+    <!-- to hide/show the EM add to cart Button -->
+    <aura:attribute name="showEMOrderButton" type="Boolean" default="true" />
+    <!-- to Disable the EM Order Button (Dual channel validation) -->
+    <aura:attribute name="disableEMOrderButton" type="Boolean" default="false" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    <aura:attribute name="selectedMenu" type="string" />
+    
+    <!-- this used for the current step number -->
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="listDealerLoc" type="List" />
+    
+    <aura:attribute name="totalOrders" type="Integer" default="0"/>
+    <aura:attribute name="backorders" type="Integer" default="0"/>
+    <aura:attribute name="invoicedOrder" type="Integer" default="0"/>
+    <aura:attribute name="activeorders" type="Integer" default="0"/>
+    <aura:attribute name="cancelledorders" type="Integer" default="0"/>
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Week"/>
+    
+    <aura:attribute name="orderType" type="string" default="All"/>
+    
+    <aura:attribute name="orderTypes" type="List" />
+    
+    <aura:attribute name="frequency" type="string" default=""/>
+    
+    <aura:attribute name="columns" type="List" />
+    
+    <!-- to show as selected active-list (header column) -->
+    <aura:attribute name="activeColumnName" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- when dealer code change -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+   <div class="EDealerOrderSummaryListing"> 
+    <lightning:card>
+        <!--SPINNER-->
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>  
+        
+        <div class="slds-grid slds-wrap ">
+            <div class="slds-col slds-size_12-of-12">
+                <div class="wrapper slds-m-around_x-small">
+                    <div class="slds-m-around_x-small bgpad10 prodTopHead">
+                        <table class="slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                            <tr>
+                                <aura:if isTrue="{!(v.orderType=='All'|| v.orderType=='Activeorders')}">
+                                    <td>
+                                        <div class="headerName">
+                                           {!$Label.c.Edealer_Total_Order_Count} 
+                                        </div>
+                                    </td>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderType=='Invoiceorder' || v.orderType=='All'}">
+                                    <td>
+                                        <div class="headerName">{!$Label.c.Edealer_Total_Invoiced_Line_Count}</div>
+                                    </td>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderType=='Activeorders' || v.orderType=='All'}">
+                                    <td>
+                                        <div class="headerName">{!$Label.c.Edealer_Total_Active_Line_Count}</div>
+                                    </td>
+                                </aura:if>
+                                <aura:if isTrue="{!(v.orderType=='Backorders' || v.orderType=='Activeorders' || v.orderType=='All')}">
+                                    <td>
+                                        <div class="headerName">{!$Label.c.Edealer_Total_Backorder_Line_Count}</div>
+                                    </td>
+                                </aura:if>    
+                                <aura:if isTrue="{!v.orderType=='Cancelledorders' || v.orderType=='All'}">
+                                    <td>
+                                        <div class="headerName slds-truncate">{!$Label.c.Edealer_Total_Cancelled_Line_Count}<!--TOTAL CANCELLED LINE COUNT--></div>
+                                    </td>
+                                </aura:if>
+                                <td>
+                                    <div class="headerName">{!$Label.c.Edealer_Frequency}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <aura:if isTrue="{!v.orderType=='All'}">
+                                    <td>
+                                        <aura:if isTrue="{!v.totalOrders==0}">
+                                            <div class="headerCount slds-truncate" name="All">{!v.totalOrders}</div> 
+                                            <aura:set attribute="else">
+                                                <div name="All" class="{!v.activeColumnName == 'All' ? 'headerCount select-order slds-truncate active-order_list' : 'headerCount select-order slds-truncate'}" onclick="{!c.getOrders}">{!v.totalOrders}</div> 
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    <td>
+                                         <aura:if isTrue="{!v.invoicedOrder==0}">
+                                            <div class="headerCount slds-truncate" name="All">{!v.invoicedOrder}</div> 
+                                            <aura:set attribute="else">
+                                                <div name="Invoiced" class="{!v.activeColumnName == 'Invoiced' ? 'headerCount select-order slds-truncate active-order_list' : 'headerCount select-order slds-truncate'}" onclick="{!c.getOrders}">{!v.invoicedOrder}</div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    <td>
+                                        <aura:if isTrue="{!v.activeorders==0}">
+                                            <div class="headerCount slds-truncate" name="All">{!v.activeorders}</div> 
+                                            <aura:set attribute="else">
+                                                <div name="Active" class="{!v.activeColumnName == 'Active' ? 'headerCount select-order slds-truncate active-order_list' : 'headerCount select-order slds-truncate'}" onclick="{!c.getOrders}">{!v.activeorders}</div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    <td>
+                                         <aura:if isTrue="{!v.backorders==0}">
+                                            <div class="headerCount slds-truncate" name="All">{!v.backorders}</div> 
+                                            <aura:set attribute="else">
+                                              <div name="Backorder" class="{!v.activeColumnName == 'Backorder' ? 'headerCount select-order slds-truncate active-order_list' : 'headerCount select-order slds-truncate'}" onclick="{!c.getOrders}">{!v.backorders}</div>  
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    <td>
+                                        <aura:if isTrue="{!v.cancelledorders==0}">
+                                            <div class="headerCount slds-truncate" name="All">{!v.cancelledorders}</div> 
+                                            <aura:set attribute="else">
+                                              <div name="Cancelled" class="{!v.activeColumnName == 'Cancelled' ? 'headerCount select-order slds-truncate active-order_list' : 'headerCount select-order slds-truncate'}" onclick="{!c.getOrders}">{!v.cancelledorders}</div>  
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderType=='Invoiceorder'}">
+                                    <td>
+                                        <div class="headerCount slds-truncate" name="Invoiceorder">{!v.invoicedOrder}</div>
+                                    </td>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderType=='Activeorders' }">
+                                    <td>
+                                        <aura:if isTrue="{!v.totalOrders==0}">
+                                            <div class="headerCount slds-truncate" name="All">{!v.totalOrders}</div> 
+                                            <aura:set attribute="else">
+                                                <div class="headerCount  select-order slds-truncate" name="All" onclick="{!c.getOrders}">{!v.totalOrders}</div> 
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    <td>
+                                        <aura:if isTrue="{!v.activeorders==0}">
+                                            <div class="headerCount slds-truncate" name="Active">{!v.activeorders}</div> 
+                                            <aura:set attribute="else">
+                                                <div class="headerCount select-order slds-truncate" name="Active" onclick="{!c.getOrders}">{!v.activeorders}</div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                    <td>
+                                        <aura:if isTrue="{!v.backorders==0}">
+                                            <div class="headerCount slds-truncate" name="Backorder">{!v.backorders}</div> 
+                                            <aura:set attribute="else">
+                                                <div class="headerCount select-order slds-truncate" name="Backorder" onclick="{!c.getOrders}">{!v.backorders}</div>  
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderType=='Backorders'}">
+                                    <td>
+                                        <div class="headerCount slds-truncate" name="Backorders">{!v.backorders}</div>
+                                    </td>
+                                </aura:if>
+                                <aura:if isTrue="{!v.orderType=='Cancelledorders'}">
+                                    <td>
+                                        <div class="headerCount slds-truncate" name="Cancelledorders">{!v.cancelledorders}</div>
+                                    </td>
+                                </aura:if>
+                                <td>
+                                    <div class="headerCount slds-truncate" name="Frequency">
+                                        <aura:if isTrue="{!not(empty(v.frequency))}">
+                                            {!v.frequency}
+                                            <aura:set attribute="else">
+                                            	All
+                                            </aura:set>
+                                        </aura:if>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>          
+                    </div>
+                    
+                    <aura:if isTrue="{!v.PaginationList.length > 0 }">
+                        <div class="slds-grid slds-wrap padding12px">
+                            <div class="slds-col slds-size_9-of-12">
+                                <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                     totalNumberRecords = "{!v.invData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                         			 disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="false"></c:eDealerPagination>
+                            </div>
+                            
+                            <div class="slds-col slds-size_3-of-12">
+                                <div class="rFloat">
+                                    <div align="right" class="buttoncontainer" >
+                                        
+                                        <c:eDealerDownloadReportInCsvButton reportName= "{!v.downloadFileName}"
+                                                                            invData = "{!v.invData}"
+                                                                            columns = "{!v.columns}"
+                                                                            isMasterInventoryData = 'false'/> 
+                                        
+                                        <!-- Download Report Button -->
+                                        <c:eDealerDownloadReportButton aura:id="downloadcmp"
+                                                                       reportName="{!v.downloadFileName}"
+                                                                       report="{!v.invData}"
+                                                                       columns="{!v.columns}"
+                                                                       callapimethod = "{!c.downloadReportData}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="invDatacontainertablecontainer">
+                            
+                            <table class="invDatacontainertable">
+                                <tr>
+                                    
+                                     <td class="invDatacontainertableheading width1" >
+                                            #
+                                        </td>
+                                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                                            <td class="invDatacontainertableheading" >
+                                                {!cd.value}
+                                            </td>
+                                        </aura:iteration>                              
+                                </tr>
+                                
+                                <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                                    <tr>
+                                        <td class="invDatacontainertabledata" >
+                                            {!index + 1}
+                                        </td>
+                                        
+                                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd">
+                                            <td>
+                                                <aura:if isTrue="{!cd.key=='ordno'}">
+                                                    <a href="javascript:void(0);" onclick="{!c.openOrder}" name="{!inv.ordno}">
+                                                        <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                    </a>
+                                                    <!-- <a href="javascript:void(0);" 
+                                                       onclick="{!c.openOrder}" 
+                                                       data-ordno="{!inv.ordno}" 
+                                                       data-division="{!v.division}">
+                                                        <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                    </a> -->
+                                                    &nbsp;
+                                                    <span name="{!inv.ordno}" 
+                                                          onclick="{!c.handleOpenInNewWindow}" 
+                                                          class="nav-text active">
+                                                        <a href="javascript:void(0);">
+                                                            <img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/>
+                                                        </a>
+                                                    </span>
+                                                    <aura:set attribute="else">
+                                                        <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </td>
+                                        </aura:iteration>
+                                        
+                                    </tr>
+                                </aura:iteration>                            
+                            </table>
+                            
+                            <!-- pagination cmp -->
+                            <div class="bottompagi">
+                                <c:eDealerPagination totalRecords = "{!v.invData}"
+                                                     totalNumberRecords = "{!v.invData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                         			 disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="true"></c:eDealerPagination>  
+                            </div> 
+                            
+                        </div>
+                        
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.APICalled}">
+                                <br/>
+                                <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                            </aura:if>
+                            
+                        </aura:set>
+                        
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </lightning:card>
+</div>
+</aura:component>

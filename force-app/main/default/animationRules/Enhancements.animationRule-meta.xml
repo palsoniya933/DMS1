@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <animationFrequency>always</animationFrequency>
+    <developerName>Enhancements</developerName>
+    <isActive>true</isActive>
+    <masterLabel>Enhancements</masterLabel>
+    <recordTypeContext>Custom</recordTypeContext>
+    <recordTypeName>Enhancement</recordTypeName>
+    <sobjectType>Case</sobjectType>
+    <targetField>Enhancements_Path__c</targetField>
+    <targetFieldChangeToValues>Resolved</targetFieldChangeToValues>
+</AnimationRule>

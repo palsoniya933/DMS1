@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pain_Point_3__c</fullName>
+    <label>Pain Point #3</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Repair Cost Tracking</fullName>
+                <default>false</default>
+                <label>Repair Cost Tracking</label>
+            </value>
+            <value>
+                <fullName>PM Schedules</fullName>
+                <default>false</default>
+                <label>PM Schedules</label>
+            </value>
+            <value>
+                <fullName>Work Orders</fullName>
+                <default>false</default>
+                <label>Work Orders</label>
+            </value>
+            <value>
+                <fullName>Inventory Control</fullName>
+                <default>false</default>
+                <label>Inventory Control</label>
+            </value>
+            <value>
+                <fullName>Purchase Orders</fullName>
+                <default>false</default>
+                <label>Purchase Orders</label>
+            </value>
+            <value>
+                <fullName>Work History</fullName>
+                <default>false</default>
+                <label>Work History</label>
+            </value>
+            <value>
+                <fullName>Warranty Tracking</fullName>
+                <default>false</default>
+                <label>Warranty Tracking</label>
+            </value>
+            <value>
+                <fullName>Mark-ups</fullName>
+                <default>false</default>
+                <label>Mark-ups</label>
+            </value>
+            <value>
+                <fullName>Professional Looking Invoice</fullName>
+                <default>false</default>
+                <label>Professional Looking Invoice</label>
+            </value>
+            <value>
+                <fullName>Profit and Loss</fullName>
+                <default>false</default>
+                <label>Profit and Loss</label>
+            </value>
+            <value>
+                <fullName>Customer Maintenance Schedules</fullName>
+                <default>false</default>
+                <label>Customer Maintenance Schedules</label>
+            </value>
+            <value>
+                <fullName>Core Tracking</fullName>
+                <default>false</default>
+                <label>Core Tracking</label>
+            </value>
+            <value>
+                <fullName>Single Entry (interfaces)</fullName>
+                <default>false</default>
+                <label>Single Entry (interfaces)</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

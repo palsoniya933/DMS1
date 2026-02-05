@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Quarter-to-Date</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot;:&quot;NUMÉRO DE GROUPE&quot;,
+&quot;dealer&quot; : &quot;CONCESSIONNAIRE&quot;,
+&quot;availability&quot; : &quot;DISPONIBILITÉ&quot;,
+&quot;breadth&quot; : &quot;ÉTENDUE&quot;,
+&quot;auto_accept_util&quot; : &quot;AUTO ACCEPTATION&quot;,  
+&quot;auto_accept_utilization&quot; : &quot;POURCENTAGE DE AUTO ACCEPTATION&quot;,
+&quot;qtd_trending_tier&quot; : &quot;PLAN TENDANCE QTD&quot; ,
+&quot;current_tier&quot; : &quot;PLAN ACTUEL&quot; 
+}</value>
+    </values>
+</CustomMetadata>

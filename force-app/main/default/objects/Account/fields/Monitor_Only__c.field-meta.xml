@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monitor_Only__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field indicates whether a fleet directly coordinates service with a vendor. It is connected to the Service Setup in the Geopointe flow, allowing agents to select the &quot;Monitor Only&quot; option to bypass the standard service setup process for fleets. The &quot;Monitor Only&quot; option is available only when this field is &quot;Checked&quot; and the case origin is either Email or Web. When the &quot;Monitor Only&quot; option is &quot;Checked&quot;, the PCC does not contact the vendor to arrange the service; instead, they only follow up on the service status.</description>
+    <inlineHelpText>Does this fleet setup up services directly with the provider, requesting the PCC to only monitor the service, not set it up.</inlineHelpText>
+    <label>Monitor Only</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

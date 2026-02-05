@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fleet_Lead_Manager__c</fullName>
+    <description>Fleet Sales Manager that lead the National Account</description>
+    <label>Fleet Lead Manager</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Welsh</fullName>
+                <default>false</default>
+                <label>Welsh</label>
+            </value>
+            <value>
+                <fullName>Ball</fullName>
+                <default>false</default>
+                <label>Ball</label>
+            </value>
+            <value>
+                <fullName>Gerstner</fullName>
+                <default>false</default>
+                <label>Gerstner</label>
+            </value>
+            <value>
+                <fullName>Booth</fullName>
+                <default>false</default>
+                <label>Booth</label>
+            </value>
+            <value>
+                <fullName>Reynolds</fullName>
+                <default>false</default>
+                <label>Reynolds</label>
+            </value>
+            <value>
+                <fullName>Telling</fullName>
+                <default>false</default>
+                <label>Telling</label>
+            </value>
+            <value>
+                <fullName>Ernest</fullName>
+                <default>false</default>
+                <label>Ernest</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

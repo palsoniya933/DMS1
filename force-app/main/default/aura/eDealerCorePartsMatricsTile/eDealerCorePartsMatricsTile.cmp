@@ -1,0 +1,67 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="headerName" type="String" />
+    <aura:attribute name="dummyLabelsList" type="List"/>
+    <aura:attribute name="dummyPercentageList" type="List"/>
+    
+    <div class="slds-card cardDiv tile">
+        <div class="slds-card__body slds-card__body_inner">
+            <!-- Grid -->
+            <div class="slds-grid gridHeight">
+                <div class="slds-col slds-size_8-of-8">
+                    <!-- Tile Name -->
+                    <div class="tileName_Div">
+                        <span class="tileName_Div-headername">{!v.headerName}</span>
+                    </div>
+                    <!-- INfo section-->
+                    <div class="tileInfo_Div">
+                        <div class="slds-grid tileInfo_Div-grid" >
+                            <div class="slds-col slds-size_12-of-12 displayFlex">
+                                <div class="slds-grid" style="width:100%;">
+                                    <div class="slds-col slds-size_4-of-12 displayFlex">
+                                        <span class="span_approval">{!v.dummyPercentageList[0]}%</span>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12 displayFlex">
+                                        <span class="span_onhold">{!v.dummyPercentageList[1]}%</span>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12 displayFlex">
+                                        <span class="span_rejections">{!v.dummyPercentageList[2]}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <!-- bottom -->
+                    <div class="bottom_Div">
+                        <div class="slds-grid bottom_Div-grid">
+                            <div class="slds-col slds-size_12-of-12">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_4-of-12 displayFlex">
+                                        <span class="fontSize-x_small">{!v.dummyLabelsList[0]}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12 displayFlex">
+                                        <span class="fontSize-x_small">{!v.dummyLabelsList[1]}</span>
+                                    </div>
+                                    <div class="slds-col slds-size_4-of-12 displayFlex">
+                                        <span class="fontSize-x_small">{!v.dummyLabelsList[2]}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--<div style="width:100%;height:80%;">
+                        <div class="slds-grid" style="width:100%;">
+                            <div class="slds-col slds-size_12-of-12">
+                                <canvas aura:id="doughnutChart" id="doughnutChart" class="fixedHeight" />
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

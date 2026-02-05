@@ -1,0 +1,107 @@
+<template>
+    <div class="slds-card tile">
+        <!-- spinner -->
+        <template if:true={displayLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <div class="slds-card__body slds-card__body_inner">
+            <!-- Grid -->
+            <template lwc:if={activeCSRData}>
+
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">
+                            <template if:true={enableSamePageListing}>
+                                <a href="javascript:void(0);" onclick={openCsrListing}>{title}</a>
+                            </template>
+                            <template if:false={enableSamePageListing}>
+                               {title}
+                            </template>
+                        </span>
+
+                            &nbsp;&nbsp;
+
+                            <template if:true={hasDealerLoc}>
+                                <span onclick={handleOpenInNewWindow} >
+                                    <a href="javascript:void(0);">
+                                        <img src="/resource/1648782488000/EDealerResources/icons/opentabicon.svg#opentabicon" class="imgicon-style-align"/>
+                                    </a>
+                                </span>
+                            </template>
+                        </div>
+
+
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td class="tileInfo_Div">
+                                        <span >
+                                        <lightning-combobox
+                                                    value={selectedActiveCSRType}
+                                                    options={activeCSROptions}
+                                                    onchange={handleSubTypeUpdate}
+                                                    class="noGreenTextb picklistWidth">
+                                                </lightning-combobox>
+                                                <template if:true={hasDealerLoc}>
+                                                    <lightning-formatted-number class="greenTextb" style="top: 3%;" value={activecsrcount} onclick={handleOpenInNewWindow}></lightning-formatted-number>
+                                                </template>
+                                                <template if:false={hasDealerLoc}>
+                                                    <lightning-formatted-number class="greenTextbNP" style="top: 3%;" value={activecsrcount}></lightning-formatted-number>
+                                                </template>                           
+                                    </span>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- <div class="slds-col slds-size_1-of-8">
+                    <lightning-layout-item size="1">
+                        <ul class="unOrderedList">
+                            <template for:each={selectoptions} for:item="opt">
+                                    <template if:true={opt.isSelected}>
+                                        <li key={opt.label}  
+                                        class= "options selected"
+                                        name={opt.label} 
+                                        value={opt.value}
+                                        onclick={handleTimespanUpdate}
+                                        title={opt.tooltip}
+                                        onmouseout={mouseout}>{opt.label}</li>
+                                    </template>
+                                    <template if:false={opt.isSelected}>
+                                        <li key={opt.label}  
+                                        class= "options"
+                                        name={opt.label} 
+                                        value={opt.value}
+                                        onclick={handleTimespanUpdate}
+                                        title={opt.tooltip}
+                                        onmouseout={mouseout}>{opt.label}</li>
+                                    </template>
+
+                            </template>
+                        </ul>
+                    </lightning-layout-item>
+                    
+                </div> -->
+                </div>
+            </template>
+            <template lwc:if={error}>
+                <div class="info-msg slds-align_absolute-center .padding-bt">
+                    <lightning-icon icon-name="utility:warning" alternative-text="checked" size="xx-small" title=""
+                        class="my-icon"></lightning-icon>{Edealer_Active_CSR_Tile_ErrorMsg}
+                </div>
+            </template>
+        </div>
+
+        <!-- information icon -->
+        <div class="infoIconPosition">
+            <c-e-dealer-info-icon content={Edealer_Active_CSR_Tile_Help}>
+            </c-e-dealer-info-icon>
+        </div>
+
+    </div>
+</template>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Qtr_Parts_Purchases__c</fullName>
+    <description>Potencial de Ventas trimestral que tiene la flota debido a la cantidad de unidades que tiene.
+(Potencial Anual /4)</description>
+    <formula>Estimated_MX_Annual_Parts_Purchases__c /4</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Potencial de Ventas trimestral que tiene la flota debido a la cantidad de unidades que tiene.
+(Potencial Anual /4)</inlineHelpText>
+    <label>MX Qtr Estimated Parts Purchases</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

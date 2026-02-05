@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nivel_Bono__c</fullName>
+    <formula>IF(Growth__c &gt;0,IF( Market_Share__c&lt;0.25,0,IF( Market_Share__c&lt;0.4,0.015,IF( Market_Share__c&lt;0.6,0.025,IF( Market_Share__c&lt;0.8,0.035,0.05)))),IF( Market_Share__c&gt;0.799,0.05,0))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculo del Porcentaje de Bono para la Flota
+Market Share mayor a 80% = 5%
+Crecimiento mayor a 0% y
+  Market Share entre 25% a 39% = 1.5%
+  Market Share entre 40% a 59% = 2.5%
+  Market Share entre 60% a 79% = 3.5%</inlineHelpText>
+    <label>Nivel Bono %</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

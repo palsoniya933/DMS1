@@ -1,0 +1,126 @@
+<aura:component  controller="EDealerOrderIntransitController"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List" default="[
+                                                              {'label': 'Daily', 'value': 'D'},      
+                                                              {'label': 'Weekly', 'value': 'W'},
+                                                              {'label': 'Monthly', 'value': 'M'},
+                                                              {'label': 'Quarterly', 'value': 'Q'},
+                                                              {'label': 'Annually', 'value': '1Y'}]"/>
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Daily"/>
+    
+    <!-- saving the percentage -->
+    <aura:attribute name="intransitOrders" type="String" default="0"/>
+    
+    <!-- this will save the measuring unit -->
+    <aura:attribute name="units" type="string" />
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    <aura:attribute name="listDealerLoc" type="LIST"/>
+    
+    <!-- this will save the Intransit Orders api details -->
+    <aura:attribute name="intransitOrdersData" type="Object" />
+    
+    <!-- this will save the Intransit Order api details cache -->
+    <aura:attribute name="intransitOrdersDataMapCache" type="Map" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <aura:attribute name="selectedMenu" type="String" />
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler name="change" value="{!v.dealerLoc}" action="{!c.dealerLocChange}"/>
+    
+    <aura:handler name="change" value="{!v.listDealerLoc}" action="{!c.listdealerLocChange}"/>
+    
+    
+    <div class="eo-card ">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">
+                                <a href="" 
+                                   onclick="{!c.openOrdersTile}">{!v.title}
+                                </a>
+                            </span>                                    
+                            
+                            &nbsp;&nbsp;
+                            <span onclick="{!c.handleOpenInNewWindow}" >                                
+                                <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                            </span>
+                            
+                        </div>
+                        
+                        
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td class="tileInfo_Div">
+                                        <span class="blackTextb ">
+                                            <lightning:formattedNumber onclick="{!c.handleOpenInNewWindow}" value="{!v.intransitOrders}" />
+                                        </span>                     
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td class="tilePercentage_Div">
+                                        
+                                    </td> 
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options disable-menu" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="Sum of total no of orders which are shipped and are In-transit on a Daily, Weekly, Monthly, Quarterly and Yearly basis"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

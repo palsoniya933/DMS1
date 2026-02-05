@@ -1,0 +1,3 @@
+<aura:component controller="EdealerTrackingController" extensible="true" access="global" >
+    {!v.body}    
+</aura:component>

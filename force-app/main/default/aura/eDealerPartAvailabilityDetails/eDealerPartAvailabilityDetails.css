@@ -1,0 +1,15 @@
+.THIS {
+}
+
+.THIS .emOrderText {
+    width:175px;
+}
+
+.THIS .slds-form-element__label {
+      display : none;
+      visibility : hidden;
+}
+
+.THIS .soOrderText {
+    width:145px;
+}

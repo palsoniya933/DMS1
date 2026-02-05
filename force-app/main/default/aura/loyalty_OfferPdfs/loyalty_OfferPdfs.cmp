@@ -1,0 +1,76 @@
+<aura:component extends="c:edealerTracking"
+                controller = 'GenerateOfferPdfController' 
+                implements="forceCommunity:availableForAllPageTypes,force:appHostable,force:hasRecordId" 
+                access="global" >
+    
+    <!-- Attributes Start -->
+    <aura:attribute name="dealerCode" type = "String" description = "It is used to store the selected dealer code"/>
+    <aura:attribute name="lstSelectedLocation" type="List" default ="[]" description="It is used to get the selected dealer locations from the parent component."/>
+    <aura:attribute name="isSpinnerVisible" type="Boolean" default="false"/>
+    <aura:attribute name="showDashboard" type="Boolean" default="false"/>
+    <aura:attribute name="showErrorMessage" type="Boolean" default="false"/>
+    <aura:attribute name="filters" type = "String" description = "It is used to provide filter to dataset in dashboard."/>
+    <aura:attribute name="dealersInfo" type="List" default="[]"/>
+    <aura:attribute name="showEnglishDashboard" type="Boolean" default ="false" description = "It is used to show english dashboard."/>
+    <aura:attribute name="showFrenchDashboard" type="Boolean" default ="false" description = "It is used to show french dashboard."/>
+    <aura:attribute name="showSpanishDashboard" type="Boolean" default ="false" description = "It is used to show spanish dashboard."/>
+    <aura:attribute name="language" type = "String" default=""/>
+    <aura:attribute name="brand" type = "String" default=""/>
+    <aura:attribute name="region" type = "String" default=""/>
+    <aura:attribute name="isLoaded" type = "Boolean" default="false"/>
+    <aura:attribute name="loggedInUserInfo" type = "object" default="{}"/>
+    <aura:attribute name="frcaDealers" type = "List" default="[]"/>
+    <aura:attribute name="loadTime" type="Integer" />
+
+    <!-- Attributes End -->
+    
+    <!-- Handlers Start -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.handleDealerCodeChange}"/>
+    <aura:handler name="change" value="{!v.isLoaded}" action="{!c.handleDashboardLoaded}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    <!-- Handlers End -->
+    <lightning:messageChannel type="loyaltyMessageChannel__c"
+                              aura:id="loyaltyMessageChannel"/>
+    <wave:sdk aura:id="sdk"/>
+    <aura:if isTrue="{!v.isSpinnerVisible}">
+        <div class="spinnerContainer">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.showDashboard}">
+        <aura:if isTrue="{!v.showEnglishDashboard}">
+            <wave:waveDashboard developerName="Offer_Pdfs_Dashboard"  
+                                showTitle="false" 
+                                showSharing="true" 
+                                showHeader="false" 
+                                height="900" 
+                                openLinksInNewWindow="false"
+                                filter = "{!v.filters}"
+                                isLoaded = "{!v.isLoaded}"
+                                />
+        </aura:if>
+        <aura:if isTrue="{!v.showFrenchDashboard}">
+            <wave:waveDashboard developerName="Offer_Pdfs_Dashboard_French"  
+                                showTitle="false" 
+                                showSharing="true" 
+                                showHeader="false" 
+                                height="900" 
+                                openLinksInNewWindow="false"
+                                filter = "{!v.filters}"
+                                isLoaded = "{!v.isLoaded}"/>
+        </aura:if>	
+        
+        <aura:if isTrue="{!v.showSpanishDashboard}">
+            <wave:waveDashboard developerName="Offer_Pdfs_Dashboard_Spanish"  
+                                showTitle="false" 
+                                showSharing="true" 
+                                showHeader="false" 
+                                height="900" 
+                                openLinksInNewWindow="false"
+                                filter = "{!v.filters}"
+                                isLoaded = "{!v.isLoaded}"/>
+        </aura:if>
+    </aura:if>
+</aura:component>

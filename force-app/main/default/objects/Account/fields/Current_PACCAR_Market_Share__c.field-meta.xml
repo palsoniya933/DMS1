@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_PACCAR_Market_Share__c</fullName>
+    <formula>1-(((( Days_Since_January_1__c /365)*  XYTD_Market_Potential__c )/ Total_Sales_Current_YTD__c)/10)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Shows the Current Market Share:
+Days Since January 1 / 365 x Market Potential / Total Sales: Current YTD</inlineHelpText>
+    <label>Current PACCAR Market Share</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

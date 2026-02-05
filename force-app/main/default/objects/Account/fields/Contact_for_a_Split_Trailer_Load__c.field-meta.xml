@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_for_a_Split_Trailer_Load__c</fullName>
+    <description>Would this dealer group be interested in being contacted for a split trailer load?</description>
+    <label>Contact for a Split Trailer Load</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NO</fullName>
+                <default>false</default>
+                <label>NO</label>
+            </value>
+            <value>
+                <fullName>YES</fullName>
+                <default>false</default>
+                <label>YES</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

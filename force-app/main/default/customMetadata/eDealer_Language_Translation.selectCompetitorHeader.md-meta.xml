@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>selectCompetitorHeader</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;: &quot;CompetitorName&quot;,
+&quot;fr_CA&quot;: &quot;Nom du concurrent&quot;,
+&quot;es_MX&quot;: &quot;Nombre de Competidor&quot;,
+&quot;en_US&quot;: &quot;COMPETITOR NAME&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;columnAPIName&quot;: &quot;Affiliation&quot;,
+&quot;fr_CA&quot;: &quot;Affiliation&quot;,
+&quot;es_MX&quot;: &quot;Afiliación&quot;,
+&quot;en_US&quot;: &quot;AFFILIATION&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;columnAPIName&quot;: &quot;CompType&quot;,
+&quot;fr_CA&quot;: &quot;Type&quot;,
+&quot;es_MX&quot;: &quot;Tipo&quot;,
+&quot;en_US&quot;: &quot;TYPE&quot;,
+&quot;order&quot;: 3
+},
+{
+&quot;columnAPIName&quot;: &quot;CompCity&quot;,
+&quot;fr_CA&quot;: &quot;Ville&quot;,
+&quot;es_MX&quot;: &quot;Ciudad&quot;,
+&quot;en_US&quot;: &quot;CITY&quot;,
+&quot;order&quot;: 4
+},
+{
+&quot;columnAPIName&quot;: &quot;CompState&quot;,
+&quot;fr_CA&quot;: &quot;État/Province&quot;,
+&quot;es_MX&quot;: &quot;Estado/Provincia&quot;,
+&quot;en_US&quot;: &quot;STATE/PROVINCE&quot;,
+&quot;order&quot;: 5
+},
+{
+&quot;columnAPIName&quot;: &quot;CompPostal&quot;,
+&quot;fr_CA&quot;: &quot;Code Postal&quot;,
+&quot;es_MX&quot;: &quot;Código Postal&quot;,
+&quot;en_US&quot;: &quot;POSTAL CODE&quot;,
+&quot;order&quot;: 6
+},
+{
+&quot;columnAPIName&quot;: &quot;Confirmation&quot;,
+&quot;fr_CA&quot;: &quot;Confirmé&quot;,
+&quot;es_MX&quot;: &quot;Confirmado&quot;,
+&quot;en_US&quot;: &quot;CONFIRMED&quot;,
+&quot;order&quot;: 7
+}
+]</value>
+    </values>
+</CustomMetadata>

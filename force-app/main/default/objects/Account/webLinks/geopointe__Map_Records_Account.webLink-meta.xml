@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>geopointe__Map_Records_Account</fullName>
+    <availability>online</availability>
+    <description>replaces JavaScript button functionality for Lightning layouts</description>
+    <displayType>massActionButton</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Map Records</masterLabel>
+    <openType>noSidebar</openType>
+    <page>geopointe__MapRecordsAccounts</page>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+</WebLink>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TRP_Dev_Group_Checkbox</fullName>
+    <active>false</active>
+    <description>TRP Checkbox must be selected for TRP Dev Group Account Record Type</description>
+    <errorConditionFormula>AND(
+    RecordType.Name = &apos;TRP Development Group&apos;,
+    TRP_Store__c  = False
+)</errorConditionFormula>
+    <errorMessage>The TRP Store Checkbox must be selected for TRP Development Group Accounts.</errorMessage>
+</ValidationRule>

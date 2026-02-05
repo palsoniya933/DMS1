@@ -1,0 +1,208 @@
+<aura:component controller="EDealerReturnComplianceController" 
+                extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List"/>
+    
+    <!-- this will save the Return Compliance api details -->
+    <aura:attribute name="returnComplianceData" type="Object" />
+    <aura:attribute name="isTooltipVisible" type="Boolean" default="true" />
+
+    <!-- this will save the return compliance api details cache for based on multiple location -->
+    <aura:attribute name="returnComplianceMapCache" type="Map" />
+    <!-- this will save the Return Compliance data which use to show on U.I. -->
+    <aura:attribute name="rcUIData" type="Object" />
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="monthly"/>
+    <!-- saving the M/Q/Y Picklist Options -->
+    <aura:attribute name="lstOptions" type="object[]"/>
+    
+    <!-- U.I. attributes -->
+    <aura:attribute name="suggestedReturns" type="Integer" default="0"/>
+    <aura:attribute name="sumOfAllReturns" type="Integer" default="0"/>
+    <aura:attribute name="valueOfAllReturns" type="Double" default="0.00"/>
+    <aura:attribute name="suggestedCompliancePercentage" type="Decimal" default="0.00"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- Dealer Division -->
+    <aura:attribute name="divisionType" type="string"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object"/>
+    <aura:attribute name="selectedSubMenu" type="String" />
+    <aura:attribute name="month" type="string" />
+    <aura:attribute name="quarter" type="string" />
+    <aura:attribute name="year" type="string" />
+    <aura:attribute name="monthDate" type="Date" />
+    <aura:attribute name="quarterDate" type="Date" />
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_10-of-12">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                                <span class="heading">
+                                <a href="" 
+                                   onclick="{!c.openOrdersTile}">{!v.title}
+                                </a>
+                            </span>
+                            
+                            &nbsp;&nbsp;
+                            <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                            <span onclick="{!c.handleOpenInNewWindow}" >                                
+                                <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                            </span>
+                                
+                            </aura:if>
+                          
+                            
+                            
+                        </div>
+                        
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                   
+                                    <td class="fontSize">{!$Label.c.Edealer_Suggested_Returns}</td> 
+                                    <td class="fontSize">{!$Label.c.Edealer_Value_of_Suggested_Returns}</td>
+                                    <td class="fontSize">{!$Label.c.Edealer_Sum_of_All_Returns}</td> 
+                                    <td class="fontSize">{!$Label.c.Edealer_Value_of_Part_Returned}</td> 
+                                    <td class="fontSize">{!$Label.c.Edealer_Suggested_Compliance}</td> 
+                                    
+                                </tr>
+                                <tr class="{!v.selectedLocation.listSelectedLoc.length == 1?'':'disabledEvent'}">
+                                    <td class="blackTextb">
+                                        <span onclick="{!c.handleOpenInNewWindow}">
+                                            <lightning:formattedNumber value="{!v.rcUIData.suggested_returns}"/>
+                                        </span> 
+                                    </td>
+                                    <td class="greenTextb">
+                                        <span onclick="{!c.handleOpenInNewWindow}">
+                                        <span class="supHead">
+                                            <sup style="top: -.2em;">$</sup>
+                                        </span>
+                                        <lightning:formattedNumber value="{!v.rcUIData.sum_suggested_returns}" currencyCode="USD"/>
+                                        </span>
+                                    </td>
+                                    <td class="blackTextb">
+                                        <span onclick="{!c.handleOpenInNewWindow}">
+                                        	<lightning:formattedNumber value="{!v.rcUIData.returned_quantity}"/>
+                                        </span>
+                                    </td> 
+                                    <td class="greenTextb">
+                                        <span onclick="{!c.handleOpenInNewWindow}">
+                                        <span class="supHead">
+                                            <sup style="top: -.2em;">$</sup>
+                                        </span>
+                                        <lightning:formattedNumber value="{!v.rcUIData.sum_return_amount}" currencyCode="USD"/>
+                                        </span>
+                                    </td> 
+                                    <td class="greenTextb">
+                                        <span onclick="{!c.handleOpenInNewWindow}">
+                                        	{!v.rcUIData.suggested_compliance}<span class="supHead"><sup style="top: -.2em;">%</sup></span>
+                                        </span>
+                                    </td> 
+                                </tr>
+                                <aura:if isTrue="{!OR(v.selectedoption =='monthly',v.selectedoption  =='quaterly')}">
+                                <tr>
+                                    <td>
+                                        <span class="{!greaterthanorequal(v.rcUIData.suggested_items_percentage_change, 0) ? 'greenTexts' : 'redText'}">
+                                            <lightning:icon class="{!greaterthanorequal(v.rcUIData.suggested_items_percentage_change, 0) ? 'greenArrow' : 'redArrow'}" iconName="{!greaterthanorequal(v.rcUIData.suggested_items_percentage_change, 0) ? 'utility:arrowup' : 'utility:arrowdown'}" size="x-small" />
+                                            {!v.rcUIData.suggested_items_percentage_change}%
+                                        </span>
+                                    </td> 
+                                    <td>
+                                        <span class="{!greaterthanorequal(v.rcUIData.suggested_items_amount_percentage_change, 0) ? 'greenTexts' : 'redText'}">
+                                            <lightning:icon class="{!greaterthanorequal(v.rcUIData.suggested_items_amount_percentage_change, 0) ? 'greenArrow' : 'redArrow'}" iconName="{!greaterthanorequal(v.rcUIData.suggested_items_amount_percentage_change, 0) ? 'utility:arrowup' : 'utility:arrowdown'}" size="x-small" />
+                                            {!v.rcUIData.suggested_items_amount_percentage_change}%
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="{!greaterthanorequal(v.rcUIData.return_items_percentage_change, 0) ? 'greenTexts' : 'redText'}">
+                                            <lightning:icon class="{!greaterthanorequal(v.rcUIData.return_items_percentage_change, 0) ? 'greenArrow' : 'redArrow'}" iconName="{!greaterthanorequal(v.rcUIData.return_items_percentage_change, 0) ? 'utility:arrowup' : 'utility:arrowdown'}" size="x-small" />
+                                            {!v.rcUIData.return_items_percentage_change}%
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="{!greaterthanorequal(v.rcUIData.return_items_amount_percentage_change, 0) ? 'greenTexts' : 'redText'}">
+                                            <lightning:icon class="{!greaterthanorequal(v.rcUIData.return_items_amount_percentage_change, 0) ? 'greenArrow' : 'redArrow'}" iconName="{!greaterthanorequal(v.rcUIData.return_items_amount_percentage_change, 0) ? 'utility:arrowup' : 'utility:arrowdown'}" size="x-small" />
+                                            {!v.rcUIData.return_items_amount_percentage_change}%
+                                        </span>
+                                    </td> 
+                                    <td>
+                                        <span class="{!greaterthanorequal(v.rcUIData.compliance_percentage_change, 0) ? 'greenTexts' : 'redText'}">
+                                            <lightning:icon class="{!greaterthanorequal(v.rcUIData.compliance_percentage_change, 0) ? 'greenArrow' : 'redArrow'}" iconName="{!greaterthanorequal(v.rcUIData.compliance_percentage_change, 0) ? 'utility:arrowup' : 'utility:arrowdown'}" size="x-small" />
+                                            {!v.rcUIData.compliance_percentage_change}%
+                                        </span>
+                                    </td> 
+                                </tr>
+                                </aura:if>    
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_2-of-12">
+                        <span class="slds-p-around_xx-small floatRight">
+                            <div class="slds-form-element__control">
+                                <div class="slds-select_container">
+                                    <select class="slds-select hideLabel wid-select" name="select1" variant="label-hidden" onchange="{!c.changeUIData}">
+                                        <aura:iteration items="{!v.lstOptions}" var="item">
+                                            <option value="{!item.value}">{!item.label}</option>
+                                        </aura:iteration>
+                                    </select>
+                                </div>
+                            </div>
+                                
+                            </span>
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- information icon -->
+                        <div class="infoTextIconPosition" onmouseover="{!c.showTooltip}" onmouseout="{!c.hideTooltip}">
+                <lightning:icon iconName="utility:info" size="x-small" alternativeText="Information" />
+                <div class="tooltip" aura:if="{!v.isTooltipVisible}">
+                    <aura:unescapedHtml value="{!$Label.c.Return_Compliance_tooltip}" />
+                </div>
+            </div>  
+            
+        </div>
+    </div>
+</aura:component>

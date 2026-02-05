@@ -1,0 +1,301 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"  
+                extends="c:edealerTracking"
+                access="global" 
+                controller="eDealerDashboard">
+    
+    <!-- Dealer Division -->
+    <aura:attribute name="division" type="String" />
+    
+    <!-- is NonDealer -->
+    <aura:attribute name="isNonDealer" type="boolean" />
+    <!--<aura:attribute name="isCrmaListing" type="boolean" default="false"/>-->
+    <!-- user accessible dealer locations detail -->
+    <aura:attribute name="accessibleDealersLocs" type="Object[]" />
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="false"/>
+    
+    <!-- Action Sections -->
+    <aura:attribute name="activeSections" type="Object[]" default="['DealerPerformanceSection']"  />
+    
+    <!--<aura:attribute name="crmaData" type="Object[]" default="[]"  />
+    <aura:attribute name="allCRMaData" type="String" default=""  />-->
+    <!-- this will save the selected location -->    
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- this will save the KPI api details cache -->
+    <aura:attribute name="selectedFrequencies" type="Map" />
+    <aura:attribute name="pendingOrdersKPIDataMapCache" type="Map" />
+    <aura:attribute name="confirmOrdersKPIDataMapCache" type="Map" />
+    <aura:attribute name="activeOrdersKPIDataMapCache" type="Map" />
+    <aura:attribute name="totalPartsOrdersKPIDataMapCache" type="Map" />
+    <aura:attribute name="freightChargesDataMapCache" type="Map" />
+    
+    <aura:attribute name="selectedmenu" type="String" default="dashboardDemo"/>
+    <aura:attribute name="selectedoptionActive" type="string" default="All"/>
+    <aura:attribute name="selectedoptionPending" type="string" default="All"/>
+    <aura:attribute name="selectedoptionConfirm" type="string" default="All"/>
+    <aura:attribute name="selectedoptionUnConfirmed" type="string" default="All"/>
+    <aura:attribute name="selectedoptionIntransit" type="string" default="Daily"/>
+    <aura:attribute name="selectedoptionShipped" type="string" default="Daily"/>
+    <aura:attribute name="selectedoptionDelivered" type="string" default="Daily"/>
+    <aura:attribute name="selectedoptionDeliveredMetrics" type="string" default="Daily"/>
+    <aura:attribute name="selectedoptionOrderSummary" type="string" default="All"/>
+    <aura:attribute name="selectedoptionfreightCharges" type="string" default="Daily"/>
+    
+    <!-- Selected Active Order dropdown -->
+    <aura:attribute name="selectedActiveOrder" type="string" default="All"/>
+    <!-- Selected Back Order dropdown -->
+    <aura:attribute name="selectedBackOrder" type="string" default="All"/>
+    <!-- Selected Closed Order dropdown -->
+    <aura:attribute name="selectedClosedOrder" type="string" default="All"/>
+    <!-- Selected Closed Order dropdown -->
+    <aura:attribute name="selectedUnConfirmedOrder" type="string" default="All"/>
+    
+    <aura:attribute name="orderType" type="string" default="All"/>
+    <aura:attribute name="loadTime" type="Integer" />
+
+    
+    <!-- calling onload Method -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    
+    
+    
+    <aura:html tag="style">
+        .slds-popover_tooltip, 
+        .slds-popover--tooltip {
+        background-color: #FFFFFF !important; 
+        }
+        
+        .slds-popover__body, .slds-popover__header, .slds-popover__footer {
+        color: #444 !important;
+        box-shadow: 1px 1px 3px 1px #ccc;
+        }
+    </aura:html>
+    
+    
+    
+    
+    <div style="">   
+        <!-- spinner -->
+        <div>
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+        </div>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'dashboardDemo'}">
+            <!-- Accordian -->
+           <!-- <lightning:accordion allowMultipleSectionsOpen="true"
+                                 activeSectionName="{! v.activeSections }"
+                                 onsectiontoggle="{! c.handleSectionToggle }">
+                <lightning:accordionSection name="DealerPerformanceSection" label="{!$Label.c.EDealer_ORDERS}" class="title12">
+                    <aura:set attribute="body">
+                        <aura:if isTrue="{! v.activeSections.length > 0 }">
+                            -->
+           					 <h2 class="title12">{!$Label.c.EDealer_ORDERS}</h2>
+                           <div name="DealerPerformanceSection" class="bodyContent">
+                            
+                            <div  class="col-md-12 displayFlex">
+                                
+                                <div class="slds-m-around_xx-small col-md-4">
+                                    
+                                    <c:eDealerActiveOrderCmp selectedMenu="{!v.selectedmenu}"
+                                                             selectedActiveOrder="{!v.selectedActiveOrder}"
+                                                             selectedoption="{!v.selectedoptionActive}"
+                                                             title="{!$Label.c.EDealer_Menu_Active_Orders}"
+                                                             dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                             currentDealerDivision = "{!v.division}"
+                                                             listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                                             />
+                                </div>
+                                <div class="slds-m-around_xx-small col-md-4">
+                                    <c:eDealerPendingOrdersTile selectedMenu="{!v.selectedmenu}"
+                                                                selectedPendingOrder="{!v.selectedBackOrder}"
+                                                                selectedoption="{!v.selectedoptionPending}"
+                                                                title="{!$Label.c.EDealer_Menu_Back_Orders}"
+                                                                dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                currentDealerDivision = "{!v.division}"
+                                                                listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"/>
+                                </div>
+                                <div class="slds-m-around_xx-small col-md-4">
+                                    <c:eDealerConfirmOrderCmp selectedMenu="{!v.selectedmenu}"
+                                                              selectedClosedOrder="{!v.selectedClosedOrder}"
+                                                              selectedoption="{!v.selectedoptionConfirm}"
+                                                              title="{!$Label.c.EDealer_Menu_Close_Orders}"
+                                                              dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                              currentDealerDivision = "{!v.division}"
+                                                              listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                                              />
+                                </div>
+                                <div class="slds-m-around_xx-small col-md-4">
+                                    <c:eDealerUnconfirmedOrderTile selectedMenu="{!v.selectedmenu}"
+                                                                   selectedUnConfirmedOrder="{!v.selectedUnConfirmedOrder}"
+                                                                   selectedoption="{!v.selectedoptionUnConfirmed}"
+                                                                   title="{!$Label.c.Edealer_Unconfirmed_Order}"
+                                                                   dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                   currentDealerDivision = "{!v.division}"
+                                                                   listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"/>
+                                </div>
+                                
+                            </div>
+                            
+                            <!-- Testing List of Track/Order Parts -->
+                            
+                            <div  class="col-md-12 displayFlex">
+                                <div class="slds-m-around_xx-small col-md-8">
+                                    <c:eDealerTotalPartsOrderedKPI title="{!$Label.c.EDealer_Menu_Order_Summary}"
+                                                                   selectedMenu="{!v.selectedmenu}"
+                                                                   dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                   selectedOrder="{!v.orderType}"
+                                                                   selectedoption="{!v.selectedoptionOrderSummary}"
+                                                                   currentDealerDivision = "{!v.division}"
+                                                                   listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"/> 
+                                </div> 
+                                
+                                <div class="title slds-m-around_xx-small col-md-4">
+                                    <c:eDealerFreightChargesTile title="{!$Label.c.Edealer_Freight_Charges}"
+                                                                 selectedMenu="{!v.selectedmenu}"
+                                                                 selectedoption="{!v.selectedoptionfreightCharges}"
+                                                                 dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                 listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                                                  selectedOrder="{!v.orderType}"
+                                                                 currentDealerDivision = "{!v.division}"                            
+                                                                 />
+                                </div>
+                                
+                            </div>
+                            
+                            <!--<aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                            <div class="col-md-12 displayFlex ">
+                                <div class="title slds-m-around_xx-small col-md-6">
+                                <c:eDealerCrmaPoc oncrmadata="{!c.receiveCrmaData}" oniscrm="{!c.crmHandle}"/>
+                                </div>
+                                <div class="slds-m-around_xx-small col-md-4">
+                                    <c:eDealerOrderIntransitTile selectedMenu="{!v.selectedmenu}"
+                                                                 selectedoption="{!v.selectedoptionIntransit}"
+                                                                 title="Shipment(s) In-Transit"
+                                                                 dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                 currentDealerDivision = "{!v.division}"/>
+                                </div>
+                                
+                                
+                                <div class="slds-m-around_xx-small col-md-4">
+                                    <c:eDealerOrderDeliveredTile selectedMenu="{!v.selectedmenu}"
+                                                                 selectedoption="{!v.selectedoptionDelivered}"
+                                                                 title="Shipment(s) Delivered"
+                                                                 dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                 currentDealerDivision = "{!v.division}"/>
+                                </div>
+                                
+                                <div class="title slds-m-around_xx-small col-md-4 disabledEvent">
+                                    <c:eDealerDelieveryMetricsTile selectedMenu="{!v.selectedmenu}"
+                                                                   selectedoption="{!v.selectedoptionDeliveredMetrics}"
+                                                                   title="Shipment Performance Metrics"
+                                                                   dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                                   currentDealerDivision = "{!v.division}"/>
+                                </div> 
+                            </div>
+                                </aura:if>-->
+                               </div>
+                      <!--      
+                        </aura:if>
+                    </aura:set>
+                </lightning:accordionSection>                
+            </lightning:accordion>-->
+             
+        </aura:if>   
+        
+        
+        <aura:if isTrue="{!v.selectedmenu == 'confirmedorders'}">
+            <c:eDealerOrderListing selectedMenu = "{!v.selectedmenu}"
+                                   dealerCode="{!v.selectedLocation.selectedLoc}"
+                                   selectedoption="{!v.selectedoptionConfirm}"
+                                   orderType="{!v.selectedClosedOrder}"
+                                   division = "{!v.division}"
+                                   listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                   selectedFrequencies="{!v.selectedFrequencies}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'unconfirmedorders'}">
+            <c:eDealerOrderListing selectedMenu = "{!v.selectedmenu}"
+                                   dealerCode="{!v.selectedLocation.selectedLoc}"
+                                   selectedoption="{!v.selectedoptionUnConfirmed}"
+                                   orderType="{!v.selectedUnConfirmedOrder}"
+                                   division = "{!v.division}"
+                                  listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                   selectedFrequencies="{!v.selectedFrequencies}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'pendingorders'}">
+            <c:eDealerOrderListing selectedMenu = "{!v.selectedmenu}"
+                                   dealerCode="{!v.selectedLocation.selectedLoc}"
+                                   selectedoption="{!v.selectedoptionPending}"
+                                   orderType="{!v.selectedBackOrder}"
+                                   division = "{!v.division}"
+                                   listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                   selectedFrequencies="{!v.selectedFrequencies}"/>   
+        </aura:if>
+        <!--<aura:if isTrue="{!v.selectedmenu == 'crmaDataListing'}">
+            <c:eDealerCRMaOrderListing/>
+        </aura:if>-->
+        
+        <aura:if isTrue="{!v.selectedmenu == 'activeorders'}">
+            <c:eDealerOrderListing selectedMenu = "{!v.selectedmenu}"
+                                   dealerCode="{!v.selectedLocation.selectedLoc}"
+                                   selectedoption="{!v.selectedoptionActive}"
+                                   orderType="{!v.selectedActiveOrder}"
+                                   division = "{!v.division}"
+                                   listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"
+                                   selectedFrequencies="{!v.selectedFrequencies}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'intransitorders'}">
+            <c:eDealerTMSOrderListing selectedMenu = "{!v.selectedmenu}"
+                                      dealerCode="{!v.selectedLocation.selectedLoc}"
+                                      selectedoption="{!v.selectedoptionIntransit}"
+                                      division = "{!v.division}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'shippedorders'}">
+            <c:eDealerTMSOrderListing selectedMenu = "{!v.selectedmenu}"
+                                      dealerCode="{!v.selectedLocation.selectedLoc}"
+                                      selectedoption="{!v.selectedoptionShipped}"
+                                      division = "{!v.division}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'deliveredorders'}">
+            <c:eDealerTMSOrderListing selectedMenu = "{!v.selectedmenu}"
+                                      dealerCode="{!v.selectedLocation.selectedLoc}"
+                                      selectedoption="{!v.selectedoptionDelivered}"
+                                      division = "{!v.division}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'partsdeliverymetrics'}">
+            <c:eDealerTMSOrderListing selectedMenu = "{!v.selectedmenu}"
+                                      dealerCode="{!v.selectedLocation.selectedLoc}"
+                                      selectedoption="{!v.selectedoptionDeliveredMetrics}"
+                                      division = "{!v.division}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'ordersummary'}"> 
+            <c:eDealerOrderSummaryListing selectedMenu = "{!v.selectedmenu}"
+                                          dealerCode="{!v.selectedLocation.selectedLoc}"
+                                          selectedoption="{!v.selectedoptionOrderSummary}"
+                                          orderType="{!v.orderType}"
+                                          division = "{!v.division}"
+                                          listDealerLoc = "{!v.selectedLocation.listSelectedLoc}"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedmenu == 'freightcharges'}"> 
+            <c:eDealerFreightChargesListing selectedMenu = "{!v.selectedmenu}"
+                                          	dealerCode="{!v.selectedLocation.selectedLoc}"
+                                          	selectedoption="{!v.selectedoptionfreightCharges}"
+                                          	orderType="{!v.orderType}"
+                                          	division = "{!v.division}"/>
+        </aura:if>
+       
+    </div>    
+</aura:component>

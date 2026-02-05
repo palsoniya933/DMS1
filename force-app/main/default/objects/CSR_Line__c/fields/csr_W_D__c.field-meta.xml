@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>csr_W_D__c</fullName>
+    <label>W/D</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>WHS</fullName>
+                <default>false</default>
+                <label>WHS</label>
+            </value>
+            <value>
+                <fullName>DSP</fullName>
+                <default>false</default>
+                <label>DSP</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

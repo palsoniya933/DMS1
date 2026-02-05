@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Version__c</fullName>
+    <description>What system did the customer purchase</description>
+    <inlineHelpText>What system did the customer purchase</inlineHelpText>
+    <label>Connect Version</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Connect Enterprise – Dealer</fullName>
+                <default>false</default>
+                <label>Connect Enterprise – Dealer</label>
+            </value>
+            <value>
+                <fullName>Enterprise</fullName>
+                <default>false</default>
+                <label>Enterprise</label>
+            </value>
+            <value>
+                <fullName>Enterprise – Fleet</fullName>
+                <default>false</default>
+                <label>Enterprise – Fleet</label>
+            </value>
+            <value>
+                <fullName>Enterprise – Retail</fullName>
+                <default>false</default>
+                <label>Enterprise – Retail</label>
+            </value>
+            <value>
+                <fullName>Express</fullName>
+                <default>false</default>
+                <label>Express</label>
+            </value>
+            <value>
+                <fullName>Inventory Manager</fullName>
+                <default>false</default>
+                <label>Inventory Manager</label>
+            </value>
+            <value>
+                <fullName>Professional</fullName>
+                <default>false</default>
+                <label>Professional</label>
+            </value>
+            <value>
+                <fullName>WebConnect</fullName>
+                <default>false</default>
+                <label>WebConnect</label>
+            </value>
+            <value>
+                <fullName>Enterprise - Fleet w/ Retail</fullName>
+                <default>false</default>
+                <label>Enterprise - Fleet w/ Retail</label>
+            </value>
+            <value>
+                <fullName>Enterprise - Dealer</fullName>
+                <default>false</default>
+                <label>Enterprise - Dealer</label>
+            </value>
+            <value>
+                <fullName>Inland Order System - Perfit</fullName>
+                <default>false</default>
+                <label>Inland Order System - Perfit</label>
+            </value>
+            <value>
+                <fullName>KONA</fullName>
+                <default>false</default>
+                <label>KONA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

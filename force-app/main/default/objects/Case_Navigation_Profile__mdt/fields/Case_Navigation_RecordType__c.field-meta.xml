@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Navigation_RecordType__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Case Navigation RecordType</label>
+    <referenceTo>Case_Navigation_RecordType__mdt</referenceTo>
+    <relationshipLabel>Case Navigation Profiles</relationshipLabel>
+    <relationshipName>Case_Navigation_Profiles</relationshipName>
+    <required>true</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,36 @@
+<template>
+	<div class="slds-clearfix">
+		<div class="bgWhite" role="banner">
+			<div class="slds-grid slds-gutters">
+				<div class="slds-col slds-size_2-of-2">
+					<table class="color-black">
+						<tr class="align-tr">
+							<td class="pageTxthead color-black">
+								{getRecordStart}-{getRecordEnd}&nbsp;{label.Pagination_Of}&nbsp;{getTotalRecordCount}&nbsp;{label.Pagination_Records}&nbsp;|&nbsp;{label.Page_Size}
+							</td>
+							<td class="tenPer color-black">
+								<lightning-select label="" variant="label-hidden" value={viewRecord} onchange={handleTotalRecordsChange} options={viewRecordOptions} class="label-hidden pageNum"></lightning-select>
+							</td>
+							<td class="tenPer color-black">
+								<lightning-select label="" variant="label-hidden" value={pageNumber} onchange={handlePageNumChange} class="label-hidden pageNum" options={pageNumbers}></lightning-select>
+							</td>
+							<td class="color-black">
+								&nbsp;&nbsp; {label.Pagination_Of} {totalPages} 
+							</td>
+						</tr>
+					</table>
+				</div>
+				<template lwc:if={displayPageButtons}>
+					<div class="slds-col slds-size_1-of-3">
+						<span>
+	                        <div class="button-container">
+		                        <button class="slds-button slds-button_destructive btn-group" onclick={handlePrev} disabled={getDisabledPrevious}>{label.Pagination_Prev}</button>
+		                        <button class="slds-button slds-button_destructive btn-group" onclick={handleNext} disabled={getDisabledNext}>{label.pagination_Next}</button>
+	                        </div>
+                        </span>
+					</div>
+				</template>
+			</div>
+		</div>
+	</div>
+</template>

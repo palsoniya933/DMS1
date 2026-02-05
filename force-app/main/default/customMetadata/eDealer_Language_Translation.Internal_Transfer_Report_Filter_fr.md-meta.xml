@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Internal Transfer Report Filter</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;ITEM|text&quot; : &quot;ARTICLE&quot;,
+&quot;FROM ABC|text&quot; : &quot;DE ABC&quot;,
+&quot;FROM OH+OO|number&quot; : &quot;DE EN MAIN + EN COMMANDE&quot;,
+&quot;DISTCHAN|text&quot; : &quot;CIRCUIT DE DISTRIBUTION&quot;,
+&quot;TO ABC|text&quot; : &quot;VERS ABC&quot;,
+&quot;TO OH+OO|number&quot; : &quot;VERS EN MAIN + EN COMMANDE&quot;
+}</value>
+    </values>
+</CustomMetadata>

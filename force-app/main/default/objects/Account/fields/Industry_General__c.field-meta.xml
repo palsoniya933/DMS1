@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry_General__c</fullName>
+    <label>Industry- General</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Over the Road</fullName>
+                <default>false</default>
+                <label>Over the Road</label>
+            </value>
+            <value>
+                <fullName>Vocational</fullName>
+                <default>false</default>
+                <label>Vocational</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Over the Road</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Vocational</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

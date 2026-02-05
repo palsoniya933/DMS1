@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Back Order</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; : &quot;GRUPO&quot;,
+&quot;loc&quot; : &quot;LOCAL&quot;,
+&quot;item&quot; : &quot;NÚMERO DE PARTE&quot;,
+&quot;order_date&quot; : &quot;FECHA DE ORDEN&quot; ,
+&quot;order_type&quot; : &quot;TIPO DE ORDEN&quot; ,
+&quot;order_number&quot; :&quot;NÚMERO DE PEDIDO&quot;,
+&quot;po_number&quot; : &quot;NÚMERO DE PO&quot;,
+&quot;status&quot; : &quot;ESTATUS&quot;,
+&quot;status_descr&quot; : &quot;DESCRIPCIÓN DE ESTATUS&quot;,
+&quot;qty_order&quot; : &quot;CANTIDAD DE ORDEN&quot;,
+&quot;ext_net&quot; : &quot;EXTENSIÓN NETO&quot;,
+&quot;vendor_id&quot; : &quot;CÓDIGO DE PROVEEDOR&quot;,
+&quot;vendor_name&quot; : &quot;NOMBRE DE PROVEEDOR&quot;,
+&quot;saleable_ind&quot; : &quot;INDICE VENDIBLE&quot;,
+&quot;oh&quot; : &quot;EN INVENTARIO&quot;,
+&quot;distchan&quot; : &quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;abc&quot; : &quot;ABC&quot;,
+&quot;dlrrslnumber&quot; : &quot;NUMÉRO DLRRSL&quot;
+}</value>
+    </values>
+</CustomMetadata>

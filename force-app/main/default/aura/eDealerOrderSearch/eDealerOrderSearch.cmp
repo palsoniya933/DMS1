@@ -1,0 +1,246 @@
+<aura:component controller="EDealerOrderSearchController"  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global" >
+    
+    <!-- dealer code -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- used to hide / show the Part Screen -->
+    <aura:attribute name="displayParts" type="boolean" />
+    <!-- Order Number -->
+    <aura:attribute name="orderNumber" type="String" />
+    <aura:attribute name="division" type="string"/>
+    
+     <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" />
+    <aura:attribute name="searchedOrdersData" type="Object[]" />
+    
+    <!-- Pagination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" /> 
+    <aura:attribute name="PaginationList" type="Object[]" />
+    <aura:attribute name="responseReceived" type="Boolean" default="false" />
+    
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{! c.doInit }"/>
+    
+	<aura:handler name="change" value="{!v.orderNumber}" action="{! c.doInit }"/>    
+    
+    <div class="invDatacontainer bckGdWhite align-part-search">
+        
+                <aura:if isTrue="{!v.displayLoading}">
+                    <div>
+                    <lightning:spinner  alternativeText="Loading" size="medium" variant = "brand"/>
+                        </div>
+                </aura:if>
+             
+        <div class="pagiHead leftpd">
+            <table>
+                <tr>
+                    <td class="selectedOrderText">                   
+                        <strong><span>{!$Label.c.Edealer_SEARCH_RESULT_FOR} :</span>{!v.orderNumber}</strong>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td class="selectedOrderText">                   
+                        <strong>{!$Label.c.EDealer_FOUND} :&nbsp;{!v.searchedOrdersData.length}&nbsp; {!$Label.c.EDealer_ORDERS}</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="invDatacontainertablecontainer leftpd">
+            
+            <aura:if isTrue="{!v.searchedOrdersData.length > 0}">
+                <aura:if isTrue="{!v.responseReceived == true}">
+                    <c:eDealerPagination totalRecords = "{!v.searchedOrdersData}"
+                                         totalNumberRecords = "{!v.searchedOrdersData}"
+                                         PaginationList = "{!v.PaginationList}"
+                                         PageNumber="{!v.paginationPageNumber}"
+                                         pageSize="{!v.paginationPageSize}"
+                                         TotalPages="{!v.paginationTotalPages}"
+                                         RecordStart="{!v.paginationRecordStart}"
+                                         RecordEnd="{!v.paginationRecordEnd}"
+                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                         disablednext="{!v.paginationDisabledNext}"
+                                         displayPageButtons="true"></c:eDealerPagination>
+                </aura:if>
+                <table class="invDatacontainertable">
+                    <tr>
+                        <td class="invDatacontainertableheading width1" >
+                            #
+                        </td>
+                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                            <td class="invDatacontainertableheading" >
+                                {!cd.value}
+                            </td>
+                        </aura:iteration>
+                        <!--<td class="invDatacontainertableheading" >
+                            ORDERS#
+                        </td>
+                        
+                        <td class="invDatacontainertableheading">
+                            PO
+                        </td>
+                        
+                        <td class="invDatacontainertableheading">
+                            STATUS
+                        </td>
+                        
+                        <td class="invDatacontainertableheading">
+                           SOURCE
+                        </td>
+                        
+                        <td class="invDatacontainertableheading">
+                            CREATED BY
+                        </td>
+                        
+                        <td class="invDatacontainertableheading">
+                            CREATED DATE
+                        </td>
+                        
+                        
+                        <td class="invDatacontainertableheading">
+                            SPLIT ORDER
+                            SHIPMENT TYPE
+                        </td> -->                      
+                       
+                    </tr>
+                    
+                    
+                    <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                        <!-- odd row -->
+                        <tr class="{!inv.checked ? 'selectedRowBackground': ''}">                            
+                            <td class="invDatacontainertabledata" >
+                                {!add(index,1)}
+                            </td>
+                            
+                            <aura:iteration items="{!v.columnLabelByApiName}" var="cd">
+                                
+                                <td class="invDatacontainertabledata">
+                                    <aura:if isTrue="{!cd.key=='ordno'}">
+                                        <a href="javascript:void(0);" onclick="{!c.openOrder}" name="{!inv.ordno}">
+                                            <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                        </a>
+                                        &nbsp;
+                                        <span name="{!inv.ordno}" onclick="{!c.handleOpenInNewWindow}" class="nav-text active">
+                                            <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                        </span> 
+                                        <aura:set attribute="else">
+                                            <aura:if isTrue="{!cd.key=='splitorder'}">
+                                                <aura:if isTrue="{!inv.splitorder > 1}">
+                                                    SPLIT
+                                                    <aura:set attribute="else">
+                                                        SINGLE
+                                                    </aura:set>
+                                                </aura:if>
+                                                <aura:set attribute="else">
+                                                    <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:set>
+                                    </aura:if>
+                                </td>
+                            </aura:iteration> 
+                            
+                            <!--<td class="invDatacontainertabledata">
+                                <a href="javascript:void(0);" onclick="{!c.openOrder}" name="{!inv.ordno}">
+                                    {!inv.ordno}
+                                </a>
+                                &nbsp;
+                                <span name="{!inv.ordno}" onclick="{!c.handleOpenInNewWindow}" class="nav-text active">
+                                    <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                </span>                               
+                            </td>
+                            
+                            <td class="invDatacontainertabledata">
+                                {!inv.dealerpo}
+                            </td>
+                            
+                            <td class="invDatacontainertabledata">
+                                {!inv.order_status}
+                            </td>
+                            
+                            <td class="invDatacontainertabledata">
+                                {!inv.ordersource} 
+                            </td>
+                            
+                            <td class="invDatacontainertabledata">
+                                {!inv.createdby}
+                            </td>
+                            
+                            <td class="invDatacontainertabledata" >
+                                {!inv.created_date}
+                            </td>
+                            
+                            <td class="invDatacontainertabledata" >
+                                <aura:if isTrue="{!inv.splitorder > 1}">
+                                    SPLIT
+                                    <aura:set attribute="else">
+                                    	SINGLE
+                                    </aura:set>
+                                </aura:if>  
+                            </td>-->
+                        </tr>
+                    </aura:iteration>   
+                        
+                </table>
+                
+                <!-- pagination cmp -->
+                <!--<div class="bottompagi"> -->
+                    <aura:if isTrue="{!v.responseReceived == true}">
+                        <c:eDealerPagination totalRecords = "{!v.searchedOrdersData}"
+                                             totalNumberRecords = "{!v.searchedOrdersData}"
+                                             PaginationList = "{!v.PaginationList}"
+                                             PageNumber="{!v.paginationPageNumber}"
+                                             pageSize="{!v.paginationPageSize}"
+                                             TotalPages="{!v.paginationTotalPages}"
+                                             RecordStart="{!v.paginationRecordStart}"
+                                             RecordEnd="{!v.paginationRecordEnd}"
+                                             allPageNumber="{!v.paginationAllPageNumber}"
+                                             disabledprevious="{!v.paginationDisabledPrevious}"
+                                             disablednext="{!v.paginationDisabledNext}"
+                                             displayPageButtons="true"></c:eDealerPagination>
+                    </aura:if>
+                <!--</div> -->
+                
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.responseReceived}">
+                        <br/>
+                        <c:eDealerNotRecordFound Message="{!$Label.c.No_Orders_Found}">
+                        </c:eDealerNotRecordFound>
+                    </aura:if>
+                    
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+    
+    
+</aura:component>

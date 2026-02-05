@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>View Comments</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;: &quot;Date&quot;,
+&quot;fr_CA&quot;: &quot;Date&quot;,
+&quot;es_MX&quot;: &quot;Fecha&quot;,
+&quot;en_US&quot;: &quot;Date&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;columnAPIName&quot;: &quot;User&quot;,
+&quot;fr_CA&quot;: &quot;Nom d&apos;utilisateur&quot;,
+&quot;es_MX&quot;: &quot;Usuario&quot;,
+&quot;en_US&quot;: &quot;User&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;columnAPIName&quot;: &quot;Comment&quot;,
+&quot;fr_CA&quot;: &quot;Commentaire&quot;,
+&quot;es_MX&quot;: &quot;Comentario&quot;,
+&quot;en_US&quot;: &quot;Comment&quot;,
+&quot;order&quot;: 3
+},
+{
+&quot;columnAPIName&quot;: &quot;Comment-Type&quot;,
+&quot;fr_CA&quot;: &quot;Commentaire&quot;,
+&quot;es_MX&quot;: &quot;Comentario&quot;,
+&quot;en_US&quot;: &quot;HCmtType&quot;,
+&quot;order&quot;: 4
+}
+]</value>
+    </values>
+</CustomMetadata>

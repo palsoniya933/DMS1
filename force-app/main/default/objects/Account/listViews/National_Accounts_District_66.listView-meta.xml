@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>National_Accounts_District_66</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>ACCOUNT.ADDRESS2_STATE</columns>
+    <columns>ACCOUNT.ADDRESS2_CITY</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>PB_Corresponding_Dealer__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.ADDRESS2_STATE</field>
+        <operation>equals</operation>
+        <value>GA,MS,AL,AR,LA,NC,SC,TN</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.TYPE</field>
+        <operation>equals</operation>
+        <value>National Account</value>
+    </filters>
+    <label>National Accounts District 66</label>
+    <sharedTo>
+        <role>DistrictPartsMgrPBDistrict066</role>
+    </sharedTo>
+</ListView>

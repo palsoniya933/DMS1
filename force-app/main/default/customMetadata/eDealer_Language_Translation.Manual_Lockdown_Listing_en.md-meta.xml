@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Manual Lockdown Listing</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;grp_nbr&quot;,
+&quot;label&quot;: &quot;Group&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;loc&quot;,
+&quot;label&quot;: &quot;Loc&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;sale_ind&quot;,
+&quot;label&quot;: &quot;Sale. Ind&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;item&quot;,
+&quot;label&quot;: &quot;Item&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_abc&quot;,
+&quot;label&quot;: &quot;ABC&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;oh&quot;,
+&quot;label&quot;: &quot;OH&quot;,
+&quot;order&quot; : 6,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;dnet&quot;,
+&quot;label&quot;: &quot;DLRNET&quot;,
+&quot;order&quot; : 7,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_12monthhitcount&quot;,
+&quot;label&quot;: &quot;12 MTH Hits&quot;,
+&quot;order&quot; : 8,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_mtddemandqty&quot;,
+&quot;label&quot;: &quot;MTD Demand&quot;,
+&quot;order&quot; : 9,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_12monthdemandqty&quot;,
+&quot;label&quot;: &quot;12M Demand&quot;,
+&quot;order&quot; : 10,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_dlrsplrcode&quot;,
+&quot;label&quot;: &quot;P_DLRSPLRCD&quot;,
+&quot;order&quot; : 11,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_stkclass&quot;,
+&quot;label&quot;: &quot;P_STK Class&quot;,
+&quot;order&quot; : 12,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_sunsetdate&quot;,
+&quot;label&quot;: &quot;P_SUNSET Date&quot;,
+&quot;order&quot; : 13,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_dlrrslnumber&quot;,
+&quot;label&quot;: &quot;P_DLRRSL Number&quot;,
+&quot;order&quot; : 14,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_pdc_spq&quot;,
+&quot;label&quot;: &quot;P_PDC_SPQ&quot;,
+&quot;order&quot; : 15,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_commenttext&quot;,
+&quot;label&quot;: &quot;P_COMMENTTEXT&quot;,
+&quot;order&quot; : 16,
+&quot;datatype&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

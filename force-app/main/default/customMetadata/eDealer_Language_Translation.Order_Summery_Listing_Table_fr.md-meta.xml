@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Order Summery Listing Table</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;ordno&quot;,
+&quot;label&quot;: &quot;Commande PACCAR&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;dealerpo&quot;,
+&quot;label&quot;: &quot;Bon de commande conc.&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;part&quot;,
+&quot;label&quot;: &quot;Partie&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;partqtyordered&quot;,
+&quot;label&quot;: &quot;Partie Qty commandé&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;extnet&quot;,
+&quot;label&quot;: &quot;Ext. Net&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;ordertype&quot;,
+&quot;label&quot;: &quot;Type de commande&quot;,
+&quot;order&quot; : 6,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;ordersource&quot;,
+&quot;label&quot;: &quot;Origine de commande&quot;,
+&quot;order&quot; : 7,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;createdby&quot;,
+&quot;label&quot;: &quot;Créée par&quot;,
+&quot;order&quot; : 8,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;orderdate&quot;,
+&quot;label&quot;: &quot;Date de création&quot;,
+&quot;order&quot; : 9,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{	
+&quot;columnAPIName&quot;:&quot;orderstatus&quot;,
+&quot;label&quot;: &quot;Statut de la commande&quot;,
+&quot;order&quot; : 10,
+&quot;datatype&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

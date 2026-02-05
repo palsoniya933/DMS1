@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MX_Flotas_Activas</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.SITE</columns>
+    <columns>UNIKO__c</columns>
+    <columns>Registrado_con_Dealer_en_Programa_Flotas__c</columns>
+    <columns>DFM__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>Program_PPM__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Program_PPM__c</field>
+        <operation>equals</operation>
+        <value>Fleet Program</value>
+    </filters>
+    <label>Flotas Activas</label>
+    <sharedTo>
+        <group>MexicoAllUsers</group>
+        <group>MexicoExecutives</group>
+        <group>MexicoFleets</group>
+        <group>MexicoSales</group>
+    </sharedTo>
+</ListView>

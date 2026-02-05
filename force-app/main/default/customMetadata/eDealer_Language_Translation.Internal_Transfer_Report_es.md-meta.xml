@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Internal Transfer Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; : &quot;GRUPO&quot;,
+&quot;Part_Number&quot; : &quot;NÚMERO DE PARTE&quot;,
+&quot;from_loc&quot; : &quot;DE&quot;,
+&quot;from_abc&quot; : &quot;DE ABC&quot;,
+&quot;FROM_12_Mth_Dmd&quot; : &quot;DE 12 MECES DEMANDA&quot;,
+&quot;FROM_12_Mth_Hits&quot; : &quot;DE 12 MECES HITS&quot;,
+&quot;oh&quot; : &quot;DE EN INVENTARIO&quot;,
+&quot;from_ohoo&quot; : &quot;DE  EN INVENTARIO Y EN ORDEN&quot;,
+&quot;from_dealernet&quot; : &quot;DEALERNET&quot;,
+&quot;from_distchan&quot; : &quot;CANAL DE DISTRIBUCIÓN&quot; ,
+&quot;to_loc&quot; : &quot;A&quot; ,
+&quot;to_distchan&quot; : &quot;A CANAL DE DISTRIBUCIÓN&quot; ,
+&quot;to_abc&quot; : &quot;A ABC&quot;,
+&quot;TO_12_Mth_Dmd&quot; : &quot;A 12 MECES DEMANDA&quot; ,
+&quot;TO_12_Mth_Hits&quot; : &quot;A 12 MECES HITS&quot; ,
+&quot;to_ohoo&quot; : &quot;A EN INVENTARIO Y EN ORDEN&quot; ,
+&quot;Opportunity_Qty&quot; : &quot;CANTIDAD DE OPORTUNIDAD&quot; ,
+&quot;Transfer_Qty&quot; : &quot;CANTIDAD DE TRANSFERENCIA &quot; ,
+&quot;Transfer_Value&quot; : &quot;VALOR DE TRANSFERENCIA&quot;
+}</value>
+    </values>
+</CustomMetadata>

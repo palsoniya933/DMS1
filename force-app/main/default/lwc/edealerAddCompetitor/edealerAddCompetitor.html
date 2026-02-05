@@ -1,0 +1,53 @@
+<template>
+	<!-- Add Competitor Form -->
+	<div class="slds-p-horizontal_medium">
+		<lightning-card>
+			<template lwc:if={isLoading}>
+				<div>
+					<lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+				</div>
+			</template>
+			<lightning-layout class="slds-wrap slds-is-relative">
+				<lightning-layout-item
+					class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+					<lightning-input type="text" name="CompetitorName" label={label.Edealer_Competitor_Name}
+						value={addCompetitorFormData.CompetitorName} maxlength="30"
+						onchange={handleInputChange} required="true"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							class="validate">
+					</lightning-input>
+					<template if:true={showField}>
+					<lightning-dual-listbox name="Affiliation" source-label={label.Edealer_Affiliation_Available} selected-label={label.Edealer_Affiliation_Selected}
+						label={label.Edealer_Affiliation} options={getAffiliationOptions} onchange={handleInputChange}
+						value={addCompetitorFormData.Affiliation} required="true"
+							message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+							class="validate">
+					</lightning-dual-listbox>
+					</template>
+				</lightning-layout-item>
+				<lightning-layout-item
+					class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+					<lightning-input-address class="compAddressField"
+					address-label={label.Edealer_Address_Lookup} 
+					street-label={label.Edealer_Address_Street}
+					city-label={label.EDealer_Address_City}
+					country-label={label.Edealer_Address_Country} 
+					province-label={label.Edealer_Address_State_Province}
+					postal-code-label={label.Edealer_Address_Zip_Postal_Code} 
+					city={addCompetitorFormData.CompCity} 
+					country={addCompetitorFormData.CompCountry}
+					province={addCompetitorFormData.CompState} 
+					postal-code={addCompetitorFormData.CompPostal} 
+					onchange={addressInputChange}
+					message-when-value-missing={label.EDealer_Complete_This_Field_Error_Message}
+					show-address-lookup>
+					</lightning-input-address>
+				</lightning-layout-item>
+			</lightning-layout>
+		</lightning-card>
+	</div>
+	<div class="button-container slds-float_right slds-p-around_medium">
+		<button class="slds-button black-btn slds-button_small btn-group" onclick={handleCloseCompetitorModal}>{label.EDealer_Cancel}</button>
+		<button class="slds-button slds-button_destructive btn-group" onclick={handleAddCompetitor}>{label.Edealer_SAVE_AND_SELECT_COMPETITOR}</button>
+	</div>
+</template>

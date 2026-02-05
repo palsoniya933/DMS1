@@ -1,0 +1,270 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                extends="c:edealerTracking"
+                controller="EDealerInternalTransferReportController">
+    
+    <!-- currency code for loged in user/edealer -->
+    <aura:attribute name="currencyCode" type="String" /> 
+    
+    <!-- download Attributes -->    
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />
+    
+    <!-- this is used for the saving the selected report -->    
+    <aura:attribute name="selectedReport" type="string" />
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <!-- Accessible Dealer with his Location/sub-Locations -->
+    <aura:attribute name="accessibleDealersLocs" type="List" />
+    
+    <!-- GROUP Code -->
+    <aura:attribute name="groupCode" type="String" />
+    
+    <!-- division Type -->
+    <aura:attribute name="divisionType" type="String" />
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- this will save the location for logged in user -->
+    <aura:attribute name="locationList" type="List" />
+    
+    <!-- FROM Locations list -->
+    <aura:attribute name="fromLocList" type="List" />
+    
+    <!-- To Locations list -->
+    <aura:attribute name="toLocList" type="List" />
+    
+    
+    <!-- this is to handle the change for multi select (to locations)-->
+    <aura:handler name="change" value="{!v.fromLocList}" action="{!c.handleFromFilterChange}"/>
+    
+    <!-- this is to handle the change for multi select (to locations)-->
+    <aura:handler name="change" value="{!v.toLocList}" action="{!c.handleToFilterChange}"/>
+    
+    <!-- this is to handle the change for multi select -->
+    <aura:handler name="change" value="{!v.headerAction}" action="{!c.handleHeaderAction}"/>
+    
+    <!-- used to track id button as to be disabled -->
+    <aura:attribute name="disabledReportButton" type="boolean" default="true"/>
+    
+    <!-- used to tsave the table header action -->
+    <aura:attribute name="headerAction" type="list" />
+    
+    <!-- this will save the selected filter Name -->
+    <aura:attribute name="selectedFilter" type="string"/>
+    
+    <!-- this save the selected location for transfer --> 
+    <aura:attribute name="selectedFromLocation" type="List"/>
+    
+    <!-- this will save the from date -->
+    <aura:attribute name="toloc" type="date" />
+    
+    <!-- this is used for store data for internal transfer -->
+    <aura:attribute name="internaltransferdata" type="List" />
+    
+    <!-- this is used for store data for internal transfer -->
+    <aura:attribute name="internaltransferdataorignal" type="List" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>    
+    
+    <!-- pagination related attributes -->
+    <aura:attribute name="PaginationList" type="object[]"/>    
+    <aura:attribute name="paginationPageNumber" type="String" />    
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />    
+    <aura:attribute name="paginationTotalPages" type="Integer" />   
+    <aura:attribute name="paginationRecordStart" type="Integer" />   
+    <aura:attribute name="paginationRecordEnd" type="Integer" />    
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />   
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>    
+    
+    <!-- this is used for store internal transfer report data into cache -->
+    <aura:attribute name="internalTransferDataMapCache" type="Map" />
+    
+    <!-- used to show No Data Found Message -->
+    <aura:attribute name="showNoDataMessage" type="Boolean" default="false" />
+    
+    <!-- For Search Functionality -->
+    <aura:attribute name="tableData" type="Object[]" />
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="activeFilter" type="string" default='all' access="PRIVATE" />
+    
+    <!-- filter section columns -->
+    <aura:attribute name="filterColumns" type="List" />
+    
+    <!-- for Filter Data -->
+    <aura:attribute name="selectedFilters" type="List" />
+    
+    <aura:attribute name="loadTime" type="Integer" />
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+    
+    <aura:method name="filterData" action="{!c.handleFilterClick}" access="public">
+        <aura:attribute name="filters" type="LIST" />
+    </aura:method>
+    
+    <!-- this is for the internal tranfer -->
+    <aura:if isTrue="{!v.selectedReport == 'Transfer Report'}">
+        <div class="reportContainerBox slds-p-around_small">
+            <!-- Section Title -->
+            <div class="slds-text-heading_small slds-m-bottom_medium">
+                {!$Label.c.MDI_Report_Filters}
+            </div>
+            
+            <!-- Conditionally hidden section if selectedReport is not empty -->
+            <div class="reportFilters" style="{!(empty(v.selectedReport)) ? 'display:none' : ''}">
+                
+                <p>
+                    <span class="greyColor">{!$Label.c.Set_Parameter}</span> :
+                    <span class="themecolor">{!$Label.c.Internal_Transfer_Report}</span>
+                </p>
+                <p class="filtertxt">{!$Label.c.Select_Dealers}</p>
+                <br/>
+                <hr class="seperatorclass"/>
+                
+                <!-- Filters input -->
+                <div class="slds-grid">
+                    <table>
+                        <tr valign="top">
+                            <td valign="top">
+                                <span>
+                                    <div class="slds-grid slds-gutters">
+                                        <div class="slds-col slds-size_3-of-12">
+                                            <p class="greyColor">{!$Label.c.Edealer_transfer_from}</p>
+                                            <c:eDealerCustomMultiSelect options="{!v.fromLocList}"></c:eDealerCustomMultiSelect>
+                                        </div>
+                                        
+                                        <div class="slds-col slds-size_3-of-12">
+                                            <p class="greyColor">{!$Label.c.Edealer_transfer_to}</p>
+                                            <aura:if isTrue="{!v.toLocList.length > 0}">
+                                                <c:eDealerCustomMultiSelect options="{!v.toLocList}"></c:eDealerCustomMultiSelect>
+                                            </aura:if>
+                                        </div>
+                                        
+                                        <div class="slds-col slds-size_6-of-12">
+                                            <c:eDealerReportFilter 
+                                                                   selectedFilter="{!v.selectedFilters}"
+                                                                   reportName="Internal Transfer Report Filter"/>
+                                        </div>
+                                    </div>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </aura:if>
+    
+    <div class="reportContainerBox">
+        <lightning:card>
+            <!-- SPINNER -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            <div class="slds-grid slds-wrap"> 
+                <div class="slds-col slds-size_12-of-12 padding12px">
+                    <div class="rFloat">
+                        <div align="right" style="{!(empty(v.selectedReport)) ? 'display:none' : ''}">
+                            
+                            <!-- Download Report Button csv format-->
+                            <c:eDealerDownloadReportInCsvButton reportName= "{!$Label.c.Internal_Transfer_Report}"
+                                                                invData = "{!v.internaltransferdata}"
+                                                                columns = "{!v.columns}"
+                                                                callapimethod = "{!c.downloadReportData}"/>
+                            <!-- Download Report Button -->
+                            <c:eDealerDownloadReportButton aura:id="downloadcmp"
+                                                           reportName="{!$Label.c.Internal_Transfer_Report}"
+                                                           report="{!v.internaltransferdata}"
+                                                           columns="{!v.columns}"
+                                                           callapimethod = "{!c.downloadReportData}"/>
+                            <button class="slds-button slds-button_destructive generateReportbutton" disabled="{!v.disabledReportButton}" onclick="{!c.fetchReportData}">
+                                <lightning:icon iconName="utility:side_list" size ="xx-small" alternativeText="side_list" title="" />{!$Label.c.Generate_Report}</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slds-col slds-size_12-of-12 padding12px">
+                    <!-- data part -->    
+                    <aura:if isTrue="{!v.internaltransferdata.length > 0 }">       
+                        
+                        <div class="datacontainer">            
+                            
+                            <!-- pagination cmp -->
+                            <c:eDealerPagination totalRecords = "{!v.tableData}"
+                                                 totalNumberRecords = "{!v.tableData}"
+                                                 PaginationList = "{!v.PaginationList}"
+                                                 PageNumber="{!v.paginationPageNumber}"
+                                                 pageSize="{!v.paginationPageSize}"
+                                                 TotalPages="{!v.paginationTotalPages}"
+                                                 RecordStart="{!v.paginationRecordStart}"
+                                                 RecordEnd="{!v.paginationRecordEnd}"
+                                                 allPageNumber="{!v.paginationAllPageNumber}"
+                                                 disabledprevious="{!v.paginationDisabledPrevious}"
+                                                 disablednext="{!v.paginationDisabledNext}"
+                                                 displayPageButtons="false"></c:eDealerPagination>
+                            
+                            
+                            
+                            <table style="table-layout:fixed;">
+                                <td>
+                                    
+                                    <lightning:datatable keyField="id"
+                                                         hideCheckboxColumn="true"
+                                                         columns="{!v.columns }"
+                                                         data="{!v.PaginationList}"
+                                                         defaultSortDirection="{!v.defaultSortDirection}"
+                                                         sortedDirection="{!v.sortDirection}"
+                                                         sortedBy="{!v.sortedBy}"
+                                                         onsort="{!c.handleSort}"
+                                                         class="cols-table"
+                                                         onheaderaction="{! c.handleHeaderAction }"
+                                                         columnWidthsMode="auto"
+                                                         minColumnWidth="100">
+                                    </lightning:datatable>
+                                </td></table>
+                            
+                        </div>
+                        
+                        
+                        
+                        <!-- pagination cmp -->
+                        <c:eDealerPagination totalRecords = "{!v.tableData}"
+                                             totalNumberRecords = "{!v.tableData}"
+                                             PaginationList = "{!v.PaginationList}"
+                                             PageNumber="{!v.paginationPageNumber}"
+                                             pageSize="{!v.paginationPageSize}"
+                                             TotalPages="{!v.paginationTotalPages}"
+                                             RecordStart="{!v.paginationRecordStart}"
+                                             RecordEnd="{!v.paginationRecordEnd}"
+                                             allPageNumber="{!v.paginationAllPageNumber}"
+                                             displayPageButtons="true"
+                                             disabledprevious="{!v.paginationDisabledPrevious}"
+                                             disablednext="{!v.paginationDisabledNext}"></c:eDealerPagination>
+                        
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.APICalled}">
+                                <br/>
+                                <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                            </aura:if>
+                            
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

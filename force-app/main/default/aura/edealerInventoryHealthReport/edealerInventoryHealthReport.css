@@ -1,0 +1,79 @@
+.THIS.slds-tabs_default__nav {
+    display: flex;
+    justify-content: flex-start;
+    /*border-bottom: 2px solid #e0e0e0;*/
+    padding: 0;
+    margin: 0;
+}
+
+.THIS .tab-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.THIS .tab-link {
+    padding: 12px 20px;
+    font-size: 13px;
+    
+    color: #333; /* Default text color */
+    text-decoration: none;
+    border-bottom: 2px solid transparent; /* Initial underline */
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.THIS .tab-link:hover {
+    background-color: #f4f6f9; /* Slight hover effect for usability */
+}
+
+.THIS .tab-link.slds-active {
+    border-bottom: 2px solid #0070d2; /* Blue underline for the active tab */
+    color: #333; /* Ensure text color remains unchanged */
+    font-weight: bold;
+}
+
+.THIS .slds-tabs_default__content {
+   /* padding: 20px;
+    border-top: 1px solid #e0e0e0;*/
+    font-size: 13px;
+    padding:0px;
+   
+}
+.THIS .table-container{
+    padding:0;
+    margin:0;
+}
+.THIS .heading{
+    background-color:white;
+    font-size:16px;
+}
+
+.THIS .activetab{
+    border-bottom-color: #D10000;
+    font-weight : bold;
+}
+
+.THIS .title
+{
+   font-size: 27px;
+    padding-left: 19px;
+    padding-bottom: 5px;
+}
+.THIS .custom-heading {
+    font-size: 20px; /* Adjust font size to match the heading */
+    font-weight: bold;
+    text-transform: uppercase; /* Ensures uppercase text */
+    color: #000; /* Ensures black text */
+   margin-left: 20px; /* Adds spacing similar to the heading */
+}
+
+.THIS .slds-card{
+    margin:10px 20px 20px;
+    
+}
+
+.THIS .slds-card__header{
+    display:none
+}

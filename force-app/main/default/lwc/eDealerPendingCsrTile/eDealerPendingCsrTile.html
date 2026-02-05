@@ -1,0 +1,77 @@
+<template>
+    <div class="slds-card tile">
+        <!-- spinner -->
+        <template lwc:if={displayLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <div class="slds-card__body slds-card__body_inner">
+            <template lwc:if={csrData}>
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">
+                                <template lwc:if={enableSamePageListing}>
+                                    <a href="javascript:void(0);" onclick={openCsrListing}>{title}</a>
+                                </template>
+                                <template lwc:else>
+                                    {title}
+                                </template>
+                            </span>
+                            
+                            &nbsp;&nbsp;
+
+                            <template lwc:if={hasDealerLoc}>
+                                <span onclick={handleOpenInNewWindow}>
+                                    <a href="javascript:void(0);">
+                                        <img src="/resource/1648782488000/EDealerResources/icons/opentabicon.svg#opentabicon" class="imgicon-style-align"/>
+                                    </a>
+                                </span>
+                            </template>
+                        </div>
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td class="tileInfo_Div">
+                                        <span >
+                                            <lightning-combobox
+                                                value={selectedPendingCSRType}
+                                                options={pendingCSROptions}
+                                                onchange={handleSubTypeUpdate}
+                                                class="noGreenTextb picklistWidth">
+                                            </lightning-combobox>
+                                            <template lwc:if={hasDealerLoc}>
+                                                <lightning-formatted-number class="greenTextb" style="top: 3%;" value={pendingCsrCount} onclick={handleOpenInNewWindow}></lightning-formatted-number>
+                                            </template>
+                                            <template lwc:else>
+                                                <lightning-formatted-number  class="greenTextbNP" style="top: 3%;" value={pendingCsrCount}></lightning-formatted-number>
+                                            </template>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template lwc:if={error}>
+                <div class="info-msg slds-align_absolute-center .padding-bt">
+                    <lightning-icon 
+                    icon-name="utility:warning" 
+                    alternative-text="checked" 
+                    size="xx-small" 
+                    title=""
+                    class="my-icon"
+                    ></lightning-icon>{Edealer_Pending_CSR_Tile_ErrorMsg}
+                </div>
+            </template>
+        </div>
+         <!-- information icon -->
+         <div class="infoIconPosition">
+                                <c-e-dealer-info-icon content={Edealer_Pending_CSR_Tile_Help}></c-e-dealer-info-icon>
+        </div>
+        
+    </div>
+</template>

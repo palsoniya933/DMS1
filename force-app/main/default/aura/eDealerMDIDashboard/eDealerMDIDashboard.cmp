@@ -1,0 +1,210 @@
+<aura:component controller="ToggleFeaturesController" 
+                implements="forceCommunity:availableForAllPageTypes" 
+                extends="c:edealerTracking" 
+                access="global">
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- this will save the result from third party for different locations-->
+    <aura:attribute name="emergencyOrderMapCache" type="Map" />
+    
+    <!-- this will save the return compliance api details cache for based on multiple location -->
+    <aura:attribute name="returnComplianceMapCache" type="Map" />
+    
+    <!-- this will save the manual Lockdown api details cache for based on multiple location -->
+    <aura:attribute name="manualLockdownMapCache" type="Map" />
+    
+    <!-- this is used for store quarterToDate Report  data into cache -->
+    <aura:attribute name="quarterToDateReportDataMapCache" type="Map" />
+    
+    <!-- this will save the days On Hand api details cache-->
+    <aura:attribute name="daysOnHandMapCache" type="Map" />
+    
+    <!-- this will save the turns api details cache-->
+    <aura:attribute name="turnsMapCache" type="Map" />
+    
+    <!-- this will save the csr/RSV api details cache-->
+    <aura:attribute name="csrRSVMapCacheData" type="Map" />
+    
+    <!-- this will save the total Inventory KPI details -->
+    <aura:attribute name="totalInventoryDataMapCache" type="Map" />
+    
+    <!-- this will save the cost of sales KPI details -->
+    <aura:attribute name="dealerCostOfSalesMapCache" type="Map" />
+    
+    <!-- this will save the selected location -->    
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <aura:attribute name="selectedSubMenu" type="String" />
+    <aura:attribute name="selectedMenu" type="String" />
+    <aura:attribute name="selectedTab" type="String" />
+    
+    <aura:attribute name="month" type="string" />
+    <aura:attribute name="quarter" type="string" />
+    <aura:attribute name="year" type="string" />
+    <aura:attribute name="monthDate" type="Date" />
+    <aura:attribute name="quarterDate" type="Date" />
+    <aura:attribute name="loadTime" type="Integer" />
+
+    
+    <!-- calling onload Method -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    
+    <aura:html tag="style">
+        .slds-popover_tooltip, 
+        .slds-popover--tooltip {
+        background-color: #FFFFFF !important; 
+        }
+        
+        .slds-popover__body, .slds-popover__header, .slds-popover__footer {
+        color: #444 !important;
+        box-shadow: 1px 1px 3px 1px #cccccc;
+        }
+    </aura:html>
+    
+    
+    <!-- dashboard container -->
+    
+    
+    <!-- new code -->
+    
+    <div class="dashboardcontainer">   
+        <aura:if isTrue="{!and(v.selectedMenu == 'dashboardDivV2', or(v.selectedSubMenu == undefined, v.selectedSubMenu == '') )}">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_2-of-2  slds-large-size_12-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerTotalInventoryTile 
+                                                         title="{!$Label.c.Edealer_Inventory_Health_Report}"
+                                                         dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                         currentDealerDivision = "{!v.userDetail.division}"
+                                                         selectedSubMenu="{!v.selectedSubMenu}"
+                                                         totalInventoryDataMapCache="{!v.totalInventoryDataMapCache}"
+                                                         selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                    </span>
+                </div>
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_2-of-2  slds-large-size_12-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerReturnComplianceTile title="{!$Label.c.Edealer_Return_Compliance}"
+                                                           returnComplianceMapCache="{!v.returnComplianceMapCache}"
+                                                           dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                           divisionType="{!v.userDetail.division}"
+                                                           selectedSubMenu="{!v.selectedSubMenu}"
+                                                           month="{!v.month}"
+                                                           quarter="{!v.quarter}"
+                                                           year="{!v.year}"
+                                                           monthDate="{!v.monthDate}"
+                                                           quarterDate="{!v.quarterDate}"
+                                                           selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                    </span>
+                </div>
+                
+                <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_2-of-2  slds-large-size_12-of-12">
+                        <span>
+                            <div class="{!v.selectedLocation.listSelectedLoc.length > 1?'slds-m-around_xx-small disabledEvent':'slds-m-around_xx-small '}">
+                                <c:eDealerQuarterToDateTile 
+                                                            title="Quarter To Date"
+                                                            dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                            currentDealerDivision = "{!v.userDetail.division}"
+                                                            quarterToDateReportDataMapCache = "{!v.quarterToDateReportDataMapCache}"
+                                                            />
+                            </div>
+                        </span>
+                    </div>
+                </aura:if> 
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2  slds-large-size_4-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerManualLockdownTile selectedSubMenu="{!v.selectedSubMenu}"
+                                                         title="{!$Label.c.Edealer_Manual_Parameter}"
+                                                         dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                         manualLockdownMapCache = "{!v.manualLockdownMapCache}"
+                                                         currentDealerDivision = "{!v.userDetail.division}"
+                                                         selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                        
+                    </span>
+                </div> 
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2  slds-large-size_4-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerTurnsTile 
+                                                title="{!$Label.c.Edealer_Turns}"
+                                                dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                currentDealerDivision = "{!v.userDetail.division}"
+                                                turnsMapCache="{!v.turnsMapCache}"
+                                                selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                    </span>
+                </div>
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2  slds-large-size_4-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerCNRRSVPartsTile 
+                                                      title="{!$Label.c.Edealr_CNR_RSV_Parts}"
+                                                      dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                      currentDealerDivision = "{!v.userDetail.division}"
+                                                      csrRSVMapCacheData="{!v.csrRSVMapCacheData}"
+                                                      selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                    </span>
+                </div>
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2  slds-large-size_4-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerCostOfSales 
+                                                  title="{!$Label.c.Edealer_Cost_Of_Sales}"
+                                                  dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                  currentDealerDivision = "{!v.userDetail.division}"
+                                                  dealerCostOfSalesMapCache="{!v.dealerCostOfSalesMapCache}"
+                                                  selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                    </span>
+                </div>
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2  slds-large-size_4-of-12">
+                    <span>
+                        <div class="slds-m-around_xx-small">
+                            <c:eDealerEmergencyOrderTile emergencyOrderMapCache="{!v.emergencyOrderMapCache}" 
+                                                         dealerLoc = "{!v.selectedLocation.selectedLoc}"
+                                                         title = "{!$Label.c.MDI_Emergency_Lines}"
+                                                         units = "%"
+                                                         currentDealerDivision = "{!v.userDetail.division}"
+                                                         selectedLocation = "{!v.selectedLocation}"/>
+                        </div>
+                    </span>
+                </div> 
+                
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedSubMenu == 'manuallockdownparts'}">
+            <c:edealerManualLockdownListing dealerCode="{!v.selectedLocation.selectedLoc}"
+                                            division="{!v.userDetail.division}"   
+                                            />
+        </aura:if>
+        
+        <aura:if isTrue="{!v.selectedSubMenu == 'returncompliance'}">
+            <c:eDealerReturnComplianceListing dealerCode="{!v.selectedLocation.selectedLoc}"
+                                              division="{!v.userDetail.division}"
+                                              month="{!v.month}"
+                                              quarter="{!v.quarter}"
+                                              year="{!v.year}"
+                                              monthDate="{!v.monthDate}"
+                                              quarterDate="{!v.quarterDate}"
+                                              selectedLocation = "{!v.selectedLocation.listSelectedLoc}"
+                                              />
+        </aura:if>
+        
+        
+    </div>
+    
+    
+    
+</aura:component>

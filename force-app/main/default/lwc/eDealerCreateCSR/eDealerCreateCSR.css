@@ -1,0 +1,101 @@
+:host {
+    overflow-x: hidden;
+}
+.slds-var-p-around_medium {
+    max-width: 100%;
+    overflow-x: visible;
+}
+.slds-path__link{
+	padding-left: 0px !important;
+    padding-right: 0px !important;
+	padding: 0 5px 0 5px !important;
+}
+.fixedPosition {
+    position: fixed !important;
+}
+.delete-color {   
+    --sds-c-icon-color-foreground-default: red !important;
+    --sds-c-icon-color-background: red !important;
+}
+.add-color {   
+    --sds-c-icon-color-foreground-default: green !important;
+    --sds-c-icon-color-background: green !important;
+}
+.btn-padding{
+   padding-top: 18px !important;
+}
+
+.slds-table thead th{
+    background: gray;
+    color: #fff;
+}
+
+.delete_icon {
+    --sds-c-icon-color-background: #FF4538;
+    --sds-c-icon-color-foreground-default: white !important;
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.add_icon {
+    --sds-c-icon-color-background: green;
+    --sds-c-icon-color-foreground-default: white !important;
+    padding: 3px;
+    border-radius: 20px;
+}
+.paragraph-container p {
+    display: inline-block; /* or display: inline; */
+    margin: 0; /* Remove default paragraph margin */
+}
+.imgicon-style-align{
+   width: 31px;
+    height: 23px;
+    margin-right: 4px;
+    margin-left: -4px;
+    margin-top: -2px;
+   
+}
+.download-btn{ 
+    background: #c23934!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #c23934;
+    margin-right: 6px;
+    margin-top: 1px;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-content {
+    margin-right: auto; /* Pushes the paragraph to the left */
+}
+
+.right-content {
+    text-align: right;
+    /*margin-left: auto;  Pushes the button to the right */
+}
+.upload-btn{ 
+    --slds-c-button-success-text-color:#fff !important;  
+}
+.pad-left{
+    padding-left:20px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.grid-container{
+   white-space: nowrap; 
+}
+.lgc-bg {
+    background-color: rgb(242 242 242);
+}
+
+.lgc-bg-inverse {
+    background-color: rgb(22 50 92);
+}
+
+.slds-tabs_default{
+    padding: 10px;
+}

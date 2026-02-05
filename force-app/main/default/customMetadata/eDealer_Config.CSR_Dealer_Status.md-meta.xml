@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSR Dealer Status</label>
+    <protected>false</protected>
+    <values>
+        <field>Long_Value__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;fr_CA&quot;: &quot;Brouillon&quot;,
+&quot;es_MX&quot;: &quot;Borrador&quot;,
+&quot;en_US&quot;: &quot;Draft&quot;,
+&quot;value&quot;: &quot;N&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;S&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;D&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;M&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;U&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En attente de la réponse du concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Esperando Respuesta del Concesionario&quot;,
+&quot;en_US&quot;: &quot;Waiting For dealer Response&quot;,
+&quot;value&quot;: &quot;W&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;A&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;X&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;En cours&quot;,
+&quot;es_MX&quot;: &quot;En Proceso&quot;,
+&quot;en_US&quot;: &quot;In Process&quot;,
+&quot;value&quot;: &quot;I&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;Publié&quot;,
+&quot;es_MX&quot;: &quot;Publicado&quot;,
+&quot;en_US&quot;: &quot;Posted&quot;,
+&quot;value&quot;: &quot;P&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;Fermé&quot;,
+&quot;es_MX&quot;: &quot;Cerrado&quot;,
+&quot;en_US&quot;: &quot;Closed&quot;,
+&quot;value&quot;: &quot;C&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;Fermé&quot;,
+&quot;es_MX&quot;: &quot;Cerrado&quot;,
+&quot;en_US&quot;: &quot;Closed&quot;,
+&quot;value&quot;: &quot;T&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;Expiré&quot;,
+&quot;es_MX&quot;: &quot;Expirado&quot;,
+&quot;en_US&quot;: &quot;Expired&quot;,
+&quot;value&quot;: &quot;E&quot;
+},
+{
+&quot;fr_CA&quot;: &quot;Refusé&quot;,
+&quot;es_MX&quot;: &quot;Denegado&quot;,
+&quot;en_US&quot;: &quot;Denied&quot;,
+&quot;value&quot;: &quot;R&quot;
+}
+]</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

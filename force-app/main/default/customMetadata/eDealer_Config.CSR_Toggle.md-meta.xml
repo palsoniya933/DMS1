@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSR Toggle</label>
+    <protected>false</protected>
+    <values>
+        <field>Long_Value__c</field>
+        <value xsi:type="xsd:string">aaronbrown@paccar.net,brianhanse01@paccar.net,benjohns@paccar.net,craigdastrup@paccar.net,colletteedwa@paccar.net,craighowel04@paccar.net,chrisprisbre@paccar.net,chrisranda01@paccar.net,robertanders@paccar.net,donnabaker@paccar.net,danechristia@paccar.net,doranclark@paccar.net,dougholloway@paccar.net,danialrenfro@paccar.net,danwallace@paccar.net,edwardgibeck@paccar.net,gregrodabaug@paccar.net,hannahansen@paccar.net,jesseallan01@tcs365.com,jesseallan02@paccar.net,jesseallan@tcs365.com,jamescampb03@tcs365.com,jamescampbel@paccar.net,jasonmillman@paccar.net,justinscot01@paccar.net,kellyharsh@paccar.net,kirkwells@paccar.net,lonnieprue02@paccar.net,matthewboyer@paccar.net,marcgardne01@paccar.net,michaelmiley@paccar.net,nicholasbert@paccar.net,jasongalle03@tcs365.com,paulflores@paccar.net,ryanchristen@paccar.net,ryancolby@paccar.net,rickseiler02@paccar.net,richardvirga@paccar.net,sandraculver@paccar.net,sandraculver@tcs365.com0031w00002bwtssqag,seanmitchell@paccar.net,showard01@paccar.net,tedallen@paccar.net,williampet01@paccar.net,jim.yokum@paccar.com,tammy.chavarria@paccar.com,leo.shiker@geisdealergroup.com,tonyalbano@kcpete.com,coreypurdy01@paccar.net,dougholloway@paccar.net,robertaheref@paccar.net,brandonwea01@paccar.net,leoshiker001@paccar.net,tonyalbano01@paccar.net,calebhijaz@paccar.net,jeffnations@paccar.net,johndavis06@paccar.net,crystalmi001@paccar.net,shawnjones01@paccar.net,bart.beck@paccar.com,</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,104 @@
+.THIS {
+}
+.THIS .slds-modal__footer{padding:10px 10px;}
+.THIS .slds-tab-right-header ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 2px 5px !important;
+    margin: 0px 10px;
+}
+.THIS ul.slds-tabs_default__nav li:last-child
+{
+    float: right;
+    width: 71%;
+    margin: 0px 10px;
+}
+.THIS .slds-tab-right-header {
+    width: auto;
+    float: right;
+}
+.THIS .generateSOFDiv{   
+}
+
+.THIS .generateSOFDiv .slds-modal__header button {
+        background: #ebebeb;
+}
+
+.THIS .generateSOFDiv .slds-modal__close{ 
+    top: 0.5rem;
+    z-index: 999;
+    right: 0.8rem;}
+
+
+
+.THIS .fnt-size{font-size:15px!important;font-family: 'RobotoMedium'!important;}
+
+.THIS .generateSOFDiv .slds-modal__header .slds-icon {
+    width: 22px!important;
+    height: 22px!important;
+    fill: #ba0517!important;}
+
+.THIS .generateSOFDiv .slds-modal__header{
+    background: #ebebeb!important;
+    height: 45px!important;
+    text-align: left;
+    line-height: 17px; 
+    
+    border:0!important;    
+    font-family: 'RobotoMedium'!important;
+    font-size: 15px}
+
+
+.THIS.container
+{
+    background:transparent;
+    border:none;
+    margin: 0 15px 17px 16px;
+}
+.THIS .tabs {
+   /*box-shadow: 0px 2px 5px #A4B6D4 !important;*/
+    border: 1px solid #ccc!important;
+    border-radius: 6px;
+}
+.THIS li.slds-tabs_default__item.slds-is-active a {
+    color: #e3474b!important;
+    font-weight: 600;
+    border-bottom: 2px solid red;
+}
+.THIS li.slds-tabs_default__item.slds-is-active {
+    color: #e3474b!important;
+}
+.THIS ul.slds-tabs_default__nav li {
+    margin: 0 26px 0 0;
+}
+.THIS .slds-tabs_default__link {
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.THIS .slds-tabs_default__link:focus{text-decoration:none!important;}
+.THIS .slds-tabs_default__item::after{display:none;}
+
+.THIS .slds-tabs_default__item.slds-is-active:after {
+    background: #e3474b!important;
+}
+.THIS .slds-tabs_default
+{
+    background: #ffffff;
+    border-radius: 6px;
+    padding:10px;
+}
+
+.THIS .distructiveButton{
+    height:26px !important;
+}
+
+.THIS .helpTextParentDiv > .slds-popover_tooltip
+{
+    background:red;
+}
+
+.THIS .slds-button__icon{
+    fill:#5b9bf2;
+}

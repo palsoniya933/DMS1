@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VSC_Test_Dealer__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Dealer allowed to route cases for specific engines to vehicle support rather than field services</description>
+    <label>VSC Test Dealer</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

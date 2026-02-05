@@ -1,0 +1,103 @@
+<aura:component controller="EDealerUserAuthentication" 
+                extends="c:edealerTracking"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- spinner show/hide -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false" />
+    
+    <!-- Username -->
+    <aura:attribute name="Username" type="String"  />
+    <!-- Password -->
+    <aura:attribute name="Password" type="String" />
+    
+    <!-- show Modal -->
+    <aura:attribute name="displayModal" type="Boolean" default="false" />
+    
+    <aura:attribute name="isByPassAuthentication" type="Boolean" default="false" />
+    
+    <aura:method name="openModal" action="{! c.checkUserASIUser }">
+    </aura:method>
+    
+    
+    <!-- SPINNER -->
+    <aura:if isTrue="{!and(v.displayLoading, not(v.displayModal))}">
+        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+    </aura:if> 
+    
+    
+    <!-- mark up for the modal -->
+    <aura:if isTrue="{!v.displayModal}">
+        
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">               
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="position: relative;">
+                    <!-- SPINNER -->
+                    <aura:if isTrue="{!v.displayLoading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand" style="background: white;"/>
+                    </aura:if> 
+                    
+                    <aura:If isTrue="{!!v.isByPassAuthentication}">
+                    <form autocomplete="off">
+                    <div class="paddingCls">
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat popheading">
+                            For ASI Authentication
+                            <lightning:icon class="iconcolr slds-float--right" size="small" iconName="utility:close" variant="bare" alternativeText="close" title="close" onclick="{! c.closeModal }" />
+                        </div>
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat">
+                            <div class="slds-col slds-medium-size_12-of-12 ">
+                                <div class="form-group">
+                                    <label>Username <abbr title="required" class="slds-required">*</abbr></label>
+                                    <div class="control ">
+                                        <lightning:input aura:id="field" type="text" 
+                                                         value="{!v.Username}" 
+                                                         variant="label-hidden" 
+                                                         class="label-hidden"
+                                                         autocomplete="false"
+                                                         placeholder="Please enter your username"
+                                                         maxlength="10"
+                                                         required="true"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="slds-col slds-medium-size_12-of-12 lFloat">
+                                <div class="form-group">
+                                    <label>Password <abbr title="required" class="slds-required">*</abbr></label>
+                                    <div class="control">
+                                        <lightning:input aura:id="field" type="password" 
+                                                         value="{!v.Password}" 
+                                                         variant="label-hidden" 
+                                                         class="label-hidden"
+                                                         autocomplete = "off"
+                                                         placeholder="Please enter your password"
+                                                         required="true"/> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        
+                        <br/>
+                        
+                        <!-- this is the button section -->
+                        <div align="right">
+                            <lightning:button class="buttonclr" 
+                                              variant="brand" 
+                                              label="Cancel"  
+                                              onclick="{!c.closeModal}"/>
+                            
+                            <lightning:button class="buttoncnfclr" 
+                                              variant="brand" 
+                                              label="Submit"  
+                                              onclick="{!c.validateForm}"/>
+                            
+                        </div>
+                    </div>
+                    </form>
+                    </aura:If>
+                </div>                
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

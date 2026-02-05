@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Navigation_Items</fullName>
+    <columns>MasterLabel</columns>
+    <columns>Title__c</columns>
+    <columns>Title_Custom_Label__c</columns>
+    <columns>Description_Custom_Label__c</columns>
+    <columns>Case_Category__c</columns>
+    <columns>Description__c</columns>
+    <columns>Sort_Order__c</columns>
+    <columns>Image_Url__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Case Navigation Items</label>
+    <language>en_US</language>
+</ListView>

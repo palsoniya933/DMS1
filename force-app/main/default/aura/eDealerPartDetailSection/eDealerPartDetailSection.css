@@ -1,0 +1,111 @@
+.THIS {
+}
+
+.THIS .slds-popover_tooltip{background:#e7fee7!important;top: -64px!important;
+    box-shadow: 0px 1px 2px 1px #83bc85!important;
+    border-radius: 6px!important;}
+
+.THIS .redBgColour {background: #FF7A87 !important;}
+.THIS .slds-popover__body{color:#000!important;width: 9rem;}
+.THIS .slds-nubbin_bottom-right:after{display:none!important;}
+.THIS .slds-nubbin_bottom-right::before{display:none!important;}
+.THIS .tooltip:hover span {
+    display: inline;
+    position: relative;
+    color: #000000;
+    z-index:10000;
+}
+
+.THIS .floatRight{
+    float:right;
+}
+
+.THIS .noImageClass{
+    width: 95%;
+    margin-bottom: 18px;
+}
+
+.THIS .greenClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #00DE40;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .redClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #FF7A87;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .yellowClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+    margin: 5px;
+    display: inline !important; 
+}
+
+.THIS.fixedPosition {
+    position: fixed !important;
+}
+
+.THIS .tooltiptext{
+  visibility: hidden;
+}
+
+.THIS .cTooltip:hover .tooltiptext{
+  visibility: visible;
+   
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .iconcolr svg{
+    fill: red !important; 
+    color : red !important;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: uppercase;
+}
+
+.THIS .tableHeaderTextCenter {
+    text-align: center;
+    font-size: large;
+}
+
+.THIS .invDatacontainertabledata{
+    padding: 0px 5px;
+    height: 42px;
+}

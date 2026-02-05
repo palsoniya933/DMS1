@@ -1,0 +1,35 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    
+    <aura:attribute name="orderAndTrackDetails" type="Object" />
+    <aura:attribute name="headerName" type="String" />
+    <aura:attribute name="orderInNumbers" type="Integer" />
+    <aura:attribute name="isGood" type="Boolean" default="false" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-card tile" >
+        <div class="slds-card__body slds-card__body_inner">
+            <!-- Grid -->
+            <div class="slds-grid gridHeight">
+                <div class="slds-col slds-size_8-of-8">
+                    <!-- Tile Name -->
+                    <div class="tileName_Div">
+                        <span>{!v.headerName}</span>
+                    </div>
+                    <!-- INfo section-->
+                    <div class="tileInfo_Div">
+                        <span class="{!v.isGood ? 'blackText' : 'redText'}" style="align-self: flex-end;">{!v.orderInNumbers}</span>
+                    </div>
+                    <!-- percentage/Icon section -->
+                    <div class="tilePercentage_Div">
+                        <lightning:icon class="iconFloat-Right" iconName="utility:image" size="x-small" />
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</aura:component>

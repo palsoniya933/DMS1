@@ -1,0 +1,289 @@
+.THIS {
+}
+
+.THIS .eo-card_size {
+    width:100%;    
+}
+.THIS .slds-checkbox_toggle .slds-checkbox_faux
+{
+    opacity:1;
+}
+.THIS .eo-card-body-inner_size {
+    height:100%;
+}
+
+.THIS .eo-card-body-inner_header {
+    width:100%;
+    height:20%;
+}
+
+.THIS .eo-card-body-inner_header_span {
+    font-size: small;
+}
+
+.THIS .eo-card-body-inner_content {
+    width:100%;
+    height:50%;
+    display:flex;
+}
+
+.THIS .eo-card-body-inner_footer {
+    width:100%;
+    height:30%;
+}
+
+.THIS .eo-card-body-inner_footer {
+    width:100%;
+    height:30%;
+}
+
+.THIS .options:hover {
+    background: #FFF6B2;
+	cursor: pointer !important;    
+}
+
+.THIS .options {
+    padding: 1px 1px 8px 1px;   
+	cursor: pointer !important;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.THIS .selected{
+    background: #FFF6B2;
+    border-radius: 4px;
+       /* padding: 3px 2px;*/
+}
+.THIS .valuestyle{
+    color:#77c572;
+    font-size: smaller;
+}
+
+.THIS .textstyle{
+    color: #737373;
+    font-size: smaller;
+}
+
+/*****/
+.THIS .tile{
+    background: #fff !important;
+    /*width: 99% !important;*/
+    height: 165px !important;
+    padding: 5px 10px !important;
+    /*box-shadow: 0px 1px 3px 2px #e4e4e4 !important;*/
+    border-radius: 6px !important;
+     margin-bottom:10px;
+}
+
+.THIS .gridHeight{
+	height:100px;
+}
+
+.THIS .tileName_Div{
+	width:100%;
+    height:20%;
+}
+
+.THIS .heading{
+    color:#9F9F9F;
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end*/
+    font-size:12px;
+}
+
+.THIS .tileInfo_Div{
+	width:100%;
+    height:75px;
+    display:flex;
+}
+
+.THIS .greenTextb {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 40px;
+    color: #27C321;
+}
+
+.THIS .redTextb {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 40px;
+    color: #ff0000;
+}
+
+.THIS .blackTextb {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    /*font-size: 40px;*/
+    font-size: 30px;
+    color: black;
+}
+.THIS .blackTextb:hover {
+    color: #958c8c;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.THIS .unOrderedList {
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    top: 7%;
+    color: #C6C6C6;
+}
+
+.THIS .greenTexts {
+    color: #27C321;
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end*/
+    font-size: 13px;
+    position: relative;
+    top: 70%;
+    font-weight: 600;
+}
+.THIS .redTexts {
+    color: #ff0000;
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end*/
+    font-size: 13px;
+    position: relative;
+    top: 70%;
+    font-weight: 600;
+}
+
+
+.THIS .fontSize {
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 10px;
+    color: #b2b2b2;
+}
+
+.THIS .top_Margin {
+    margin-top: 12%;
+}
+
+.THIS .supHead
+{
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 20px;
+    vertical-align: super;
+    color: #716c6c;
+    font-weight: 600;
+}
+
+.THIS sup{top: 0.3em !important;}
+
+.THIS .floatRight{
+    float:right;
+}
+
+.THIS .hideLabel > label { 
+	display:none;
+}
+
+.THIS .toggleswitch{
+   	position: relative;
+	float: right;  
+    padding-right: 35px;
+}
+
+.THIS .lineHeight_5 {
+    line-height: 5;
+}
+
+/* for roboto regular*/
+@font-face {
+   font-family: 'RobotoRegular';
+   src: url(/resource/RobotoRegular); 
+}
+/* for roboto regular*/
+
+/* for roboto medium*/
+@font-face {
+   font-family: 'RobotoMedium';
+   src: url(/resource/RobotoMedium); 
+}
+/* for roboto medium end*/
+
+.THIS .slds-form-element__label{
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    color: #9F9F9F;
+    font-size: xx-small;
+}
+
+.THIS .slds-checkbox_faux .slds-checkbox_on{
+    background: #27c321 !important;
+    border-color: #4ba300 !important;
+    
+}
+.THIS .imgicon-style-align{
+    width: 20px;
+    height: 19px;
+    vertical-align: top;
+    margin-left: -6px;
+}
+.THIS .top_Margin {
+    margin-top: 2%;
+}
+.THIS .fontSize {
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 10px;
+    color: #b2b2b2;
+}
+@media (max-width: 1050px) {
+	.THIS .greenTextb,
+	.THIS .blackTextb,
+	.THIS .redTextb {
+		font-size: 25px!important;
+		vertical-align: baseline;
+	}
+    .THIS sup {
+        top: 0.3em!important;
+        font-size: 12px;
+    }
+}
+
+@media(max-width:1024px) {
+	.THIS .greenTextb,
+	.THIS .blackTextb,
+	.THIS .redTextb {
+		font-size: 25px!important;
+		vertical-align: baseline;
+	}
+    .THIS sup {
+        top: 0.3em!important;
+        font-size: 12px;
+    }
+}
+
+@media(max-width:1366px) {
+	.THIS .greenTextb,
+	.THIS .blackTextb,
+	.THIS .redTextb {
+		font-size: 25px!important;
+		vertical-align: baseline;
+	}
+    .THIS sup {
+        top: 0.3em!important;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,94 @@
+.THIS {
+}
+
+.THIS .sugOrderSubHead ul {
+    background: #f8f8f8;
+    border-radius: 5px;
+    padding: 0px 0px;
+    margin: 15px 0px;
+}
+.THIS .sugOrderSubHead ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px 10px;
+}
+.THIS .sugOrderSubHead ul li:nth-child(1) {
+    width: 22%;
+}
+.THIS .sugOrderSubHead ul li:nth-child(2) {
+    width: 22%;
+}
+.THIS .sugOrderSubHead ul li:nth-child(3) {
+    width: 22%;
+}
+.THIS .sugOrderSubHead ul li:nth-child(4) {
+    width: 15%;
+    background: #9dfd91;
+}
+
+/*.THIS .sugOrderSubHead ul li:nth-child(4) {
+    background: #9dfd91;
+}*/
+.THIS .amtTxt {
+    font-size: 15px;
+    font-weight: 600;
+}
+/*.THIS .sugOrderSubHead ul li:last-child {
+    background: #fdeb56;
+    margin-left: 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 18%;
+    padding: 10px 12px;
+    float: right;
+}*/
+.THIS.container{ 
+    border-radius: 9px;
+}
+
+.THIS .heading{
+    color: #636a6a;
+    padding: 2px 0;
+}
+
+.THIS .columnheight{  
+    background-color: #f3f3f3;
+    padding: 10px;    
+}
+
+.THIS .firstColumn{
+    width: 17%;
+}
+
+.THIS .secondColumn{
+    width: 18%;
+}
+
+.THIS .blankColumn{
+    width: 22%;
+}
+
+.THIS .lastColumn{  
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.THIS .secondLastColumn{  
+    background-color: #FFF7B5;
+    padding: 10px;
+}
+
+.THIS .firstColumn{  
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}

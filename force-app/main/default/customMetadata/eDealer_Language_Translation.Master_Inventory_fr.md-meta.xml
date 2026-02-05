@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Master Inventory</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;part_number&quot;,
+&quot;label&quot;: &quot;#DE PIÈCES&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;decription&quot;,
+&quot;label&quot;: &quot;DESCRIPTION&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;inventory_on_hand&quot;,
+&quot;label&quot;: &quot;INVENTAIRE&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;min_sfty_Stk&quot;,
+&quot;label&quot;: &quot;STOCK DE SÉCURITÉ MINIMAL&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;stkcls&quot;,
+&quot;label&quot;: &quot;STOCK&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;eta_price&quot;,
+&quot;label&quot;: &quot;ESTIMATIF DE FIXATION DES PRIX &quot;,
+&quot;order&quot; : 6,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;distchan&quot;,
+&quot;label&quot;: &quot;CANAL DE DISTRIBUTION&quot;,
+&quot;order&quot; : 7,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;velocity_code&quot;,
+&quot;label&quot;: &quot;VÉLOCITÉ&quot;,
+&quot;order&quot; : 8,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;special&quot;,
+&quot;label&quot;: &quot;SPÉCIAL&quot;,
+&quot;order&quot; : 9,
+&quot;datatype&quot; : &quot;Number&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

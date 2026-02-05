@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Part Category Type --></label>
+    <name>Part_Category_Type__c</name>
+    <picklistValues>
+        <masterLabel>DSP</masterLabel>
+        <translation><!-- DSP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DUAL</masterLabel>
+        <translation><!-- DUAL --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>EM</masterLabel>
+        <translation><!-- EM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ENG</masterLabel>
+        <translation><!-- ENG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDC</masterLabel>
+        <translation><!-- PDC --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

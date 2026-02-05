@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PB_Corresponding_Dealer__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Indicates the corresponding Peterbilt Dealer for this specific customer location</description>
+    <label>PB Corresponding Dealer</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <filterItems>
+            <field>Account.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Dealer Groups and Dealerships</value>
+        </filterItems>
+        <filterItems>
+            <field>Account.PACCARDivision__c</field>
+            <operation>equals</operation>
+            <value>P</value>
+        </filterItems>
+        <filterItems>
+            <field>Account.PACCAR_Division__c</field>
+            <operation>equals</operation>
+            <value>PPD</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>National &amp; Bus Accounts - PB</relationshipLabel>
+    <relationshipName>PBCorrespondingDealer</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,67 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"
+                extends="c:edealerTracking">
+    
+    <aura:attribute name="userDetail" type="Object" />     
+    <aura:attribute name="dealerCode" type="string"  />
+    <aura:attribute name="division" type="string" />
+    <!-- this is used for the saving the selected report -->    
+    <aura:attribute name="selectedReport" type="string" /> 
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="reportContainerBox">
+        <lightning:accordion aura:id="accordion" 
+                             allowMultipleSectionsOpen="true"
+                             activeSectionName="report">
+            <lightning:accordionSection name="report" label="{!$Label.c.Reports}" class="testdemo">
+                <aura:set attribute="actions">               
+                </aura:set>
+                <aura:set attribute="body">
+                    <div class="slds-grid slds-wrap reportcontainer">
+                        <div class="slds-col slds-size_1-of-2">
+                            <p class="button">
+                                <a onclick="{!c.handleReportSelection}" 
+                                   class="{!v.selectedReport == 'Open Case Overview'? 'selectedReport report' : 'report'}"
+                                   name='Open Case Overview'>{!$Label.c.Open_Case_Overview}</a>    
+                            </p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <p class="button">
+                                <a onclick="{!c.handleReportSelection}" 
+                                   class="{!v.selectedReport == 'Closed Case Overview'? 'selectedReport report' : 'report'}"
+                                   name='Closed Case Overview'>{!$Label.c.Closed_Case_Overview}</a>    
+                            </p>
+                        </div>
+                    </div>
+                </aura:set>
+            </lightning:accordionSection>        
+        </lightning:accordion>
+    </div>
+    
+    <aura:if isTrue="{!v.selectedReport == 'Open Case Overview' || v.selectedReport == 'Closed Case Overview'}">
+        <div class="reportContainerBox">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_12-of-12">
+                    <aura:if isTrue="{!v.selectedReport == 'Open Case Overview'}"> 
+                        <wave:waveDashboard developerName="New_Dealer_Open_Cases_Dashboard"  
+                                            showTitle="false" 
+                                            showSharing="true" 
+                                            showHeader="false" 
+                                            height="900" 
+                                            openLinksInNewWindow="false"
+                                            filter = "{!v.filters}"/>
+                    </aura:if>
+                    <aura:if isTrue="{!v.selectedReport == 'Closed Case Overview'}"> 
+                        <wave:waveDashboard developerName="New_Dealer_Cases_Dashboard"  
+                                            showTitle="false" 
+                                            showSharing="true" 
+                                            showHeader="false" 
+                                            height="900" 
+                                            openLinksInNewWindow="false"
+                                            filter = "{!v.filters}"/>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

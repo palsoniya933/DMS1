@@ -1,0 +1,12 @@
+:host {
+    --icon-color: red;
+   
+}
+
+.ms-help-icon {
+    color: var(--icon-color);
+ 
+}
+.zIndexClass{
+    z-index: -1;
+}

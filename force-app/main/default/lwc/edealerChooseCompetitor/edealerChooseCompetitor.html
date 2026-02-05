@@ -1,0 +1,137 @@
+<template>
+	<template lwc:if={isLoading}>
+		<div>
+			<lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+		</div>
+	</template>
+	<lightning-layout class="slds-wrap slds-is-relative">
+		<lightning-layout-item
+			class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+			<p class="part-left">{label.EDealer_PART} </p><br/>
+			<p class="part-left">{getPartNumber}</p>
+		</lightning-layout-item>
+		<lightning-layout-item
+			class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12">
+			<p>{label.EDealer_Part_Description}</p><br/>
+			<p>{getpartDescription}</p>
+		</lightning-layout-item><br/>
+		</lightning-layout>
+		<lightning-layout>
+			<!-- Competitor Data Table To Show -->
+			<lightning-layout-item
+				class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12">
+				<div class="invDatacontainertablecontainer leftpd scrollbar fixTableHead ">
+					<table class="invDatacontainertable slds-table_striped slds-scrollable_y">
+						<thead class="invDatacontainertableheading">
+							<tr class="slds-line-height_reset">
+								<th scope="col">
+
+								</th>
+								<template for:each={columnNameByAPIName} for:item="columnName" for:index="index">
+									<th key={columnName.label} scope="col">{columnName.label}</th>
+								</template>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="custom-row">
+								<th scope="col" class="sr-col ">
+
+								</th>
+								<th scope="col" class="padding-around">
+									<lightning-input type="text" variant="standard" name="name" label-hidden
+										onchange={handleCompetitorChange}>
+									</lightning-input>
+								</th>
+								<template if:true={showField}>
+								<th scope="col" class="padding-around">
+									<lightning-combobox name="affiliation" label-hidden value={affiliationValue}
+										options={affiliationOptions} onchange={handleAffiliationValueChange}>
+									</lightning-combobox>
+								</th>
+								</template>
+								<th scope="col" class="padding-around">
+									<lightning-combobox name="type" label-hidden value={typeValue} options={typeOptions}
+										onchange={handleTypeValueChange}>
+									</lightning-combobox>
+								</th>
+								<th scope="col" class="padding-around">
+									<lightning-input type="text" variant="standard" name="city" label-hidden
+										onchange={handleCityChange}></lightning-input>
+								</th>
+								<th scope="col" class="padding-around">
+									<lightning-combobox name="state" label-hidden value={selectedStateValue}
+										options={stateOptions} onchange={handleStateChange}></lightning-combobox>
+								</th>
+								<th scope="col" class="padding-around">
+									<lightning-input type="text" variant="standard" name="postalCode" label-hidden
+										onchange={handlePostalCodeChange}>
+									</lightning-input>
+								</th>
+								<th scope="col" class="padding-around">
+									<lightning-combobox name="confirmation" label-hidden
+										value={selectedConfirmationValue} options={confirmationOptions}
+										onchange={handleConfirmationChange}>
+									</lightning-combobox>
+								</th>
+							</tr>
+							<template lwc:if={dataFound}>
+								<tr>
+									<td colspan="8">
+										<div class="slds-text-align_center slds-text-color_destructive">{message}</div>
+									</td>
+								</tr>
+							</template>
+							<template lwc:else>
+								<template for:each={competitorsViewData} for:item="item" for:index="index">
+									<tr key={item.compId} class="row-design">
+										<td data-label="Select Row">
+											<input type="radio" name="radiobutton" value={index} class="radio-margin" onchange={handleSelectedRowChange} checked = {item.isSelected} >
+											
+								        </td>
+										<td data-label="Competitor Name" class="csrpartstabledata">
+											{item.CompetitorName}
+										</td>
+										<template if:true={showField}>
+										<td data-label="Affiliation" class="csrpartstabledata">
+											{item.Affiliation}
+										</td>
+										</template>
+										<td data-label="Type" class="csrpartstabledata">
+											{item.CompType}
+										</td>
+										<td data-label="City" class="csrpartstabledata">
+											{item.CompCity}
+										</td>
+										<td data-label="State" class="csrpartstabledata">
+											{item.CompState}
+										</td>
+										<td data-label="PostalCode" class="csrpartstabledata">
+											{item.CompPostal}
+										</td>
+										<td data-label="Confirmed" class="csrpartstabledata">
+											{item.Confirmation}
+										</td>
+									</tr>
+								</template>
+							</template>
+
+						</tbody>
+					</table>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+		<div class="slds-grid slds-wrap padding12px">
+			<div class="slds-size_1-of-1 slds-medium-size_9-of-12 slds-large-size_9-of-12">
+				<c-edealer-pagination-lwc total-records={competitors} pagination-list={competitors}
+					page-number={pageNumber} page-size={paginationPageSize} display-page-buttons="false"
+					ontotalrecordchange={handleTotalRecordChange} onhandlenext={handleNextButton}
+					onhandleprev={handlePrevButton} total-competitors={totalCompetitors}
+					onhandlepagenumberchange={handlePageNumberChange}
+					 onpagenumberchange={handleChangeInPageNumber}></c-edealer-pagination-lwc>
+			</div>
+		</div>
+		<div class="button-container">
+			<button class="slds-button black-btn slds-button_small btn-group" onclick={handleCloseCompetitorModal}>{label.EDealer_Cancel}</button>
+			<button class="slds-button slds-button_destructive btn-group" onclick={handleSelectCompetitor} >{label.EDealer_Select_Competitor}</button>
+		</div>
+</template>

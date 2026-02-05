@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Add Competitor Affiliation</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[{
+&quot;columnAPIName&quot;: &quot;0&quot;,
+&quot;fr_CA&quot;: &quot;Other&quot;,
+&quot;es_MX&quot;: &quot;Other&quot;,
+&quot;en_US&quot;: &quot;Other&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;columnAPIName&quot;: &quot;1&quot;,
+&quot;fr_CA&quot;: &quot;Kenworth&quot;,
+&quot;es_MX&quot;: &quot;Kenworth&quot;,
+&quot;en_US&quot;: &quot;Kenworth&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;columnAPIName&quot;: &quot;2&quot;,
+&quot;fr_CA&quot;: &quot;Peterbilt&quot;,
+&quot;es_MX&quot;: &quot;Peterbilt&quot;,
+&quot;en_US&quot;: &quot;Peterbilt&quot;,
+&quot;order&quot;: 3
+},
+{
+&quot;columnAPIName&quot;: &quot;3&quot;,
+&quot;fr_CA&quot;: &quot;Freightliner&quot;,
+&quot;es_MX&quot;: &quot;Freightliner&quot;,
+&quot;en_US&quot;: &quot;Freightliner&quot;,
+&quot;order&quot;: 4
+},
+{
+&quot;columnAPIName&quot;: &quot;4&quot;,
+&quot;fr_CA&quot;: &quot;Mack&quot;,
+&quot;es_MX&quot;: &quot;Mack&quot;,
+&quot;en_US&quot;: &quot;Mack&quot;,
+&quot;order&quot;: 5
+},
+{
+&quot;columnAPIName&quot;: &quot;5&quot;,
+&quot;fr_CA&quot;: &quot;Volvo&quot;,
+&quot;es_MX&quot;: &quot;Volvo&quot;,
+&quot;en_US&quot;: &quot;Volvo&quot;,
+&quot;order&quot;: 6
+},
+{
+&quot;columnAPIName&quot;: &quot;6&quot;,
+&quot;fr_CA&quot;: &quot;International&quot;,
+&quot;es_MX&quot;: &quot;International&quot;,
+&quot;en_US&quot;: &quot;International&quot;,
+&quot;order&quot;: 7
+},
+{
+&quot;columnAPIName&quot;: &quot;7&quot;,
+&quot;fr_CA&quot;: &quot;WesternStar&quot;,
+&quot;es_MX&quot;: &quot;WesternStar&quot;,
+&quot;en_US&quot;: &quot;WesternStar&quot;,
+&quot;order&quot;: 8
+},
+{
+&quot;columnAPIName&quot;: &quot;8&quot;,
+&quot;fr_CA&quot;: &quot;Navistar&quot;,
+&quot;es_MX&quot;: &quot;Navistar&quot;,
+&quot;en_US&quot;: &quot;Navistar&quot;,
+&quot;order&quot;: 9
+},
+{
+&quot;columnAPIName&quot;: &quot;9&quot;,
+&quot;fr_CA&quot;: &quot;Ford&quot;,
+&quot;es_MX&quot;: &quot;Ford&quot;,
+&quot;en_US&quot;: &quot;Ford&quot;,
+&quot;order&quot;: 10
+},
+{
+&quot;columnAPIName&quot;: &quot;10&quot;,
+&quot;fr_CA&quot;: &quot;GMC&quot;,
+&quot;es_MX&quot;: &quot;GMC&quot;,
+&quot;en_US&quot;: &quot;GMC&quot;,
+&quot;order&quot;: 11
+},
+{
+&quot;columnAPIName&quot;: &quot;11&quot;,
+&quot;fr_CA&quot;: &quot;AutoCar&quot;,
+&quot;es_MX&quot;: &quot;AutoCar&quot;,
+&quot;en_US&quot;: &quot;AutoCar&quot;,
+&quot;order&quot;: 12
+},
+{
+&quot;columnAPIName&quot;: &quot;12&quot;,
+&quot;fr_CA&quot;: &quot;Hino&quot;,
+&quot;es_MX&quot;: &quot;Hino&quot;,
+&quot;en_US&quot;: &quot;Hino&quot;,
+&quot;order&quot;: 13
+},
+{
+&quot;columnAPIName&quot;: &quot;13&quot;,
+&quot;fr_CA&quot;: &quot;CAT&quot;,
+&quot;es_MX&quot;: &quot;CAT&quot;,
+&quot;en_US&quot;: &quot;CAT&quot;,
+&quot;order&quot;: 14
+},
+{
+&quot;columnAPIName&quot;: &quot;14&quot;,
+&quot;fr_CA&quot;: &quot;Cummins&quot;,
+&quot;es_MX&quot;: &quot;Cummins&quot;,
+&quot;en_US&quot;: &quot;Cummins&quot;,
+&quot;order&quot;: 15
+},
+
+{
+&quot;columnAPIName&quot;: &quot;15&quot;,
+&quot;fr_CA&quot;: &quot;Detroit&quot;,
+&quot;es_MX&quot;: &quot;Detroit&quot;,
+&quot;en_US&quot;: &quot;Detroit&quot;,
+&quot;order&quot;: 16
+},
+{
+&quot;columnAPIName&quot;: &quot;16&quot;,
+&quot;fr_CA&quot;: &quot;Utility&quot;,
+&quot;es_MX&quot;: &quot;Utility&quot;,
+&quot;en_US&quot;: &quot;Utility&quot;,
+&quot;order&quot;: 17
+},
+{
+&quot;columnAPIName&quot;: &quot;17&quot;,
+&quot;fr_CA&quot;: &quot;Trailer Misc&quot;,
+&quot;es_MX&quot;: &quot;Trailer Misc&quot;,
+&quot;en_US&quot;: &quot;Trailer Misc&quot;,
+&quot;order&quot;: 18
+}
+]</value>
+    </values>
+</CustomMetadata>

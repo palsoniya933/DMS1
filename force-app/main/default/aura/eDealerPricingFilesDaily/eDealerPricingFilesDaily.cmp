@@ -1,0 +1,64 @@
+<!-- 
+ Name        : eDealerPricingFilesDaily
+ Description : This is an aura component that displays list of URL links from AWS S3 (Daily)
+ 	         - Expected file URL links to display : Price, Part Attribute (current year/month)
+ Version History:
+ 1.0  vivian.mirador@paccar.com  12/13/2023  Initial Version
+-->
+
+<aura:component
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global"
+                controller="eDealerPricingFilesDaily"
+                >
+    <!-- this is used for URLs listing response from S3 -->
+    <aura:attribute name="lstUrlsResponse" type="List" />
+    
+    <!-- this is used for the API callout parameters -->
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="year" type="String" />
+    <aura:attribute name="month" type="String" />
+    
+    <!-- this is used for saving the flag if the api apex call is called -->
+    <aura:attribute name="APICalled" type="boolean" default="false" />
+    
+    <!-- this will save the current Dealer/user division -->
+    <aura:attribute name="division" type="String"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object" />
+    <aura:attribute name="selectedmenu" type="string" />
+    <aura:attribute name="displayLoading" type="boolean" default="false" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.Init}" />
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.Init}" />
+    
+    <!-- markup container -->
+    <div class="container">
+        <div class="tabs">
+            <lightning:tabset selectedTabId="one">
+                <lightning:tab label='{!$Label.c.eDealer_Daily_Price_Files}' id="one">
+                    <aura:if isTrue="{!v.displayLoading}">
+                        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand" />
+                    </aura:if>
+                    
+                    <lightning:layout horizontalAlign="space" verticalAlign="center" multipleRows="true">
+                        <aura:iteration items="{!v.lstUrlsResponse}" var="item" indexVar="idx">
+                            <lightning:layoutItem padding="around-small" size="4">  
+                                {!item.fileName} for {!item.fileMonth}/{!item.fileYear} 
+                                <p>
+                                    <lightning:formattedUrl value="{!item.fileURL}" label="Click to Download "/>
+                                </p><br/>
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </lightning:layout>
+                    
+                </lightning:tab>
+            </lightning:tabset>
+        </div>
+    </div>
+    
+</aura:component>

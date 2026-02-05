@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Fleet_Goal__c</fullName>
+    <formula>Fleet_Goal__c * Days_Since_January_1__c * CASE(MONTH(today()-1), 1, 0.00209491,2,
+0.00210773,3,
+0.0024608384003287,4,
+0.0027777777777778,5,
+0.0027593818984548,6,
+0.0027624309392265,7,
+0.0027515723270440,8,
+0.0027434842249657,9,
+0.0027472527472528,10,
+0.0027412280701754,11,
+0.0027445109780439,
+0.0027397260273973
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Forecast Fleet Goal</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

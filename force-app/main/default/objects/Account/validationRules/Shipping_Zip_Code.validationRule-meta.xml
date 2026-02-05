@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shipping_Zip_Code</fullName>
+    <active>false</active>
+    <description>Validates that the account Shipping Zip/Postal Code.</description>
+    <errorConditionFormula>ISBLANK(ShippingPostalCode)</errorConditionFormula>
+    <errorDisplayField>ShippingPostalCode</errorDisplayField>
+    <errorMessage>Zip Code is a required field for all Accounts.</errorMessage>
+</ValidationRule>

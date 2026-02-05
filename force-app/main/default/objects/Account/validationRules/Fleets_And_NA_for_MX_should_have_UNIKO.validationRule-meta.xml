@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fleets_And_NA_for_MX_should_have_UNIKO</fullName>
+    <active>true</active>
+    <description>If you want to be able to add an Account to a Program PPM (Fleet Program or National Account) this one must have a UNIKO (Number to identify)</description>
+    <errorConditionFormula>AND( OR( ISPICKVAL(Program_PPM__c, &quot;Fleet Program&quot;),ISPICKVAL(Program_PPM__c, &quot;National Account&quot;)),  ISBLANK(UNIKO__c))</errorConditionFormula>
+    <errorDisplayField>Program_PPM__c</errorDisplayField>
+    <errorMessage>If you want to be able to add an Account to a Program PPM (Fleet Program or National Account) this one must have a UNIKO (Number to identify)</errorMessage>
+</ValidationRule>

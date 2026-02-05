@@ -1,0 +1,55 @@
+.THIS.container {
+    padding: 20px;
+}
+
+.THIS .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.THIS .filter {
+    display: flex;
+    align-items: center;
+}
+
+.THIS .refresh-button {
+    margin-left: 10px;
+    background-color: #0070d2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.THIS .data-table {
+    margin-bottom: 30px;
+}
+
+.THIS .data-table h3 {
+    background: #f4f4f4;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.THIS .data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.THIS .data-table th,
+
+.THIS .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.THIS .data-table th{
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.THIS .total-row {
+    background-color: #c5dbf0;
+}

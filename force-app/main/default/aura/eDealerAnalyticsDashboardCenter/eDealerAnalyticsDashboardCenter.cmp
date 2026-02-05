@@ -1,0 +1,109 @@
+<!-- 
+@description: Displays the available reports for logged in user and uses wave dashboard base component
+@Version Details
+1.0 mitali.khidkikar@paccar.com, June 28,2023 - Initial Version
+@
+@modified: 04/02/2024
+@by: Vivian D. Mirador
+@description: Added code for PASS group permission (#passGroup)
+-->
+
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="selectedReport" type="string" /> 
+    <aura:attribute name="userDetail" type="Object" />     
+    <aura:attribute name="selectedMenu" type="string"/>
+    
+    <aura:attribute name="havingSalesManagerPermission" type="Boolean" default='false'/>
+    <aura:attribute name="havingFieldServicePermission" type="Boolean" default='false'/>    
+    <aura:attribute name="havingExecutivePermission" type="Boolean" default='false'/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="reportContainerBox">
+        <lightning:accordion aura:id="accordion" 
+                             allowMultipleSectionsOpen="true"
+                             activeSectionName="report">
+            <lightning:accordionSection name="report" label="{!$Label.c.Reports}" class="testdemo">
+                <aura:set attribute="actions">               
+                </aura:set>
+                <aura:set attribute="body">
+                    <div class="slds-grid slds-wrap reportcontainer">
+                        <aura:if isTrue="{!v.selectedMenu == 'Analytics'}">
+                        </aura:if>
+                        <aura:if isTrue="{!v.selectedMenu == 'aftermarket'}">
+                            <aura:if isTrue="{!and(v.userDetail.division =='K', or(v.havingExecutivePermission))}">
+                                <div class="slds-col slds-size_4-of-12">
+                                    <p class="button">
+                                        <a onclick="{!c.handleReportSelection}" 
+                                           class="{!v.selectedReport == 'Dealer Incentive'? 'selectedReport report' : 'report'}"
+                                           name = 'Dealer Incentive'>{!$Label.c.KW}&nbsp;{!$Label.c.Dealer_Incentive_Metrics}</a>    
+                                    </p>
+                                </div>
+                            </aura:if>
+                            <aura:if  isTrue="{!and(v.userDetail.division =='P', or(v.havingExecutivePermission))}">
+                                <div class="slds-col slds-size_4-of-12">
+                                    <p class="button">
+                                        <a onclick="{!c.handleReportSelection}" 
+                                           class="{!v.selectedReport == 'Dealer Incentive'? 'selectedReport report' : 'report'}"
+                                           name = 'Dealer Incentive'>{!$Label.c.PB}&nbsp;{!$Label.c.Dealer_Incentive_Metrics}</a>    
+                                    </p>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!and(or(v.userDetail.division =='K', v.userDetail.division =='P'), or(v.havingExecutivePermission,v.havingSalesManagerPermission))}">
+                                <div class="slds-col slds-size_4-of-12">
+                                    <p class="button">
+                                        <a onclick="{!c.handleReportSelection}" 
+                                           class="{!v.selectedReport == 'After Market Purchase Tracker'? 'selectedReport report' : 'report'}"
+                                           name = 'After Market Purchase Tracker'>{!$Label.c.After_Market_Purchase_Tracker}</a>    
+                                    </p>
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!and(or(v.userDetail.division =='K', v.userDetail.division =='P'), or(v.havingExecutivePermission,v.havingSalesManagerPermission))}">
+                                <div class="slds-col slds-size_3-of-12">
+                                    <p class="button">
+                                        <a onclick="{!c.handleReportSelection}" 
+                                           class="{!v.selectedReport == 'Fleet Sales Dashboard'? 'selectedReport report' : 'report'}"
+                                           name = 'Fleet Sales Dashboard'>{!$Label.c.Fleet_Sales_Dashboard}</a>    
+                                    </p>
+                                </div>
+                            </aura:if>
+                        </aura:if>
+                        <aura:if isTrue="{!v.selectedMenu == 'fieldservice'}">
+                            <aura:if isTrue="{!and(v.userDetail.division =='P', v.havingFieldServicePermission)}">
+                                <div class="slds-col slds-size_12-of-12">
+                                    <p class="button">
+                                        <a onclick="{!c.handleReportSelection}" 
+                                           class="{!v.selectedReport == 'PB Dealer TCS Service Metrics'? 'selectedReport report' : 'report'}"
+                                           name = 'PB Dealer TCS Service Metrics'>{!$Label.c.Peterbilt_Dealer_Performance_Dashboard}</a>
+                                    </p>
+                                </div>
+                            </aura:if>
+                        </aura:if>
+                    </div>
+                </aura:set>
+            </lightning:accordionSection>        
+        </lightning:accordion>
+    </div>
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_12-of-12">
+            <aura:if isTrue="{!v.selectedReport == 'Dealer Incentive'}">
+                <wave:waveDashboard developerName="{!$Label.c.Dealer_Incentive_Metrics_API}" showTitle="false" 
+                                    showSharing="true" showHeader="false" height="900" openLinksInNewWindow="false" />
+            </aura:if>
+            <aura:if isTrue="{!v.selectedReport == 'After Market Purchase Tracker'}">
+                <wave:waveDashboard developerName="{!$Label.c.After_Market_Purchase_Tracker_metrics_API}" showTitle="false" 
+                                    showSharing="true" showHeader="false" height="900" openLinksInNewWindow="false" />
+            </aura:if>
+            <aura:if isTrue="{!v.selectedReport == 'Fleet Sales Dashboard'}">
+                <wave:waveDashboard developerName="{!$Label.c.Gateway_Fleet_Sales_Dashboard_Metrics_API}" showTitle="false" 
+                                    showSharing="true" showHeader="false" height="900" openLinksInNewWindow="false" />
+            </aura:if>
+            <aura:if isTrue="{!v.selectedReport == 'PB Dealer TCS Service Metrics'}">
+                <wave:waveDashboard developerName="{!$Label.c.Peterbilt_Dealer_Metrics_API}" showTitle="false" 
+                                    showSharing="true" showHeader="false" height="900" openLinksInNewWindow="false" />
+            </aura:if>
+        </div> 
+    </div>
+</aura:component>

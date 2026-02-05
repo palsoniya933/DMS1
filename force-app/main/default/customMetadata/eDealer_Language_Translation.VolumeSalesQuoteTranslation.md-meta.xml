@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Volume Sales Quote Translation</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+       &quot;cancelQuoteTitle&quot;: {
+		&quot;en_US&quot;: &quot;Cancel Quote&quot;,
+		&quot;fr_CA&quot;: &quot;Annuler le devis&quot;,
+		&quot;es_MX&quot;: &quot;Cancelar cotización&quot;
+	}
+
+	,
+	&quot;submitQuoteTitle&quot;: {
+		&quot;en_US&quot;: &quot;Submit Quote&quot;,
+		&quot;fr_CA&quot;: &quot;Soumettre un devis&quot;,
+		&quot;es_MX&quot;: &quot;Enviar cotización&quot;
+	}
+
+	,
+	&quot;confirmLabel&quot;: {
+		&quot;en_US&quot;: &quot;Confirm&quot;,
+		&quot;fr_CA&quot;: &quot;Confirmer&quot;,
+		&quot;es_MX&quot;: &quot;Confirmar&quot;
+	}
+
+	,
+	&quot;cancelLabel&quot;: {
+		&quot;en_US&quot;: &quot;Cancel Quote&quot;,
+		&quot;fr_CA&quot;: &quot;Annuler&quot;,
+		&quot;es_MX&quot;: &quot;Cancelar&quot;
+	}
+
+	,
+	&quot;cancelConfirmMessage&quot;: {
+		&quot;en_US&quot;: &quot;Are you sure you want to cancel this VS request?&quot;,
+		&quot;fr_CA&quot;: &quot;Voulez-vous vraiment annuler cette demande VS ?&quot;,
+		&quot;es_MX&quot;: &quot;¿Está segura de que desea cancelar esta solicitud de VS?&quot;
+	}
+
+	,
+	&quot;submitConfirmMessage&quot;: {
+		&quot;en_US&quot;: &quot;Are you sure you want to submit this VS request?&quot;,
+		&quot;fr_CA&quot;: &quot;Êtes-vous sûre de vouloir soumettre cette demande VS?&quot;,
+		&quot;es_MX&quot;: &quot;¿Está seguro de que desea enviar esta solicitud VS?&quot;
+	}
+
+	,
+	&quot;cancelSuccessMessage&quot;: {
+		&quot;en_US&quot;: &quot;Quote Request is Cancelled&quot;,
+		&quot;fr_CA&quot;: &quot;La demande de devis est annulée&quot;,
+		&quot;es_MX&quot;: &quot;La solicitud de cotización está cancelada&quot;
+	}
+
+	,
+	&quot;submitSuccessMessage&quot;: {
+		&quot;en_US&quot;: &quot;Quote Request is Submitted for Review&quot;,
+		&quot;fr_CA&quot;: &quot;La demande de devis est soumise pour examen&quot;,
+		&quot;es_MX&quot;: &quot;La solicitud de cotización se envía para su revisión&quot;
+	}
+
+	,
+	&quot;cancelStatusErrorMessage&quot;: {
+		&quot;en_US&quot;: &quot;The quote wasn&apos;t canceled because it is not in Draft status&quot;,
+		&quot;fr_CA&quot;: &quot;Le devis n’a pas été annulé car il n’est pas à l’état Ébauche&quot;,
+		&quot;es_MX&quot;: &quot;La cotización no se canceló porque no está en estado de Borrador&quot;
+	}
+
+	,
+	&quot;submitStatusErrorMessage&quot;: {
+		&quot;en_US&quot;: &quot;The quote wasn&apos;t submitted because it is not in DRAFT status&quot;,
+		&quot;fr_CA&quot;: &quot;Le devis n’a pas été soumis car il n’est pas à l’état Ébauche&quot;,
+		&quot;es_MX&quot;: &quot;La cotización no se envió porque no está en estado de Borrador&quot;
+	}
+
+	,
+	&quot;genericErrorMessage&quot;: {
+		&quot;en_US&quot;: &quot;An unexpected error happened&quot;,
+		&quot;fr_CA&quot;: &quot;Une erreur inattendue s’est produite&quot;,
+		&quot;es_MX&quot;: &quot;An unexpected error happened&quot;
+	}
+
+	,
+	&quot;errorLabel&quot;: {
+		&quot;en_US&quot;: &quot;Error&quot;,
+		&quot;fr_CA&quot;: &quot;Erreur&quot;,
+		&quot;es_MX&quot;: &quot;Error&quot;
+	}
+
+	,
+	&quot;successLabel&quot;: {
+		&quot;en_US&quot;: &quot;Success&quot;,
+		&quot;fr_CA&quot;: &quot;Succès&quot;,
+		&quot;es_MX&quot;: &quot;Éxito&quot;
+	}
+
+	,
+
+
+
+	&quot;AccSearchTableHeader&quot;: [{
+			&quot;en_US&quot;: &quot;Dealer Group&quot;,
+			&quot;fr_CA&quot;: &quot;Groupe de concessionnaires&quot;,
+			&quot;es_MX&quot;: &quot;Grupo de concesionarios&quot;,
+			&quot;fieldName&quot;: &quot;Dealer_Group__c&quot;,
+			&quot;type&quot;: &quot;text&quot;,
+			&quot;sortable&quot;: false
+		}
+
+		,
+		{
+			&quot;en_US&quot;: &quot;Dealer Code&quot;,
+			&quot;fr_CA&quot;: &quot;Code du concessionnaire&quot;,
+			&quot;es_MX&quot;: &quot;Código del distribuidor&quot;,
+			&quot;fieldName&quot;: &quot;Dealer_Code__c&quot;,
+			&quot;type&quot;: &quot;text&quot;,
+			&quot;sortable&quot;: false
+		}
+
+		,
+
+		{
+			&quot;en_US&quot;: &quot;Name&quot;,
+			&quot;fr_CA&quot;: &quot;Nom&quot;,
+			&quot;es_MX&quot;: &quot;Nombre&quot;,
+			&quot;fieldName&quot;: &quot;Name&quot;,
+			&quot;type&quot;: &quot;text&quot;,
+			&quot;sortable&quot;: false
+		}
+
+	],
+
+	&quot;ChannelOptions&quot;: [{
+			&quot;en_US&quot;: &quot;PDC&quot;,
+			&quot;fr_CA&quot;: &quot;PDC&quot;,
+			&quot;es_MX&quot;: &quot;PDC&quot;,
+			&quot;value&quot;: &quot;PDC&quot;,
+			&quot;order&quot;: 1
+		}
+
+		,
+		{
+			&quot;en_US&quot;: &quot;DSP&quot;,
+			&quot;fr_CA&quot;: &quot;DSP&quot;,
+			&quot;es_MX&quot;: &quot;DSP&quot;,
+			&quot;value&quot;: &quot;DSP&quot;,
+			&quot;order&quot;: 2
+		}
+
+	],
+
+	&quot;QuoteChannelOptions&quot;: [{
+			&quot;en_US&quot;: &quot;PDC&quot;,
+			&quot;fr_CA&quot;: &quot;PDC&quot;,
+			&quot;es_MX&quot;: &quot;PDC&quot;,
+			&quot;value&quot;: &quot;PDC&quot;,
+			&quot;order&quot;: 1
+		}
+
+		,
+		{
+			&quot;en_US&quot;: &quot;DSP&quot;,
+			&quot;fr_CA&quot;: &quot;DSP&quot;,
+			&quot;es_MX&quot;: &quot;DSP&quot;,
+			&quot;value&quot;: &quot;DSP&quot;,
+			&quot;order&quot;: 2
+		}
+
+		,
+		{
+			&quot;en_US&quot;: &quot;BOTH&quot;,
+			&quot;fr_CA&quot;: &quot;LES DEUX&quot;,
+			&quot;es_MX&quot;: &quot;AMBOS&quot;,
+			&quot;value&quot;: &quot;BOTH&quot;,
+			&quot;order&quot;: 3
+		}
+
+	],
+
+	&quot;GroupLevelOptions&quot;: [{
+			&quot;en_US&quot;: &quot;Group&quot;,
+			&quot;fr_CA&quot;: &quot;Groupe&quot;,
+			&quot;es_MX&quot;: &quot;Grupo&quot;,
+			&quot;value&quot;: &quot;Group&quot;,
+			&quot;order&quot;: 1
+		}
+
+		,
+		{
+			&quot;en_US&quot;: &quot;Store&quot;,
+			&quot;fr_CA&quot;: &quot;Magasin&quot;,
+			&quot;es_MX&quot;: &quot;Tienda&quot;,
+			&quot;value&quot;: &quot;Store&quot;,
+			&quot;order&quot;: 2
+		}
+
+	],
+	&quot;successMessage&quot;: {
+		&quot;en_US&quot;: &quot;The Quote and all lines were created&quot;,
+		&quot;fr_CA&quot;: &quot;Le devis et toutes les lignes ont été créés&quot;,
+		&quot;es_MX&quot;: &quot;Se crearon la cotización y todas las líneas&quot;
+	}
+
+	,
+	&quot;partialSuccessMessage&quot;: {
+		&quot;en_US&quot;: &quot;One or more lines were not created, please review the related list&quot;,
+		&quot;fr_CA&quot;: &quot;Une ou plusieurs lignes n’ont pas été créées, veuillez consulter la liste associée&quot;,
+		&quot;es_MX&quot;: &quot;No se crearon una o más líneas, revise la lista relacionada&quot;
+	},
+   &quot;duplicateLinesErrorMessage&quot;: {
+   &quot;en_US&quot;: &quot;No duplicate part number, channel allowed&quot;,
+   &quot;fr_CA&quot;: &quot;Aucun numéro de pièce ou canal en double n&apos;est autorisé&quot;,
+   &quot;es_MX&quot;: &quot;No se permiten números de parte ni canales duplicados&quot;
+   },
+&quot;error_Message&quot;:
+{
+&quot;en_US&quot;: &quot;The Case must have at least one related drop.&quot;,
+&quot;fr_CA&quot;: &quot;Le dossier doit avoir au moins une adresse de livraison associée.&quot;,
+&quot;es_MX&quot;: &quot;El caso debe tener al menos una dirección de envío relacionada.&quot;
+}
+,
+&quot;submission_failed&quot;:
+{
+&quot;en_US&quot;: &quot;Submission failed!&quot;,
+&quot;fr_CA&quot;: &quot;Soumission échouée !&quot;,
+&quot;es_MX&quot;: &quot;¡Envío fallido!&quot;
+}
+
+}</value>
+    </values>
+</CustomMetadata>

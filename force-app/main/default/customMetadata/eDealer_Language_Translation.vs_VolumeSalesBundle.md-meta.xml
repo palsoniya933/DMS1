@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>vs_VolumeSalesBundle</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+  &quot;vs_VolumeSalesBundle&quot;: {
+    &quot;VolumeSalesBundle&quot;: {
+      &quot;en_US&quot;: &quot;Volume Sales Bundle&quot;,
+      &quot;fr_CA&quot;: &quot;Offre groupée de ventes en volume&quot;
+    },
+    &quot;DealerCode&quot;: {
+      &quot;en_US&quot;: &quot;Dealer Code&quot;,
+      &quot;fr_CA&quot;: &quot;Code concessionnaire&quot;
+    },
+    &quot;ProductCategory&quot;: {
+      &quot;en_US&quot;: &quot;Product Category&quot;,
+      &quot;fr_CA&quot;: &quot;Catégorie de produit&quot;
+    },
+    &quot;Supplier&quot;: {
+      &quot;en_US&quot;: &quot;Supplier&quot;,
+      &quot;fr_CA&quot;: &quot;Fournisseur&quot;
+    },
+    &quot;MaxDemandDays&quot;: {
+      &quot;en_US&quot;: &quot;Max Demand Days&quot;,
+      &quot;fr_CA&quot;: &quot;Délai maximum de commande (jours)&quot;
+    },
+    &quot;OrderType&quot;: {
+      &quot;en_US&quot;: &quot;Order Type&quot;,
+      &quot;fr_CA&quot;: &quot;Type de commande&quot;
+    },
+    &quot;DiscountPercent&quot;: {
+      &quot;en_US&quot;: &quot;Discount %&quot;,
+      &quot;fr_CA&quot;: &quot;Remise (%)&quot;
+    },
+    &quot;Discount&quot;: {
+      &quot;en_US&quot;: &quot;Discount&quot;,
+      &quot;fr_CA&quot;: &quot;Remise&quot;
+    },
+    &quot;Go&quot;: {
+      &quot;en_US&quot;: &quot;Go&quot;,
+      &quot;fr_CA&quot;: &quot;Valider&quot;
+    },
+    &quot;None&quot;: {
+      &quot;en_US&quot;: &quot;--None--&quot;,
+      &quot;fr_CA&quot;: &quot;--Aucun--&quot;
+    },
+    &quot;PlaceVolumeOrder&quot;: {
+      &quot;en_US&quot;: &quot;Place Volume Order&quot;,
+      &quot;fr_CA&quot;: &quot;Passez votre commande pour les Vente en Volume&quot;
+    }
+  }
+}</value>
+    </values>
+</CustomMetadata>

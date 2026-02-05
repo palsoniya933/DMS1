@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_zone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Data is pulled from a lookup to Geopointe and is automatically updated each day to assign the correct time zone based on the account&apos;s shipping address. Currently only works for North America but can be expanded with additional licenses.</description>
+    <inlineHelpText>Time zone assigned by Geopointe</inlineHelpText>
+    <label>Time zone</label>
+    <referenceTo>geopointe__GP_Assignment_Area__c</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

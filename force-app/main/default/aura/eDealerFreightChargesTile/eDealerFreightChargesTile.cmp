@@ -1,0 +1,169 @@
+<aura:component  controller="EDealerFreightChargesController"
+                extends="c:edealerTracking"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List"/>
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <aura:attribute name="selectedMenu" type="String" default="dashboardDemo"/>
+    
+    <!-- Selected Order dropdown -->
+    <aura:attribute name="selectedOrder" type="string" default="All"/>
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Daily"/>
+    
+    <!-- saving freight Charges -->
+    <aura:attribute name="freightCharges" type="Integer" default="0"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>    
+    <aura:attribute name="listDealerLoc" type="LIST"/>
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- Selected Freight Charges type dropdown -->
+    <aura:attribute name="selectedFreightChargesType" type="string" default="all"/>
+    
+    <!-- this will save the Freight Charges api details -->
+    <aura:attribute name="freightChargesData" type="Object" />
+    
+    <!-- this will save the Freight Charges api details cache -->
+    <aura:attribute name="freightChargesDataMapCache" type="Map" />
+    
+    
+    <aura:attribute name="togglehover" type="boolean" default="false"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler name="change" value="{!v.listDealerLoc}" action="{!c.listdealerLocChange}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">
+                                <aura:if isTrue="{!v.listDealerLoc.length==1}">
+                                    <a href="" 
+                                       onclick="{!c.openOrdersTile}">{!v.title}
+                                    </a>
+                                    <aura:set attribute="else">
+                                        {!v.title}
+                                    </aura:set>
+                                </aura:if>
+                                
+                                &nbsp;&nbsp;
+                                <aura:if isTrue="{!v.listDealerLoc.length==1}">
+                                    <span onclick="{!c.handleOpenInNewWindow}">                                
+                                        <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>                                
+                                    </span>  
+                                </aura:if>
+                            </span>
+                        </div>
+                        
+                        
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td class="tileInfo_Div">
+                                        <span >
+                                            <lightning:select value="{!v.selectedFreightChargesType}" onchange="{!c.handleSubTypeUpdate}" class="noGreenTextb picklistWidth">
+                                                <option value="all">{!$Label.c.Edealer_All_Freight_Charges}</option>
+                                                <option value="truck">{!$Label.c.Edealer_Truck_Down_Freight}</option>
+                                                <option value="emergency">{!$Label.c.Edealer_Emergency_Freight}</option>
+                                                <option value="DSP">{!$Label.c.Edealer_DSP_Freight_charges}</option>
+                                                <option value="monthly">{!$Label.c.Edealer_Monthly_Returns}</option>
+                                                <option value="other">{!$Label.c.Edealer_Other}</option>
+                                            </lightning:select> 
+                                            
+                                            <span class="supHead">
+                                                <sup class="subFix">$</sup>
+                                                <span class="{!v.listDealerLoc.length==1?'redTextb':'redTextbNP'}" style="top: 3%;">
+                                                    <aura:if isTrue="{!not(empty(v.freightCharges))}">
+                                                        <lightning:formattedNumber value="{!v.freightCharges}"/>
+                                                        <aura:set attribute="else">
+                                                            0
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </span>
+                                            </span>       
+                                        </span>                     
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="bottom_Div">
+                                            <div class="slds-grid bottom_Div-grid">
+                                                <div class="slds-col slds-size_4-of-12 displayFlex">
+                                                    <span style="margin-top:40px;">
+                                                        <a onmouseover="{!c.handleMouseHover}" onmouseout="{!c.handleMouseOut}" tabindex="-1">
+                                                            <!-- <lightning:icon class="yellowInfo" iconName="utility:info" size="x-small" />-->
+                                                        </a>
+                                                        <aura:if isTrue="{!v.togglehover==true}">
+                                                            <div class="slds-popover"
+                                                                 role="tooltip" id="help" style="display: inline-table;position: absolute;left: 10px;  bottom: 20%; width: 20rem; padding: inherit;border-radius: 5px;border: solid;border-color: #FFB918;">
+                                                                <div align="center">
+                                                                    <Strong>Please note, these freight charges exclude Returns</Strong>
+                                                                </div>
+                                                            </div>
+                                                        </aura:if>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td> 
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="{!$Label.c.Edealer_Sum_of_all_Freight_charges}"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

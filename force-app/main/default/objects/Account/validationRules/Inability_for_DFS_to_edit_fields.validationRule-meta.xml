@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inability_for_DFS_to_edit_fields</fullName>
+    <active>true</active>
+    <description>Inability for DFS to edit fields under Additional Fleet Detail, Fleet Profile and Internal Contact Details for account records other than TCS Service accounts</description>
+    <errorConditionFormula>AND(
+   $Profile.Name = &quot;Service User&quot;,
+    RecordType.Name  &lt;&gt;  &quot;TCS Service Accounts&quot;,
+    $UserRole.Name = &quot;Dedicated Fleets&quot;,
+    OR(
+     ISCHANGED(Class_8_Total__c),
+     ISCHANGED(KW_Class_8_Trucks__c),
+     ISCHANGED(PB_Class_8__c),
+     ISCHANGED(Class_8_Other__c),
+     ISCHANGED(Class_6_7_Total__c),
+     ISCHANGED(KW_Class_6_7_Trucks__c),
+     ISCHANGED(PB_Class_6_7_Trucks__c),
+     ISCHANGED(Class_6_7_Other__c),
+     ISCHANGED(Truck_Count__c),
+     ISCHANGED(Truck_Brand_Pref__c),
+     ISCHANGED(KW_Truck_Rank__c),
+     ISCHANGED(PB_Truck_Rank__c),
+     ISCHANGED(Engine_Brand_Preference__c),
+     ISCHANGED(Number_of_Pref_Brand_Engine__c),
+     ISCHANGED(PACCAR_Engine_Rank__c),
+     ISCHANGED(Number_of_PACCAR_Engines__c),
+     ISCHANGED(Number_of_Locations__c),
+     ISCHANGED(Suppliers__c),
+     ISCHANGED(Monthly_Support__c),
+     ISCHANGED(System_Comments__c),
+     ISCHANGED(AnnualRevenue),
+     ISCHANGED(Regional_Service_Manager__c),
+     ISCHANGED(RESM__c),
+     ISCHANGED(District_Service_Fleet_Service_Manager__c),
+     ISCHANGED(Service_Manager_Contact__c),
+     ISCHANGED(Dealer_Principal_Contact__c),
+     ISCHANGED(Tech_Manager__c),
+     ISCHANGED(MX_Contact__c)
+)
+   )</errorConditionFormula>
+    <errorMessage>You do not have permission to edit this field</errorMessage>
+</ValidationRule>

@@ -1,0 +1,34 @@
+<template>
+	<div class="slds-m-around_small">
+		<lightning-input label="" accept="application/pdf,image/jpg, image/jpeg,image/png" name="file uploader"
+			onchange={handleFilesChange} type="file" disabled={disableImport}>
+		</lightning-input>
+	</div>
+	<div class="slds-m-left_small slds-m-right_small">
+		<template lwc:if={fileDetails}>
+			<template for:each={filesData} for:item="file" for:index="index">
+				<template if:false={file.isDeleted}>
+					<p key={file.fileId}>
+						{file.fileName} &nbsp; &nbsp; {file.formatedfileSize}&nbsp; &nbsp; 
+						<template lwc:if={file.fileUrl}>
+							<a href={file.fileUrl} target="_blank">
+                                <lightning-icon icon-name="utility:preview" size="xx-small" 
+                                    class="slds-m-left_xx-small greenicon" variant="success" data-index={index}>
+                                </lightning-icon>
+                            </a>
+							</template>
+						<template lwc:if={disableImport}>
+						</template>
+						<template lwc:else>
+							
+							<lightning-icon icon-name="utility:close" variant="error" onclick={handleRemoveFile}
+								data-index={index} alternative-text="close" size="xx-small"
+								class="slds-m-left_xx-small redicon" title="Delete">
+							</lightning-icon>
+						</template>
+					</p>
+				</template>
+			</template>
+		</template>
+	</div>
+</template>

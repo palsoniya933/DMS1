@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DFS_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>DFS Contact for the Fleet</description>
+    <label>DFS Contact</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Fleets</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

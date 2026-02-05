@@ -1,0 +1,36 @@
+.download-btn{ 
+    background: #696868!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #696868;
+    margin-right: 6px;
+    margin-top: 1px;
+}
+.download-btngrey{ 
+    background: grey!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #ada7a7;
+    margin-right: 6px;
+    margin-top: 1px;
+}
+
+
+.csvbutton{
+    background: grey;
+    color: #fff;
+    margin-right: 8px;
+    border: none; 
+    padding: 0px 10px 1px 10px!important;
+    border-radius: 5px!important;
+}
+.imgicon-style-align{
+    width: 31px;
+    height: 20px;
+    margin-right: 4px;
+    margin-left: -4px;
+    margin-top: -2px;
+   
+}

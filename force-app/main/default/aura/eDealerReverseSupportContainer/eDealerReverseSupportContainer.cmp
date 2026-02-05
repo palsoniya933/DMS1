@@ -1,0 +1,69 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"
+                extends="c:edealerTracking">
+    
+    <aura:attribute name="userDetail" type="Object" />     
+    <aura:attribute name="dealerCode" type="string"  />
+    <aura:attribute name="division" type="string" />
+    <!-- this is used for the saving the selected report -->    
+    <aura:attribute name="selectedReport" type="string" /> 
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="reportContainerBox">
+        <lightning:accordion aura:id="accordion" 
+                             allowMultipleSectionsOpen="true"
+                             activeSectionName="report">
+            <lightning:accordionSection name="report" label="{!$Label.c.Reports}" class="testdemo">
+                <aura:set attribute="actions">               
+                </aura:set>
+                <aura:set attribute="body">
+                    <div class="slds-grid slds-wrap reportcontainer">
+                        <div class="slds-col slds-size_1-of-2">
+                            <p class="button">
+                                <a onclick="{!c.handleReportSelection}" 
+                                   class="{!v.selectedReport == 'Claims and Returns'? 'selectedReport report' : 'report'}"
+                                   name='Claims and Returns'>{!$Label.c.Claims_and_Returns}</a>    
+                            </p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <p class="button">
+                                <a onclick="{!c.handleReportSelection}" 
+                                   class="{!v.selectedReport == 'Warranty'? 'selectedReport report' : 'report'}"
+                                   name='Warranty'>{!$Label.c.Warranty}</a>    
+                            </p>
+                        </div>
+                    </div>
+                </aura:set>
+            </lightning:accordionSection>        
+        </lightning:accordion>
+    </div>
+    
+    <aura:if isTrue="{!v.selectedReport == 'Claims and Returns' || v.selectedReport == 'Warranty'}">
+        <div class="reportContainerBox">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_12-of-12">
+                    <aura:if isTrue="{!v.selectedReport == 'Claims and Returns'}"> 
+                        <wave:waveDashboard developerName="Credits_and_Returns_Dashboard"  
+                                            showTitle="false" 
+                                            showSharing="true" 
+                                            showHeader="false" 
+                                            height="900" 
+                                            openLinksInNewWindow="false"
+                                            filter = "{!v.filters}"/>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.selectedReport == 'Warranty'}"> 
+                        
+                        <wave:waveDashboard developerName="Warranty_Dashboard_10_09_24"  
+                                            showTitle="false" 
+                                            showSharing="true" 
+                                            showHeader="false" 
+                                            height="900" 
+                                            openLinksInNewWindow="false"
+                                            filter = "{!v.filters}"/>
+                    </aura:if>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

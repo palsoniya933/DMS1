@@ -1,0 +1,405 @@
+.THIS .align-tr{   width:100%!important; display:block!important;
+}
+.THIS .cartIconimg svg {
+    fill: #0194c5;
+    width: 16px;
+    height: 16px;
+}
+.THIS .imgicon-style-align{
+    width: 20px;
+    height: 19px;
+    vertical-align: top;
+    margin-left: -6px;
+}
+.THIS .cartImg{width: 16px;
+    height: 16px;}
+.THIS .invDatacontainer{
+    padding-top:1%
+}
+
+.THIS .slds-nubbin_bottom-left:before, 
+.THIS .slds-nubbin_bottom-left:after,
+.THIS .slds-nubbin--bottom-left:before, 
+.THIS .slds-nubbin--bottom-left:after, 
+.THIS .slds-nubbin_bottom-left-corner:before, 
+.THIS .slds-nubbin_bottom-left-corner:after
+{
+    background: #FFFABE;
+}
+
+
+.THIS .invDatacontainertablecontainer{
+    padding-top:0px;
+    margin: 5px 0px;
+}
+
+.THIS .invDatacontainertable{
+    width:100%;
+}
+
+.THIS .invDatacontainertableheading{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px !important;
+}
+.THIS table th.invDatacontainertableheading,
+.THIS table td.invDatacontainertableheading
+{
+        border-right: 1px solid #b0adab;
+}
+.THIS .border-sepration{border-right: 1px solid #b0adab;}
+.THIS table th.invDatacontainertableheading:last-child,
+.THIS table td.invDatacontainertableheading:last-child
+{
+        border-right: 0px solid #b0adab;
+}
+
+.THIS .invDatacontainertableheading:first-child {
+    border-top-left-radius: 0px;
+}
+.THIS .ordertablefirstColumn:first-child{ border-top-left-radius:10px;}
+.THIS .invDatacontainertableheading:last-child {
+    border-right: 0 solid #808080;
+    border-top-right-radius: 0px;
+}
+.THIS .ordertablelastColumn:last-child {
+     border-top-right-radius: 10px;
+    border-right: 0px;
+}
+/*.THIS .invDatacontainertabledata a{width:109px!important;display:block!important;float: left!important;}*/
+.THIS .invDatacontainertabledata{
+    padding: 0 5px;
+    height: 42px;
+}
+
+.THIS .invDatacontainertabledata a{color:#000!important;}
+.THIS .invDatacontainertabledata a:hover{color:#ee1420!important;}
+.THIS .bottompagi button.slds-button.slds-button_brand {
+    height: 20px;
+    padding: 11px 10px;
+}
+.THIS table tr.selectedRowBackground td {
+    background: #fffabe;
+}
+.THIS table tr.selectedRowBackground td {
+    background-color: rgb(255, 250, 191);
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:first-child {
+  
+    width:30px; 
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /*border-left: 4px solid #ffa700;*/
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:last-child {
+     
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.THIS .ordertablelastColumn{  
+    background-color:#808080;
+    color:white;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding:10px 5px;
+    width:100px;
+}
+
+.THIS .ordertablefirstColumn{  
+    background-color:#808080;
+    color:white;
+    padding: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width:2%;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .oddrow{
+    background-color: whitesmoke;
+}
+
+.THIS .selectedRowBackground{
+    background-color: rgb(255, 250, 191);
+}
+
+
+.THIS .greyColor{
+    background-color:#808080;
+    color:white;
+    border-color:#808080;
+}
+
+.THIS .iconColorYellow svg {
+    fill : yellow;
+}
+
+.THIS .emergencyorderMessage .slds-icon-action-approval {
+    background-color: green;
+}
+
+.THIS .action-superssion_orange {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: orange;
+    color: white;
+    vertical-align: middle;
+    font-size: large;
+}
+
+.THIS .greenClrAction {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #00DE40;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .redClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #FF7A87;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .svgIcon svg {
+    fill: #0194c5;
+}
+.THIS div .tooltip {
+    display:inline-block;
+}
+.THIS tr:nth-child(odd) {
+    background: #fff;
+}
+.THIS tr:nth-child(even) {
+    background: #fafafa;
+}
+.THIS .tooltip span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .tooltip:hover span {
+    display: none;
+    font-weight:normal;
+    text-align:left;
+    padding: 3px 5px;
+    margin-left: 8px;
+    width: 250px;
+}
+
+.THIS .slds-popover_tooltip{background:#fff!important;top: -55px!important;
+    box-shadow: 0px 1px 2px 1px #ccc!important;
+    border-radius: 6px!important;}
+
+.THIS .redBgColour {background: #FF7A87 !important;}
+.THIS .slds-popover__body{color:#000!important;width: 9rem;}
+.THIS .slds-nubbin_bottom-right:after{display:none!important;}
+.THIS .slds-nubbin_bottom-right::before{display:none!important;}
+.THIS .tooltip:hover span {
+    display: inline;
+    position: relative;
+    color: #000000;
+    z-index:10000;
+}
+
+.THIS .textalignbottom {
+    vertical-align: text-bottom;
+}
+
+.THIS .selectedOrderText {
+    width:155px;
+    font-size: 14px;
+}
+
+.THIS .placeOrderText {
+    width:125px;
+}
+
+.THIS .emOrderText {
+    width:175px;
+}
+
+.THIS .soOrderText {
+    width:126px;
+}
+
+.THIS .leadTimeText {
+    width:8%;
+}
+
+/*.THIS .stkText {
+    width:6%;
+}*/
+.THIS .onorderText {
+    width:8%;
+}
+
+.THIS .todaycartText {
+    width:12%;
+}
+.THIS table td .slds-input {
+    height: 20px;
+    padding: 2px;
+    line-height: 20px;
+    min-height: 25px;
+}
+.THIS .todaycartText {
+    width:12%;
+}
+
+.THIS .descriptionText {
+    width:17%;
+}
+
+.THIS .partsText {
+    width:15%;
+}
+
+.THIS .lFloat
+{
+    float:left;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .iconcolr svg{
+    fill: red !important; 
+    color : red !important;
+}
+
+.THIS .hideSelectLabel > .slds-form-element__label {
+    display:none;
+}
+
+.THIS .defaultSelectWidth {
+    min-width: max-content;
+}
+
+.THIS .tooltiptext{
+  visibility: hidden;
+}
+
+.THIS .cTooltip:hover .tooltiptext{
+  visibility: visible;
+}
+
+.THIS .grayimg svg {
+    fill : gray;
+}
+
+.THIS .nonpacar{ fill: #FFBC26; }
+
+.THIS .tableHeaderTextCenter {
+    text-align: center;
+    font-size: large;
+}
+
+.THIS .selectPointer{
+    cursor: pointer;
+}
+.THIS .slds-p-around_medium{padding:0px;}
+.THIS .model-content-body {
+    padding: 0px 10px;
+}
+.THIS .model-content-body .table-heading{
+    background:#fff;
+    color:#000;
+}
+.THIS .loyaltyClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #5566E8;
+    color: white;
+    margin: 5px;
+}
+
+.THIS .csrClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #03A799; 
+    color: white;
+    margin: 5px;
+}
+
+.THIS .pdcdiscountClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #1178B1; 
+    color: white;
+    margin: 5px;
+}
+
+.THIS .dspdiscountClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #1156B1; 
+    color: white;
+    margin: 5px;
+}
+
+.THIS .qtybreakClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #8CB111; 
+    color: white;
+    margin: 5px;
+}
+
+.THIS .cnrClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #AB2121; 
+    color: white;
+    margin: 5px;
+}
+
+.THIS .rsvClrAction {
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background: #B19111; 
+    color: white;
+    margin: 5px;
+}

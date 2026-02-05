@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XYTD_Achieved_LC_Redemptions__c</fullName>
+    <formula>YTD_Number_of_LC_Redemptions__c / XYTD_Number_of_LC_Redemptions_Goal__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Shows the % to the Goal</inlineHelpText>
+    <label>2010 Achieved Number of LC Redemptions</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

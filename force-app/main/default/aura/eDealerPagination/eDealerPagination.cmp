@@ -1,0 +1,108 @@
+<aura:component >
+    
+    <!-- this will save the list to be displayed in the current page -->
+    <aura:attribute name="PaginationList" type="object[]"/>
+    
+    <!-- this will save the list of pages -->
+    <aura:attribute name="allPageNumber" type="Integer[]"/>
+    
+    <!-- this will save the page size -->
+    <aura:attribute name="pagesizes" type="Integer[]" default="[25,50,100]"/>
+    
+    <!-- used t disabled previous button -->
+    <aura:attribute name="disabledprevious" type="boolean" default="true"/>
+    
+    <!-- used t disabled next button -->
+    <aura:attribute name="disablednext" type="boolean" default="false"/>
+    
+    <!-- total Records -->
+    <aura:attribute name="totalRecords" type="object[]"/>
+    
+    <!-- start page -->
+    <aura:attribute name="RecordStart" type="Integer" />
+    
+    <!-- end page -->
+    <aura:attribute name="RecordEnd" type="Integer"/>
+    
+    <!-- total Records -->
+    <aura:attribute name="totalNumberRecords" type="Integer"/>
+    
+    <!-- save the current page Number -->
+    <aura:attribute name="PageNumber" type="Integer"/>
+    
+    <!-- save the total Number of Pages -->
+    <aura:attribute name="TotalPages" type="Integer"/>
+    
+    <!-- page size -->
+    <aura:attribute name="pageSize" type="Integer" default="25"/>
+    
+    <!-- page previous/next button display setting -->
+    <aura:attribute name="displayPageButtons" type="Boolean" default="false" />
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>    
+    <aura:handler name="change" value="{!v.totalRecords}" action="{!c.doInit}"/>
+   <!-- <aura:handler name="change" value="{!v.pageSize}" action="{!c.doInit}"/> -->
+    
+    
+    
+    <!--<aura:handler event="c:eDealerPaginationEvent" action="{!c.handleEDealerPaginationEvent}"/>-->
+    
+    
+    <div class="slds-clearfix">
+        <div class="slds-page-header bgWhite" role="banner">
+            
+            <div class="slds-grid slds-gutters">
+                <div class="{!v.displayPageButtons == true ? 'slds-col slds-size_2-of-3' : 'slds-col slds-size_2-of-2'}">
+                    <table style="color:black !important">
+                        <tr class="align-tr">
+                            <td class="pageTxthead" style="color:black !important">
+                                {!v.RecordStart}-{!v.RecordEnd}&nbsp;{!$Label.c.Pagination_Of}&nbsp;{!v.totalRecords.length}&nbsp;{!$Label.c.Pagination_Records}&nbsp;|&nbsp;{!$Label.c.Page_Size}
+                            </td>
+                            
+                            <td class="tenPer" style="color:black !important">
+                                <lightning:select label="" 
+                                                  variant="label-hidden" 
+                                                  value="{!v.pageSize}"
+                                                  onchange="{!c.doInit}"
+                                                  class="label-hidden pageNum">                                       
+                                    <aura:iteration items="{!v.pagesizes}" var="page">
+                                        <option text="{!page}" value="{!page}" />
+                                    </aura:iteration>
+                                </lightning:select>
+                            </td> 
+                            <td class="tenPer" style="color:black !important">
+                                <lightning:select label="" 
+                                                  variant="label-hidden" 
+                                                  value="{!v.PageNumber}"
+                                                  onchange="{!c.handlePageNumChange}"
+                                                  class="label-hidden pageNum">                                       
+                                    <aura:iteration items="{!v.allPageNumber}" var="page">
+                                        <option text="{!page}" value="{!page}" />
+                                    </aura:iteration>
+                                </lightning:select>
+                            </td>
+                            
+                            <td style="color:black !important">
+                                &nbsp;{!$Label.c.Pagination_Of}&nbsp; {!v.TotalPages}
+                            </td>
+                        </tr>
+                    </table>  
+                </div>
+                
+                <aura:if isTrue="{!v.displayPageButtons}">
+                    <div class="slds-col slds-size_1-of-3">
+                        <span>
+                            <div style="text-align: right;">   
+                                <lightning:button disabled="{!v.disabledprevious}" class="slds-button_destructive" variant="brand" aura:id="prevPage" label="{!$Label.c.Pagination_Prev}" onclick="{!c.handlePrev}" />            
+                                <lightning:button disabled="{!v.disablednext}" class="slds-button_destructive" aura:id="nextPage" variant="brand" label="{!$Label.c.pagination_Next}" onclick="{!c.handleNext}"/>
+                            </div>
+                        </span>
+                        
+                    </div>
+                </aura:if>                
+            </div>            
+        </div>
+    </div>
+    
+</aura:component>

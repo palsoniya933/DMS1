@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Global Report Column</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;% Stocking Availability&quot; : &quot;% de disponibilité d’entreposage&quot;,
+&quot;% Recommend Acceptance&quot; : &quot;% d’acceptation recommandé&quot;,
+&quot;% Planning Breadth&quot; : &quot;% d’étendue de planification&quot;,
+&quot;Current Benefits Tier&quot; : &quot;Plan courant d’avantages&quot;,
+&quot;MDI Turns (Period)&quot; : &quot;Changements MDI (période)&quot;,
+&quot;MDI Tier Qualification and Benefits&quot; : &quot;Qualification et avantages plan MDI&quot;,
+&quot;Total Inventory Value&quot; : &quot;Valeur totale de l’inventaire&quot;,
+&quot;Total Cost of Sales&quot; : &quot;Coût total des marchandises vendues&quot;,
+&quot;% Hits Non-Stocking&quot; : &quot;% d’appels de fichiers hors stock&quot;,
+&quot;% EM / TD Lines&quot; : &quot;% lignes EM / TD&quot;,
+&quot;%Auto Acceptance Utilization&quot; : &quot;Utilisation de l’Approbation Automatique&quot;
+}</value>
+    </values>
+</CustomMetadata>

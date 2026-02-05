@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MTD_Volume_Sales__c</fullName>
+    <label>MTD: Volume Sales</label>
+    <summarizedField>Volumes_Sales__c.EXT_Price__c</summarizedField>
+    <summaryFilterItems>
+        <field>Volumes_Sales__c.Date_YR__c</field>
+        <operation>equals</operation>
+        <value>TEXT(YEAR())</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Volumes_Sales__c.Related_to_Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

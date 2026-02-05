@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Main_Division_Lead__c</fullName>
+    <inlineHelpText>Used ONLY for National Accounts - Rebate Program</inlineHelpText>
+    <label>Main Division Lead</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>KENWORTH</fullName>
+                <default>false</default>
+                <label>KENWORTH</label>
+            </value>
+            <value>
+                <fullName>PETERBILT</fullName>
+                <default>false</default>
+                <label>PETERBILT</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>National Account</controllingFieldValue>
+            <valueName>KENWORTH</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>National Account</controllingFieldValue>
+            <valueName>PETERBILT</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

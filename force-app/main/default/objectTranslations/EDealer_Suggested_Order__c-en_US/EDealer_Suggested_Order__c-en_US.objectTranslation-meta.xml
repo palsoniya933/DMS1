@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Suggested Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Suggested Orders</value>
+    </caseValues>
+    <layouts>
+        <layout>Suggested Order Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Indicators --></label>
+            <section>Indicators</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing Details --></label>
+            <section>Pricing Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

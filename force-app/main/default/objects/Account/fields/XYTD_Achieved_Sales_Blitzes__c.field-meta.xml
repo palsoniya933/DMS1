@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XYTD_Achieved_Sales_Blitzes__c</fullName>
+    <defaultValue>&apos;https://na2.salesforce.com/00O4000000266Mp&apos;</defaultValue>
+    <description>Click here for report</description>
+    <inlineHelpText>The Report shows the % to the Goal</inlineHelpText>
+    <label>2010 Achieved Sales Blitzes</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

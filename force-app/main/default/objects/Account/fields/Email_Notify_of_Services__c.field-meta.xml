@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Notify_of_Services__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Denotes if the account needs to be notified by email before permissions to perform service should be granted</description>
+    <label>Email Notify of Services</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

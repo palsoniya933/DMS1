@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSR Header Translations</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;DealerType&quot;: [
+{
+&quot;en_US&quot;: &quot;Store&quot;,
+&quot;fr_CA&quot;: &quot;Concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Sucursal&quot;,
+&quot;value&quot;: &quot;S&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;en_US&quot;: &quot;Group&quot;,
+&quot;fr_CA&quot;: &quot;Groupe&quot;,
+&quot;es_MX&quot;: &quot;Grupo&quot;,
+&quot;value&quot;: &quot;G&quot;,
+&quot;order&quot;: 1
+}
+],
+&quot;CSRType&quot;: [
+{
+&quot;en_US&quot;: &quot;Blind Bid&quot;,
+&quot;fr_CA&quot;: &quot;Enchère&quot;,
+&quot;es_MX&quot;: &quot;Oferta Ciega&quot;,
+&quot;value&quot;: &quot;B&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;en_US&quot;: &quot;Competitve Sales&quot;,
+&quot;fr_CA&quot;: &quot;Ventes Compétitive&quot;,
+&quot;es_MX&quot;: &quot;Ventas Competitivas&quot;,
+&quot;value&quot;: &quot;C&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;en_US&quot;: &quot;Wreck&quot;,
+&quot;fr_CA&quot;: &quot;Accidenté&quot;,
+&quot;es_MX&quot;: &quot;Naufragio&quot;,
+&quot;value&quot;: &quot;W&quot;,
+&quot;order&quot;: 2
+}
+],
+&quot;CompetitiveType&quot;: [
+{
+&quot;en_US&quot;: &quot;Retail&quot;,
+&quot;fr_CA&quot;: &quot;Vente au Détail&quot;,
+&quot;es_MX&quot;: &quot;Minorista&quot;,
+&quot;value&quot;: &quot;B&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;en_US&quot;: &quot;Wholesale&quot;,
+&quot;fr_CA&quot;: &quot;Vente en Gros&quot;,
+&quot;es_MX&quot;: &quot;Mayorista&quot;,
+&quot;value&quot;: &quot;A&quot;,
+&quot;order&quot;: 2
+}
+],
+&quot;ExpectedMarkupLabel&quot;: [
+{
+&quot;en_US&quot;: &quot;Expected Markup (%)&quot;,
+&quot;fr_CA&quot;: &quot;Balisage attendu (%)&quot;,
+&quot;es_MX&quot;: &quot;Margen esperado (%)&quot;
+}
+],
+&quot;DurationLabel&quot;: [
+{
+&quot;en_US&quot;: &quot;Duration (days)&quot;,
+&quot;fr_CA&quot;: &quot;Durée (jours)&quot;,
+&quot;es_MX&quot;: &quot;Duración (días)&quot;
+}
+],
+&quot;DurationValidationError&quot;: [
+{
+&quot;en_US&quot;: &quot;This field must be between 0 and 999&quot;,
+&quot;fr_CA&quot;: &quot;Ce champ doit être compris entre 0 et 999&quot;,
+&quot;es_MX&quot;: &quot;Este campo debe estar entre 0 y 999&quot;
+}
+],
+&quot;MarkupValidationError&quot;: [
+{
+&quot;en_US&quot;: &quot;This field must be between 1 and 4 characters&quot;,
+&quot;fr_CA&quot;: &quot;Ce champ doit comporter entre 1 et 4 caractères&quot;,
+&quot;es_MX&quot;: &quot;Este campo debe tener entre 1 y 4 caracteres&quot;
+}
+],
+&quot;StatusField&quot;: [
+{
+&quot;en_US&quot;: &quot;Status&quot;,
+&quot;fr_CA&quot;: &quot;Statut&quot;,
+&quot;es_MX&quot;: &quot;Estado&quot;
+}
+],
+&quot;CSRNumber&quot;: [
+{
+&quot;en_US&quot;: &quot;CSR Number&quot;,
+&quot;fr_CA&quot;: &quot;Numéro CSR&quot;,
+&quot;es_MX&quot;: &quot;Número de CSR&quot;
+}
+],
+&quot;CSRPhase&quot;: [
+{
+&quot;en_US&quot;: &quot;Phase&quot;,
+&quot;fr_CA&quot;: &quot;Phase&quot;,
+&quot;es_MX&quot;: &quot;Fase&quot;
+}
+],
+&quot;Upload&quot;: [
+{
+&quot;en_US&quot;: &quot;Upload&quot;,
+&quot;fr_CA&quot;: &quot;Télécharger&quot;,
+&quot;es_MX&quot;: &quot;Subir&quot;
+}
+],
+&quot;FileUpload&quot;: [
+{
+&quot;en_US&quot;: &quot;File upload&quot;,
+&quot;fr_CA&quot;: &quot;Téléchargement de fichiers&quot;,
+&quot;es_MX&quot;: &quot;Subir archivo&quot;
+}
+],
+&quot;ExcelFileAllowed&quot;: [
+{
+&quot;en_US&quot;: &quot;Only Excel files are allowed.&quot;,
+&quot;fr_CA&quot;: &quot;Seuls les fichiers Excel sont autorisés&quot;,
+&quot;es_MX&quot;: &quot;Sólo se permite archivos de Excel&quot;
+}
+],
+&quot;ExcelFileAccepted&quot;: [
+{
+&quot;en_US&quot;: &quot;only .xlsx file accepted&quot;,
+&quot;fr_CA&quot;: &quot;Seul le fichier .xlsx est accepté&quot;,
+&quot;es_MX&quot;: &quot;Sólo se acepta el archivo .xlsx&quot;
+}
+],
+&quot;DuplicateWithSR&quot;: [
+{
+&quot;en_US&quot;: &quot;Duplicate with SR#&quot;,
+&quot;fr_CA&quot;: &quot;Dupliquer avec # SR&quot;,
+&quot;es_MX&quot;: &quot;Duplicado con # SR&quot;
+}
+],
+&quot;InvalidPartNumber&quot;: [
+{
+&quot;en_US&quot;: &quot;Invalid Part Number&quot;,
+&quot;fr_CA&quot;: &quot;Numéro de pièce invalide&quot;,
+&quot;es_MX&quot;: &quot;Número de parte no es válido&quot;
+}
+],
+&quot;AuthorizationComments&quot;: [
+{
+&quot;en_US&quot;: &quot;Authorization Comments&quot;,
+&quot;fr_CA&quot;: &quot;Commentaires sur l&apos;autorisation&quot;,
+&quot;es_MX&quot;: &quot;Comentarios de autorización&quot;
+}
+],
+&quot;DealerComments&quot;: [
+{
+&quot;en_US&quot;: &quot;Dealer Comments&quot;,
+&quot;fr_CA&quot;: &quot;Commentaires du concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Comentarios del concesionario&quot;
+}
+],
+&quot;MiscComments&quot;: [
+{
+&quot;en_US&quot;: &quot;Misc Comments&quot;,
+&quot;fr_CA&quot;: &quot;Commentaires divers&quot;,
+&quot;es_MX&quot;: &quot;Comentarios varios&quot;
+}
+],
+&quot;Quotecomments&quot;: [
+{
+&quot;en_US&quot;: &quot;Quote comments&quot;,
+&quot;fr_CA&quot;: &quot;Commentaires sur les citations&quot;,
+&quot;es_MX&quot;: &quot;Comentarios de cotización&quot;
+}
+],
+&quot;LetterTopParagraphComments&quot;: [
+{
+&quot;en_US&quot;: &quot;Letter Top Paragraph Comments&quot;,
+&quot;fr_CA&quot;: &quot;Commentaires du paragraphe supérieur de la lettre&quot;,
+&quot;es_MX&quot;: &quot;Comentarios del párrafo superior de la letra&quot;
+}
+],
+&quot;LetterBottomParagraphComments&quot;: [
+{
+&quot;en_US&quot;: &quot;Letter Bottom Paragraph Comments&quot;,
+&quot;fr_CA&quot;: &quot;Commentaires du paragraphe inférieur de la lettre&quot;,
+&quot;es_MX&quot;: &quot;Comentarios del párrafo inferior de la letra&quot;
+}
+],
+&quot;UnknownCommentType&quot;: [
+{
+&quot;en_US&quot;: &quot;Unknown Comment Type&quot;,
+&quot;fr_CA&quot;: &quot;Type de commentaire inconnu&quot;,
+&quot;es_MX&quot;: &quot;Tipo de comentario desconocido&quot;
+}
+],
+&quot;CommentscannotbeaddedtotheCSRuntilaCSRnumberhasbeengenerated&quot;: [
+{
+&quot;en_US&quot;: &quot;&lt;ul style=&apos;list-style-type:disc;margin-left:4px;&apos;&gt;&lt;li&gt;Comments cannot be added to the CSR until a CSR number has been generated.&lt;/li&gt;&lt;li&gt;Maximum number of comments is 30.&lt;/li&gt;&lt;/ul&gt;&quot;,
+&quot;fr_CA&quot;: &quot;&lt;ul style=&apos;list-style-type:disc;margin-left:4px;&apos;&gt;&lt;li&gt;Les commentaires ne peuvent pas être ajoutés au CSR tant qu&apos;un numéro CSR n&apos;a pas été généré.&lt;/li&gt;&lt;li&gt;Le nombre maximum de commentaires est de 30.&lt;/li&gt;&lt;/ul&gt;&quot;,
+&quot;es_MX&quot;: &quot;&lt;ul style=&apos;list-style-type:disc;margin-left:4px;&apos;&gt;&lt;li&gt;No se pueden agregar comentarios al CSR hasta que se haya generado un número de CSR&lt;/li&gt;&lt;li&gt;El número máximo de comentarios es 30.&lt;/li&gt;&lt;/ul&gt;&quot;
+}
+],
+&quot;File(s)sizecannotexceed3MB.Totalfilesize&quot;: [
+{
+&quot;en_US&quot;: &quot;File(s) size cannot exceed 3MB. Total file size&quot;,
+&quot;fr_CA&quot;: &quot;La taille du fichier ne peut pas dépasser 3 Mo. Taille totale du fichier&quot;,
+&quot;es_MX&quot;: &quot;El tamaño de los archivos no puede exceder 3 MB. Tamaño total del archivo&quot;
+}
+],
+&quot;Filesizecannotexceed3MB.Selectedfilesize&quot;: [
+{
+&quot;en_US&quot;: &quot;File size cannot exceed 3MB. Selected file size&quot;,
+&quot;fr_CA&quot;: &quot;La taille du fichier ne peut pas dépasser 3 Mo. Taille du fichier sélectionné&quot;,
+&quot;es_MX&quot;: &quot;El tamaño del archivo no puede exceder 3 MB. Tamaño de archivo seleccionado&quot;
+}
+],
+&quot;OnlyPDFandimagefilesareallowed.&quot;: [
+{
+&quot;en_US&quot;: &quot;Only PDF, JPEG and PNG files are allowed&quot;,
+&quot;fr_CA&quot;: &quot;Seuls les fichiers PDF, JPEG et PNG sont autorisés&quot;,
+&quot;es_MX&quot;: &quot;Sólo se permiten archivos PDF, JPEG y PNG&quot;
+}
+],
+&quot;Filehasexceededtheuploadlimit.Uploadedfile:3.&quot;: [
+{
+&quot;en_US&quot;: &quot;File has exceeded the upload limit. Uploaded file: 3.&quot;,
+&quot;fr_CA&quot;: &quot;Le fichier a dépassé la limite de téléchargement. Fichier téléchargé : 3.&quot;,
+&quot;es_MX&quot;: &quot;El archivo ha excedido el límite de carga. Archivo subido: 3.&quot;
+}
+],
+&quot;Alluploadedfilesizecannotexceed3MB.&quot;: [
+{
+&quot;en_US&quot;: &quot;All uploaded file size cannot exceed 3MB.&quot;,
+&quot;fr_CA&quot;: &quot;La taille de tous les fichiers téléchargés ne peut pas dépasser 3 Mo.&quot;,
+&quot;es_MX&quot;: &quot;El tamaño de todos los archivos cargados no puede exceder 3 MB.&quot;
+}
+],
+&quot;YourCSRisCancelled!&quot;: [
+{
+&quot;en_US&quot;: &quot;Your CSR is Cancelled!&quot;,
+&quot;fr_CA&quot;: &quot;Votre CSR est annulée!&quot;,
+&quot;es_MX&quot;: &quot;¡Su CSR está cancelado!&quot;
+}
+],
+&quot;CSRisNotAvailable&quot;: [
+{
+&quot;en_US&quot;: &quot;CSR is not available.&quot;,
+&quot;fr_CA&quot;: &quot;CSR n&apos;est pas disponible.&quot;,
+&quot;es_MX&quot;: &quot;CSR no está disponible.&quot;
+}
+],
+&quot;EDealerExpectedMarkupErrorMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;Please use the xx or xx.x percentage format.&quot;,
+&quot;fr_CA&quot;: &quot;Veuillez utiliser le format de pourcentage xx ou xx.x.&quot;,
+&quot;es_MX&quot;: &quot;Utilice el formato de porcentaje xx o xx.x.&quot;
+}
+],
+&quot;Citycanotexceed20characters&quot;: [
+{
+&quot;en_US&quot;: &quot;City can’t exceed 20 characters.&quot;,
+&quot;fr_CA&quot;: &quot;Ville ne peut pas dépasser 20 caractères.&quot;,
+&quot;es_MX&quot;: &quot;Ciudad no puede exceder 20 caracteres.&quot;
+}
+],
+&quot;Postalcodecanotexceed10characters&quot;: [
+{
+&quot;en_US&quot;: &quot;Postal code can’t exceed 10 characters.&quot;,
+&quot;fr_CA&quot;: &quot;Code postal ne peut pas dépasser 10 caractères.&quot;,
+&quot;es_MX&quot;: &quot;Código postal no puede exceder 10 caracteres.&quot;
+}
+],
+&quot;StateProvincecanotexceed20characters&quot;: [
+{
+&quot;en_US&quot;: &quot;State/Province can’t exceed 20 characters&quot;,
+&quot;fr_CA&quot;: &quot;État/la province ne peut pas dépasser 20 caractères.&quot;,
+&quot;es_MX&quot;: &quot;Estado/provincia no puede exceder 20 caracteres.&quot;
+}
+],
+&quot;Countrycanotexceed30characters&quot;: [
+{
+&quot;en_US&quot;: &quot;Country can’t exceed 30 characters&quot;,
+&quot;fr_CA&quot;: &quot;Pays ne peut pas dépasser 30 caractères.&quot;,
+&quot;es_MX&quot;: &quot;País no puede exceder 30 caracteres.&quot;
+}
+],
+&quot;PartNumbershouldnotbe18characters&quot;: [
+{
+&quot;en_US&quot;: &quot;PartNumber should not be more then 18 characters.&quot;,
+&quot;fr_CA&quot;: &quot;Le numéro de pièce ne doit pas dépasser 18 caractères.&quot;,
+&quot;es_MX&quot;: &quot;El número de parte no debe tener más de 18 caracteres.&quot;
+}
+]
+}</value>
+    </values>
+</CustomMetadata>

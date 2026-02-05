@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Non-Y Saleable Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot;: &quot;GRP NBR&quot;,
+&quot;loc&quot;: &quot;LOC&quot;,
+&quot;si&quot;: &quot;SI&quot;,
+&quot;abc&quot;: &quot;ABC&quot;,
+&quot;item&quot;: &quot;ITEM&quot;,
+&quot;descr&quot;:&quot;DESCR&quot;,
+&quot;dnet&quot;: &quot;DNET&quot;,
+&quot;on_hand&quot;: &quot;ON HAND&quot;,
+&quot;dlrsplrcode&quot;: &quot;DLRSPLRCODE&quot;,
+&quot;demand_12m&quot;: &quot;12M DEMAND&quot;,
+&quot;hits_12m&quot;: &quot;12M HITS&quot;,
+&quot;mtd_qty&quot;: &quot;MTD QTY&quot;,
+&quot;std_pkg_qty&quot;: &quot;STD PKG QTY&quot;,
+&quot;op_comment&quot;: &quot;OP COMMENT&quot;
+}</value>
+    </values>
+</CustomMetadata>

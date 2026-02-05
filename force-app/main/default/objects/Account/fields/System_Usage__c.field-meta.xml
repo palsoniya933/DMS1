@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>System_Usage__c</fullName>
+    <description>Customer and Dealer system usage rating (based on periodic evalualtion of extracted transaction data)</description>
+    <inlineHelpText>This rating is updated periodically and may be out-of-date (based on very recent use-rate changes)</inlineHelpText>
+    <label>System Usage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Using WO &amp; Recg</fullName>
+                <default>false</default>
+                <label>Using WO &amp; Recg</label>
+            </value>
+            <value>
+                <fullName>Using WO only</fullName>
+                <default>false</default>
+                <label>Using WO only</label>
+            </value>
+            <value>
+                <fullName>Using Recg only</fullName>
+                <default>false</default>
+                <label>Using Recg only</label>
+            </value>
+            <value>
+                <fullName>No recent use</fullName>
+                <default>false</default>
+                <label>No recent use</label>
+            </value>
+            <value>
+                <fullName>Dealer Active Use</fullName>
+                <default>false</default>
+                <label>Dealer Active Use</label>
+            </value>
+            <value>
+                <fullName>Dealer Limited Access</fullName>
+                <default>false</default>
+                <label>Dealer Limited Access</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

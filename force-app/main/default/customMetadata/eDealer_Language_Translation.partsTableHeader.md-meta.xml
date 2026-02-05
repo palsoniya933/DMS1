@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Part List Table</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;: &quot;srNum&quot;,
+&quot;fr_CA&quot;: &quot;#SR&quot;,
+&quot;es_MX&quot;: &quot;#SR&quot;,
+&quot;en_US&quot;: &quot;SR#&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;columnAPIName&quot;: &quot;Part&quot;,
+&quot;fr_CA&quot;: &quot;# de pièce&quot;,
+&quot;es_MX&quot;: &quot;# de Parte&quot;,
+&quot;en_US&quot;: &quot;PARTS#&quot;,
+&quot;order&quot;: 3
+},
+{
+&quot;columnAPIName&quot;: &quot;PartDescription&quot;,
+&quot;fr_CA&quot;: &quot;DESCRIPTION DE LA PIÈCE&quot;,
+&quot;es_MX&quot;: &quot;Descripción de Parte&quot;,
+&quot;en_US&quot;: &quot;PART DESCRIPTION&quot;,
+&quot;order&quot;: 4
+},
+{
+&quot;columnAPIName&quot;: &quot;Channel&quot;,
+&quot;fr_CA&quot;: &quot;Canal&quot;,
+&quot;es_MX&quot;: &quot;Canal&quot;,
+&quot;en_US&quot;: &quot;CHANNEL&quot;,
+&quot;order&quot;: 6
+},
+{
+&quot;columnAPIName&quot;: &quot;Competitor&quot;,
+&quot;fr_CA&quot;: &quot;Concurrent&quot;,
+&quot;es_MX&quot;: &quot;Competidor&quot;,
+&quot;en_US&quot;: &quot;COMPETITOR&quot;,
+&quot;order&quot;: 7
+},
+{
+&quot;columnAPIName&quot;: &quot;CompPart&quot;,
+&quot;fr_CA&quot;: &quot;Numéro de pièce concurrent&quot;,
+&quot;es_MX&quot;: &quot;Número de pieza del competidor&quot;,
+&quot;en_US&quot;: &quot;COMP PART#&quot;,
+&quot;order&quot;: 8
+},
+{
+&quot;columnAPIName&quot;: &quot;PartsPrice&quot;,
+&quot;fr_CA&quot;: &quot;Prix des pièces&quot;,
+&quot;es_MX&quot;: &quot;Precio de parte&quot;,
+&quot;en_US&quot;: &quot;PARTS PRICE&quot;,
+&quot;order&quot;: 9
+},
+{
+&quot;columnAPIName&quot;: &quot;action&quot;,
+&quot;fr_CA&quot;: &quot;ACTION&quot;,
+&quot;es_MX&quot;: &quot;Acción&quot;,
+&quot;en_US&quot;: &quot;ACTION&quot;,
+&quot;order&quot;: 11
+}
+]</value>
+    </values>
+</CustomMetadata>

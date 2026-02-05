@@ -1,0 +1,109 @@
+<aura:component access="global">
+    
+    <!-- this will save the option to be displayed -->
+    <aura:attribute name="options" type="List" />    
+    
+    <!-- this is to handle the change for multi select -->
+    <aura:handler name="change" value="{!v.options}" action="{!c.init}"/>
+    
+    <!-- this will save the text which will be displayed on text box -->
+    <aura:attribute name="infoText" type="String" default="Select an option..." />
+    
+    <!-- default with for the text box -->
+    <aura:attribute name="width" type="String" default="245px;" />    
+    
+    <!-- event which we will fire on change of the options -->
+    <aura:registerEvent name="selectChange" type="c:eDealerSelectChangeEvent" />
+    
+    <!-- method which will can be called from any parent component to re run the cmp -->
+    <aura:method name="reInit" action="{!c.init}" description="Allows the lookup to be reinitalized"/>
+    
+    <!-- this will be called on laod of the page -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <aura:attribute name="dropdownOver" type="Boolean" default="false" />
+    
+    <aura:attribute name="isAllSelected" type="Boolean" default="false" />
+    
+    <aura:attribute name="isContainer" type="Boolean" default="false" />
+    
+    <aura:attribute name="isOrderScreenPageOpen" type="boolean" default="false"/>
+    
+    <div aura:id="main-div" class=" slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click " style="background-color:white;width:100%">        
+        <button class="slds-button slds-button--neutral slds-picklist__label" style="{!'display:block;width:' + v.width }" aria-haspopup="true" onclick="{!c.handleClick}" onmouseleave="{!c.handleMouseOutButton}" disabled="{!v.isOrderScreenPageOpen}">            
+            <span class="slds-truncate" title="{!v.infoText}" >{!v.infoText}</span>            
+            <lightning:icon iconName="utility:down" size="small" class="slds-icon" />            
+        </button>
+        
+        <div class="slds-dropdown slds-dropdown--left" 
+             style="overflow: scroll;height: 25em;"
+             onmouseenter="{!c.handleMouseEnter}" 
+             onmouseleave="{!c.handleMouseLeave}">
+            
+            <ul class="'slds-dropdown__list" role="menu">     
+                <aura:if isTrue="{!v.isContainer}">
+                    <li style="display:flex"
+                        class="slds-dropdown__item">
+                        <input type="checkbox"
+                               data-value="all"                                     
+                               onclick="{!c.handleSelection}" 
+                               class="slds-m-top_none slds-m-left_small slds-checkbox"
+                               checked="{!v.isAllSelected}"/>
+                        <a href="javascript:void(0);" 
+                           role="presentation" 
+                           aria-checked="true" 
+                           tabindex="0"
+                           data-value="all"                                     
+                           onclick="{!c.handleSelection}" 
+                           checked="{!v.isAllSelected}">  
+                            <span class="slds-truncate">
+                                {!$Label.c.EDealer_filters_dates_All}
+                            </span>                            
+                        </a>
+                    </li>
+                </aura:if>
+                
+                <aura:iteration items="{!v.options}" var="option">  
+                    <aura:if isTrue="{!option.display}">
+                        <li style="display:flex" 
+                            class="slds-dropdown__item">                    
+                            <input type="checkbox"
+                                   data-value="{!option.Name}" 
+                                   data-selected="{!option.selected}"
+                                   checked="{!option.selected}"
+                                   onclick="{!c.handleSelection}" 
+                                   class="slds-m-top_none slds-m-left_small slds-checkbox"/>
+                            <a href="javascript:void(0);" 
+                               role="menuitemcheckbox" 
+                               aria-checked="true" 
+                               tabindex="0"
+                               data-value="{!option.Name}" 
+                               data-selected="{!option.selected}"
+                               checked="{!option.selected}"
+                               onclick="{!c.handleSelection}" >                            
+                                <span class="slds-truncate">                                
+                                    {!option.Name}                                
+                                </span>                            
+                            </a>                        
+                        </li> 
+                    </aura:if>
+                </aura:iteration>                
+            </ul>
+        </div>        
+    </div>
+    
+    <!-- pills section -->
+    <aura:if isTrue="{!!v.isContainer}">
+        <div>        
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{!v.options}" var="item" indexVar="index">
+                    <aura:if isTrue="{!item.selected}">
+                        <div class="slds-col slds-size_2-of-12 pillcontainer mr-stbox">
+                            <span><lightning:pill name="{!index}" label="{!item.Name}" onremove="{! c.handleRemove }"/></span>
+                        </div>
+                    </aura:if>
+                </aura:iteration>            
+            </div>   
+        </div>
+    </aura:if>
+</aura:component>

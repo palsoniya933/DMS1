@@ -1,0 +1,257 @@
+<!--
+@ Description : Added Language Translation logic to labels for Spanish (Mexico) and French (Canadian)
+@ Project     : eDealer Gateway Language Translation
+@ Programmer  : Vivian D. Mirador
+@ Date        : 09/7/2023 
+@ Modifications: Search Tag - '{!$Label.c' for Custom Labels
+@             - Increased the size of the 'yellowInfo' icon from 50rem to 80rem
+@             - Moved selectoptions values to the Controller section
+
+@ Description : Task 1524264 Prod: Information icon for Quarter to Date KPI needs to be updated
+				Task 1524177 Prod: Remove filter options and hyperlinks from Managed Dealer Inventory Quarter to Date KPI
+@ Project	  : Edealer - MDI Project Bug Fixes
+@ Programmer  : Chito Bulahan
+@ Date		  : 03/24/2025
+@ Modifications : Fix the Auto-Accept screen layout to prevent window stretching whenever a dealer user is Spanish or French
+				  Created a new window to hover the tooltip with HTMl code added to Custom Label Edealer_number_of_available_parts_on_a_given_day 
+				  Added new methods to support the new tool tip onmouseover and onmouseout
+@ Search Tag	: Fix 1524264 & 1524177
+-->
+<aura:component controller="EDealerQuarterToDateController" 
+                extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List"/>
+    
+    <!-- this is used for store data for quarterToDate Report -->
+    <aura:attribute name="quarterToDateReportData" type="List" />
+    
+    <!-- this is used for store quarterToDate Report data into cache -->
+    <aura:attribute name="quarterToDateReportDataMapCache" type="Map" />
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the Date -->
+    <aura:attribute name="date" type="Date" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerLoc}" action="{!c.doInit}"/> 
+    
+    
+    <aura:attribute name="togglehover" type="boolean" default="false"/>
+    
+    <aura:attribute name="reportTableData" type="List" />
+    
+    <aura:attribute name="availability" type="Integer" />
+    <aura:attribute name="breadth" type="Integer" />
+    <aura:attribute name="autoacceptutil" type="Integer" />    <!-- MDI Tier Level Changes 07/27/2023 -->       
+    <aura:attribute name="trendingTier" type="String" />
+    <aura:attribute name="currentTier" type="String" />
+    
+    <aura:handler name="change" value="{!v.quarterToDateReportData}" action="{!c.updateTileDetails}"/>
+    
+    <!-- Current Year and Quarter -->
+    <aura:attribute name="currentYear" type="String" />
+    <aura:attribute name="currentQuarter" type="String" />  
+    
+    <!-- Tool Tip Text Hover -->
+    <aura:attribute name="isTooltipVisible" type="Boolean" default="true" />
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_12-of-12">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">{!$Label.c.Edealer_Quarter_To_Date}</span>
+                            <span class="slds-p-around_xx-small floatRight slds-m-right_small" style="margin-top: -4px;">
+                                <ul class="unOrderedList">
+                                    <li class="dateStr dateSelected"><lightning:formattedDateTime value="{!v.date}"/></li>
+                                </ul>
+                            </span>
+                        </div>
+                        
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td width="20%" class="fontSize">{!$Label.c.Edealer_Availability}</td>
+									<td width="20%" class="fontSize">{!$Label.c.Edealer_Breadth}</td>
+                                    <td width="20%" class="fontSize">{!$Label.c.Edealer_Auto_Accept}</td>
+                                    <td width="20%" class="fontSize">{!$Label.c.Edealer_Trending_Tier}</td> 
+                                    <td width="20%" class="fontSize">{!$Label.c.Edealer_Current_Tier}</td> 
+                                </tr>
+                                <tr>
+                                    <td class="blackTextb"> 
+                                        {!v.availability}<span class="supHead"><sup style="top: -1px;">%</sup></span>
+                                    </td>
+                                    <td class="blackTextb"> 
+                                        {!v.breadth}<span class="supHead"><sup style="top: -1px;">%</sup></span>
+                                    </td>
+                                    <!-- MDI Tier Level Changes 07/27/2023 Start -->
+                                    <td class="blackTextb">                                   
+                                        {!v.autoacceptutil}<span class="supHead"><sup style="top: -1px;">%</sup></span>
+                                    </td>
+                                    <!-- MDI Tier Level Changes 07/27/2023 End -->
+                                    <td class="blackTextb"> 
+                                        {!v.trendingTier}
+                                      
+                                    </td> 
+                                    <td class="greenTextb"> 
+                                        {!v.currentTier}
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                      <span style="positon:relative; right:0px; display:block;">
+                                        <a onmouseover="{!c.handleMouseHover}" onmouseout="{!c.handleMouseOut}" tabindex="-1"> 
+                                                <lightning:icon class="yellowInfo" iconName="utility:info" size="x-small" /></a>
+                                            <aura:if isTrue="{!v.togglehover==true}"><!-- {!v.togglehover==true} -->
+                                                <div class="slds-popover"
+                                                     role="tooltip" id="help" style="position: absolute;right: 0px;  bottom: 25%; width:1000px; padding: inherit;border-radius: 5px;border: solid;border-color: #FFB918;">
+                                                    <!-- Table -->
+                                                    <table  class="slds-table slds-table--bordered slds-no-row-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <!-- Fix 1524264 & 1524177 Start -->
+                                                                <th width="200" style="width:200px;" scope="col">
+                                                                    <span class="slds-truncate">{!$Label.c.Edealer_TIER_LEVEL}</span>
+                                                                </th>
+                                                                <th style="width:200px;" scope="col">
+                                                                    <span class="slds-truncate">{!$Label.c.Edealer_AVAILABILITY_Uppercase}</span>
+                                                                </th>
+                                                                <th style="width:200px;" scope="col">
+                                                                    <span class="slds-truncate">{!$Label.c.Edealer_BREADTH_Uppercase}</span>
+                                                                </th>
+                                                                <th style="width:200px;" scope="col">
+                                                                    <span class="slds-truncate">{!$Label.c.Edealer_RESTOCKING_FEE}</span>
+                                                                </th>
+                                                                <th style="width:200px;" scope="col">
+                                                                    <span class="slds-truncate">{!$Label.c.Edealer_EM_FREIGHT_DISC}</span>
+                                                                </th>
+                                                                <!-- Fix 1524264 & 1524177 End -->
+                                                                <!-- for MDI Tier Level Changes 07/27/2023 Start
+                                                                <th scope="col">
+                                                                    <span class="slds-truncate">{!$Label.c.Edealer_SCRAP_DISC}</span>
+                                                                </th>
+                                                                for MDI Tier Level Changes 07/27/2023 End -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <aura:iteration items="{!v.reportTableData}" var="item">
+                                                                <tr class="slds-hint-parent">
+                                                                    <td>
+                                                                        <span class="slds-truncate">{!item.Tier_Level__c}</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="slds-truncate">
+                                                                            <aura:if isTrue="{!!empty(item.Availablility__c)}">
+                                                                                {!item.Availablility__c}
+                                                                                <aura:set attribute="else">
+                                                                                    -
+                                                                                </aura:set>
+                                                                            </aura:if> 
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="slds-truncate">
+                                                                            <aura:if isTrue="{!!empty(item.Breadth__c)}">
+                                                                                {!item.Breadth__c}
+                                                                                <aura:set attribute="else">
+                                                                                    -
+                                                                                </aura:set>
+                                                                            </aura:if> 
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="slds-truncate">{!item.Restocking_Fee__c}%</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="slds-truncate">{!item.EM_Fright_Discount__c}%</span>
+                                                                    </td>
+                                                                    <!-- for MDI Tier Level Changes 07/27/2023 Start
+                                                                    <td>
+                                                                        <span class="slds-truncate">{!item.Scrap__c}%</span>
+                                                                    </td>
+                                                                    for MDI Tier Level Changes 07/27/2023 End -->
+                                                                </tr>
+                                                            </aura:iteration>
+                                                         </tbody>
+                                                        <!-- for MDI Tier Level Changes 07/27/2023 Start -->
+                                                        
+                                                    </table>
+                                                    <!-- Fix 1524264 & 1524177 Start -->
+                                                    <p class="labelWithSpace">{!$Label.c.Edealer_Auto_Accept_Utilization_95}</p>
+                                                    <!-- Fix 1524264 & 1524177 End -->
+                                                </div>
+                                            </aura:if>
+                                        </span>   
+                                    </td>
+                                    <td></td>
+                                
+                                </tr>
+                               
+                            </table>
+                        </div>
+                        
+                    </div>
+
+               <!-- <div class="slds-col slds-size_1-of-12">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.currentTier}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" >{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div> -->
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <!-- Fix 1524264 & 1524177 Start -->
+            <!--<div class="infoIconPosition">
+            	<lightning:helptext
+                	content="{!$Label.c.Edealer_number_of_available_parts_on_a_given_day}" />
+	        </div>-->
+            <div class="infoTextIconPosition" onmouseover="{!c.showTooltip}" onmouseout="{!c.hideTooltip}">
+                <lightning:icon iconName="utility:info" size="x-small" alternativeText="Information" />
+                <div class="tooltip" aura:if="{!v.isTooltipVisible}">
+                    <aura:unescapedHtml value="{!$Label.c.Edealer_number_of_available_parts_on_a_given_day}" />
+                </div>
+            </div>    
+            <!-- Fix 1524264 & 1524177 End -->
+        </div>
+    </div>
+</aura:component>

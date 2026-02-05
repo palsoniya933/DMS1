@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Competitors__c</fullName>
+    <label>Competitors Purchasing From</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Volvo/Mack</fullName>
+                <default>false</default>
+                <label>Volvo/Mack</label>
+            </value>
+            <value>
+                <fullName>Freightliner</fullName>
+                <default>false</default>
+                <label>Freightliner</label>
+            </value>
+            <value>
+                <fullName>International/Navistar</fullName>
+                <default>false</default>
+                <label>International/Navistar</label>
+            </value>
+            <value>
+                <fullName>WDs</fullName>
+                <default>false</default>
+                <label>WDs</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

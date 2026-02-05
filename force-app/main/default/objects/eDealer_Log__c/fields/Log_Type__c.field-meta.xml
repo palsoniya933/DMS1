@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Log_Type__c</fullName>
+    <label>Log Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cache API Response</fullName>
+                <default>false</default>
+                <label>Cache API Response</label>
+            </value>
+            <value>
+                <fullName>Apex Exception</fullName>
+                <default>false</default>
+                <label>Apex Exception</label>
+            </value>
+            <value>
+                <fullName>API Error</fullName>
+                <default>false</default>
+                <label>API Error</label>
+            </value>
+            <value>
+                <fullName>API Log</fullName>
+                <default>false</default>
+                <label>API Log</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

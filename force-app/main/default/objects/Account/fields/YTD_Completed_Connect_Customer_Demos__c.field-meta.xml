@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>YTD_Completed_Connect_Customer_Demos__c</fullName>
+    <label>YTD Completed Connect Customer Demos</label>
+    <summaryFilterItems>
+        <field>Opportunity.Type</field>
+        <operation>equals</operation>
+        <value>Connect Customer Demo</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Opportunity.StageName</field>
+        <operation>notEqual</operation>
+        <value>Qualification, Proposal/Price Quote, Negotiation/Review, Initial Contact, Request for D&amp;B, Program Presentation, Credit Application, Corporate Approval, Program Setup, Lead/Initial Interest</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Opportunity.CreatedDate</field>
+        <operation>lessOrEqual</operation>
+        <value>12/31/2009, 12:00 AM</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Opportunity.CreatedDate</field>
+        <operation>greaterThan</operation>
+        <value>1/1/2009, 12:00 AM</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

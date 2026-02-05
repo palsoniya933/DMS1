@@ -1,0 +1,30 @@
+.THIS {
+}
+
+.THIS .pageNum{
+    width:100%
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .bgWhite{
+    background:white;    padding: 10px;
+}
+.THIS .pageTxthead {
+    width: 35%;
+    font-weight: 600;
+}
+
+.THIS .tenPer{
+    width:12%;
+    padding: 0px 4px;
+}
+.THIS .tenPer .slds-select_container .slds-select
+{
+    height:25px;
+}
+.THIS .fivePer{
+    width:5%
+}

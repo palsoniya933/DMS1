@@ -1,0 +1,165 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                extends="c:edealerTracking"
+                controller="EDealerGlobalMDIController">
+    
+    <!-- download Attributes -->    
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <!-- this used for the current Dealer Code/Location -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- this used for the current Dealer Division -->
+    <aura:attribute name="dealerDivision" type="String" />
+    
+    <!-- this is used for store Global MDI Report  data into cache -->
+    <aura:attribute name="GlobalMDIReportDataMapCache" type="Map" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <!-- this is used for store data for Global MDI Orders Report -->
+    <aura:attribute name="reportData" type="List" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <!-- this is used for Language Translation of first column of Global Report -->
+    <aura:attribute name="languageTransMonthYearColumn" type="MAP"/>
+    
+    <!-- For Search Functionality -->
+    <aura:attribute name="tableData" type="Object[]" />
+    <aura:attribute name="loadTime" type="Integer" />
+
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/> 
+    
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.PaginationList}" action="{!c.updateTableData}"/> 
+    
+    
+    <aura:attribute name="data" type="Object[]" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    
+    <aura:attribute name="togglehover" type="boolean" default="false"/>
+    <aura:attribute name="reportTableData" type="List" />
+    
+    
+    <!-- this is for the Manual LockDown Report -->
+    <div class="reportContainerBox" style="position:relative;">
+        <!-- SPINNER -->
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand" style="height:200px;width:100%;position:absolute;"/>
+        </aura:if> 
+        <!-- data part -->    
+        <aura:if isTrue="{!v.data.length > 0 }">      
+            
+            <div class="datacontainer globalReportContainer">    
+                <div class="slds-col slds-size_12-of-12"> 
+                <table>                    
+                    <tr>
+                        <td>
+                            <div align="right" class="">
+                                <span>
+                                    <a onmouseover="{!c.handleMouseHover}" onmouseout="{!c.handleMouseOut}" tabindex="-1" class="reportInfoicon">
+                                        <lightning:icon class="yellowInfo" iconName="utility:info" size="x-small" /></a>
+                                    <aura:if isTrue="{!v.togglehover==true}"><!-- {!v.togglehover==true} -->
+                                        <div class="slds-popover"
+                                             role="tooltip" id="help" style="position: absolute;right: 0px;  bottom: 43%; padding: inherit;border-radius: 5px;border: solid;border-color: #FFB918;">
+                                            <!-- Table -->
+                                            <table class="slds-table slds-table--bordered slds-no-row-hover">
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <span class="slds-truncate">A - Elite Plus</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <span class="slds-truncate">B - Elite</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <span class="slds-truncate">C - Tier 1</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <span class="slds-truncate">D - New Dealer Probation </span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <span class="slds-truncate">E - No Benefits</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <span class="slds-truncate">F - Tier 2</span>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </table>
+                                            
+                                        </div>
+                                    </aura:if>
+                                </span>
+                                <!-- Download Report Button csv format-->
+                                <c:eDealerDownloadReportInCsvButton reportName= "{!$Label.c.Global_Report}"
+                                                                    invData = "{!v.data}"
+                                                                    columns = "{!v.columns}"
+                                                                    isMasterInventoryData = 'False'/>
+                                <!-- Download Report Button -->
+                                <c:eDealerDownloadReportButton aura:id="downloadcmp"                                                               
+                                                               reportName="{!$Label.c.Global_Report}"
+                                                               report="{!v.data}"
+                                                               columns="{!v.columns}"
+                                                               callapimethod = "{!c.downloadReportData}"/>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                </table>
+                
+                
+                <table style="table-layout:fixed;">
+                    <td>
+                        <aura:if isTrue="{!v.data}">
+                            <lightning:datatable keyField="id"
+                                                 hideCheckboxColumn="true"
+                                                 columns="{!v.columns }"
+                                                 data="{!v.data}"
+                                                 columnWidthsMode="auto"
+                                                 minColumnWidth="100">
+                            </lightning:datatable>
+                        </aura:if>
+                    </td>
+                </table>
+                </div>
+            </div>            
+            
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.APICalled}">
+                    <br/>
+                    <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                </aura:if>
+                
+            </aura:set>
+            
+        </aura:if>
+        
+    </div>
+</aura:component>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fleet_Sales_Coordinator__c</fullName>
+    <label>Fleet Sales Coordinator</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Bronson Berry</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bronson Berry</label>
+            </value>
+            <value>
+                <fullName>Ian Bradley</fullName>
+                <default>false</default>
+                <label>Ian Bradley</label>
+            </value>
+            <value>
+                <fullName>Luis Diaz de Leon</fullName>
+                <default>false</default>
+                <label>Luis Diaz de Leon</label>
+            </value>
+            <value>
+                <fullName>Mia Won</fullName>
+                <default>false</default>
+                <label>Mia Won</label>
+            </value>
+            <value>
+                <fullName>Sam Moore</fullName>
+                <default>false</default>
+                <label>Sam Moore</label>
+            </value>
+            <value>
+                <fullName>Sandra Demarr</fullName>
+                <default>false</default>
+                <label>Sandra Demarr</label>
+            </value>
+            <value>
+                <fullName>Shelley Anderson</fullName>
+                <default>false</default>
+                <label>Shelley Anderson</label>
+            </value>
+            <value>
+                <fullName>Tina Williams</fullName>
+                <default>false</default>
+                <label>Tina Williams</label>
+            </value>
+            <value>
+                <fullName>Tracey Andrews</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tracey Andrews</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

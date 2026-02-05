@@ -1,0 +1,311 @@
+<aura:component controller="EDealerPartDetails" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will used to show/hide the part availability component -->
+    <aura:attribute name="isShowPartAvailabilitySectionOnPage" type="Boolean" />
+    
+    <!-- Action Sections -->
+    <aura:attribute name="activeSections" type="Object[]"  />
+    
+    <!-- show the confiramation model -->
+    <aura:attribute name="showEmergencyOrderAddCartModal" type="Boolean" default="false" />
+    <aura:attribute name="showStockOrderAddCartModal" type="Boolean" default="false" />
+    
+    <!-- saving the parts details -->
+    <aura:attribute name="partAvailabilityObj" type="Object" />
+    
+    <!-- this will save the part number whose details ha to be pulled -->
+    <aura:attribute name="partNumber" type="String"/>
+    
+    <!-- this will save the current Dealer Code -->
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="dealerDataDetail" type="Object" />
+    
+    <!-- this will save the asi name of the current logged-in Dealer -->
+    <aura:attribute name="dealerUserName" type="String" />
+    
+     <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+     <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" />
+    <aura:attribute name="partAvalibleFlag" type="boolean" default="false"/>
+    
+    <!-- add order to EM Cart 
+    <aura:attribute name="addOrdersInEMCart" type="Aura.action"/>-->
+    
+    <!-- number of parts selected for cart -->
+    <aura:attribute name="totalOrderSelected" type="Integer" default="0" />
+    
+    <!-- this is used for calling onload apex method -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- on change event (when part number change) -->
+    <aura:handler name="change" value="{!v.partNumber}" action="{!c.doInit}"/>
+    
+    <!-- on change event (when dealer code change) -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    <div style="position:relative;">        
+        <!-- parts avaliability section -->
+        <div class="slds-grid slds-wrap slds-m-around_x-small mar-align-accordian">
+            <lightning:accordion aura:id="accordion" 
+                                 allowMultipleSectionsOpen="true"
+                                 activeSectionName="{!v.activeSections }" class="accordingBorder"
+                                 onsectiontoggle="{!c.handleSectionToggle }">
+                <lightning:accordionSection name="PricingInfo1" label="{!$Label.c.Edealer_PARTS_AVAILABILITY}" >
+                    <aura:set attribute="body">
+                        <lightning:tabset>
+                            <lightning:tab label="{!$Label.c.Edealer_STOCK_ORDER}" id="STANDARD_ORDER">
+                                
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_12-of-12">
+                                        
+                                        <!--<lightning:button class="slds-m-left_xx-small" variant="destructive" label="ADD TO CART" />-->
+                                        <table>
+                                            <td style="width:30%"><p>{!$Label.c.Edealer_Shipment_Day}</p></td>
+                                            <!--<td style="width:7%;font-weight: 700;">ADD PART(S)&nbsp;</td>
+                                            <td style="width:20%;"><lightning:input name="input1" value="{!v.totalOrderSelected}" label="" variant = "label-hidden"/></td>
+                                            <td class="emOrderText"><div align="right"><lightning:button class="slds-m-left_xx-small" variant="destructive" label="EMERGENCY ORDER" disabled="{!!and(not(empty(v.totalOrderSelected)), greaterthan(v.totalOrderSelected, 0))}" onclick="{!c.addOrdersInEMCart}" /></div></td>
+                                            <td class="soOrderText"><lightning:button class="slds-m-left_xx-small" variant="destructive" label="STOCK ORDER" disabled="{!!and(not(empty(v.totalOrderSelected)), greaterthan(v.totalOrderSelected, 0))}" onclick="{!c.addOrdersInStockCart}"/></td>-->
+                                        </table>
+                                        
+                                        <br/>
+                                        <div class="slds-scrollable_x" style="min-height: 50px;">
+                                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper slds-table_col-bordered">
+                                                <thead>
+                                                    <tr class="slds-line-height_reset">                                                        
+                                                        <th class="" scope="col" colspan="2">
+                                                            <div class="slds-truncate" align="center">{!$Label.c.Edealer_Availability}</div>
+                                                        </th>
+                                                        <th class="" scope="col" colspan="2">
+                                                            <div class="slds-truncate" align="center">{!$Label.c.Edealer_In_Transit}</div>
+                                                        </th>                 
+                                                        <th class="" scope="col" colspan="2">
+                                                            <div class="slds-truncate" align="center">{!$Label.c.Edealer_Scheduled_Shipments}</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate" align="center">{!$Label.c.Edealer_Historical_Supplier_Lead_Time}</div>
+                                                        </th>  
+                                                    </tr>
+                                                    <tr class="slds-line-height_reset">   
+                                                        
+                                                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                                                            <th class="" scope="col" >
+                                                            <td class="invDatacontainertableheading" >
+                                                                <div class="slds-truncate">
+                                                                 {!cd.value}
+                                                                </div>
+                                                            </td>
+                                                                </th>
+                                                        </aura:iteration>
+                                                        <!--<th class="" scope="col" >
+                                                            <div class="slds-truncate">PDC</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">Qty. Available</div>
+                                                        </th>                                                       
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">Qty. in Transit</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">Estimated Arrival</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">Order Qty.</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">Estimated Arrival</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate">Historical Lead Time</div>
+                                                        </th>-->  
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                    <aura:if isTrue="{!v.partAvailabilityObj}">
+                                                        <aura:iteration items="{!v.partAvailabilityObj.PartAvl}" var="item" indexVar="index">
+                                                            <tr>   
+                                                                <aura:iteration items="{!v.columnLabelByApiName}" var="cd">
+                                                                    <aura:if isTrue="{!item.IntranQty != 'SLSL'}">
+                                                                        <td>
+                                                                            <div class="slds-truncate">
+                                                                                <c:eDealerRowCell invData="{!item}" columnAPIName="{!cd.key}"/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <aura:set attribute="else">
+                                                                            <div class="slds-truncate">
+                                                                                <aura:if isTrue="{!item.IntranQty == 'SLSL'}">
+                                                                                    <span onclick="{!c.handleOpenInNewWindow}">
+                                                                                        <a href="javascript:void(0);">SUPPORT LINK</a>
+                                                                                    </span> 
+                                                                                    <aura:set attribute="else">
+                                                                                        {!item.IntranQty}
+                                                                                    </aura:set>
+                                                                                </aura:if>
+                                                                                
+                                                                            </div>
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                    
+                                                                </aura:iteration>
+                                                            </tr>
+                                                        </aura:iteration>
+                                                        
+                                                        <aura:set attribute="else">
+                                                            <td colspan="7">
+                                                                <center>
+                                                                    <div class="slds-truncate">
+                                                                       {!$Label.c.Edealer_No_Parts_Found}
+                                                                    </div>
+                                                                </center>
+                                                            </td>
+                                                        </aura:set>
+                                                    </aura:if> 
+                                                    
+                                                    <aura:if isTrue="{!!v.partAvalibleFlag}">
+                                                        <tr>
+                                                            <td>
+                                                                <b>{!$Label.c.Back_Order}</b> 
+                                                            </td>
+                                                            <td colspan="7">
+                                                                <lightning:button 
+                                                                                  class="slds-m-left_xx-small" 
+                                                                                  variant="destructive" 
+                                                                                  onclick="{!c.displaynearstdealer}" 
+                                                                                  label="{!$Label.c.CHECK_NEAREST_DEALER}"/>
+                                                            </td>
+                                                        </tr>
+                                                    </aura:if>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <br/>
+                                        <aura:if isTrue="{!!v.partAvalibleFlag}">                                            
+                                            <br/>
+                                            <div class="slds-scrollable_x slds-hide" aura:id="nearstdealer" style="height: 192px;overflow: auto;">
+                                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped table-wrapper">
+                                                    <thead>
+                                                        <tr class="slds-line-height_reset">
+                                                            
+                                                            <th class="" scope="col">
+                                                                <div class="slds-truncate">{!$Label.c.Dealer_Code}</div>
+                                                            </th>
+                                                            <th class="" scope="col">
+                                                                <div class="slds-truncate">{!$Label.c.Dealer_Name}</div>
+                                                            </th>
+                                                            <th class="" scope="col">
+                                                                <div class="slds-truncate">{!$Label.c.Location}</div>
+                                                            </th>
+                                                            <th class="" scope="col">
+                                                                <div class="slds-truncate">{!$Label.c.Availibility}</div>
+                                                            </th>
+                                                            <th class="" scope="col">
+                                                                <div class="slds-truncate">{!$Label.c.Phone_Number}</div>
+                                                            </th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <aura:if isTrue="{!v.dealerDataDetail}">
+                                                            <aura:iteration items="{!v.dealerDataDetail}" var="item" indexVar="index">
+                                                                <tr>
+                                                                    <td>
+                                                                        {!item.dealer_code}
+                                                                    </td>
+                                                                    <td>
+                                                                        {!item.dealer_name}  
+                                                                    </td>
+                                                                    <td>
+                                                                        {!item.location}  
+                                                                    </td>
+                                                                    <td>
+                                                                        {!item.availibility} 
+                                                                    </td>
+                                                                    <td>
+                                                                        {!item.phone_number}  
+                                                                    </td>
+                                                                    
+                                                                </tr>
+                                                            </aura:iteration>
+                                                        </aura:if>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                        </aura:if>
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_12-of-12">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col slds-size_6-of-12 lFloat padding15">
+                                                        <div class="slds-grid slds-wrap">
+                                                            <div class="slds-col slds-size_6-of-12 padding15">
+                                                                <div class="slds-truncate slds-truncateHeadSub">
+                                                                   {!$Label.c.Edealer_DIRECT_SHIP} 
+                                                                </div>
+                                                                <div class="slds-truncateHead">{!$Label.c.Edealer_Supplier_standard_Lead_Time}</div>
+                                                                <div class="partsavaliablegreen">
+                                                                    {!v.partAvailabilityObj.SuppLeadTm}
+                                                                </div>
+                                                                <div class="partsavaliableinput">
+                                                                    <p>{!$Label.c.Edealer_Direct_Ship_estimates}</p>
+                                                                </div>
+                                                                
+                                                                <br/>
+                                                                <div class="slds-grid slds-wrap">
+                                                                    <div class="slds-col slds-size_6-of-12 padding15">
+                                                                        <div class="slds-truncate slds-truncateHeadSub">
+                                                                            {!$Label.c.Edealer_STANDARD}
+                                                                        </div>
+                                                                        <div class="partsavaliableyellow">
+                                                                            {!v.partAvailabilityObj.DspStdDays}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="slds-col slds-size_6-of-12 padding15">
+                                                                        <div class="slds-truncate slds-truncateHeadSub">
+                                                                            {!$Label.c.Edealer_EMERGENCY}
+                                                                        </div>
+                                                                        <div class="partsavaliableyellow">
+                                                                            {!v.partAvailabilityObj.DspEmDays}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_6-of-12 lFloat padding15">
+                                                        <div class="slds-grid slds-wrap">
+                                                            <div class="slds-col slds-size_6-of-12 padding15">
+                                                                <div class="slds-truncate slds-truncateHeadSub">
+                                                                     {!$Label.c.Edealer_TRUCK_DOWN}
+                                                                </div>
+                                                                <div class="slds-truncateHead">{!$Label.c.Edealer_Estimated_Average_Days_to_Arrival} </div>
+                                                                <div class="partsavaliableyellow">
+                                                                    {!v.partAvailabilityObj.TrukLeadTm}
+                                                                </div>
+                                                                <div class="partsavaliableinput">
+                                                                    <p>{!$Label.c.Edealer_Truck_Down_estimates}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning:tab>
+                        </lightning:tabset>
+                    </aura:set>
+                </lightning:accordionSection>                
+            </lightning:accordion>
+        </div>        
+    </div>
+    
+    
+    
+</aura:component>

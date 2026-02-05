@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>eDealerFilters</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+    &quot;ActiveOrderCmp&quot;: {
+        &quot;en_US&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;W&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;Q&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;All&quot;
+            }
+        ],
+        &quot;fr_CA&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;H&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Tout&quot;
+            }
+        ],
+        &quot;es_MX&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;S&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Todo&quot;
+            }
+        ]
+    },
+ &quot;PendingOrderCmp&quot;: {
+        &quot;en_US&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;W&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;Q&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;All&quot;
+            }
+        ],
+        &quot;fr_CA&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;H&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Tout&quot;
+            }
+        ],
+        &quot;es_MX&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;S&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Todo&quot;
+            }
+        ]
+    },
+ &quot;UnconfirmedOrderCmp&quot;: {
+        &quot;en_US&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;W&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;Q&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;All&quot;
+            }
+        ],
+        &quot;fr_CA&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;H&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Tout&quot;
+            }
+        ],
+        &quot;es_MX&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;S&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Todo&quot;
+            }
+        ]
+    },
+    &quot;ClosedOrdersCmp&quot;: {
+        &quot;en_US&quot;: [
+         
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;MTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Month to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;QTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Quarter to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;YTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Year to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;All&quot;,
+                &quot;tooltip&quot;: &quot;Current Year to Date + Prior 2 Years&quot;
+            }
+        ],
+        &quot;fr_CA&quot;: [
+          
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;,
+                &quot;tooltip&quot;: &quot;Mois à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;,
+                &quot;tooltip&quot;: &quot;Trimestre à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;A&quot;,
+                &quot;tooltip&quot;: &quot;Année à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Tout&quot;,
+                &quot;tooltip&quot;: &quot;Année en cours à ce jour + 2 années précédentes&quot;
+            }
+        ],
+        &quot;es_MX&quot;: [
+      
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;,
+                &quot;tooltip&quot;: &quot;Mes hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;,
+                &quot;tooltip&quot;: &quot;Trimestre hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;A&quot;,
+                &quot;tooltip&quot;: &quot;Año hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Todo&quot;,
+                &quot;tooltip&quot;: &quot;Año actual hasta la fecha + 2 años anteriores&quot;
+            }
+        ]
+    },
+    &quot;FreightChargeCmp&quot;: {
+        &quot;en_US&quot;: [
+           
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;W&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;Q&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;1Y&quot;
+            }
+        ],
+        &quot;fr_CA&quot;: [
+            
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;H&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;1 an&quot;
+            }
+        ],
+        &quot;es_MX&quot;: [
+         
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;S&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;1A&quot;
+            }
+        ]
+    },
+    &quot;TotalPartsCmp&quot;: {
+        &quot;en_US&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;WTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Week to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;MTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Month to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;QTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Quarter to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;YTD&quot;,
+                &quot;tooltip&quot;: &quot;Current Year to Date&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;All&quot;,
+                &quot;tooltip&quot;: &quot;Current Year to Date + Prior 2 Years&quot;
+            }
+        ],
+        &quot;fr_CA&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;S&quot;,
+		&quot;tooltip&quot;: &quot;Semaine à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;,
+                &quot;tooltip&quot;: &quot;Mois à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;,
+                &quot;tooltip&quot;: &quot;Trimestre à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;A&quot;,
+                &quot;tooltip&quot;: &quot;Année à ce jour&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Tout&quot;,
+                &quot;tooltip&quot;: &quot;Année en cours à ce jour + 2 années précédentes&quot;
+            }
+        ],
+        &quot;es_MX&quot;: [
+            {
+                &quot;label&quot;: &quot;Weekly&quot;,
+                &quot;value&quot;: &quot;S&quot;,
+		&quot;tooltip&quot;: &quot;Semana hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Monthly&quot;,
+                &quot;value&quot;: &quot;M&quot;,
+                &quot;tooltip&quot;: &quot;Mes hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Quarterly&quot;,
+                &quot;value&quot;: &quot;T&quot;,
+                &quot;tooltip&quot;: &quot;Trimestre hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;Annually&quot;,
+                &quot;value&quot;: &quot;A&quot;,
+                &quot;tooltip&quot;: &quot;Año hasta la fecha&quot;
+            },
+            {
+                &quot;label&quot;: &quot;All&quot;,
+                &quot;value&quot;: &quot;Todo&quot;,
+                &quot;tooltip&quot;: &quot;Año actual hasta la fecha + 2 años anteriores&quot;
+            }
+        ]
+    }
+}</value>
+    </values>
+</CustomMetadata>

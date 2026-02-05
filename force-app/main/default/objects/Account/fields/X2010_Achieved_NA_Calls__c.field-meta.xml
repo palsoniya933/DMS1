@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2010_Achieved_NA_Calls__c</fullName>
+    <defaultValue>&apos;https://na2.salesforce.com/00O40000002MVz3&apos;</defaultValue>
+    <description>https://na2.salesforce.com/00O40000002MVz3</description>
+    <label>2010 Achieved NA&amp;Connect Customer Calls</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

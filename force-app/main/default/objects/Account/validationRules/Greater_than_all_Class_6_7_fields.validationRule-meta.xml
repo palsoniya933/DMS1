@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Greater_than_all_Class_6_7_fields</fullName>
+    <active>false</active>
+    <description>This field must be greater than the combination of the other Class 6-7 fields in order for the Class 6-7 calcuation to be a positive number.</description>
+    <errorConditionFormula>Class_6_7_Total__c  &lt; ( KW_Class_6_7_Trucks__c + PB_Class_6_7_Trucks__c)</errorConditionFormula>
+    <errorDisplayField>Class_6_7_Total__c</errorDisplayField>
+    <errorMessage>The Class 6-7 Total must be greater than the sum of the Class 6-7 KW, PB, and Other values.</errorMessage>
+</ValidationRule>

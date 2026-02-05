@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Manual Parameters Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; :  &quot;GROUPE&quot;,
+&quot;loc&quot; :  &quot;EMPLACEMENT&quot;,
+&quot;sale_ind_cd&quot; :  &quot;INDEX DES VENDABLES&quot;,
+&quot;item&quot; :  &quot;ITEM&quot;,
+&quot;p_abc&quot; :  &quot;ABC&quot;,
+&quot;oh&quot; :  &quot;EN MAIN&quot;,
+&quot;dnet&quot; :  &quot;DEALERNET&quot;,
+&quot;p_12monthhitcount&quot; :  &quot;APPELS DE FICHIERS 12 MOIS&quot;,
+&quot;p_mtddemandqty&quot; :  &quot;DEMANDES À CE JOUR POUR LE MOIS&quot;,
+&quot;p_12monthdemandqty&quot; :  &quot;DEMANDE POUR 12 MOIS&quot;,
+&quot;p_dlrsplrcode&quot; :  &quot;P_DLRSPLRCD&quot;,
+&quot;p_stkclass&quot; :  &quot;P_CLASSE STOCK&quot;,
+&quot;p_sunsetdate&quot; :  &quot;P_DATE DE TEMPORISATION&quot;,
+&quot;p_dlrrslnumber&quot; :  &quot;P_NUMÉRO DLRRSL&quot;,
+&quot;p_pdc_spq&quot; :  &quot;P_PDC_SPQ&quot;,
+&quot;p_commenttext&quot; :  &quot;P_TEXTE DE COMMENTAIRE&quot;,
+&quot;dlrsplrcode&quot;  :&quot;CODE FOURNISSEUR DU CONCESSIONNAIRE&quot;,
+&quot;min_inc_qty&quot;:&quot;QUANTITÉ D&apos;INCRÉMENT MINIMUM&quot;
+}</value>
+    </values>
+</CustomMetadata>

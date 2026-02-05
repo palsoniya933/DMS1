@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Volume sale quote translation</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;DealerType&quot;: [
+{
+&quot;en_US&quot;: &quot;Store&quot;,
+&quot;fr_CA&quot;: &quot;Concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Sucursal&quot;,
+&quot;value&quot;: &quot;S&quot;,
+&quot;order&quot;: 1
+},
+{
+&quot;en_US&quot;: &quot;Group&quot;,
+&quot;fr_CA&quot;: &quot;Groupe&quot;,
+&quot;es_MX&quot;: &quot;Grupo&quot;,
+&quot;value&quot;: &quot;G&quot;,
+&quot;order&quot;: 1
+}
+],
+&quot;Countrycanotexceed30characters&quot;: [
+{
+&quot;en_US&quot;: &quot;Country can’t exceed 30 characters&quot;,
+&quot;fr_CA&quot;: &quot;Pays ne peut pas dépasser 30 caractères.&quot;,
+&quot;es_MX&quot;: &quot;País no puede exceder 30 caracteres.&quot;
+}
+],
+&quot;VolumeSalesquotelineshavebeensuccesfullyInserted&quot;: [
+{
+&quot;en_US&quot;: &quot;Volume Sales quote lines have been succesfully Inserted&quot;,
+&quot;fr_CA&quot;: &quot;Les lignes de devis de Vente en Volume ont été insérées avec succès.&quot;,
+&quot;es_MX&quot;: &quot;Las líneas de cotización de Ventas por Volumen se han insertado correctamente.&quot;
+}
+],
+&quot;Partalreadyexistsonthecurrentquote&quot;: [
+{
+&quot;en_US&quot;: &quot;Part already exists on the current quote&quot;,
+&quot;fr_CA&quot;: &quot;La pièce existe déjà sur le devis en cours&quot;,
+&quot;es_MX&quot;: &quot;La parte ya existe en la cotización actual&quot;
+}
+],
+&quot;Duplicatepart&quot;: [
+{
+&quot;en_US&quot;: &quot;Duplicate part&quot;,
+&quot;fr_CA&quot;: &quot;Pièce en double&quot;,
+&quot;es_MX&quot;: &quot;Parte duplicada&quot;
+}
+],
+&quot;Norecordsfound&quot;: [
+{
+&quot;en_US&quot;: &quot;No records found&quot;,
+&quot;fr_CA&quot;: &quot;Aucun enregistrement trouvé&quot;,
+&quot;es_MX&quot;: &quot;No se encontraron registros&quot;
+}
+],
+&quot;NodiscountswerefoundforthegivenrecordID.&quot;: [
+{
+&quot;en_US&quot;: &quot;No discounts were found for the given record ID&quot;,
+&quot;fr_CA&quot;: &quot;Aucune remise n&apos;a été trouvée pour l&apos;ID d&apos;enregistrement donné&quot;,
+&quot;es_MX&quot;: &quot;No se encontraron descuentos para el ID de registro proporcionado&quot;
+}
+],
+&quot;Sucessfullyinserted&quot;: [
+{
+&quot;en_US&quot;: &quot;Sucessfully inserted&quot;,
+&quot;fr_CA&quot;: &quot;Inséré avec succès&quot;,
+&quot;es_MX&quot;: &quot;Insertado exitosamente&quot;
+}
+],
+&quot;cancelOrderTitle&quot;: [
+{
+&quot;en_US&quot;: &quot;Cancel Order&quot;,
+&quot;fr_CA&quot;: &quot;Annuler la commande&quot;,
+&quot;es_MX&quot;: &quot;Cancelar orden&quot;
+}
+],
+&quot;submitOrderTitle&quot;: [
+{
+&quot;en_US&quot;: &quot;Submit Order&quot;,
+&quot;fr_CA&quot;: &quot;Soumettre la commande&quot;,
+&quot;es_MX&quot;: &quot;Enviar la orden&quot;
+}
+],
+&quot;confirmLabel&quot;: [
+{
+&quot;en_US&quot;: &quot;Confirm&quot;,
+&quot;fr_CA&quot;: &quot;Confirmer&quot;,
+&quot;es_MX&quot;: &quot;Confirmar&quot;
+}
+],
+&quot;cancelLabel&quot;: [
+{
+&quot;en_US&quot;: &quot;Cancel Order&quot;,
+&quot;fr_CA&quot;: &quot;Annuler la commande&quot;,
+&quot;es_MX&quot;: &quot;Cancelar orden&quot;
+}
+],
+&quot;cancelConfirmMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;Are you sure you want to cancel this request?&quot;,
+&quot;fr_CA&quot;: &quot;Êtes-vous sûr de vouloir annuler cette demande ?&quot;,
+&quot;es_MX&quot;: &quot;¿Estás seguro de que deseas cancelar esta solicitud?&quot;
+}
+],
+&quot;submitConfirmMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;Are you sure you want to submit this request?&quot;,
+&quot;fr_CA&quot;: &quot;Êtes-vous sûr de vouloir soumettre cette demande ?&quot;,
+&quot;es_MX&quot;: &quot;¿Está seguro de que desea enviar esta solicitud ?&quot;
+}
+],
+&quot;cancelSuccessMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;Order Request is Cancelled&quot;,
+&quot;fr_CA&quot;: &quot;La demande de commande est annulée&quot;,
+&quot;es_MX&quot;: &quot;La solicitud de pedido se canceló&quot;
+}
+],
+&quot;submitSuccessMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;Order Request is Submitted for Review&quot;,
+&quot;fr_CA&quot;: &quot;La demande de commande est soumise pour examen&quot;,
+&quot;es_MX&quot;: &quot;La solicitud de pedido se envió para revisión&quot;
+}
+],
+&quot;cancelStatusErrorMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;The Order wasn&apos;t canceled because it is not in Draft status&quot;,
+&quot;fr_CA&quot;: &quot;La commande n&apos;a pas été annulée car elle n&apos;est pas au statut de brouillon&quot;,
+&quot;es_MX&quot;: &quot;La orden no fue cancelada porque no está en estado de borrador&quot;
+}
+],
+&quot;submitStatusErrorMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;The Order wasn&apos;t submitted because it is not in DRAFT status&quot;,
+&quot;fr_CA&quot;: &quot;La commande n&apos;a pas été soumise car elle n&apos;est pas au statut de brouillon&quot;,
+&quot;es_MX&quot;: &quot;La orden no fue enviado porque no se encuentra en estado borrador&quot;
+}
+],
+&quot;genericErrorMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;An unexpected error happened&quot;,
+&quot;fr_CA&quot;: &quot;Une erreur inattendue s’est produite&quot;,
+&quot;es_MX&quot;: &quot;An unexpected error happened&quot;
+}
+],
+&quot;emptyDropErrorMessage&quot;: [
+{
+&quot;en_US&quot;: &quot;One or more drop info is empty. Please add one or delete it.&quot;,
+&quot;fr_CA&quot;: &quot;Une ou plusieurs informations de lieux d&apos;expédition sont vides. Veuillez en ajouter un ou le supprimer.&quot;,
+&quot;es_MX&quot;: &quot;La información de uno o más ubicaciones de envío está vacía. Añadir una o elimínalo.&quot;
+}
+],
+&quot;errorLabel&quot;: [
+{
+&quot;en_US&quot;: &quot;Error&quot;,
+&quot;fr_CA&quot;: &quot;Erreur&quot;,
+&quot;es_MX&quot;: &quot;Error&quot;
+}
+],
+&quot;sucessLabel&quot;: [
+{
+&quot;en_US&quot;: &quot;Success&quot;,
+&quot;fr_CA&quot;: &quot;Succès&quot;,
+&quot;es_MX&quot;: &quot;Éxito&quot;
+}
+],
+&quot;error_Message&quot;:[
+{
+&quot;en_US&quot;: &quot;The Case must have at least one related drop.&quot;,
+&quot;fr_CA&quot;: &quot;Le dossier doit avoir au moins une adresse de livraison associée.&quot;,
+&quot;es_MX&quot;: &quot;El caso debe tener al menos una dirección de envío relacionada.&quot;
+}
+],
+&quot;submission_failed&quot;:[
+{
+&quot;en_US&quot;: &quot;Submission failed!&quot;,
+&quot;fr_CA&quot;: &quot;Soumission échouée !&quot;,
+&quot;es_MX&quot;: &quot;¡Envío fallido!&quot;
+}
+],
+&quot;promoCodemustbeeightdigits&quot;:[
+{
+&quot;en_US&quot;: &quot;Promo Code must be eight digits&quot;,
+&quot;fr_CA&quot;: &quot;Le code promotionnel doit comporter huit chiffres&quot;,
+&quot;es_MX&quot;: &quot;El código de promoción debe tener ocho dígitos&quot;
+}
+],
+&quot;duplicateDealerCodeandSuffixFound&quot;:[
+{
+&quot;en_US&quot;: &quot;Duplicate dealer code and suffix found&quot;,
+&quot;fr_CA&quot;: &quot;Code concessionnaire et suffixe en double trouvés&quot;,
+&quot;es_MX&quot;: &quot;Se encontraron códigos y sufijos de concesionario duplicados&quot;
+}
+],
+&quot;duplicateDealerPOFound&quot;:[
+{
+&quot;en_US&quot;: &quot;Duplicate dealer PO found&quot;,
+&quot;fr_CA&quot;: &quot;Double bon de commande du concessionnaire trouvé&quot;,
+&quot;es_MX&quot;: &quot;Se encontró una orden de compra duplicada de concesionario&quot;
+}
+],
+&quot;vsOrder&quot;:[
+{
+&quot;en_US&quot;: &quot;Order&quot;,
+&quot;fr_CA&quot;: &quot;Commande&quot;,
+&quot;es_MX&quot;: &quot;Orden&quot;
+}
+],
+&quot;vsQuoteMassUploadError&quot;:[
+{
+&quot;en_US&quot;: &quot;The upload requires at least one part to be added to the template&quot;,
+&quot;fr_CA&quot;: &quot;Le téléchargement nécessite qu&apos;au moins une partie soit ajoutée au modèle&quot;,
+&quot;es_MX&quot;: &quot;La carga requiere que se agregue al menos una parte a la plantilla&quot;
+}
+]
+}</value>
+    </values>
+</CustomMetadata>

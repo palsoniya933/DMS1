@@ -1,0 +1,85 @@
+<aura:component   implements="forceCommunity:availableForAllPageTypes" 
+                extends="c:edealerTracking"
+                access="global">
+    
+    <!-- Attributes -->
+    <aura:attribute name="selectedTab" type="String" default="TotalInventory" />
+    <aura:attribute name="selectedTabLabel" type="String" default="Total Inventory" />
+    <aura:attribute name="selectedLocation" type="object" />
+    <aura:attribute name="division" type="String" />
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="selectedTabName" type="String" /> <!-- to remove -->
+    
+    <aura:attribute name="inventoryHealthData" type="Object" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="displayTabs" type="Boolean" default = "false" />
+    
+    <!-- used for classes for tabs -->
+    <aura:attribute name="TotalInvTabClass" type="String" />
+    <aura:attribute name="HealthInventoryTabClass" type="String" />
+    <aura:attribute name="NoMoveTabClass" type="String" />
+    <aura:attribute name="Exess90Days" type="String" />
+    <div class="mainContentcontainer">
+     
+
+    <div class="slds-text-heading_large slds-text-title_bold custom-heading">
+        {!v.selectedTabLabel}
+    </div>
+    
+    <!-- Lightning Card -->
+    
+    <lightning:card>
+        <aura:if isTrue="{!v.displayTabs}">
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav tab" role="tablist">
+                    
+                    <li class="tab-item" role="presentation">
+                        <a role="tab" class="{!v.TotalInvTabClass}" onclick="{!c.switchTab}" data-tab="TotalInventory">{!$Label.c.Edealer_Total_Inventory}</a>
+                    </li>      
+                    
+                    <li class="tab-item" role="presentation">
+                        <a role="tab" class="{!v.HealthInventoryTabClass}" onclick="{!c.switchTab}" data-tab="HealthInventory">{!$Label.c.Edealer_Health_Inventory}</a>
+                    </li>
+                    <li class="tab-item" role="presentation">
+                        <a role="tab" class="{!v.NoMoveTabClass}" onclick="{!c.switchTab}" data-tab="NoMove">{!$Label.c.Edealer_No_Move}</a>
+                    </li>
+                    <li class="tab-item" role="presentation">
+                        <a role="tab" class="{!v.Exess90Days}" onclick="{!c.switchTab}" data-tab="Excess90Days">{!$Label.c.Edealer_Excess_90_Days}</a>
+                    </li>
+                </ul>
+            </div>
+        </aura:if>
+    
+    <div class="slds-tabs_default__content">
+       <aura:renderIf isTrue="{!v.selectedTab == 'TotalInventory'}">
+            <c:eDealerMDITotalInventory
+                 dealerCode="{!v.selectedLocation.selectedLoc}"
+                 division="{!v.userDetail.division}"
+                 selectedLocation="{!v.selectedLocation.listSelectedLoc}" />
+        </aura:renderIf>
+        
+        <aura:renderIf isTrue="{!v.selectedTab == 'HealthInventory'}">
+            <c:eDealerHealthInventory 
+                 dealerCode="{!v.selectedLocation.selectedLoc}"
+                 division="{!v.userDetail.division}"
+                 selectedLocation="{!v.selectedLocation.listSelectedLoc}" />
+        </aura:renderIf>
+        
+        <aura:renderIf isTrue="{!v.selectedTab == 'NoMove'}">
+            <c:eDealerNoMove
+                 dealerCode="{!v.selectedLocation.selectedLoc}"
+                 division="{!v.userDetail.division}"
+                 selectedLocation="{!v.selectedLocation.listSelectedLoc}" />
+        </aura:renderIf>
+        
+        <aura:renderIf isTrue="{!v.selectedTab == 'Excess90Days'}">
+            <c:eDealerExcess90Days 
+				dealerCode="{!v.selectedLocation.selectedLoc}"
+                division="{!v.userDetail.division}"
+                selectedLocation="{!v.selectedLocation.listSelectedLoc}" />
+        </aura:renderIf>
+    </div>
+    </lightning:card>
+    </div>
+</aura:component>

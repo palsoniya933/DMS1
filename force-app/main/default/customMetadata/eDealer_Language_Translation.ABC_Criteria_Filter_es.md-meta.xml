@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>ABC Criteria Filter</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{&quot;DISTCHAN|text&quot;:&quot;CANAL DE DISTRIBUCIÓN&quot;,
+&quot;DLRSPLRCD|text&quot;:&quot;DLRSPLRCD&quot;,
+&quot;STKCLASS|text&quot;:&quot;CLASE STOCK&quot;,
+&quot;ABC|text&quot;:&quot;ABC&quot;
+}</value>
+    </values>
+</CustomMetadata>

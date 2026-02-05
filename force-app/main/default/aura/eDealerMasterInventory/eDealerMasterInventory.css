@@ -1,0 +1,54 @@
+.THIS body {
+    font-family: 'RobotoRegular'!important;
+}
+.THIS.container  {
+    padding: 0 12px;
+}
+
+ .THIS .cEDealerMasterInventoryTable .leftpd {
+    padding-left: 0px!important;
+}
+
+/*.THIS .slds-modal__container{margin: 0 auto;
+    width:47%;
+    min-width:47%;}*/
+.THIS .slds-modal__close{ 
+    top: 1.4rem;
+    z-index: 999;
+    right: 1.7rem;}
+.THIS .slds-modal__header .slds-icon {
+    width: 25px!important;
+    height: 25px!important;
+    fill: red!important;}
+.THIS .slds-modal__footer{display:none!important;}
+
+
+.THIS .cEDealerMasterInventorySubHeader .heading{font-family: 'RobotoMedium'!important;
+    color: #9F9F9F!important;}
+.THIS .cEDealerMasterInventoryTable .pagiHead table td{font-family: 'RobotoRegular'!important;
+    color: #9F9F9F!important;}
+.THIS .cEDealerMasterInventorySubHeader .soOrderText {
+    width: auto!important;
+}
+
+.THIS .padding-10{padding:10px!important;}
+.THIS .invDatacontainer{padding: 0.91%!important;}
+.THIS.cEDealerMasterInventory.tabBox{background:#fff;padding:1%;margin: 0 15px 17px 16px;/*box-shadow: 0 1px 3px 2px #e4e4e4!important;*/
+border-radius:6px!important;position: relative; border:1px solid #ccc}
+.THIS .tabs {
+   /* box-shadow: 0 1px 3px 2px #e4e4e4;*/
+    border-radius: 10px;
+}
+.THIS .slds-tabs_default, 
+.THIS .slds-tabs--default {
+    display: block;
+    width: 100%;
+     border-radius: 10px;
+    padding: 10px;
+    background-color: var(--lwc-colorBackgroundAlt,rgb(255, 255, 255));
+    
+}
+        
+.THIS.fixedPosition {
+    position: fixed !important;
+}

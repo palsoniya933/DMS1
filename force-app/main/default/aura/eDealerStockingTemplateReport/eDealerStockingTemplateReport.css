@@ -1,0 +1,64 @@
+.THIS {
+}
+
+.THIS .testdemo{
+       box-shadow: 0 1px 3px 2px #e4e4e4;
+}
+.THIS .generateReportbutton
+{
+    padding:0px 10px !important;
+}
+.THIS .generateReportbutton svg
+{
+  
+    fill: white;
+    margin: 0px 8px 0px 0px;
+}
+.THIS.reportContainerBox
+{
+    margin: 0 15px 17px 16px;
+    background:#fff;
+    box-shadow: 0 1px 3px 2px #e4e4e4;
+    border-radius: 6px!important;
+}
+
+.THIS .seperatorclass{
+    padding: 1%;
+    margin: 0px;
+    border-top: 1px solid #b4b0a5;
+}
+
+.THIS .filtertxt{
+    font-weight: 600;
+}
+
+
+.THIS .themecolor{    
+    color: #ea1313;
+    font-weight: 600;
+    font-size: small;
+}
+
+
+.THIS .greyColor{
+    color: #adabab;    
+    font-weight: 400;
+    font-size: small;
+}
+
+.THIS .padding12px {
+    padding: 0px 12px;
+}
+
+.THIS.buttoncontainer{
+    text-align: right;
+    
+}
+
+
+
+.THIS.reportFilters{
+    background-color: #e61a1a;
+    margin-top: 2%;
+    padding: 2%;
+}

@@ -1,0 +1,81 @@
+<aura:component controller="eDealerReportFilter">
+    
+    <!-- to be deleted -->
+    <aura:attribute name="data" type="Object" />    
+    <aura:attribute name="parent" type="Aura.Component"/>       
+    
+    <!-- saving the columns -->
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="reportName" type="string" />
+    <!-- saving all filters -->
+    <aura:attribute name="selectedFilter" type="List"/>
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-col slds-size_12-of-12">      
+        <p class="labelclass" style="padding-bottom:5px;padding-top:5px">{!$Label.c.Edealer_Filter}</p>
+        <div>
+            <aura:iteration items="{!v.selectedFilter}" var="filter" indexVar="index">    
+                <div class="slds-grid slds-gutters">
+                    
+                    <div class="slds-col slds-size_4-of-12">
+                        <lightning:select name="field" 
+                                          value="{!filter.fieldName}" 
+                                          variant="label-hidden"
+                                          class="label-hidden"
+                                          onchange="{!c.setOperators}">
+                            <option value="">{!$Label.c.Edealer_Filter_field}</option>
+                            <aura:iteration items="{!v.columns}" var="field" >
+                                <option value="{!field.fieldName}">{!field.label}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12">
+                        <lightning:select name="operator" 
+                                          value="{!filter.fieldOperator}" 
+                                          variant="label-hidden"
+                                          class="label-hidden" >
+                            <option value="">{!$Label.c.Filter_Operator}</option>
+                            <option value="Equals to">{!$Label.c.Equals_to}</option>                        
+                            <option value="Not equal to">{!$Label.c.Not_equal_to}</option>
+                            <option value="Contains">{!$Label.c.Filter_Contains}</option>  
+                            <option value="Greater than">{!$Label.c.Greater_than}</option>  
+                            <option value="Less than">{!$Label.c.Less_than}</option>
+                            <!--<option value="Is blank">Is blank</option>-->
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12">
+                        <lightning:input name="fieldValue" 
+                                                 placeholder="{!$Label.c.Edealer_Filter_Value}" 
+                                                 value="{!filter.fieldValue}" 
+                                                 variant="label-hidden"
+                                                 class="label-hidden"/>
+                        
+                        <!--<aura:if isTrue="{!filter.fieldOperator=='Is blank'}">
+                            <lightning:select name="fieldValue" 
+                                              value="{!filter.fieldValue}" 
+                                              variant="label-hidden"
+                                              class="label-hidden" >
+                                <option value="">- -Select- -</option>
+                                <option value="null">True</option>
+                                <option value="not null">False</option>
+                            </lightning:select>
+                            <aura:set attribute="else">
+                                <lightning:input name="fieldValue" 
+                                                 placeholder="Filter Value" 
+                                                 value="{!filter.fieldValue}" 
+                                                 variant="label-hidden"
+                                                 class="label-hidden"/>
+                            </aura:set>
+                        </aura:if>-->
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-12" style="float : right;">
+                        <lightning:buttonIcon iconName="utility:close" iconClass="red" alternativeText="Clear" title="Clear" onclick="{!c.clearFilter}" />
+                    </div>
+                </div>
+            </aura:iteration>
+        </div>  
+    </div>
+</aura:component>

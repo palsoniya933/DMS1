@@ -1,0 +1,21 @@
+.cursor{
+    pointer-events: none;
+}
+.slds-path__title, .slds-path__stage {
+    display: block;
+    backface-visibility: visible;
+}
+.slds-path__nav .slds-is-complete .slds-path__title {
+    transform: rotateX(0deg);
+    
+}
+.slds-path__link{
+    z-index: 1;
+	padding-left: 0px !important;
+    padding-right: 0px !important;
+	padding: 0 0px 0 3px !important;
+}
+.slds-card__body{
+    padding-left: 10px !important;
+    padding-right: 10px;
+}

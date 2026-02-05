@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Model__c</fullName>
+    <label>Model</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Existing Property</fullName>
+                <default>false</default>
+                <label>Existing Property</label>
+            </value>
+            <value>
+                <fullName>Embedded Customer</fullName>
+                <default>false</default>
+                <label>Embedded Customer</label>
+            </value>
+            <value>
+                <fullName>ISP Acquisition</fullName>
+                <default>false</default>
+                <label>ISP Acquisition</label>
+            </value>
+            <value>
+                <fullName>ISP Sponsorship</fullName>
+                <default>false</default>
+                <label>ISP Sponsorship</label>
+            </value>
+            <value>
+                <fullName>Urban</fullName>
+                <default>false</default>
+                <label>Urban</label>
+            </value>
+            <value>
+                <fullName>Warehouse Hub</fullName>
+                <default>false</default>
+                <label>Warehouse Hub</label>
+            </value>
+            <value>
+                <fullName>WD Acquisition</fullName>
+                <default>false</default>
+                <label>WD Acquisition</label>
+            </value>
+            <value>
+                <fullName>White Spot</fullName>
+                <default>false</default>
+                <label>White Spot</label>
+            </value>
+            <value>
+                <fullName>Rural</fullName>
+                <default>false</default>
+                <label>Rural</label>
+            </value>
+            <value>
+                <fullName>Dual Branded</fullName>
+                <default>false</default>
+                <label>Dual Branded</label>
+            </value>
+            <value>
+                <fullName>Converted Location</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Converted Location</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

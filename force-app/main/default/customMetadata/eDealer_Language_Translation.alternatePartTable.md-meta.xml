@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Alternate Part Table</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+  {
+    &quot;columnAPIName&quot;: &quot;Part&quot;,
+    &quot;fr_CA&quot;: &quot;Numéro de Pièce&quot;,
+    &quot;es_MX&quot;: &quot;Número de Parte&quot;,
+    &quot;en_US&quot;: &quot;PART NUMBER&quot;,
+    &quot;order&quot;: 1
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;PartDescription&quot;,
+    &quot;fr_CA&quot;: &quot;Description&quot;,
+    &quot;es_MX&quot;: &quot;Descripción&quot;,
+    &quot;en_US&quot;: &quot;DESCRIPTION&quot;,
+    &quot;order&quot;: 2
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;Channel&quot;,
+    &quot;fr_CA&quot;: &quot;Canal&quot;,
+    &quot;es_MX&quot;: &quot;Canal&quot;,
+    &quot;en_US&quot;: &quot;CHANNEL&quot;,
+    &quot;order&quot;: 4
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;bestnet&quot;,
+    &quot;fr_CA&quot;: &quot;DNET Meilleur&quot;,
+    &quot;es_MX&quot;: &quot;DNET Mejor&quot;,
+    &quot;en_US&quot;: &quot;BEST NET&quot;,
+    &quot;order&quot;: 5
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;discount&quot;,
+    &quot;fr_CA&quot;: &quot;Rabais&quot;,
+    &quot;es_MX&quot;: &quot;Descuento&quot;,
+    &quot;en_US&quot;: &quot;DISCOUNT&quot;,
+    &quot;order&quot;: 6
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;bestnet&quot;,
+    &quot;fr_CA&quot;: &quot;Rabais Fidélité&quot;,
+    &quot;es_MX&quot;: &quot;Descuento Lealtad&quot;,
+    &quot;en_US&quot;: &quot;LC $&quot;,
+    &quot;order&quot;: 7
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;uom&quot;,
+    &quot;fr_CA&quot;: &quot;UOM&quot;,
+    &quot;es_MX&quot;: &quot;Unidad de Medida&quot;,
+    &quot;en_US&quot;: &quot;UOM&quot;,
+    &quot;order&quot;: 8
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;spq&quot;,
+    &quot;fr_CA&quot;: &quot;SPQ&quot;,
+    &quot;es_MX&quot;: &quot;SPQ&quot;,
+    &quot;en_US&quot;: &quot;SPQ&quot;,
+    &quot;order&quot;: 9
+  },
+  {
+    &quot;columnAPIName&quot;: &quot;bestnet&quot;,
+    &quot;fr_CA&quot;: &quot; Disponibilité PDC&quot;,
+    &quot;es_MX&quot;: &quot;Disponibilidad PDC&quot;,
+    &quot;en_US&quot;: &quot;PDC AVAIL&quot;,
+    &quot;order&quot;: 10
+  }
+]</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,7 @@
+.width80{
+    width: 80%;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}

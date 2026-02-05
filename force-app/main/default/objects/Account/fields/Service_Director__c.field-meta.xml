@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Director__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Service Director for the dealership</description>
+    <label>Service Director</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>SDir_Accounts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

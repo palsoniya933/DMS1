@@ -1,0 +1,47 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- This will save the Tab Name -->
+    <aura:attribute name="tabName" type="string"/>
+    
+    <!-- this will save the items to be dispalyed -->
+    <aura:attribute name="cartOrders" type="Object[]" />
+    
+    <!-- this will be used to save the total parts -->
+    <aura:attribute name="totalPartsAddedonOrder" type="Integer" default="0" />
+    
+    <!-- this will be used to save the total quantity -->
+    <aura:attribute name="totalPartsQuantityAddedonOrder" type="Integer" default="0" />
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- on Change of Orders -->
+    <aura:handler name="change" value="{!v.cartOrders}" action="{!c.doInit}"/>
+    
+    <div class="container">
+           <div class="sugOrderSubHead">
+              <ul>
+                  <li>
+                      <div class="heading">PARTS ADDED ON ORDER</div>
+                      <div class="amtTxt">{!v.totalPartsAddedonOrder}</div>
+                  </li> 
+                  <li>
+                     <div class="heading">QUANTITY ADDED ON ORDER</div>
+                     <div class="amtTxt">{!v.totalPartsQuantityAddedonOrder}</div>
+                  </li> 
+                  <li>
+                     <div class="heading">&nbsp;</div>
+                     <div class="amtTxt">&nbsp;</div>
+                  </li> 
+                  <!--<li>
+                     <div class="heading">SOF TOTAL SAVING</div>
+                     <div class="amtTxt">$512.87</div>
+                  </li> 
+                  <li>
+                     <div class="heading">TOTAL SOF ORDERS VALUE</div>
+                     <div class="amtTxt">$9832.50</div>
+                  </li> -->
+              </ul>
+            </div>
+    </div>
+</aura:component>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MX_Dealers</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Dealer_Code__c</columns>
+    <columns>Group_Code__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>DPM__c</columns>
+    <columns>DFM__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.DealerGroupsandDealerships</value>
+    </filters>
+    <filters>
+        <field>PACCAR_Division__c</field>
+        <operation>equals</operation>
+        <value>PPM</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>I</value>
+    </filters>
+    <label>Mexico Dealers</label>
+    <sharedTo>
+        <group>Connect</group>
+        <group>Marketing</group>
+        <group>MexicoAllUsers</group>
+        <group>MexicoExecutives</group>
+        <group>MexicoFleets</group>
+        <group>MexicoSales</group>
+        <group>PaccarExecutives</group>
+        <role>GeneralManager</role>
+    </sharedTo>
+</ListView>

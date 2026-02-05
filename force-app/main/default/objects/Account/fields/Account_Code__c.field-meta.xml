@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Code__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+NOT(ISBLANK(Dealer_Code__c)),
+Dealer_Code__c,
+IF(
+NOT(ISBLANK(Fleet_Code__c)),
+Fleet_Code__c,
+Vendor_Code__c))</formula>
+    <label>Account Code</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,144 @@
+body{font-family: 'RobotoRegular'!important;}
+ .heading{color:#5a5a5a!important;font-size:14px;}
+ .tileName_Div-headername{font-size:13px !important;}
+ .heading a{font-size:14px;}
+ .tile{transition: box-shadow 0.3s ease-in-out;}
+ .tile{
+    background: #fff !important;
+    width:  99% !important;
+    height: 185px !important;
+    padding: 5px 10px !important;
+    border-radius: 6px !important;
+    margin: 6px 4px;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 2px 5px #A4B6D4!important;
+    border: 1px solid #A5C9FF!important;
+    opacity: 1;
+}
+ .tile:hover{
+    box-shadow: 0 2px 5px #a4b6d4!important;
+    border: 1px solid #2C6FD5!important;
+}
+
+
+ .selected {
+    background: #ededed!important;
+    border-radius: 4px;
+    color: #000 !important;
+}
+
+ .options:hover {
+    background: #ededed!important;
+    cursor: pointer!important;
+    color: #000!important;
+}
+
+ {
+    /*min-height: 500px;
+    background-color: whitesmoke;*/
+}
+ .clear{clear:both;}
+ .title1{
+    --slds-c-accordion-summary-font-size:20px;
+    --slds-c-accordion-summary-color:#000;
+    --slds-c-accordion-summary-font-family: 'RobotoMedium';
+    /*padding-left: 20px !important;*/
+    
+}
+
+ .displayFlex{
+    display: flex;
+}
+
+ .slds-accordion__section {
+    float: left;
+    width: 100%;
+    
+}
+ .slds-accordion__content {
+    float: left;
+    width: 100%;
+}
+ .slds-accordion__summary {
+    float: left;
+    width: 100%;
+    padding-left: 1.3rem;
+}
+
+ a{color: #5A5A5A!important;}
+ a:hover{
+    /* color:#ee1420!important; */
+    color:#d10000 !important;
+    } 
+ .col-md-12 {
+    float: left;
+    width: 100%;
+}
+.cEDealerDashboard .col-md-2 {
+    width: 19%;
+    float: left;
+}
+ .col-md-4 {
+    width: 33.3%;
+    float: left;
+}
+ .col-md-6 {
+    width: 50%;
+    float: left;
+}
+
+ .col-md-8 {
+    width: 66.7%;
+    float: left;
+}
+
+ .slds-accordion__list-item
+{
+    border-top:none !important;
+}
+.slds-accordion__summary-heading {
+    color: #000;
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end
+    font-weight: 400;*/
+}
+
+/* for roboto medium*/
+@font-face {
+   font-family: 'RobotoMedium';
+   src: url(/resource/RobotoMedium); 
+}
+/* for roboto medium end*/
+
+
+.EDealerCostOfSales .tile{height:200px!important;}
+.EDealerCostOfSales .greenTextb{line-height: 48px!important;}
+.EDealerCostOfSales .tileInfo_Div{word-break: break-all!important;}
+
+
+.greenTextb:hover {
+    color: #60dd97;
+    cursor: pointer;
+}
+
+ .infoIconPosition {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+
+ .infoIconPosition svg {
+    fill: #5B9BF2 !important;
+}
+lightning-primitive-icon svg{
+color: red;
+}
+ .disabledEvent{
+    opacity: 0.6;
+    pointer-events: none;
+}
+.container-item {
+    margin-right: 10px;
+}

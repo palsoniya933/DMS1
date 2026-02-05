@@ -1,0 +1,6 @@
+<template>
+    <c-edealer-create-csr-comment csr-number={csrNumber} dealer-user-name={dealerUserName} is-non-dealer={isNonDealer}
+        phase={csrPhase} disable-post-btn={disablePostBtn} disable-comments-posting = {disableCommentsPosting}></c-edealer-create-csr-comment>
+    <c-edealer-csr-view-comment csr-number={csrNumber} phase={csrPhase} oncommentsloaded={handleCommentsLoaded}>
+    </c-edealer-csr-view-comment>
+</template>

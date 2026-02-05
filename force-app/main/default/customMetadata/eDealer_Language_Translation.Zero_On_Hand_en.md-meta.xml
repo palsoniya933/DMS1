@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Zero On-Hand</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;mdi_comment&quot; : &quot;MDI COMMENT&quot;,
+&quot;dealer_response&quot; : &quot;DEALER RESPONSE&quot;,
+&quot;grp_nbr&quot; : &quot;GRP NBM &quot;,
+&quot;loc&quot;:&quot;LOC&quot;,
+&quot;abc&quot; : &quot;ABC&quot;,
+&quot;item&quot; : &quot;ITEM&quot;,
+&quot;dlrsplrcode&quot; : &quot;DLRSPLRCODE&quot;,
+&quot;dist_chan&quot;:&quot;DIST CHAN&quot;,
+&quot;consecutive_days_stocked_out&quot; : &quot;CONSECUTIVE DAYS STOCKED OUT&quot;,
+&quot;oh&quot; : &quot;OH&quot;,
+&quot;dif_on_order&quot;:&quot;DIF ON ORDER&quot;,
+&quot;distrb_on_order&quot;:&quot;DISTRB ON ORDER&quot;,
+&quot;recent_stock_po&quot;:&quot;RECENT STOCK PO&quot;,
+&quot;recent_order&quot;:&quot;RECENT ORDER&quot;,
+&quot;ship_chan&quot;:&quot;SHIP CHAN&quot;,
+&quot;order_status&quot;:&quot;ORDER STATUS&quot;,
+&quot;order_date&quot; : &quot;ORDER DATE&quot;,
+&quot;ship_date&quot;:&quot;SHIP DATE&quot;,
+&quot;days_since_ship&quot;:&quot;DAYS SINCE SHIP&quot;,
+&quot;minimum_name&quot; : &quot;MINIMUM NAME&quot;,
+&quot;rsl_csl_msl&quot;:&quot;RSL CSL MSL&quot;,
+&quot;manual_lock&quot;:&quot;MANUAL LOCK&quot;,
+&quot;comment&quot;:&quot;COMMENT&quot;,
+&quot;sunset_date&quot;:&quot;SUNSET DATE&quot;,
+&quot;mtd_dmd&quot; : &quot;MTD DMD&quot;,
+&quot;hits_12m&quot; : &quot;12M HITS&quot;,
+&quot;abc_tots&quot;:&quot;ABC TOTS&quot;,
+&quot;dmd_12m&quot;:&quot;12M DMD&quot;,
+&quot;minss&quot;:&quot;MINSS&quot;,
+&quot;std_pkg_qty&quot;:&quot;STD PKG QTY&quot;,
+&quot;distchan&quot;:&quot;DISTCHAN&quot;,
+&quot;stk_cls&quot;:&quot;STK CLS&quot;,
+&quot;stk_cls_desc&quot;:&quot;STK CLS DESC&quot;,
+&quot;est_lead_time_days&quot;:&quot;EST LEAD TIME DAYS&quot;,
+&quot;item_desc&quot; : &quot;ITEM DESC&quot;,
+&quot;sale_ind&quot; : &quot;SALE IND&quot;,
+&quot;ssd_to&quot; : &quot;SSD TO&quot;,
+&quot;dlrnet&quot; : &quot;DLRNET&quot;
+}</value>
+    </values>
+</CustomMetadata>

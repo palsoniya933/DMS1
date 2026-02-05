@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Division__c</fullName>
+    <label>Billing Division</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Kenworth</fullName>
+                <default>false</default>
+                <label>Kenworth</label>
+            </value>
+            <value>
+                <fullName>PACCAR</fullName>
+                <default>false</default>
+                <label>PACCAR</label>
+            </value>
+            <value>
+                <fullName>Peterbilt</fullName>
+                <default>false</default>
+                <label>Peterbilt</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

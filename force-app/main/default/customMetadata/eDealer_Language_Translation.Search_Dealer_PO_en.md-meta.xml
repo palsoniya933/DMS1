@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Search Dealer PO</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;ordno&quot;,
+&quot;label&quot;: &quot;ORDERS#&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;dealerpo&quot;,
+&quot;label&quot;: &quot;PO&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;order_status&quot;,
+&quot;label&quot;: &quot;STATUS&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;ordersource&quot;,
+&quot;label&quot;: &quot;SOURCE&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;createdby&quot;,
+&quot;label&quot;: &quot;CREATED BY&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;created_date&quot;,
+&quot;label&quot;: &quot;CREATED DATE&quot;,
+&quot;order&quot; : 6,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;splitorder&quot;,
+&quot;label&quot;: &quot;SHIPMENT TYPE&quot;,
+&quot;order&quot; : 7,
+&quot;datatype&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

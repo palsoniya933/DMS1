@@ -1,0 +1,55 @@
+<aura:component controller="EDealerMdiReportsTabController" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="userDetail" type="Object" />    
+    <aura:attribute name="displayLoading" type="Boolean" />
+    <aura:attribute name="displayHeader" type="Boolean" default="false"/>
+    <aura:attribute name="selectedUserName" type="string" />
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- this will save selected name -->
+    <aura:attribute name="options" type="String[]" />
+    <aura:attribute name="selectedName" type="String"/>
+    
+    <!-- register event when menu is clicked -->
+    <aura:registerEvent name="locevent" type="c:eDealerLocationEvent"/>
+    
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- handle location change event -->    
+    <aura:handler event="c:eDealerLocationEvent" action="{!c.handleLocationChange}"/>
+    
+    
+    
+    <!-- SPINNER -->
+    <aura:if isTrue="{!v.displayLoading}">
+        <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+    </aura:if>
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_12-of-12">
+            <c:eDealerContainerHeader selectedmenu = "reportcenter" 
+                                      accessibleDealersLocs="{!v.userDetail.accessibleDealersLocation}"
+                                      userType = 'internal'
+                                      allUsers = "{!v.options}"
+                                      userchangeAction = "{!c.fetchupdateLocations}"
+                                      selectedUserName = "{!v.selectedUserName}"/>
+        </div>
+        <div class="slds-col slds-size_12-of-12">
+            <aura:if isTrue="{!v.userDetail != undefined}">
+                <!-- MDI Report Center -->
+                <c:eDealerMDIReportCenter userDetail="{!v.userDetail}" selectedLocation="{!v.selectedLocation}" />
+                <aura:set attribute="else">
+                    <c:eDealerNotRecordFound Message = "you do not have any dealer location"/>
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    
+    
+</aura:component>

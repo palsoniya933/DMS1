@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Zero On-Hand</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;mdi_comment&quot; : &quot;COMMENTAIRE MDI&quot;,
+&quot;dealer_response&quot; : &quot;RÉPONSE DU CONCESSIONNAIRE&quot;,
+&quot;grp_nbr&quot; : &quot;NUMÉRO DE GROUPE&quot;,
+&quot;loc&quot;:&quot;EMPLACEMENT&quot;,
+&quot;abc&quot; : &quot;ABC&quot;,
+&quot;item&quot; : &quot;ARTICLE&quot;,
+&quot;dlrsplrcode&quot; : &quot;CODE FOURNISSEUR&quot;,
+&quot;dist_chan&quot;:&quot;Canal de distribution&quot;,
+&quot;consecutive_days_stocked_out&quot; : &quot;JOURS CONSÉCUTIFS EN RUPTURE DE STOCK&quot;,
+&quot;oh&quot; : &quot;Disponible&quot;,
+&quot;dif_on_order&quot;:&quot;DIF SUR COMMANDE&quot;,
+&quot;distrb_on_order&quot;:&quot;DISTRIBUTION SUR COMMANDE&quot;,
+&quot;recent_stock_po&quot;:&quot;PO DE STOCK RÉCENT&quot;,
+&quot;recent_order&quot;:&quot;COMMANDE RÉCENTE&quot;,
+&quot;ship_chan&quot;:&quot;CANAL D&apos;EXPÉDITION&quot;,
+&quot;order_status&quot;:&quot;STATUT DE LA COMMANDE&quot;,
+&quot;order_date&quot; : &quot;DATE DE COMMANDE&quot;,
+&quot;ship_date&quot;:&quot;DATE D&apos;EXPÉDITION&quot;,
+&quot;days_since_ship&quot;:&quot;JOURS DEPUIS L&apos;EXPÉDITION&quot;,
+&quot;minimum_name&quot; : &quot;NOM MINIMUM&quot;,
+&quot;rsl_csl_msl&quot;:&quot;RSL CSL MSL&quot;,
+&quot;manual_lock&quot;:&quot;VERROUILLAGE MANUEL&quot;,
+&quot;comment&quot;:&quot;COMMENTAIRE&quot;,
+&quot;sunset_date&quot;:&quot;DATE DU COUCHER DU EXPIRATION&quot;,
+&quot;mtd_dmd&quot; : &quot;DEMANDE DU MOIS À CE JOUR&quot;,
+&quot;hits_12m&quot; : &quot;12M VISITES&quot;,
+&quot;abc_tots&quot;:&quot;ABC TOTS&quot;,
+&quot;dmd_12m&quot;:&quot;DEMANDE 12 M&quot;,
+&quot;minss&quot;:&quot;Stock minimum de sécurité&quot;,
+&quot;std_pkg_qty&quot;:&quot;QUANTITÉ DE PAQUET STANDARD&quot;,
+&quot;distchan&quot;:&quot;Canal de distribution&quot;,
+&quot;stk_cls&quot;:&quot;CLASSE DE STOCK&quot;,
+&quot;stk_cls_desc&quot;:&quot;DESCRIPTION DE LA CLASSE DE STOCK&quot;,
+&quot;est_lead_time_days&quot;:&quot;DÉLAI DE LIVRAISON ESTIMATIF (JOURS)&quot;,
+&quot;item_desc&quot; : &quot;NUMÉRO DE PIÈCE DESCRIPTION&quot;,
+&quot;sale_ind&quot; : &quot;INDICATEUR DE VENTE&quot;,
+&quot;ssd_to&quot; : &quot;SUPPORT À&quot;,
+&quot;dlrnet&quot; : &quot;DEALERNET&quot;
+}</value>
+    </values>
+</CustomMetadata>

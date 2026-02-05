@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Non-Y Saleable Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot;: &quot;NÚMERO DE GRUPO&quot;,
+&quot;loc&quot;: &quot;LOCAL&quot;,
+&quot;si&quot;: &quot;INDICADOR VENDIBLE&quot;,
+&quot;abc&quot;: &quot;ABC&quot;,
+&quot;item&quot;: &quot;NÚMERO DE PARTE&quot;,
+&quot;descr&quot;:&quot;DESCRIPCIÓN&quot;,
+&quot;dnet&quot;: &quot;DNET&quot;,
+&quot;on_hand&quot;: &quot;DISPONIBLE&quot;,
+&quot;dlrsplrcode&quot;: &quot;CÓDIGO DEL PROVEEDOR&quot;,
+&quot;demand_12m&quot;: &quot;DEMANDA DE 12 MECES&quot;,
+&quot;hits_12m&quot;: &quot;12 M DE VISITAS&quot;,
+&quot;mtd_qty&quot;: &quot;CANTIDAD MES HASTA LA FECHA&quot;,
+&quot;std_pkg_qty&quot;: &quot;CANTIDAD ESTÁNDAR DEL PAQUETE&quot;,
+&quot;op_comment&quot;: &quot;COMENTARIO DE RESTRICCIÓN&quot;
+}</value>
+    </values>
+</CustomMetadata>

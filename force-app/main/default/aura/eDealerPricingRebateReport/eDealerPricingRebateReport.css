@@ -1,0 +1,204 @@
+/**
+ Name        : eDealerPricingRebateReport
+ Description : This is an css for eDealer Pricing category rebate report page.
+ Developer: Nikhil Nair
+*/
+
+.THIS .big-button {
+    font-size: 12px;
+    padding: 6px 12px;
+    background-color: #f5f6fa;
+    color: #e3474b!important;
+    border: 1px solid #a5c9ff!important;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.THIS .big-button:hover {
+    background-color: #005fb2;
+}
+
+/* Existing styles */
+.THIS.container {
+    background: #f5f6fa;
+    margin: 0 15px 17px 16px;
+}
+.THIS .tabs {
+   /*box-shadow: 0 2px 5px #a4b6d4!important;*/
+    border: 1px solid #ccc!important;
+    border-radius: 6px;
+}
+.THIS li.slds-tabs_default__item.slds-is-active a {
+    color: #e3474b!important;
+    font-weight: 600;
+    border-bottom: 2px solid red;
+}
+.THIS li.slds-tabs_default__item.slds-is-active {
+    color: #e3474b!important;
+}
+.THIS ul.slds-tabs_default__nav li {
+    margin: 0 26px 0 0;
+}
+.THIS .slds-tabs_default__link {
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.THIS .slds-tabs_default__link:focus{text-decoration:none!important;}
+.THIS .slds-tabs_default__item::after{display:none;}
+
+.THIS .slds-tabs_default__item.slds-is-active:after {
+    background: #e3474b!important;
+}
+.THIS .slds-tabs_default {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.THIS .bgpad10{
+    padding: 15px 10px;
+    width: 100%;
+    background:#F8F8F8;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.THIS .headerName {
+    font-family: 'RobotoMedium'!important;
+    font-size: 14px;
+    color: #5a5a5a;
+    padding: 0px 24px;
+    background: #f8f8f8;
+}
+
+.THIS .headerCount {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 24px;
+}
+
+.THIS .invDatacontainer{
+    padding-top: 1%;
+}
+
+.THIS .invDatacontainertablecontainer{
+    padding-top: 0px;
+    margin: 5px 0px;
+}
+
+.THIS .invDatacontainertable{
+    width: 100%;
+}
+.THIS table th.invDatacontainertableheading,
+.THIS table td.invDatacontainertableheading {
+    border-right: 1px solid #b0adab;
+}
+.THIS table th.invDatacontainertableheading:last-child,
+.THIS table td.invDatacontainertableheading:last-child {
+    border-right: 0px solid #b0adab;
+}
+.THIS table tr:nth-child(even) {
+    background: #fafafa;
+}
+.THIS table tr:nth-child(odd) {
+    background: #fff;
+}
+.THIS .invDatacontainertableheading{
+    background-color: #808080;
+    color: white;    
+    padding: 10px 5px;
+}
+
+.THIS .invDatacontainertabledata{
+    padding: 0 5px;
+    height: 42px;
+}
+
+.THIS .invDatacontainertabledata a{
+    color: #000 !important;
+}
+.THIS .invDatacontainertabledata a:hover{
+    color: #ee1420 !important;
+}
+.THIS .bottompagi button.slds-button.slds-button_brand {
+    height: 20px;
+    padding: 11px 10px;
+}
+.THIS .invDatacontainertableheading:first-child {
+    border-top-left-radius: 10px;
+}
+.THIS .invDatacontainertableheading:last-child {
+    border-right: 0 solid #808080;
+    border-top-right-radius: 10px;
+}
+.THIS table tr.selectedRowBackground td {
+    background: #fffabe;
+}
+.THIS table tr.selectedRowBackground td {
+    background-color: rgb(255, 250, 191);
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:first-child {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.THIS table tr.selectedRowBackground td.invDatacontainertabledata:last-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.THIS .bottompagi button.slds-button.slds-button_brand {
+    height: 20px;
+    padding: 11px 10px;
+}
+
+.THIS .imgicon-style-align{
+    width: 20px;
+    height: 19px;
+    vertical-align: top;
+    margin-left: -6px;
+}
+
+.THIS .slds-icon-utility-new-window slds-icon_container{
+    float: right !important;
+    padding-left: 7px !important;
+}
+
+.THIS.slds-icon-utility-new-window slds-icon_container{
+    float: right !important;
+    padding-left: 7px !important;
+}
+
+
+.THIS .info-container {
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin: 10px 0;
+}
+
+.THIS .info-container p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0; /* Adds space between paragraphs */
+}
+.THIS a.button-style{
+ 	padding: 5px 10px;
+    color: #fff;
+    font-size: 14px;
+    background: #797777;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.THIS a.button-style:hover {
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 14px;
+    background: #BF0F00;
+    border-radius: 4px; 
+    text-decoration: none;
+
+}

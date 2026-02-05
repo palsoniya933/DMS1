@@ -1,0 +1,676 @@
+<aura:component controller="EDealerPartSearchController"  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global" >
+    
+    <!-- Dealer currency code for price -->
+    <aura:attribute name="currencyCode" type="String" />
+    
+    <!-- dealer code -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <aura:attribute name="showCNR" type="Boolean" default="false" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <aura:attribute  name="columnLabelByApiName" type="Map" default="{}"/>
+    
+    <!-- used to hide / show the Part Screen -->
+    <aura:attribute name="displayParts" type="boolean" />
+    <aura:attribute name="partNumberDetail" type="String" />
+    <!-- part Number -->
+    <aura:attribute name="partNumber" type="String" />
+    <aura:attribute name="division" type="string"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" />
+    <aura:attribute name="partavailableData" type="Object[]" />
+    
+    <!-- Pagination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" /> 
+    <aura:attribute name="PaginationList" type="Object[]" />
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    
+    <aura:attribute name="responseReceived" type="Boolean" default="false" />
+    
+    <!-- Qty Break Detail of Selected SOF Part by selcted Part Details -->
+    <aura:attribute name="sofPartDetailWithQtyBreak" type="Object" />
+    <aura:attribute name="showBreakPrice" type="Boolean" default="false" />
+    <aura:attribute name="showLoyality" type="Boolean" default="false" />
+    <aura:attribute name="showCSR" type="Boolean" default="false" />
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{! c.doInit }"/>
+    
+    <!-- change handler -->
+    <aura:handler name="change" value="{!v.paginationPageNumber}" action="{!c.checkSelectAll}"/>
+    <aura:handler name="change" value="{!v.paginationPageSize}" action="{!c.checkSelectAll}"/>
+    
+    
+    <div class="invDatacontainer bckGdWhite align-part-search">
+        
+        <aura:if isTrue="{!v.displayLoading}">
+            <div>
+                <lightning:spinner  alternativeText="Loading" size="medium" variant = "brand"/>
+            </div> 
+        </aura:if>
+        
+        <div class="pagiHead leftpd">
+            <table>
+                <tr>
+                    <td class="selectedOrderText">                   
+                        <strong><span>{!$Label.c.Edealer_SEARCH_RESULT_FOR} :</span>{!v.partNumber}</strong>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td class="selectedOrderText">                   
+                        <strong>{!$Label.c.EDealer_FOUND} :&nbsp;{!v.partavailableData.length}&nbsp; {!$Label.c.Parts}</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="invDatacontainertablecontainer leftpd">
+            <div>
+                <aura:if isTrue="{!v.displayLoading}">
+                    <lightning:spinner class="fixedPosition" alternativeText="Loading" size="medium" variant = "brand"/>
+                </aura:if>
+            </div> 
+            <aura:if isTrue="{!v.partavailableData.length > 0}">
+                <aura:if isTrue="{!v.responseReceived == true}">
+                    <c:eDealerPagination totalRecords = "{!v.partavailableData}"
+                                         totalNumberRecords = "{!v.partavailableData}"
+                                         PaginationList = "{!v.PaginationList}"
+                                         PageNumber="{!v.paginationPageNumber}"
+                                         pageSize="{!v.paginationPageSize}"
+                                         TotalPages="{!v.paginationTotalPages}"
+                                         RecordStart="{!v.paginationRecordStart}"
+                                         RecordEnd="{!v.paginationRecordEnd}"
+                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                         disablednext="{!v.paginationDisabledNext}"
+                                         displayPageButtons="false"></c:eDealerPagination>
+                </aura:if>
+                <table class="invDatacontainertable">
+                    <tr>
+                        <td class="invDatacontainertableheading width1" >
+                            #
+                        </td>
+                        <aura:iteration items="{!v.columnLabelByApiName}" var="cd" indexVar="key">
+                            <aura:if isTrue="{!AND(cd.key=='eta_price')}">
+                                <td class="invDatacontainertableheading">
+                                    {!cd.value} ({!v.currencyCode})
+                                </td>
+                                <aura:set attribute="else">
+                                    <td class="invDatacontainertableheading">
+                                        {!cd.value}
+                                    </td>
+                                </aura:set>
+                            </aura:if>
+                        </aura:iteration>                     
+                    </tr>
+                    
+                    
+                    <aura:iteration items="{!v.PaginationList}" var="inv" indexVar="index">
+                        <!-- odd row -->
+                        <tr class="{!inv.checked ? 'selectedRowBackground': ''}">                            
+                            <td class="invDatacontainertabledata" >
+                                {!add(index,1)}
+                            </td>
+                            
+                            <aura:iteration items="{!v.columnLabelByApiName}" var="cd">                                
+                                <aura:if isTrue="{!cd.key=='part_number'}">
+                                    <td class="invDatacontainertabledata">
+                                        <a href="">
+                                            <span name="{!inv.part_number}" onclick="{!c.openPart}">
+                                                <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>
+                                            </span>
+                                        </a>
+                                        &nbsp;
+                                        <span name="{!inv.part_number}" onclick="{!c.handleOpenInNewWindow}" class="nav-text active">
+                                            <!--<lightning:icon class="grayimg" iconName="utility:new_window" size="x-small" />-->   
+                                            <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                        </span>  
+                                    </td>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!cd.key=='eta_price'}">
+                                            <td class="invDatacontainertabledata">                                        
+                                                <aura:if isTrue="{!inv.zero_price_flag_message == false}">
+                                                    <aura:if isTrue="{!and(inv.PriceDetail.WhsFinalNet != undefined, inv.PriceDetail.DspFinalNet != undefined)}">
+                                                        <lightning:select class="hideSelectLabel defaultSelectWidth" variant="label-hidden" > <!-- value="{!inv.DualPartSelectedPriceType}" -->
+                                                            <option value="PDC">{! 'PDC ' + inv.PriceDetail.WhsFinalNet}</option>
+                                                            <option value="DSP">{!'DSP ' + inv.PriceDetail.DspFinalNet}</option>
+                                                        </lightning:select>
+                                                        
+                                                        <aura:set attribute="else">
+                                                            <!-- {!(greaterthan(inv.PriceDetail.DspFinalNet, 0) ? ('DSP '+ inv.PriceDetail.DspFinalNet) :(greaterthan(inv.PriceDetail.WhsFinalNet, 0) ? ('PDC '+ inv.PriceDetail.WhsFinalNet) : '') )} -->
+                                                            {! (inv.PriceDetail == undefined) ? '' : (inv.PriceDetail.WhsFinalNet == undefined) ? ('DSP '+ inv.PriceDetail.DspFinalNet) : ('PDC '+ inv.PriceDetail.WhsFinalNet)}
+                                                        </aura:set>
+                                                    </aura:if>
+                                                    <aura:set attribute="else">
+                                                        <div class="cTooltip" style="position:relative">
+                                                            <lightning:icon class="nonpacar"
+                                                                            iconName="utility:warning" 
+                                                                            alternativeText="warning" 
+                                                                            size="small" />
+                                                            <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right" role="tooltip" id="help" style="position: absolute;top: -100px;left: 5px;">
+                                                                <div class="slds-popover__body">{!$Label.c.Part_pricing_not_available}</div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </aura:set>
+                                                </aura:if>                                        
+                                            </td>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!cd.key=='special'}">
+                                                    <td class="invDatacontainertabledata">
+                                                        <div style="display: inline-flex;">
+                                                            <aura:if isTrue="{!inv.zero_price_flag_message == false}">
+                                                                <aura:if isTrue="{!and(inv.PriceDetail != undefined,or(or(and(inv.PriceDetail.WhsQtyBreak.length > 0, inv.PriceDetail.WhsQtyBreak.length != 1), and(inv.PriceDetail.WhsQtyBreak.length == 1, greaterthan(inv.PriceDetail.WhsQtyBreak[0].QtyDiscPerc, 0))), or(and(inv.PriceDetail.DspQtyBreak.length > 0, inv.PriceDetail.DspQtyBreak.length != 1), and(inv.PriceDetail.DspQtyBreak.length == 1, greaterthan(inv.PriceDetail.DspQtyBreak[0].QtyDiscPerc, 0))) ) )}">
+                                                                    <div class="cTooltip" style="position:relative;cursor: pointer;">
+                                                                        <div name="{!index}" class="greenClrAction" onclick="{!c.openBreakPriceDetailModal}">Q</div>
+                                                                        <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right" role="tooltip" id="help" style="position: absolute;top: -74px;left: -30px;">
+                                                                            <div class="slds-popover__body">Quantity Breakdown Options</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </aura:if>
+                                                                
+                                                                <aura:if isTrue="{!not(empty(inv.PriceDetail.WqtypromoCode))}">
+                                                                    <div class="cTooltip" style="position:relative">
+                                                                        <div name="{!index}" class="greenClrAction">W</div>
+                                                                        <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right" role="tooltip" id="help" style="position: absolute;top: -84px;left: -30px;">
+                                                                            <div class="slds-popover__body">PDC Discounts (Promos) : {!inv.PriceDetail.WqtypromoCode}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </aura:if>
+                                                                
+                                                                <aura:if isTrue="{!not(empty(inv.PriceDetail.DqtypromoCode))}">
+                                                                    <div class="cTooltip" style="position:relative">
+                                                                        <div name="{!index}" class="greenClrAction">D</div>
+                                                                        <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right" role="tooltip" id="help" style="position: absolute;top: -84px;left: -30px;">
+                                                                            <div class="slds-popover__body">DSP Discounts (Promos) : {!inv.PriceDetail.DqtypromoCode}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </aura:if>
+                                                                
+                                                                
+                                                                <aura:if isTrue="{!or(not(empty(inv.PriceDetail.DspCsr)),not(empty(inv.PriceDetail.WhsCsr)) )}">
+                                                                    <div class="cTooltip" style="position:relative;cursor: pointer;">
+                                                                        <div name="{!index}" class="greenClrAction" onclick="{!c.openCSRDetailModal}">CSR</div>
+                                                                        <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right" role="tooltip" id="help" style="position: absolute;top: -40px;left: 5px;">
+                                                                            <div class="slds-popover__body">CSR</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </aura:if>
+                                                            </aura:if>
+                                                            
+                                                            <aura:if isTrue="{!and(inv.PriceDetail != undefined,inv.PriceDetail.Saleableindicator == 'CNR')}">
+                                                                <div class="cTooltip" style="position:relative;cursor: pointer;">
+                                                                    <div name="{!index}" class="redClrAction" onclick="{!c.openCNRDetailModal}">CNR</div>
+                                                                    <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right" role="tooltip" id="help" style="position: absolute;top: -110px;left: 5px;">
+                                                                        <div class="slds-popover__body">{!$Label.c.limit_per_dealer_per_day} : {!inv.PriceDetail.dealer_quantity_per_day} </div>
+                                                                    </div>
+                                                                </div>
+                                                            </aura:if>
+                                                            
+                                                            <aura:if isTrue="{!and(inv.PriceDetail != undefined,inv.PriceDetail.Saleableindicator == 'RSV')}">
+                                                                <div class="cTooltip" style="position:relative;cursor: pointer;">
+                                                                    <div name="{!index}" class="redClrAction" onclick="{!c.openCNRDetailModal}">RSV</div>
+                                                                    <div class="tooltiptext slds-popover slds-popover_tooltip slds-nubbin_bottom-right redBgColour" role="tooltip" id="help" style="position: absolute;top: -110px;left: 40px;">
+                                                                        <div class="slds-popover__body">{!inv.PriceDetail.RSV_Comment} </div>
+                                                                    </div>
+                                                                </div>
+                                                            </aura:if>
+                                                            
+                                                        </div>
+                                                    </td>
+                                                    <aura:set attribute="else">
+                                                        <td class="invDatacontainertabledata">
+                                                            <c:eDealerRowCell invData="{!inv}" columnAPIName="{!cd.key}"/>  
+                                                        </td>
+                                                        
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                            
+                                        </aura:if>
+                                        
+                                    </aura:set>
+                                    
+                                </aura:if>
+                                
+                                
+                            </aura:iteration>
+                        </tr>
+                    </aura:iteration>
+                </table>
+                
+                <!-- pagination cmp -->
+                <!--<div class="bottompagi">-->
+                <aura:if isTrue="{!v.responseReceived == true}">
+                    <c:eDealerPagination totalRecords = "{!v.partavailableData}"
+                                         totalNumberRecords = "{!v.partavailableData}"
+                                         PaginationList = "{!v.PaginationList}"
+                                         PageNumber="{!v.paginationPageNumber}"
+                                         pageSize="{!v.paginationPageSize}"
+                                         TotalPages="{!v.paginationTotalPages}"
+                                         RecordStart="{!v.paginationRecordStart}"
+                                         RecordEnd="{!v.paginationRecordEnd}"
+                                         allPageNumber="{!v.paginationAllPageNumber}"
+                                         disabledprevious="{!v.paginationDisabledPrevious}"
+                                         disablednext="{!v.paginationDisabledNext}"
+                                         displayPageButtons="true"></c:eDealerPagination>
+                </aura:if>
+                <!--</div> -->
+                
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.responseReceived}">
+                        <br/>
+                        <c:eDealerNotRecordFound Message="{!$Label.c.No_Parts_Found}">
+                        </c:eDealerNotRecordFound>
+                    </aura:if>
+                    
+                </aura:set>
+            </aura:if>
+        </div>
+    </div>
+    
+    <!-- CSR Detail Popup/Modal -->
+    <aura:if isTrue="{!v.showCSR}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="paddingCls">
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat popheading">
+                            COMPETITIVE SALES REQUEST (CSR)
+                            <lightning:icon class="iconcolr slds-float--right" size="small" iconName="utility:close" variant="bare" alternativeText="close" title="close" onclick="{! c.closeModal }" />
+                        </div>
+                        
+                        <div class="slds-col slds-medium-size_12-of-12">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>CSR Details for <strong>{!v.sofPartDetailWithQtyBreak.part_number}</strong></p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <aura:if isTrue="{!not(empty(v.sofPartDetailWithQtyBreak.PriceDetail.WhsCsr))}">
+                                <table class="invDatacontainertable">
+                                    <tr>
+                                        <th colspan="8" class="invDatacontainertableheading">PDC CSR</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="invDatacontainertableheading">DIS. CHANNEL</td>
+                                        <td class="invDatacontainertableheading">CSR NUMBER</td>
+                                        <td class="invDatacontainertableheading">CSR PHASE</td>
+                                        <td class="invDatacontainertableheading">CSR LINE</td>
+                                        <td class="invDatacontainertableheading">CSR BASE QTY.</td>
+                                        <td class="invDatacontainertableheading">CSR BESTNET ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">CSR EFFECTIVE DATE</td>
+                                        <td class="invDatacontainertableheading">CSR EXPIRY DATE</td>
+                                    </tr>
+                                    <aura:iteration items="{!v.sofPartDetailWithQtyBreak.PriceDetail.WhsCsr}" var="inv" indexVar="index">
+                                        <tr>
+                                            <td class="invDatacontainertabledata">{!inv.DISChannel}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrNumber}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrPhase}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrLine}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrQty}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrBestNet}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrEffectiveDate}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrExpiryDate}</td>
+                                        </tr>
+                                    </aura:iteration>
+                                </table>
+                                <br/>
+                            </aura:if> 
+                            <aura:if isTrue="{!not(empty(v.sofPartDetailWithQtyBreak.PriceDetail.DspCsr))}">
+                                <table class="invDatacontainertable">
+                                    <tr>
+                                        <th colspan="8" class="invDatacontainertableheading">DSP CSR</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="invDatacontainertableheading">DIS. CHANNEL</td>
+                                        <td class="invDatacontainertableheading">CSR NUMBER</td>
+                                        <td class="invDatacontainertableheading">CSR PHASE</td>
+                                        <td class="invDatacontainertableheading">CSR LINE</td>
+                                        <td class="invDatacontainertableheading">CSR BASE QTY.</td>
+                                        <td class="invDatacontainertableheading">CSR BESTNET ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">CSR EFFECTIVE DATE</td>
+                                        <td class="invDatacontainertableheading">CSR EXPIRY DATE</td>
+                                    </tr>
+                                    <aura:iteration items="{!v.sofPartDetailWithQtyBreak.PriceDetail.DspCsr}" var="inv" indexVar="index">
+                                        <tr>
+                                            <td class="invDatacontainertabledata">{!inv.DISChannel}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrNumber}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrPhase}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrLine}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrQty}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrBestNet}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrEffectiveDate}</td>
+                                            <td class="invDatacontainertabledata">{!inv.CsrExpiryDate}</td>
+                                        </tr>
+                                    </aura:iteration>
+                                </table>
+                                <br/>
+                            </aura:if> 
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    <!-- Break Price Details Popup/Modal -->
+    <aura:if isTrue="{!v.showBreakPrice}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="paddingCls">
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat popheading">
+                            QUANTITY BREAKDOWN OPTIONS
+                            <lightning:icon class="iconcolr slds-float--right" 
+                                            size="small" 
+                                            iconName="utility:close" 
+                                            variant="bare" 
+                                            alternativeText="close" 
+                                            title="close" 
+                                            onclick="{! c.closeModal }" />
+                        </div>
+                        
+                        <div class="slds-col slds-medium-size_12-of-12">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p><strong>{!v.sofPartDetailWithQtyBreak.part_number}</strong> has special volume purchasing offers</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            
+                            <aura:if isTrue="{!or(and(v.sofPartDetailWithQtyBreak.PriceDetail.WhsQtyBreak.length > 0, v.sofPartDetailWithQtyBreak.PriceDetail.WhsQtyBreak.length != 1), and(v.sofPartDetailWithQtyBreak.PriceDetail.WhsQtyBreak.length == 1, greaterthan(v.sofPartDetailWithQtyBreak.PriceDetail.WhsQtyBreak[0].QtyDiscPerc, 0)))}">
+                                <table class="invDatacontainertable">
+                                    <tr>
+                                        <th colspan="10" class="invDatacontainertableheading">PDC QUANTITY BREAKDOWN OPTIONS</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="invDatacontainertableheading">DIS. CHANNEL</td>
+                                        <td class="invDatacontainertableheading">STD. NET ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">BEST CODE</td>
+                                        <td class="invDatacontainertableheading">QTY.</td>
+                                        <td class="invDatacontainertableheading">QTY. DISC</td>
+                                        <td class="invDatacontainertableheading">QTY. PRICE ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">QTY. FINAL ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">INCENTIVE</td>
+                                        <td class="invDatacontainertableheading">CSR</td>
+                                        <td class="invDatacontainertableheading">FNL. NET ({!v.currencyCode})</td>
+                                    </tr>
+                                    <aura:iteration items="{!v.sofPartDetailWithQtyBreak.PriceDetail.WhsQtyBreak}" var="item">
+                                        <tr>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.DISChannel}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.StdNet}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.BeatCode}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyBreak}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyDiscPerc}%
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyPrice}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyFinal}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.INCENTIVE}%
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.CSR}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.FNLNET}
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                </table>
+                                <br/>
+                            </aura:if>    
+                            
+                            <aura:if isTrue="{!or(and(v.sofPartDetailWithQtyBreak.PriceDetail.DspQtyBreak.length > 0, v.sofPartDetailWithQtyBreak.PriceDetail.DspQtyBreak.length != 1), and(v.sofPartDetailWithQtyBreak.PriceDetail.DspQtyBreak.length == 1, greaterthan(v.sofPartDetailWithQtyBreak.PriceDetail.DspQtyBreak[0].QtyDiscPerc, 0)))}">
+                                <table class="invDatacontainertable">
+                                    <tr>
+                                        <th colspan="10" class="invDatacontainertableheading">DSP QUANTITY BREAKDOWN OPTIONS</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="invDatacontainertableheading">DIS. CHANNEL</td>
+                                        <td class="invDatacontainertableheading">STD. NET ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">BEST CODE</td>
+                                        <td class="invDatacontainertableheading">QTY.</td>
+                                        <td class="invDatacontainertableheading">QTY. DISC</td>
+                                        <td class="invDatacontainertableheading">QTY. PRICE ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">QTY. FINAL ({!v.currencyCode})</td>
+                                        <td class="invDatacontainertableheading">INCENTIVE</td>
+                                        <td class="invDatacontainertableheading">CSR</td>
+                                        <td class="invDatacontainertableheading">FNL. NET ({!v.currencyCode})</td>
+                                    </tr>
+                                    <aura:iteration items="{!v.sofPartDetailWithQtyBreak.PriceDetail.DspQtyBreak}" var="item">
+                                        <tr>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.DISChannel}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.StdNet}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.BeatCode}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyBreak}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyDiscPerc}%
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyPrice}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.QtyFinal}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.INCENTIVE}%
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.CSR}
+                                            </td>
+                                            <td class="invDatacontainertabledata">
+                                                {!item.FNLNET}
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                </table>
+                                <br/>
+                            </aura:if>
+                            <br/>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    <!-- Loyality Code Detail Popup/Modal -->
+    <aura:if isTrue="{!v.showLoyality}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">                
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="paddingCls">
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat popheading">
+                            Loyality Discount Details
+                            <lightning:icon class="iconcolr slds-float--right" size="small" iconName="utility:close" variant="bare" alternativeText="close" title="close" onclick="{! c.closeModal }" />
+                        </div>
+                        
+                        <div class="slds-col slds-medium-size_12-of-12">
+                            
+                            <table class="invDatacontainertable">
+                                <tr>
+                                    <td class="invDatacontainertableheading" >
+                                        LOYALITY CODE
+                                    </td>
+                                    
+                                    <td class="invDatacontainertableheading" >
+                                        LOYALITY DISCOUNT
+                                    </td>
+                                    
+                                    <td class="invDatacontainertableheading" >
+                                        LOYALITY BEG DATE
+                                    </td>
+                                    
+                                    <td class="invDatacontainertableheading" >
+                                        LOYALITY END DATE
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.LoyaltyCode}
+                                    </td>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.LoyaltyDiscount}
+                                    </td>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.LoyaltyBegDate}
+                                    </td>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.LoyaltyEndDate}
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.showCNR}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="paddingCls">
+                        <div class="slds-col slds-medium-size_12-of-12 lFloat popheading">
+                            CNR Details
+                            <lightning:icon class="iconcolr slds-float--right" size="small" iconName="utility:close" variant="bare" alternativeText="close" title="close" onclick="{! c.closeModal }" />
+                        </div>
+                        
+                        <div class="slds-col slds-medium-size_12-of-12">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>PART <strong>{!v.sofPartDetailWithQtyBreak.part_number}</strong> </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <table class="invDatacontainertable">
+                                <tr>
+                                    <td class="invDatacontainertableheading" >
+                                        LIMIT PER DAY
+                                    </td>
+                                    
+                                    <td class="invDatacontainertableheading" >
+                                        UNIT OF MEASURE
+                                    </td>
+                                    
+                                    <td class="invDatacontainertableheading" >
+                                        EFFECTIVE DATE 
+                                    </td>
+                                    
+                                    <td class="invDatacontainertableheading" >
+                                        END DATE
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.dealer_quantity_per_day}
+                                    </td>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.unit_of_measure}
+                                    </td>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.cnr_effective_date}
+                                    </td>
+                                    <td class="invDatacontainertabledata">
+                                        {!v.sofPartDetailWithQtyBreak.PriceDetail.cnr_end_date}
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    <aura:if isTrue="{!v.displayParts}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container modalContent partDetailModal">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! c.closePartModel }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">                    
+                    
+                    
+                    <c:eDealerPartDetailModal dealerCode="{!v.dealerCode}" 
+                                              division="{!v.division}"
+                                              partNumber = "{!v.partNumberDetail}"/>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button label="Close" title="Neutral action" onclick="{! c.closePartModel }"/>
+                </footer>                
+            </div>            
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+</aura:component>

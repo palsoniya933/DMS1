@@ -1,0 +1,25 @@
+.THIS {
+}
+
+.THIS.download-btn{ 
+    background: #c23934!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #c23934;
+    margin-right: 6px;
+    margin-top: 1px;}
+.THIS .imgicon-style-align{
+   width: 31px;
+    height: 23px;
+    margin-right: 4px;
+    margin-left: -4px;
+    margin-top: -2px;
+   
+}
+.THIS.custombtn{
+    background-color: #D10000;
+    color: white;
+}
+
+.THIS a:link { text-decoration: none; }

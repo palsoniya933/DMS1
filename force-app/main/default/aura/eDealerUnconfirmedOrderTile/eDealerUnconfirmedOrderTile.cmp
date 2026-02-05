@@ -1,0 +1,141 @@
+<aura:component controller="EDealerUnConfirmedOrder"
+                extends="c:edealerTracking"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+ 
+    
+    <!-- register event when menu is clicked -->
+    <aura:registerEvent name="menuevent" type="c:eDealerSubMenu"/>
+    <!-- this will be used for the Selected option -->
+        <aura:attribute name="selectoptions" type="List" default="[      
+                                                              {'label': 'Weekly', 'value': 'W'},
+
+                                                              {'label': 'Monthly', 'value': 'M'},
+
+                                                              {'label': 'Quarterly', 'value': 'Q'},
+                                                              {'label': 'All', 'value': 'All'}]"/>
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="All"/>
+    
+    <!-- saving the percentage -->
+    <aura:attribute name="unConfirmOrders" type="String" default="0"/>
+    
+    <!-- this will save the measuring unit -->
+    <aura:attribute name="units" type="string" />
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    <aura:attribute name="listDealerLoc" type="LIST"/>
+    
+    <!-- this will save the Pending Order api details -->
+    <aura:attribute name="unConfirmOrdersData" type="Object" />
+    
+    <!-- this will save the Pending Order api details cache -->
+    <aura:attribute name="unConfirmOrdersDataMapCache" type="Map" />
+    
+     <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="Object"/>
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <aura:attribute name="selectedMenu" type="String" />
+    
+    <!-- Selected Order dropdown 
+    <aura:attribute name="selectedOrder" type="string" default="All"/>-->
+    
+    <aura:attribute name="selectedUnConfirmedOrder" type="string" default="All"/>
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:handler name="change" value="{!v.listDealerLoc}" action="{!c.listdealerLocChange}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">
+                                    <a href="" 
+                                       onclick="{!c.openOrdersTile}">{!v.title}
+                                    </a>
+                                    
+                            </span>
+                            
+                            &nbsp;&nbsp;
+                            <aura:if isTrue="{!v.listDealerLoc.length==1}">
+                                <span onclick="{!c.handleOpenInNewWindow}" style="z-index: 10;" >                                
+                                    <a style="z-index: 10;" href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                                </span>
+                            </aura:if>
+                        </div>
+                        
+                        
+                        <div class="top_Margin"  >
+                            <table>
+                                <tr>
+                                    <td class="tileInfo_Div">
+                                        <span class="{!v.listDealerLoc.length==1?'greenTextb':'greenTextbNP'}" style="top: 3%;">
+                                            <lightning:select value="{!v.selectedUnConfirmedOrder}" onchange="{!c.handleSubTypeUpdate}" class="noGreenTextb picklistWidth">
+                                                <option value="All">{!$Label.c.All_Orders}</option>
+                                                <option value="Truck">{!$Label.c.Truck_Down_Orders}</option>
+                                                <option value="Emergency">{!$Label.c.Emergency_Order}</option>
+                                                <option value="Stock">{!$Label.c.Stock_Orders}</option>
+                                            </lightning:select> 
+                                            <aura:if isTrue="{!v.listDealerLoc.length==1}">
+                                                <lightning:formattedNumber value="{!v.unConfirmOrders}" onclick="{!c.handleOpenInNewWindow}"/>
+                                                <aura:set attribute='else'>
+                                                    <lightning:formattedNumber value="{!v.unConfirmOrders}"/>
+                                                </aura:set>
+                                            </aura:if>
+                                            
+                                        </span>                     
+                                    </td> 
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>   
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="{!$Label.c.Edealer_Sum_of_all_the_orders_unconfirmed}"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

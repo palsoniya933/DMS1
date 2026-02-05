@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PSSM_Portal_UUID__c</fullName>
+    <description>Decisiv Portal UUID</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Displays the corresponding PACCAR Solutions Service Management (Decisiv) Portal UUID.  This ID is used for Service Request creation from TCS365 and Identifies linked dealer portal.</inlineHelpText>
+    <label>PSSM Portal UUID</label>
+    <length>50</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Alternative Parts</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;part_number&quot;,
+&quot;label&quot;: &quot;PART NUMBER&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;description&quot;,
+&quot;label&quot;: &quot;DESCRIPTION&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;saleableindicator&quot;,
+&quot;label&quot;: &quot;SALEABLE INDICATOR&quot;,
+&quot;order&quot; : 3,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;relationship_type&quot;,
+&quot;label&quot;: &quot;RELATIONSHIP TYPE&quot;,
+&quot;order&quot; : 4,
+&quot;type&quot; : &quot;Text&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

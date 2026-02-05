@@ -1,0 +1,69 @@
+.THIS {
+}
+
+.THIS .slds-card__body{
+    padding:0 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.THIS .blackText {
+    color : black;
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45px;
+    right: 2%;
+    top: 15%;
+}
+
+.THIS .redText {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45px;
+    color: #ff0000;
+    right: 2%;
+    top: 15%;
+}
+.THIS .iconFloat-Right svg{fill:#cdcdcd}
+.THIS .gridHeight{
+	height:100px;
+} 
+
+.THIS .tileName_Div{
+	width: 100%;
+    line-height: 26px;
+    color: #636a6a;
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end*/
+    font-size: 12px;
+    padding-bottom: 44px;
+}
+
+.THIS .tileInfo_Div{
+	width:100%;
+    height:50%;
+    display:flex;
+} 
+.THIS.tile{
+    background: #fff !important;
+    height: 185px !important;
+    padding: 5px 10px !important;
+    box-shadow: 0px 1px 3px 2px #e4e4e4!important;
+    border-radius: 6px !important;
+    margin: 6px 0px 0px 3px!important;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.THIS.cEDealerOrderAndTrackTile.tile:hover{box-shadow: 0 1px 5px rgba(0,0,0,0.3)!important;border:1px solid #DA93FF!important;}
+.THIS .tilePercentage_Div{
+	width:100%;
+    height:30%;
+}
+
+.THIS .iconFloat-Right{
+	float: right;
+}

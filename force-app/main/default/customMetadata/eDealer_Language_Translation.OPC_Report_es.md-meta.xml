@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>OPC Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">es_MX</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;dealership_group_code&quot; : &quot;Código de grupo de concesionario&quot;,
+&quot;dealer_name&quot; : &quot;Nombre del comerciante&quot;,
+&quot;total&quot;:&quot;YTD total&quot;,
+&quot;jan&quot;: &quot;ENE&quot;,
+&quot;feb&quot;: &quot;FEB&quot;,
+&quot;mar&quot;: &quot;MAR&quot;,
+&quot;apr&quot;: &quot;ABR&quot;,
+&quot;may&quot;: &quot;MAY&quot;,
+&quot;jun&quot;: &quot;JUN&quot;,
+&quot;jul&quot;: &quot;JUL&quot;,
+&quot;aug&quot;: &quot;AGO&quot;,
+&quot;sept&quot;: &quot;SEP&quot;,
+&quot;oct&quot;: &quot;OCT&quot;,
+&quot;nov&quot;: &quot;NOV&quot;,
+&quot;dece&quot;: &quot;DIC&quot;
+}</value>
+    </values>
+</CustomMetadata>

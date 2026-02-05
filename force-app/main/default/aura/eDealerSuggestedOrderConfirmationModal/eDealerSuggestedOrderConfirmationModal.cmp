@@ -1,0 +1,37 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="showModal" type="Boolean" default="false" />
+    <aura:attribute name="message" type="String" />
+    
+    <!-- this will holder the method which will be used on click of button -->
+    <aura:attribute name="callCheckout" type="Aura.action"/>
+    <aura:attribute name="onClose" type="Aura.action"/>
+    
+    <aura:if isTrue="{!v.showModal}">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <span>Order Upadate</span>
+                   <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{! v.onClose }">
+                        <lightning:icon iconName="utility:close" />
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="emergencyorderMessage" align="center">
+                        <p>
+                            <lightning:icon size="x-small" class="iconColorGreen" iconName="action:approval" alternativeText="Approved" title="Approved" /> 
+                            <span class="fnt-size">&nbsp; {!v.message}</span>
+                        </p>
+                    </div>                    
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="destructive" label="CONTINUE" onclick="{!v.onClose}" />
+                    <lightning:button variant="destructive" label="VIEW CART" onclick="{!v.callCheckout}" />
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+	
+</aura:component>

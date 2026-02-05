@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>eDealerPartNumberSearch</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;: &quot;dealercode&quot;,
+&quot;fr_CA&quot;: &quot;Code du concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Código del distribuidor&quot;,
+&quot;en_US&quot;: &quot;Dealer Code&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;columnAPIName&quot;: &quot;csr&quot;,
+&quot;en_US&quot;: &quot;CSR#&quot;,
+&quot;fr_CA&quot;: &quot;CSR#&quot;,
+&quot;es_MX&quot;: &quot;CSR#&quot;,
+&quot;order&quot;: 3
+},
+{
+&quot;columnAPIName&quot;: &quot;phase&quot;,
+&quot;en_US&quot;: &quot;Phase&quot;,
+&quot;fr_CA&quot;: &quot;Phase&quot;,
+&quot;es_MX&quot;: &quot;Fase&quot;,
+&quot;order&quot;: 4
+},
+{
+&quot;columnAPIName&quot;: &quot;part&quot;,
+&quot;fr_CA&quot;: &quot;# de pièce&quot;,
+&quot;es_MX&quot;: &quot;# de Parte&quot;,
+&quot;en_US&quot;: &quot;PART#&quot;,
+&quot;order&quot;: 5
+},
+{
+&quot;columnAPIName&quot;: &quot;partdesc&quot;,
+&quot;fr_CA&quot;: &quot;DESCRIPTION DE LA PIÈCE&quot;,
+&quot;es_MX&quot;: &quot;Descripción de Parte&quot;,
+&quot;en_US&quot;: &quot;PART DESCRIPTION&quot;,
+&quot;order&quot;: 6
+},
+{
+&quot;columnAPIName&quot;: &quot;channel&quot;,
+&quot;fr_CA&quot;: &quot;Canal&quot;,
+&quot;es_MX&quot;: &quot;Canal&quot;,
+&quot;en_US&quot;: &quot;CHANNEL&quot;,
+&quot;order&quot;: 7
+},
+{
+&quot;columnAPIName&quot;: &quot;competitor&quot;,
+&quot;fr_CA&quot;: &quot;Concurrent&quot;,
+&quot;es_MX&quot;: &quot;Competidor&quot;,
+&quot;en_US&quot;: &quot;COMPETITOR&quot;,
+&quot;order&quot;: 8
+},
+{
+&quot;columnAPIName&quot;: &quot;comppartnumber&quot;,
+&quot;fr_CA&quot;: &quot;Numéro de pièce concurrent&quot;,
+&quot;es_MX&quot;: &quot;Número de pieza del competidor&quot;,
+&quot;en_US&quot;: &quot;COMP PART#&quot;,
+&quot;order&quot;: 9
+},
+{
+&quot;columnAPIName&quot;: &quot;partprice&quot;,
+&quot;fr_CA&quot;: &quot;Prix des pièces&quot;,
+&quot;es_MX&quot;: &quot;Precio de parte&quot;,
+&quot;en_US&quot;: &quot;PARTS PRICE&quot;,
+&quot;order&quot;: 10
+}
+]</value>
+    </values>
+</CustomMetadata>

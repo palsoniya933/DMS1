@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Available_Profiles__c</fullName>
+    <defaultValue>&quot;Paccar Customer Community Plus Login&quot;</defaultValue>
+    <description>Semi colon separated list of profile names that have access to the recordtype navigation item for the support community.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Available Profiles</label>
+    <required>true</required>
+    <type>TextArea</type>
+</CustomField>

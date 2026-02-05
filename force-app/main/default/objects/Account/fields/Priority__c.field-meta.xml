@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority__c</fullName>
+    <label>Priority</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>Critical</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Critical</label>
+            </value>
+            <value>
+                <fullName>Critical - No Visits</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Critical - No Visits</label>
+            </value>
+            <value>
+                <fullName>Good</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Good</label>
+            </value>
+            <value>
+                <fullName>Needs Work</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Needs Work</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

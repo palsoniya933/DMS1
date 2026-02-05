@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pass_Group_Permissions__c</fullName>
+    <label>Pass Group Permissions</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>General</fullName>
+                <default>false</default>
+                <label>General</label>
+            </value>
+            <value>
+                <fullName>Executive</fullName>
+                <default>false</default>
+                <label>Executive</label>
+            </value>
+            <value>
+                <fullName>Purchasing</fullName>
+                <default>false</default>
+                <label>Purchasing</label>
+            </value>
+            <value>
+                <fullName>Sales Manager</fullName>
+                <default>false</default>
+                <label>Sales Manager</label>
+            </value>
+            <value>
+                <fullName>Pricing</fullName>
+                <default>false</default>
+                <label>Pricing</label>
+            </value>
+            <value>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+                <label>Field Service</label>
+            </value>
+            <value>
+                <fullName>General Plus</fullName>
+                <default>false</default>
+                <label>General Plus</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Confirmed Order File</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;item&quot;,
+&quot;label&quot;: &quot;Parts #&quot;,
+&quot;order&quot; : 1,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;item_description&quot;,
+&quot;label&quot;: &quot;Description&quot;,
+&quot;order&quot; : 2,
+&quot;type&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;dlr_inv_qty&quot;,
+&quot;label&quot;: &quot;Inventory&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;confirmed_qty&quot;,
+&quot;label&quot;: &quot;Confirmed Qty&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;p_dlrnet&quot;,
+&quot;label&quot;: &quot;Dealer Net&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Number&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;extended_dnet&quot;,
+&quot;label&quot;: &quot;Extended Dealer Net&quot;,
+&quot;order&quot; : 6,
+&quot;datatype&quot; : &quot;Number&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

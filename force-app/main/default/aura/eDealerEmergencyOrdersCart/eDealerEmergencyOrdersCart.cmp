@@ -1,0 +1,42 @@
+<aura:component controller="EDealerCartController" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- this will save the items to be dispalyed -->
+    <aura:attribute name="cartEmergencyOrders" type="Object[]" />
+    
+    <!-- Selected Delear Loc/ code -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="false"/>
+    
+    <!-- spinner--> 
+    <div>
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>
+    </div>
+    
+    <aura:if isTrue="{!v.cartEmergencyOrders}">
+        <!-- cart header -->
+        <c:eDealerShoppingCartSubHeader cartOrders="{!v.cartEmergencyOrders}"/>
+        
+        <!-- Table -->
+        <c:eDealerCartTable method="{!c.doInit}"
+                            cartOrders="{!v.cartEmergencyOrders}"
+                            displayLoading="{!v.displayLoading}"
+                            ordertype = 'EM'
+                            orderName = 'PDC Emergency Orders'
+                            dealerCode = "{!v.dealerCode}"
+                            userDetail="{!v.userDetail}">
+        </c:eDealerCartTable>
+    </aura:if>
+    
+</aura:component>

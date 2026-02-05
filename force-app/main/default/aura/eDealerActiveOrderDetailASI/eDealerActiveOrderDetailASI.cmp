@@ -1,0 +1,754 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" 
+                access="global"
+                controller="EDealerActiveOrderDetailASI_V1">
+    
+    <aura:attribute name="dealerCode" type="String" />
+    <aura:attribute name="orderNumber" type="String" />
+    <aura:attribute name="selectedLineNumber" type="String" />
+    <aura:attribute name="selectedPartnumber" type="String" />
+    <aura:attribute name="isDSPOrder" type="boolean" default="false"/>    
+    
+    <!-- to show tab based on selcted tab name -->
+    <aura:attribute name="selectedTabName" type="String" default="ORDERSUMMARY" />
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+    <aura:attribute name="isActiveOrderSummary" type="Boolean" default="false" />
+    <aura:attribute name="activeOrderSummary" type="Object" />
+    <aura:attribute name="activeOrderWorkflow" type="List" />
+    <aura:attribute name="activeOrderWorkflowItems" type="List" />
+    <aura:attribute name="result" type="Object" />
+    <!--<aura:attribute name="dynamicListMap" type="List" />-->
+     <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslationBO" type="MAP"/>
+    <aura:attribute name="languageTranslationCO" type="MAP"/>
+    <aura:attribute name="languageTranslationPO" type="MAP"/>
+    <aura:attribute name="languageTranslationProcessing" type="MAP"/>
+    <aura:attribute  name="columnLabelByApiNameBO" type="Map" default="{}"/>
+    <aura:attribute  name="columnLabelByApiNameCO" type="Map" default="{}"/>
+    <aura:attribute  name="columnLabelByApiNamePO" type="Map" default="{}"/>
+    <aura:attribute  name="columnLabelByApiNameProcessing" type="Map" default="{}"/>
+    
+    <aura:attribute name="PaginationList" type="object[]"/>
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <!-- PAgination Page Number -->
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <!-- PAgination Total Pages -->
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <!-- PAgination Record Start -->
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <!-- PAgination Record End -->
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    
+    <!-- used t disabled previous button -->
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    
+    <!-- used t disabled next button -->
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    <aura:attribute name="disabledReportButton" type="boolean" default="true"/>
+    
+    <aura:attribute name="showCommentModal" type="boolean" default="false"/>
+    <aura:attribute name="showLineCommentModal" type="boolean" default="false"/>
+    <aura:attribute name="comments" type="List" />
+    <aura:attribute name="lineComm" type="List" />
+    
+    <!-- show no data -->
+    <aura:attribute name="isOrderfound" type="boolean" default="true"/>
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- when dealer code change -->
+    <aura:handler name="change" value="{!v.dealerCode}" action="{!c.doInit}"/>
+    
+    <div class="slds-grid slds-wrap padding-10">
+        
+        <!--SPINNER-->
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>        
+        
+        <aura:if isTrue="{!v.APICalled}">
+            <aura:if isTrue="{!v.isOrderfound}">
+                
+                <aura:set attribute="else">
+                    <div style="width: 100%;background-color: white;padding: 2%;">
+                        <center>
+                            <div class="info-msg">
+                               {!$Label.c.Edealer_PACCAR_ORDER}&nbsp;{!v.orderNumber}&nbsp;{!$Label.c.does_not_belong_to_the_selected_dealer_location}
+                            </div>
+                        </center>
+                    </div>
+                </aura:set>
+       
+                <div class="slds-col slds-size_12-of-12">
+ 
+                    <div class="wrapper slds-m-around_x-small">
+                        <c:eDealerOrdersummarydetailsASI activeOrderSummary="{!v.activeOrderSummary}"
+                                                         activeOrderWorkflow="{!v.activeOrderWorkflow}" 
+                                                         isDSPOrder = "{!v.isDSPOrder}"/>
+                    </div>
+                </div>
+                
+                <div class="slds-col slds-size_12-of-12">
+                    <div class="wrapper slds-m-around_x-small padding-bt scrollbar" style="{!v.isDSPOrder ? '' : 'max-height:76vh'}">
+                        <aura:if isTrue="{!v.isDSPOrder}">
+                            <center>
+                                <div class="info-msg">
+                                   <lightning:icon  size="xx-small"  iconName="utility:warning" variant="bare" alternativeText="checked" title=""/> {!$Label.c.For_DSP_Order_tracking_please_contact_Customer_Service_for_more_details}	
+                                </div>
+                            </center>
+                            <aura:set attribute="else">
+                                <center>
+                                    <div class="info-msg">
+                                       <lightning:icon  size="xx-small"  iconName="utility:warning" variant="bare" alternativeText="checked" title=""/>{!$Label.c.If_order_status_displays_as_SHIPPED_INVOICED_check_order_line_comments_for_t	}	
+                                    </div>
+                                </center>
+                                <c:eDealerOrderWorkflowASI selectedTabName="{!v.selectedTabName}"
+                                                           activeOrderSummary="{!v.activeOrderSummary}"
+                                                           activeOrderWorkflow="{!v.activeOrderWorkflow}" 
+                                                           result="{!v.result}" />
+                                
+                            </aura:set>
+                        </aura:if>
+                    </div>            
+                </div>
+                
+                
+                <div class="slds-col slds-size_12-of-12">
+                    
+                    <div class="wrapper slds-m-around_x-small tab-li-mar">
+                        
+                        <lightning:tabset selectedTabId="{!v.selectedTabName}" >
+                            
+                            <!-- ORDERSUMMARY -->
+                            <lightning:tab label="{!$Label.c.Edealer_ORDER_SUMMARY}" id="ORDERSUMMARY">
+                                
+                                <!-- Table will display once data set to activeOrderSummary -->
+                                <!--<aura:if isTrue="{!v.isActiveOrderSummary}"> -->                        
+                                <table class="slds-table slds-table_cell-buffer th-color">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_CUSTOMER}</div>
+                                            </th>
+                                            <!-- <th class="" scope="col">
+                                            <div class="slds-truncate" >COMPANY / DIVISION</div>
+                                        </th>-->
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_ORDER_STATUS}</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_ORDER_CURRENCY}</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_DELIVER_TO}</div>
+                                            </th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="slds-hint-parent">
+                                            <td >
+                                                <div class="slds-truncate pd-lft" >
+                                                    <span>{!v.activeOrderSummary.customer}</span>
+                                                </div>
+                                            </td>
+                                            <!--<td >
+                                            <div class="slds-truncate" ><span>{!v.activeOrderSummary.comp}</span></div>
+                                        </td>-->
+                                            <td >
+                                                <div class="slds-truncate" ><span>{!v.activeOrderSummary.order_status}</span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" ><span>{!v.activeOrderSummary.order_currency}</span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate no-truncate" ><span>{!v.activeOrderSummary.deliver_to}</span></div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="slds-hint-parent">
+                                            <th  scope="row">
+                                                <div class="slds-truncate" >
+                                                    
+                                                </div>
+                                            </th>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_ORDER_VALUE_Tracking}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_MERCHANDISE_AMT}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_OPEN_MERCHANDISE_AMT}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_TAX_AMOUNT}</div>
+                                                
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="slds-hint-parent">
+                                            <th data-label="Opportunity Name" scope="row">
+                                                <div class="slds-truncate" title="Cloudhub + Anypoint Connectors">
+                                                    
+                                                </div>
+                                            </th>
+                                            <td >
+                                                <div class="slds-truncate" >
+                                                    <span><lightning:formattedNumber value="{!v.activeOrderSummary.order_value}" maximumFractionDigits="2"/></span>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" title="4/14/2015">
+                                                    <span><lightning:formattedNumber value="{!v.activeOrderSummary.merchandiseamount}" maximumFractionDigits="2"/></span>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >
+                                                    <span><lightning:formattedNumber value="{!v.activeOrderSummary.openmerchandiseamount}" maximumFractionDigits="2"/></span>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" ><span>{!v.activeOrderSummary.tax_amount}</span></div>
+                                                
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        <tr class="slds-hint-parent">
+                                            <th  scope="row">
+                                                <div class="slds-truncate" >
+                                                    
+                                                </div>
+                                            </th>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_HEADER_MISC_CHARGES}S</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_DETAIL_MISC_CHARGES}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_SHIPPING_METHOD}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" >{!$Label.c.Edealer_HEADER_COMMENTS}</div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr >
+                                            <th  scope="row">
+                                                <div class="slds-truncate" >
+                                                    
+                                                </div>
+                                            </th>
+                                            
+                                            <td >
+                                                <div class="slds-truncate" style="color: black !important;"><span>{!v.activeOrderSummary.header_miss_charges}</span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" style="color: black !important;"><span>{!v.activeOrderSummary.detail_misc_charges}</span></div>
+                                            </td>
+                                            <td data-label="Confidence">
+                                                <div class="slds-truncate" style="color: black !important;"><span>{!v.activeOrderSummary.allshipments}</span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate" title="Comments">
+                                                    <aura:if isTrue="{!v.comments.length > 0}">
+                                                        <lightning:icon class="redIcon" onclick="{!c.showCommentModal}" iconName="utility:chat" alternativeText="Comment" title="Comment" size="small"/>
+                                                        
+                                                    </aura:if>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr class="slds-hint-parent">
+                                            <th  scope="row">
+                                                <div class="slds-truncate">
+                                                    
+                                                </div>
+                                            </th>
+                                            <td >
+                                                <div class="slds-truncate">{!$Label.c.Edealer_ORDER_WEIGHT}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate">{!$Label.c.Edealer_UOM}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate">{!$Label.c.Edealer_ORDER_VOLUME}</div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate">{!$Label.c.Edealer_NUMBER_OF_CARTONS}</div>
+                                                
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="slds-hint-parent">
+                                            <th  scope="row">
+                                                <div class="slds-truncate">
+                                                    
+                                                </div>
+                                            </th>
+                                            <td >
+                                                <div class="slds-truncate"><span>
+                                                    <lightning:formattedNumber value="{!v.activeOrderSummary.order_weight}" maximumFractionDigits="2"/>
+                                                    </span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate"><span>{!v.activeOrderSummary.uom}</span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate"><span>{!v.activeOrderSummary.order_volume}</span></div>
+                                            </td>
+                                            <td >
+                                                <div class="slds-truncate"><span>{!v.activeOrderSummary.number_of_cartons}</span></div>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!--</aura:if>-->
+                            </lightning:tab>
+                            <!-- ORDERSUMMARY -->
+                            
+                            <!-- PARTSORDERED -->
+                            <lightning:tab label="{!$Label.c.Edealer_PARTS_ORDERED}" id="PARTSORDERED" class=" shipmenttabs"> 
+                                <div style="border: 0px solid red;">
+                                  <lightning:tabset variant="scoped" >
+                                    <!-- dynamicListMap -->
+                                    <aura:if isTrue="{!v.result.dynamicTabList.length > 0}">
+                                        <aura:iteration items="{!v.result.dynamicTabList}" var="tabList" indexVar="index">
+                                            <lightning:tab label="{!'SHIPMENT '+(index+1)}" id="{!'SHIPMENT'+(index+1)}"> 
+                                                <div class="table-responsive">
+                                                    <table class="slds-table slds-table_cell-buffer th-bg" style="width:100%">
+                                                        <thead>
+                                                            <tr class="slds-line-height_reset">
+                                                                <aura:iteration items="{!v.columnLabelByApiNamePO}" var="cd" indexVar="key">
+                                                                    <th class="slds-truncate">
+                                                                        {!cd.value}
+                                                                    </th>
+                                                                </aura:iteration>
+                              
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <aura:iteration items="{!tabList.dynamicList}" var="workflowItem" indexVar="index">
+                                                                <tr class="slds-hint-parent">
+                                                                    
+                                                                    <aura:iteration items="{!v.columnLabelByApiNamePO}" var="cd">
+                                                                        <th>
+                                                                            <aura:if isTrue="{!cd.key=='shipped_status'}">
+                                                                                <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked"  />&nbsp;&nbsp;<span class="slds-truncate"><c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/></span>
+                                                                                <aura:set attribute="else">
+                                                                                    <aura:if isTrue="{!AND(cd.key=='lineComm',workflowItem.lineComm != null)}">                                                                
+                                                                                        <lightning:buttonIcon class="redIcon" 
+                                                                                                              alternativeText = "{!workflowItem.ordln}"	
+                                                                                                              name="{!workflowItem}"                                                                                                                                                                                   
+                                                                                                              iconName="utility:chat" 
+                                                                                                              variant="bare" 
+                                                                                                              onclick="{! c.showLineCommentModal }"                                                                                           
+                                                                                                              title="Comment" 
+                                                                                                              size="large"/>
+                                                                                        <aura:set attribute="else">
+                                                                                            <div class="slds-truncate">
+                                                                                                <c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/>
+                                                                                            </div>
+                                                                                            
+                                                                                        </aura:set>
+                                                                                    </aura:if>
+                                                                                </aura:set>
+                                                                            </aura:if>
+                                                                        </th>
+                                                                    </aura:iteration>
+                                                                                                                 
+                                                                </tr>
+                                                            </aura:iteration>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </lightning:tab>
+                                        </aura:iteration>
+                                    </aura:if>
+                                    <!-- dynamicListMap -->
+                                    
+                                    <!-- PROCESSING -->
+                                    <aura:if isTrue="{!v.result.processingList.length > 0}">
+                                        <lightning:tab label="{!$Label.c.Edealer_Processing}" id="PROCESSING"> 
+                                             <div class="table-responsive">
+                                            <table class="slds-table slds-table_cell-buffer th-bg">
+                                                <thead>
+                                                    <tr class="slds-line-height_reset">
+                                                        
+                                                        <aura:iteration items="{!v.columnLabelByApiNameProcessing}" var="cd" indexVar="key">
+                                                            <th class="slds-truncate">
+                                                                {!cd.value}
+                                                            </th>
+                                                        </aura:iteration>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <aura:iteration items="{!v.result.processingList}" var="workflowItem" indexVar="index">
+                                                        <tr class="slds-hint-parent">
+                                                            <aura:iteration items="{!v.columnLabelByApiNameProcessing}" var="cd">
+                                                                <th>
+                                                                    <aura:if isTrue="{!cd.key=='line_status'}">
+                                                                        <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked"  />&nbsp;&nbsp;<span class="slds-truncate"><c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/></span>
+                                                                        <aura:set attribute="else">
+                                                                            <aura:if isTrue="{!AND(cd.key=='lineComm',workflowItem.lineComm != null)}">                                                                
+                                                                                <lightning:buttonIcon class="redIcon" 
+                                                                                                      alternativeText = "{!workflowItem.ordln}"
+                                                                                                      name="{!workflowItem}"                                                                                                                                                                                   
+                                                                                                      iconName="utility:chat" 
+                                                                                                      variant="bare" 
+                                                                                                      onclick="{! c.showLineCommentModal }"                                                                                           
+                                                                                                      title="comment" 
+                                                                                                      size="large"/>
+                                                                                <aura:set attribute="else">
+                                                                                    <aura:if isTrue="{!cd.key=='qty_shipped'}">                                                                
+                                                                                        <aura:if isTrue="{!empty(workflowItem.qty_shipped)}">
+                                                                                            0
+                                                                                            <aura:set attribute="else">
+                                                                                                <c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/>
+                                                                                            </aura:set>
+                                                                                        </aura:if>
+                                                                                        <aura:set attribute="else">
+                                                                                            <div class="slds-truncate">
+                                                                                                <c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/>
+                                                                                            </div>
+                                                                                            
+                                                                                        </aura:set>
+                                                                                    </aura:if>
+                                                                                    
+                                                                                </aura:set>
+                                                                            </aura:if>
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                </th>
+                                                            </aura:iteration>
+                                                        </tr>
+                                                    </aura:iteration>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </lightning:tab>
+                                    </aura:if>
+                                      <!-- PROCESSING -->
+                                      
+                                      <!-- BACKORDER -->
+                                      <aura:if isTrue="{!v.result.backOrderedList.length > 0}">
+                                          <lightning:tab label="{!$Label.c.Edealer_BackOrder}" id="BACKORDER"> 
+                                              <div class="table-responsive">
+                                                  <table class="slds-table slds-table_cell-buffer th-bg">
+                                                      <thead>
+                                                          <tr class="slds-line-height_reset">
+                                                              <aura:iteration items="{!v.columnLabelByApiNameBO}" var="cd" indexVar="key">
+                                                                  <th class="slds-truncate">
+                                                                      {!cd.value}
+                                                                  </th>
+                                                              </aura:iteration>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <aura:iteration items="{!v.result.backOrderedList}" var="workflowItem" indexVar="index">
+                                                        <tr class="slds-hint-parent">
+                                                            
+                                                            <aura:iteration items="{!v.columnLabelByApiNameBO}" var="cd">
+                                                                <th>
+                                                                    <aura:if isTrue="{!cd.key=='line_status'}">
+                                                                        <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked"  />&nbsp;&nbsp;<span class="slds-truncate"><c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/></span>
+                                                                        <aura:set attribute="else">
+                                                                            <aura:if isTrue="{!AND(cd.key=='lineComm',workflowItem.lineComm != null)}">                                                                
+                                                                                <lightning:buttonIcon class="redIcon" 
+                                                                                                      alternativeText = "{!workflowItem.ordln}"
+                                                                                                      name="{!workflowItem}"                                                                                                                                                                                   
+                                                                                                      iconName="utility:chat" 
+                                                                                                      variant="bare" 
+                                                                                                      onclick="{! c.showLineCommentModal }"                                                                                           
+                                                                                                      title="Comment" 
+                                                                                                      size="large"/>
+                                                                                <aura:set attribute="else">
+                                                                                    <div class="slds-truncate">
+                                                                                        <c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/>
+                                                                                    </div>
+                                                                                    
+                                                                                </aura:set>
+                                                                            </aura:if>
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                </th>
+                                                            </aura:iteration>
+                                                        </tr>
+                                                    </aura:iteration>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </lightning:tab>     
+                                    </aura:if>
+                                    <!-- BACKORDER -->
+                                    
+                                    <!-- CANCELLED -->
+                                    <aura:if isTrue="{!v.result.cancelledList.length > 0}">
+                                        <lightning:tab label="{!$Label.c.Edealer_Cancelled_Tracking}" id="CANCELLED"> 
+                                             <div class="table-responsive">
+                                            <table class="slds-table slds-table_cell-buffer th-bg">
+                                                <thead>
+                                                    <tr class="slds-line-height_reset">
+                                                        <aura:iteration items="{!v.columnLabelByApiNameCO}" var="cd" indexVar="key">
+                                                            <th class="slds-truncate">
+                                                                {!cd.value}
+                                                            </th>
+                                                        </aura:iteration>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <aura:iteration items="{!v.result.cancelledList}" var="workflowItem" indexVar="index">
+                                                        <tr class="slds-hint-parent">
+                                                            <aura:iteration items="{!v.columnLabelByApiNameCO}" var="cd">
+                                                                <th>
+                                                                    <aura:if isTrue="{!cd.key=='line_status'}">
+                                                                        <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked"  />&nbsp;&nbsp;<span class="slds-truncate"><c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/></span>
+                                                                        <aura:set attribute="else">
+                                                                            <aura:if isTrue="{!AND(cd.key=='lineComm',workflowItem.lineComm != null)}">                                                                
+                                                                                <lightning:buttonIcon class="redIcon" 
+                                                                                                      alternativeText = "{!workflowItem.ordln}"
+                                                                                                      name="{!workflowItem}"                                                                                                                                                                                   
+                                                                                                      iconName="utility:chat" 
+                                                                                                      variant="bare" 
+                                                                                                      onclick="{! c.showLineCommentModal }"                                                                                           
+                                                                                                      title="comment" 
+                                                                                                      size="large"/>
+                                                                                <aura:set attribute="else">
+                                                                                    <div class="slds-truncate">
+                                                                                        <c:eDealerRowCell invData="{!workflowItem}" columnAPIName="{!cd.key}"/>
+                                                                                    </div>
+                                                                                    
+                                                                                </aura:set>
+                                                                            </aura:if>
+                                                                        </aura:set>
+                                                                    </aura:if>
+                                                                </th>
+                                                            </aura:iteration>
+                                                        </tr>
+                                                    </aura:iteration>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </lightning:tab>     
+                                    </aura:if>
+                                    <!-- CANCELLED -->
+                                    
+                                </lightning:tabset>
+                                </div>
+                                
+                            </lightning:tab>
+                            <!-- PARTSORDERED -->
+                            
+                        </lightning:tabset>
+                    </div>
+                    
+                    <!-- Comment Popup/Modal -->
+                    <aura:if isTrue="{!v.showCommentModal}">
+                        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                            <div class="slds-modal__container">  
+                                
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <div class="paddingCls">
+                                        <div Class="slds-medium-size_12-of-12 lFloat popheading">
+                                            <span class="slds-text-heading">{!$Label.c.Header_Comments}</span>
+                                            <lightning:icon class="slds-float--right" size="small" iconName="utility:close" alternativeText="close" title="close" onclick="{! c.closeModal }" />
+                                        </div>                                
+                                        {!$Label.c.Edealer_PACCAR_ORDER}&nbsp;{!v.activeOrderSummary.paccer_order}
+                                        
+                                        <div class="slds-col slds-medium-size_12-of-12">
+                                            
+                                            <table class="invDatacontainertable th-bg">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.CHARGE_TYPE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.UNIT_PRICE_CODE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.QUANTITY}
+                                                        </th>                                               
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.COMMENT_S}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.PRICE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            DISC %
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.INVOICE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            REL#
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <aura:iteration items="{!v.comments}" var="comment">
+                                                        <tr>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.crgtyp}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.unitprcd}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.qty}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.comm}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.prc}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.pcdisc}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.invoice}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.ordln}
+                                                            </td>
+                                                        </tr>
+                                                    </aura:iteration>
+                                                </tbody>
+                                            </table>
+                                            <br/>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
+                    
+                    <!-- Comment Popup/Modal -->
+                    <aura:if isTrue="{!v.showLineCommentModal}">
+                        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                            <div class="slds-modal__container">  
+                                
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <div class="paddingCls">
+                                        <div Class="slds-medium-size_12-of-12 lFloat popheading">
+                                            <span class="slds-text-heading">Misc Charges / Comments</span>
+                                            <lightning:icon class="slds-float--right" size="small" iconName="utility:close" alternativeText="close" title="close" onclick="{! c.closeLineModal }" />
+                                        </div>
+                                        <p class="slds-text-heading">
+                                            {!$Label.c.Edealer_PACCAR_ORDER}&nbsp;{!v.activeOrderSummary.paccer_order}
+                                        </p>
+                                        <p class="slds-text-heading">
+                                            {!$Label.c.Line_Number}{!v.selectedLineNumber}
+                                        </p>
+                                        <p class="slds-text-heading">
+                                            {!$Label.c.Part} # {!v.selectedPartnumber}
+                                        </p>
+                                        
+                                        <div class="slds-col slds-medium-size_12-of-12">
+                                            
+                                            <table class="invDatacontainertable th-bg">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.CHARGE_TYPE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                           {!$Label.c.UNIT_PRICE_CODE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                           {!$Label.c.QUANTITY}
+                                                        </th>                                               
+                                                        <th class="invDatacontainertableheading" >
+                                                           {!$Label.c.COMMENT_S}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                           {!$Label.c.PRICE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            DISC %
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            {!$Label.c.INVOICE}
+                                                        </th>
+                                                        
+                                                        <th class="invDatacontainertableheading" >
+                                                            REL#
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <aura:iteration items="{!v.lineComm}" var="comment">
+                                                        <tr>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.crgtyp}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.unitprcd}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.qty}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.comm}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.prc}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.pcdisc}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.invoice}
+                                                            </td>
+                                                            <td class="invDatacontainertabledata">
+                                                                {!comment.ordln}
+                                                            </td>
+                                                        </tr>
+                                                    </aura:iteration>
+                                                </tbody>
+                                            </table>
+                                            <br/>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
+                    
+                </div>
+            </aura:if>
+        </aura:if>      
+    </div>
+    
+</aura:component>

@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="This event will when location is changed by the user" >
+	<aura:attribute name="selectedLoc" type="String"/>
+    <aura:attribute name="selectedGrp" type="String"/>
+    <aura:attribute name="selectedDivision" type="String"/>   
+    <aura:attribute name="listSelectedLoc" type="list"/>
+</aura:event>

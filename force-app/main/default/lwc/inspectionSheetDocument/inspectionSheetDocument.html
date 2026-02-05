@@ -1,0 +1,71 @@
+<template>
+    <div class={containerStyleClass}>
+        <template if:true={displayOnly}>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template if:true={showDocument}>
+                    <div class={documentInfoStyleClass}>
+                        <img src={iconUrl} alt="" class="imgicon-style-align" />
+                        <a href={documentDownloadUrl} class="slds-text-color_default" target="_blank">{documentName}</a>
+                    </div>
+                    <template if:true={showAdminActions}>
+                        <div class="slds-col slds-size_2-of-12">
+                            <div class="action-icon" onclick={handleDelete}>
+                                <img src={deleteIconURL} alt="" class="imgicon-style-align" />
+                            </div>
+                        </div>
+                    </template>
+                </template>
+                <template if:true={deleteModeEnabled}>
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-grid slds-wrap align-center">
+                            <div class="slds-col slds-size_8-of-12 negative-margin">
+                                <div class="text-wrap">
+                                    <img src={warningIconURL} alt="" />
+                                    <div>{deleteMessage}</div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_2-of-12">
+                                <span class="underline-text-link color-red"
+                                    onclick={confirmDeleteDocument}>{labels.delete}</span>
+                            </div>
+                            <div class="slds-col slds-size_2-of-12">
+                                <span class="underline-text-link" onclick={cancelDeleteDocument}>{labels.cancel}</span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:false={displayOnly}>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_2-of-12">
+                    <div class="slds-text-heading_small">
+                        {title}
+                    </div>
+                </div>
+                <template if:true={showDocumentInfo}>
+                    <div class="slds-col slds-size_8-of-12 slds-grid slds-align-center">
+                        <img src={iconUrl} alt="" class="imgicon-style-align" />
+                        <span class="slds-text-color_default slds-m-left_x-small slds-m-right_x-small width-fifty">
+                            <template if:false={editMode}>
+                                {documentName}
+                            </template>
+                            <template if:true={editMode}>
+                                <lightning-input value={documentName} name={documentLanguage} variant='label-hidden'
+                                    class="slds-input-inline" onchange={handleInputChange} required></lightning-input>
+                            </template>
+                        </span>
+                        <template if:false={editMode}>
+                            <img src={editIcon} alt="" class="action-icon edit-icon slds-m-left_x-small"
+                                onclick={handleEditButtonClick} />
+                        </template>
+                        <template if:true={editMode}>
+                            <img src={saveIcon} alt="" class="action-icon save-icon slds-m-left_x-small"
+                                onclick={handleSaveButtonClick} />
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

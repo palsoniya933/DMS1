@@ -1,0 +1,41 @@
+<aura:component >
+    <aura:attribute name="activeOrderWorkflowRec" type="Object" />
+    <aura:attribute name="iconName" type="string" />
+    
+    
+    <!-- if status is delivered all icon are in green -->
+    <aura:if isTrue="{!v.activeOrderWorkflowRec.STAT == 'Delivered'}">
+        <!-- completed icon -->
+        <li class="slds-progress__item">               
+            <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" onclick="{!c.myAction}" />
+        </li>
+        
+        <aura:set attribute="else">
+            <!-- if status is Shipped/In-Transit then intransit and delivery in grey else in green -->
+            <aura:if isTrue="{!v.activeOrderWorkflowRec.STAT == 'Shipped/In-Transit'}">
+                
+                <aura:if isTrue="{!or(v.iconName == 'intransit', v.iconName == 'delivery')}">
+                    <!-- grey icon -->
+                    <li class="slds-progress__item">
+                        <button class="slds-button slds-progress__marker">
+                            <span class="slds-assistive-text">Step 4 </span>
+                        </button>
+                    </li>
+                </aura:if>
+                
+                <aura:set attribute="else">
+                    <!-- completed icon -->
+                    <li class="slds-progress__item">               
+                        <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" onclick="{!c.myAction}" />
+                    </li>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+        
+    </aura:if>
+    
+    
+    
+    
+    
+</aura:component>

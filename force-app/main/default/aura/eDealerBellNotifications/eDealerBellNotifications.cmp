@@ -1,0 +1,71 @@
+<aura:component controller="GatewayAnnouncements" 
+                access="global">
+
+    <aura:attribute name="showPopup" type="Boolean" default="false"/>
+    <aura:attribute name="notifications" type="List"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <!-- Notification Bell & Tray Container -->
+    <div class="notif-wrapper">
+
+        <!-- Bell Icon -->
+        <div aura:id="bellIcon" onclick="{!c.togglePopup}" class="notif-bell">
+            <lightning:icon 
+                iconName="utility:notification"
+                size="small"
+                alternativeText="Notifications"
+                class="slds-button slds-button_icon"
+            />
+        </div>
+
+        <!-- Notification Tray -->
+        <aura:if isTrue="{!v.showPopup}">
+            <div aura:id="popupContainer" class="custom-tray notif-popup slds-box slds-theme_default">
+
+                <!-- Arrow pointing to bell icon -->
+                <div class="notif-arrow"></div>
+
+                <!-- Header -->
+                <div class="notif-header slds-text-heading_small slds-p-around_medium slds-text-align_left">
+                    {!$Label.c.Announcement_Label}
+                </div>
+
+                <!-- Content -->
+                <div class="notif-content slds-scrollable_y slds-p-horizontal_medium slds-p-vertical_small">  
+                    <aura:if isTrue="{!v.isLoading}">
+                        <div class="slds-is-relative slds-p-vertical_medium">
+                            <lightning:spinner alternativeText="Loading..." size="small" />
+                        </div>
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!empty(v.notifications)}">
+                                <p class="notif-empty slds-text-align_left slds-text-color_weak slds-p-vertical_small">
+                                    {!$Label.c.No_Announcement}
+                                </p>
+                                <aura:set attribute="else">
+                                    <aura:iteration items="{!v.notifications}" var="notif">
+                                        <div class="notif-item slds-text-align_left slds-p-vertical_small">
+                                            <div class="slds-grid slds-align-middle">
+                                                <lightning:icon 
+                                                    iconName="utility:pin" 
+                                                    size="x-small" 
+                                                    class="slds-icon-text-error slds-m-right_x-small"
+                                                    alternativeText="Pinned"
+                                                    variant="error"
+                                                />
+                                                <div class="notif-text">
+                                                    <lightning:formattedRichText value="{!notif.Announcement_Verbiage__c}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </aura:iteration>
+                                </aura:set>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

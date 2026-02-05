@@ -1,0 +1,19 @@
+.THIS {
+}
+.THIS .generateReportbutton
+{
+    padding:0px 10px !important;
+}
+.THIS .generateReportbutton svg
+{
+  
+    fill: white;
+    margin: 0px 8px 0px 0px;
+}
+.THIS.reportContainerBox
+{
+    margin: 0 15px 17px 16px;
+    background:#fff;
+   border:solid 1px #ccc;
+    border-radius: 6px!important;
+}

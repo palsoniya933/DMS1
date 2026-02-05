@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="107" height="24" viewBox="0 0 107 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <rect width="107" height="24" rx="4" fill="#C23934"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M24.9301 5.06945L24.0062 9.56176C24.0062 9.74637 24.1294 9.83868 24.2834 9.83868H29.0874C29.4261 9.83868 29.6417 10.2387 29.4877 10.5464L24.2526 19.131C24.037 19.5618 23.3903 19.4079 23.3903 18.9156L24.3141 13.6233C24.3141 13.4387 24.1602 13.5002 23.9754 13.5002H18.925C18.5862 13.5002 18.3399 13.0079 18.5247 12.7002L24.0678 4.85407C24.2834 4.45407 24.9301 4.57714 24.9301 5.06945Z" fill="white"/>
+  <text style="fill: rgb(255, 246, 246); font-family: &quot;Albert Sans&quot;; font-size: 28px; font-weight: 502; white-space: pre;" transform="matrix(0.442392, 0, 0, 0.490431, 44.043957, -0.945964)" x="-7.928" y="35.063">Denied</text>
+  <defs>
+    <style bx:fonts="Albert Sans">@import url(https://fonts.googleapis.com/css2?family=Albert+Sans%3Aital%2Cwght%400%2C100..900%3B1%2C100..900&amp;display=swap);</style>
+  </defs>
+</svg>

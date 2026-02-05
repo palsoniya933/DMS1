@@ -1,0 +1,71 @@
+.THIS {
+}
+
+.THIS .paddingCls{
+    /*
+    padding-left : 5% !important;
+    padding-right : 5% !important;
+    */
+}
+
+.THIS .lFloat
+{
+    float:left;
+}
+
+.THIS .popheading {
+    background: #e8e2e2;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.THIS .iconcolr svg{
+    fill: red !important; 
+    color : red !important;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+.THIS .form-group .control {
+    margin: 5px 0px;
+}
+.THIS .form-group {
+    float: left;
+    width: 100%;
+    padding: 0px 10px;
+}
+.THIS .form-group .control {
+    margin: 5px 0px;
+}
+.THIS .controlLabel{
+    padding: 6px 0px;
+    vertical-align: center;
+}
+.THIS .form-group label {
+    font-weight: 600;
+    padding: 3px 0px;
+}
+
+.THIS .buttonclr{ 
+    background-color : black !important;
+    border-color : black !important;
+}
+
+.THIS .buttoncnfclr{ 
+    background-color : rgb(194, 57, 52) !important;
+    border-color : rgb(194, 57, 52) !important;
+}
+
+.THIS .colr{    
+    background-color : #f4f4f4!important; 
+    border-radius : 5px;
+    padding:1%;
+}
+
+.THIS .clear
+{
+    clear:both;
+}

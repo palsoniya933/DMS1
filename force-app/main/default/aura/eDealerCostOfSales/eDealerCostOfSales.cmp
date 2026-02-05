@@ -1,0 +1,138 @@
+<aura:component  controller="EDealerCostofSalesKPI"
+                extends="c:edealerTracking"
+                implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <!-- this will be used for the Selected option -->
+    <aura:attribute name="selectoptions" type="List"/>
+    
+    <!-- this will save the title of the tile -->
+    <aura:attribute name="title" type="string" />
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="Weekly"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- Selected Dealer Division -->
+    <aura:attribute name="currentDealerDivision" type="string"/>
+    
+    <!-- this will save the manual Lockdown api details -->
+    <aura:attribute name="dealerCostOfSalesData" type="Object" />
+    
+    <!-- this will save the manual Lockdown api details cache for based on multiple location -->
+    <aura:attribute name="dealerCostOfSalesMapCache" type="Map" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="Object"/>
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_7-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <span class="heading">{!v.title}</span>
+                        </div>
+                        
+                        <div class="top_Margin">
+                            <table>
+                                <tr>
+                                    <td class="tileInfo_Div">
+                                        <aura:if isTrue="{!v.dealerCostOfSalesData != undefined}">
+                                            <aura:iteration items="{!v.dealerCostOfSalesData}" var="costdate">  
+                                                <aura:if isTrue="{!v.selectedoption == costdate.frequency}">
+                                                    <span class="greenTextbNP text-margin-top">
+                                                        <span class="supHead">
+                                                            <sup style="top: -.2em;">$</sup>
+                                                        </span> 
+                                                        <lightning:formattedNumber value="{!costdate.cost_of_sales}" currencyCode="USD"/>
+                                                    </span>  
+                                                </aura:if>
+                                            </aura:iteration>
+                                            
+                                            <aura:set attribute="else">
+                                                <span class="greenTextb">
+                                                    <span class="supHead">
+                                                        <sup style="top: -.2em;">$</sup>
+                                                    </span>
+                                                    <lightning:formattedNumber value="0" currencyCode="USD"/>
+                                                </span>  
+                                            </aura:set>
+                                        </aura:if>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td class="tilePercentage_Div">  
+                                        <aura:iteration items="{!v.dealerCostOfSalesData}" var="costdate">  
+                                            <aura:if isTrue="{!v.selectedoption == costdate.frequency}">
+                                                
+                                                <aura:if isTrue="{!costdate.cost_percentage>0}">
+                                                    <span class="greenTexts">
+                                                        <lightning:icon class="greenArrow" iconName="utility:arrowup" size="x-small" />
+                                                        {!costdate.cost_percentage}%
+                                                    </span>
+                                                    <aura:set attribute="else">
+                                                        <span class="redTexts">
+                                                            <lightning:icon class="redArrow" iconName="utility:arrowdown" size="x-small" />    
+                                                            {!costdate.cost_percentage}%
+                                                        </span>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:if>
+                                        </aura:iteration>
+                                    </td> 
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_1-of-8">
+                        <ul class="unOrderedList">
+                            <aura:iteration items="{!v.selectoptions}" var="opt">
+                                <aura:if isTrue="{!opt.label == v.selectedoption}">
+                                    <li class="options selected" 
+                                        name="{!opt.label}" 
+                                        onclick="{!c.updateTileDetails}">{!opt.value}</li> 
+                                    
+                                    <aura:set attribute="else">
+                                        <li class="options" 
+                                            name="{!opt.label}" 
+                                            onclick="{!c.updateTileDetails}">{!opt.value}</li>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:iteration>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                     content="{!$Label.c.Edealer_The_total_dollar_value}"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

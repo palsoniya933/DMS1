@@ -1,0 +1,237 @@
+<aura:component >    
+    <aura:attribute name="isFirstOrderDetails" type="boolean" />
+    <aura:attribute name="totalRecords" type="integer" />
+    <aura:attribute name="showBlockedCancelled" type="boolean" />
+    <aura:attribute name="activeOrderSummary" type="Object" />
+    <aura:attribute name="activeOrderWorkflowRec" type="Object" />
+    <aura:attribute name="orderTrackName" type="String" />
+    <aura:attribute name="progressBarCls" type="String" default="slds-progress-bar slds-progress-bar_x-small" />
+    
+    <!-- display the First Order -->
+    <aura:if isTrue="{!v.isFirstOrderDetails}">
+        <div class="slds-progress">
+            
+            <ol class="slds-progress__list">            
+                <!--
+                <span style="position: absolute;
+                             display: flex;
+                             top: -54px;
+                             font-weight: bold;
+                             color: #9F9F9F;    padding-left: 3px;">
+                    <lightning:buttonIcon  size="large" iconName="utility:drag" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                </span>
+				-->
+                <span style="position: absolute;
+                             display: flex;
+                             top: -20px;
+                             font-weight: bold;
+                             color: #9F9F9F;padding-left: 3px;">ORDER PLACED</span>
+                
+                
+                <li class="slds-progress__item">                
+                    <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" />
+                </li>
+                
+                
+                <div class="ul-li-style">
+                    <ul>
+                        <li><span>{!v.activeOrderSummary.order_date}</span></li>
+                        <li>PACCAR ORDER#<br></br><span>{!v.activeOrderSummary.paccer_order}</span></li>                        
+                        <li>Dealer PO#<br></br><span>{!v.activeOrderSummary.dealerpo}</span></li>
+                        <li>Shipping Method</li>
+                        <li><span>{!v.activeOrderSummary.allshipments}</span></li>
+                    </ul>
+                </div> 
+                <div  style="position: absolute;
+                             left: 48.1%;
+                             top: -80%;
+                             display: block;
+                             width: 120px;">
+                    <span style="font-weight: bold;color: #9F9F9F;">{!v.orderTrackName}</span></div> 
+                <li class="slds-progress__item slds-is-completed">
+                    <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked"  />
+                    
+                </li>            
+                <div class="check-icon-align" style="width:36%;
+                                                     position: absolute;
+                                                     left: 47.8%;
+                                                     top: 91%;
+                                                     /*border-left: 2px solid #bfbf15;*/
+                                                     overflow: auto;
+                                                     height: 90px;">
+                    
+                    <aura:if isTrue="{!v.totalRecords > 0}">
+                        <div style="position: relative;
+                                    top: 3%;
+                                    font-weight: bold;padding-left: 23px;">
+                            <a href="#" style="color:#3cc936;text-decoration: none;"><!--ALLOCATED-->PDC</a></div>
+                        <div style="
+                                    padding-left: 21px;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;
+                                    width: 97%;
+                                    white-space: nowrap;
+                                    margin: 7px 0px 2px 0px;">
+                            <lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                            <b>{!v.activeOrderWorkflowRec.SOURCE_LOCATION}<!--Las Vegas,NV--></b></div> 
+                        
+                        <div style="text-align: left;
+                                    font-size: 13px;
+                                    margin-left: 1.4rem;
+                                    "><lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                            <b> {!v.activeOrderWorkflowRec.PICKED_UP_DATE_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                        </div>
+                    </aura:if>
+                </div>
+               	
+                <aura:if isTrue="{!v.totalRecords > 0}">
+                    <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;    left: 96.1%;
+                                 top: -74%;
+                                 width: 22%;">PARTS SHIPPED</span> 
+                    <li class="slds-progress__item slds-is-completed">
+                        <c:eDealerOrderDetailStatusIconsASI iconName = 'ship' 
+                                                            activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                        
+                    </li> 
+                    <div  style="width: 25%;position: absolute;top: 106%;font-weight: bold;padding-left: 3px;left: 96.5%;">TRACKING #</div>
+                    
+                    <div style="
+                                position: absolute;
+                                top: 182%;
+                                left: 96.5%;width: 33%;
+                                ">
+                        <aura:if isTrue="{!empty(v.activeOrderWorkflowRec.ENCRYPTED_URL)}">
+                            <!-- If ENCRYPTED_URL is blank then showing as text otherwise it will show as link-->
+                            <span><b>{!v.activeOrderWorkflowRec.PRO_NUM} ({!v.activeOrderWorkflowRec.shipping_method})</b></span>
+                            <aura:set attribute="else">
+                                <lightning:buttonIcon  class="" iconName="utility:search" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                                <b><lightning:formattedUrl 
+                                                value="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}"
+                                                label="{!v.activeOrderWorkflowRec.PRO_NUM + (v.activeOrderWorkflowRec.shipping_method)}"
+                                                target="_blank"/>
+                                <!--<a href="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}" target="_blank">
+                                {!v.activeOrderWorkflowRec.PRO_NUM} ({!v.activeOrderWorkflowRec.shipping_method})                    
+                                </a>--></b>
+                            </aura:set>
+                        </aura:if>
+                                            
+                    </div> 
+                    
+                    <div class="delevery" style="
+                                                 width: 27%;
+                                                 position: absolute;
+                                                 right:-15%;
+                                                 text-align: right;
+                                                 top: 91%;">
+                        
+                    </div> 
+                    
+                    <aura:set attribute="else">
+                        <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;    left: 96.1%;
+                                     top: -74%;
+                                     width: 22%;">PARTS SHIPPED</span> 
+                        <li class="slds-progress__item slds-is-completed">
+                            <li class="slds-progress__item">
+                                <button class="slds-button slds-progress__marker">
+                                    <span class="slds-assistive-text">Step 4 </span>
+                                </button>
+                            </li>
+                            
+                        </li> 
+                    </aura:set>
+                    
+                </aura:if>
+            </ol>
+            
+            <c:eDealerOrderDetailEventStatusLineASI activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}"/>          
+            
+        </div>
+    </aura:if>
+    
+    <!-- non first Order details -->
+    <aura:if isTrue="{!!v.isFirstOrderDetails}">
+        
+        <div class="slds-progress" style="max-width:25%!important;margin: 9% 0% 0% 24.99%!important;">  
+            <span style=" border-left: 3px solid green;
+                         height: 447%;
+                         position: absolute;
+                         display: block;
+                         margin: -37% 2.6%;"></span>
+            <ol class="slds-progress__list" style="margin: 0px -8px 1px -3px;">
+                <div  style="position: absolute;
+                             left: 8%;
+                             top: -63%;
+                             display: block;
+                             width: 120px;">
+                    <span style="font-weight: bold;
+                                 color: #9F9F9F;">{!v.orderTrackName}<!--ORDER CONFIRM--></span></div> 
+                <li class="slds-progress__item slds-is-completed">
+                    <lightning:buttonIcon  class="blueBg slds-button" iconName="utility:success" variant="bare" alternativeText="checked" onclick="{!c.myAction}" />
+                </li>
+                
+                
+                <!-- div added on july 10 and changed with to 20% from 13%- start -->
+                <div class="check-icon-align" style="width: 67%;
+                                                     position: absolute;
+                                                     top: 91%;
+                                                     /*border-left: 2px solid #bfbf15;*/
+                                                     overflow: auto;
+                                                     height: 90px;">
+                    <div style="position: relative;
+                                top: 3%;
+                                font-weight: bold;padding-left: 23px;">
+                        <a href="#" style="color:#3cc936;text-decoration: none;"><!--ALLOCATED-->PDC</a></div>
+                    <div style="padding-left: 21px;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                width: 97%;
+                                white-space: nowrap;
+                                margin: 7px 0px 2px 0px;"><lightning:buttonIcon  class="" iconName="utility:checkin" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/><b>{!v.activeOrderWorkflowRec.SOURCE_LOCATION}<!--Las Vegas,NV--></b></div> 
+                    
+                    <div style="text-align: left;
+                                font-size: 13px;
+                                margin-left: 1.4rem;
+                                "><lightning:buttonIcon  class="" iconName="utility:event" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                        <b> {!v.activeOrderWorkflowRec.PICKED_UP_DATE_PST}<!--4 April '21 / 8 am-9 pm--> </b>
+                    </div> 
+                </div>
+                <!-- div added on july 10 - end -->
+                
+                <span style="position: absolute;display: flex;font-weight: bold;color: #9F9F9F;padding-left: 3px;left: 94.1%;
+                             top: -74%;width: 45%;" >PARTS SHIPPED</span> 
+                
+                <!-- added on 10 july - start -->
+                <c:eDealerOrderDetailStatusIconsASI iconName = 'ship' 
+                                                    activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}" />
+                <div  style="width: 32%;position: absolute;top: 106%;font-weight: bold;padding-left: 3px;    left: 94.1%;">TRACKING #</div>
+                
+                <div style="
+                            position: absolute;
+                            top: 182%;
+                            left: 94.5%;width: 62%;
+                            ">
+                    <!-- If ENCRYPTED_URL is blank then showing as text otherwise it will show as link-->
+                    <aura:if isTrue="{!empty(v.activeOrderWorkflowRec.ENCRYPTED_URL)}">
+                        <span><b>{!v.activeOrderWorkflowRec.PRO_NUM} ({!v.activeOrderWorkflowRec.shipping_method})</b></span>
+                        <aura:set attribute="else">
+                            <lightning:buttonIcon  class="" iconName="utility:search" variant="bare" alternativeText="checked" onclick="{!c.myAction}"/>
+                            <b><lightning:formattedUrl 
+                                                value="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}"
+                                                label="{!v.activeOrderWorkflowRec.PRO_NUM + (v.activeOrderWorkflowRec.shipping_method)}"
+                                                target="_blank"/>
+                                <!--<a href="{!v.activeOrderWorkflowRec.ENCRYPTED_URL}" target="_blank">{!v.activeOrderWorkflowRec.PRO_NUM} ({!v.activeOrderWorkflowRec.shipping_method}) </a>-->
+                            </b>
+                        </aura:set>
+                    </aura:if>
+                    
+                    
+                    
+                </div>
+                
+            </ol>
+            <c:eDealerOrderDetailEventStatusLineASI activeOrderWorkflowRec = "{!v.activeOrderWorkflowRec}"/>
+            
+            
+        </div> 
+    </aura:if>
+</aura:component>

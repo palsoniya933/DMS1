@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CSR Announcement Translations</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;CSRAnnouncement&quot;: {
+&quot;en_US&quot;: &quot;An updated CSR Mass Upload template has been installed and is ready for use.&quot;,
+&quot;fr_CA&quot;: &quot;Un modèle de téléchargement en masse CSR mis à jour a été installé et est prêt à être utilisé.&quot;,
+&quot;es_MX&quot;: &quot;Se ha instalado una plantilla actualizada de carga masiva de CSR y está lista para utilizar.&quot;
+}
+}</value>
+    </values>
+</CustomMetadata>

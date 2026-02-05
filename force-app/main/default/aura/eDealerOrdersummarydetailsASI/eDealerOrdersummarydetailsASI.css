@@ -1,0 +1,57 @@
+.THIS {
+}
+
+.THIS.ordetailsummary{padding:1%!important;}
+.THIS .red-font{color:red!important;}
+.THIS.cEDealerOrdersummarydetailsASI.wrapper{
+    background: #fff;
+    margin: 0.51%;
+    box-shadow: 0 2px 5px #d2d2d2;
+    border-radius: 10px;
+    padding: 1% 1% 1% 1.4%!important;
+}
+.THIS.cEDealerOrdersummarydetailsASI li{width:12%;}
+.THIS.cEDealerOrdersummarydetailsASI li span{font-weight: bold;
+    color: #000;
+    font-size: 1rem;}
+.THIS .mar-right{margin-right:1%!important;width: 13%!important;}
+.THIS.cEDealerOrdersummarydetailsASI li a{
+    padding: 9px 1px 1px 10px!important;
+    font-weight: bold;
+    color: #9F9F9F;
+    font-size: 13px;
+    text-align:left!important;word-break: break-all;}
+.THIS.cEDealerOrdersummarydetailsASI h1{    
+    color: #000;
+    font-family: 'RobotoBold'!important;
+    /*margin-left: 1%;*/
+    font-size: 16px;
+    padding: 12px 4px;    
+}
+
+.THIS.cEDealerOrdersummarydetailsASI li a:hover {
+    background-color: #fff;
+}
+.THIS ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+   
+}
+
+.THIS li {
+  float: left;
+}
+
+.THIS li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.THIS li a:hover {
+  background-color: #111;
+}

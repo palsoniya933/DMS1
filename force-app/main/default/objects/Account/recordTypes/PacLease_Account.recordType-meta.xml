@@ -1,0 +1,3201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PacLease_Account</fullName>
+    <active>true</active>
+    <description>Dealership with a PacLease fleet of trucks</description>
+    <label>PacLease Account</label>
+    <picklistValues>
+        <picklist>AccountSource</picklist>
+        <values>
+            <fullName>Contact Us</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Action_Taken__c</picklist>
+        <values>
+            <fullName>Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In-House System</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper%2FWhiteboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Activo_en_Reto_de_Ventas__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SI</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Division__c</picklist>
+        <values>
+            <fullName>Kenworth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PACCAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peterbilt</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Method__c</picklist>
+        <values>
+            <fullName>Customer Pays Directly at ISPs and Dealers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet Account where Customer Pays ISPs and issues PO at Dealers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet Account where PCC Pays ISPs and Customer issues PO at Dealers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet Account where PCC Pays ISPs and issues PO at Dealers</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Program__c</picklist>
+        <values>
+            <fullName>MSC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Buying_from_Competitor__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Category__c</picklist>
+        <values>
+            <fullName>Legacy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Classification__c</picklist>
+        <values>
+            <fullName>For-Hire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Company_Owned_Repair_Shop__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Competitors__c</picklist>
+        <values>
+            <fullName>Freightliner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International%2FNavistar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo%2FMack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WDs</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Connect_Modules__c</picklist>
+        <values>
+            <fullName>Accounting Export Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Counter Sales Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel Tracking Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inland Ordering System</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>McLeod Integration Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mileage Import Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tire Tracking Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WO History Export Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WO Invoicing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Connect_Sales_Manager__c</picklist>
+        <values>
+            <fullName>Devon Graff</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ray Hider</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Connect_Status__c</picklist>
+        <values>
+            <fullName>ABANDONED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BBT FAILED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BBT SENT TO PERFIT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COLLECTING DATA FROM CUSTOMER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IMPLEMENTATION IN PROCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IMPLEMENTED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INLAND ORDERING SYSTEM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LOST-REASSIGNED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LOST-RETURNED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PENDING-CUSTOMER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PENDING-PACCAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RETRAINING IN PROCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SYSTEM ORDER SENT TO PERFIT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WAITING ON ADDENDUM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WAITING ON USER AGREEMENT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Connect_Trainer__c</picklist>
+        <values>
+            <fullName>Cinthia Yepez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jarrett Garrison</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jorge Mendoza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meredith Piro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sarah Kultgen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terri Wierlo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xin Xin</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contact_for_a_Split_Trailer_Load__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Currency__c</picklist>
+        <values>
+            <fullName>CAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GBP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MXN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CurrentInventoryShopSystem__c</picklist>
+        <values>
+            <fullName>Aurora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conexion Profesional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connect Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connect Express</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connect Pro Inventory %2B Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connect Professional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dossier - Arsenault</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EPAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrich</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extra Fleet 2000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet Assist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halbersem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halberstat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home grown system</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Innovative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International - Diamond Connect %2F RIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International - Diamond Connections %2F Truck Tracker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JJ Keller%27s Maintenance Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karmak Profitmaker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maddox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manual %2F Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Milton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NAPA TRACS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No system</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Old DOS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parts2000</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Powerpro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quickbooks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shop Controller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Somax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Squarerigger</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TL 2000 - TMW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Total Shop Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transman - TMT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Truck Tracker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vax Mainframe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WebConnect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_PO_Required__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DFM__c</picklist>
+        <values>
+            <fullName>BENITEZ%2CG%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CALACICH%2EL%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CLARIGUE%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLORES%2C JM%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GONZALEZ%2C A%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GUZMAN%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HERRERA%2CM%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JIMENEZ%2CA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MORENO%2CA%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NEGRETE%2C F%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VIESCA%2CR%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DFS_Conference_Call_Schedule__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bi-Weekly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Daily</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DPM__c</picklist>
+        <values>
+            <fullName>ARANGO%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUDET%2C S%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BERNAL%2CD%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BETHEA%2C B%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CALACICH%2EL%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAPPELLO%2C N%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHASE%2C K%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHOWANIEC%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CLARIGUE%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CLARK%2C S%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CORRALES%2C O%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CORREDOR%2C D%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CRESSY%2C S%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DANIEL%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DANIEL%2C P%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DANIELS%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOLEZAL%2C R%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOUGLAS%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DREMOV%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELLISON%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FILIATRAULT R%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FLORES%2C JM%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GILLIS%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GONZALEZ%2C A%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GONZALEZ%2C L%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GUTIERREZ%2C R%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GUZMAN%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HERNANDEZ%2C H%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HUTCHINSON%2C T%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INTL DEPT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JAMROSZ%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JOHNSON%2CD%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KRAMER%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KRUEGER%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEFFLER%2C T%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEMMERS%2C S%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LOPEZ%2C L</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MARTINEZ%2C D%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MARTINEZ%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MCGEE%2C D%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MENACHO%2C W%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MILLSON%2C R%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MUCHESKO%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MURDOCK%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MYERS%2C K%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NIELSEN%2C N%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OPEN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OPEN CA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PATTERSON%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PERSSON%2C K%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>POLISENO%2C G%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRINCE%2C K%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REYES%2C H%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RITZMAN%2C D%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ROBBINS%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SOLDATENKO%2C P%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPIRO%2C T%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TADEMA%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TAPIA%2C R%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TUCK%2C S%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>URCIAGA%2C E%2EE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VENERE%2CJ%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VIESCA%2CR%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VILANOVA%2C A%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WHATMOUGH%2C B%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YOKUM%2C J%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Dealer_DBS__c</picklist>
+        <values>
+            <fullName>ADP%2FCDK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DP Solutions Vibe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DSI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karmak Fusion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karmak Info5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karmak Legend</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Own</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procede</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serti</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Decisiv_Fleet__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>On Deck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Decisive__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Division_Name_OLD__c</picklist>
+        <values>
+            <fullName>Kenworth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peterbilt</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Dual_Affiliation__c</picklist>
+        <values>
+            <fullName>AutoCar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bluebird</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clement Trailer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>East Trailer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ford</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GMC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Isuzu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>John Deere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mitsu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sterling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trailmobile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Elegible_para_el_Programa__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SI</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Engine_Brand_Preference__c</picklist>
+        <values>
+            <fullName>Cummins</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Detroit Diesel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MACK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Navistar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PACCAR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Expiration_Type__c</picklist>
+        <values>
+            <fullName>Auto Expire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Auto Renew</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FNA_Status__c</picklist>
+        <values>
+            <fullName>Bad Google Key</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Exhausted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Located</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Located Yet</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Problem with Address</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FOCUS_Account_Mgr__c</picklist>
+        <values>
+            <fullName>Jorge Mendoza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SMART Administrator</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FOCUS_Status__c</picklist>
+        <values>
+            <fullName>Implementation In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Implemented</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FOCUS_Training_Stage__c</picklist>
+        <values>
+            <fullName>Training Session 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training Session 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training Session 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training Session 4</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Facility_Type__c</picklist>
+        <values>
+            <fullName>Parts Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parts and Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Only</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Business_System__c</picklist>
+        <values>
+            <fullName>Ariba</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cetaris</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coupa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procatis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sitic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TMW</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Integration_Status__c</picklist>
+        <values>
+            <fullName>Closed%2FLost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Discussion%2FDemo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending PO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rollout%2FLive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Test%2FPilot</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Integration_Type__c</picklist>
+        <values>
+            <fullName>Centralized</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Punch-Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Lead_Manager__c</picklist>
+        <values>
+            <fullName>Ball</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Booth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ernest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gerstner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reynolds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Welsh</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Project_Manager__c</picklist>
+        <values>
+            <fullName>Hannah Herman</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Sales_Coordinator__c</picklist>
+        <values>
+            <fullName>Ian Bradley</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mia Won</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sandra Demarr</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shelley Anderson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tina Williams</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fleet_Sales_Manager__c</picklist>
+        <values>
+            <fullName>Frank Reynolds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Steve McManis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thomas Booth</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Gen2_Status__c</picklist>
+        <values>
+            <fullName>Closed Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Implemented Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integration in Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Incentive_Level__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry</picklist>
+        <values>
+            <fullName>Agriculture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apparel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biotechnology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food %26 Beverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Machinery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not For Profit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recreation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telecommunications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utilities</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Industry_General__c</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Over the Road</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vocational</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Int_l_Sales_Administrator__c</picklist>
+        <values>
+            <fullName>ENRIGUE%2C L%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KERAUTRET%2C G%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MASHBURN%2C M%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>POUANI%2C C%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REYES%2C B%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LNGCD__c</picklist>
+        <values>
+            <fullName>ENG</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>FRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPN</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lease_Own__c</picklist>
+        <values>
+            <fullName>Lease</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Own</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Location_Type_del__c</picklist>
+        <values>
+            <fullName>ADDITIONAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAIN</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Loyalty_Card_Setting__c</picklist>
+        <values>
+            <fullName>Y%2CY%2CN%2CY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Y%2CY%2CY%2CY</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MSC_transition_status__c</picklist>
+        <values>
+            <fullName>Contract in negotiation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contract pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Denied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Launch pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Setup in process</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Main_Division_Lead__c</picklist>
+        <values>
+            <fullName>KENWORTH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PETERBILT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Market_Basket__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Market_Size_Type__c</picklist>
+        <values>
+            <fullName>Dense</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rural</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urban</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Model_MultiPick__c</picklist>
+        <values>
+            <fullName>Dual Branded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Embedded Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Property</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISP Acquisition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISP Sponsorship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rural</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urban</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WD Acquisition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse Hub</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>White Spot</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Model__c</picklist>
+        <values>
+            <fullName>Embedded Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISP Acquisition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISP Sponsorship</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urban</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WD Acquisition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse Hub</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>White Spot</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>OPC_Status__c</picklist>
+        <values>
+            <fullName>Closed Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Implemented Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integration in Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ownership</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidiary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PACCARDivision__c</picklist>
+        <values>
+            <fullName>DAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ISP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PacCentral</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PACCAR_Brands_Rep__c</picklist>
+        <values>
+            <fullName>ARTHUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BALDWIN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CROTEAU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DUERINGER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ETULAIN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JIMENEZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MARTINEZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MCKIERNAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEZA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SMITH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VENERE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PACCAR_Competitor_Followed_Guidelines__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>PACCAR_Division__c</picklist>
+        <values>
+            <fullName>PPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pain_Point_1__c</picklist>
+        <values>
+            <fullName>Core Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Maintenance Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark-ups</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Looking Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profit %26 Loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase Orders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair Cost Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single Entry %28interfaces%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warranty Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Orders</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pain_Point_2__c</picklist>
+        <values>
+            <fullName>Core Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Maintenance Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark-ups</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Looking Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profit and Loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase Orders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair Cost Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single Entry %28interfaces%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warranty Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Orders</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pain_Point_3__c</picklist>
+        <values>
+            <fullName>Core Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Maintenance Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark-ups</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Looking Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profit and Loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase Orders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair Cost Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single Entry %28interfaces%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warranty Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Orders</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pain_Point_4__c</picklist>
+        <values>
+            <fullName>Core Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Maintenance Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark-ups</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Looking Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profit and Loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase Orders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair Cost Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single Entry %28interfaces%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warranty Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Orders</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pain_Point_5__c</picklist>
+        <values>
+            <fullName>Core Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Maintenance Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mark-ups</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PM Schedules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Looking Invoice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profit and Loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchase Orders</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Repair Cost Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single Entry %28interfaces%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warranty Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work History</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Work Orders</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Plaque__c</picklist>
+        <values>
+            <fullName>Delivered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Stock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need to Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ordered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Pricing_Level__c</picklist>
+        <values>
+            <fullName>0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Primary_Contact_Method__c</picklist>
+        <values>
+            <fullName>All</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer %2F Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer %2F Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet %2F Field</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Products_NOT_Purchasing_VS__c</picklist>
+        <values>
+            <fullName>Batteries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clutches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coolant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drums</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wheels</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Products_to_Quote__c</picklist>
+        <values>
+            <fullName>Batteries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clutches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coolant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drums</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wheels</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Program_PPM__c</picklist>
+        <values>
+            <fullName>Fleet Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>National Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supplier</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RSM__c</picklist>
+        <values>
+            <fullName>CORREDOR%2C D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DI SALVO%2C C%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDWARDS%2C R%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HERNANDEZ%2C J</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JIMENEZ%2C A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JOHNSON%2C B%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KISTEMAKER%2C P%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OPEN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRINCE%2CK%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WAKEFIELD%2C G%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WELSH%2C D%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rating</picklist>
+        <values>
+            <fullName>Cold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warm</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reference__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Region__c</picklist>
+        <values>
+            <fullName>181</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>191</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C001</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C002</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C003</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C004</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C005</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M001</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>U001</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>U002</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>U003</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>U004</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>U005</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>U006</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Registrado_en_www_noticiaskenworth_com__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Si</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Renewal_Status__c</picklist>
+        <values>
+            <fullName>Expired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expiring Soon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progess</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Expired</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Retail_Challenge_Progress__c</picklist>
+        <values>
+            <fullName>Falling Back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of track</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Striking Distance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target in Sight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tracking to Goal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Same_Store_Retail_Contact__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Service_Offered__c</picklist>
+        <values>
+            <fullName>Body Shop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Full Service%28Parts %26 Service%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Glass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hybrid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Locksmith</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parts Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preferred ISP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refrigerated Trailer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rental%2FLeasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tire Sales %26 Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Towing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trailer Parts %26 Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Truck Stop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Welding</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Service_Region__c</picklist>
+        <values>
+            <fullName>Canadian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Central</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Great Lakes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Midwest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Northeast</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Southeast</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Western</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Service__c</picklist>
+        <values>
+            <fullName>In-House</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outsourced</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sponsoring_Division__c</picklist>
+        <values>
+            <fullName>Kenworth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peterbilt</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SubType__c</picklist>
+        <values>
+            <fullName>Auto Transport</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bulk Haul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dump</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet Profit Center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy Haul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Independent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Line Haul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Logging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mining</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mixer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motorcoach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oilfield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paratransit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pickup %26 Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refrigerated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refuse%2FWaste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional Haul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shuttle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transit</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subscribe_to_Refusal_Notifications__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Suppliers__c</picklist>
+        <values>
+            <fullName>Fleet Pride</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Freightliner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kenworth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other WDs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peterbilt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TruckPro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>System_Usage__c</picklist>
+        <values>
+            <fullName>Dealer Active Use</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer Limited Access</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No recent use</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Using Recg only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Using WO %26 Recg</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Using WO only</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TAX_CODE__c</picklist>
+        <values>
+            <fullName>WH1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WH2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TRP_Market_Size_Type__c</picklist>
+        <values>
+            <fullName>Dense Urban</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rural</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TRP_Plaque_Status__c</picklist>
+        <values>
+            <fullName>Delivered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ordered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TRP_Status__c</picklist>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Converted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operational</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TRP_Store_Competitor_Followed_Guidelin__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tax_Type__c</picklist>
+        <values>
+            <fullName>Business Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Federal Employer Identification Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Goods and Services Tax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Individual Tax Identification Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quebec Sales Tax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Insurance Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Security Number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tax Identification Number</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Test_Results__c</picklist>
+        <values>
+            <fullName>Fail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pass</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Transport_Topics_List__c</picklist>
+        <values>
+            <fullName>For-Hire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium Duty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Truck_Brand_Pref__c</picklist>
+        <values>
+            <fullName>Freightliner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kenworth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peterbilt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Truck_Brand__c</picklist>
+        <values>
+            <fullName>Ford</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Freightliner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MACK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volvo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Dealership</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Vehicle_Management_Communication__c</picklist>
+        <values>
+            <fullName>Cadec</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cheetah</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DriverTech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleetmatics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Geologic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inthink</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Navtrak</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Network Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nextrac</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PeopleNet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualcomm</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Red Tail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TeleTrac</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telogis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TiWi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TomTom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trimble</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TruckerLink</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Fleet Supervisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vnomics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webtech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Xata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zonar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Version__c</picklist>
+        <values>
+            <fullName>Connect Enterprise %E2%80%93 Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise %E2%80%93 Fleet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise %E2%80%93 Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise - Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise - Fleet w%2F Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Express</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inland Order System - Perfit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KONA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WebConnect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Which_Address__c</picklist>
+        <values>
+            <fullName>Billing</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Do Not Map</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipping</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Why__c</picklist>
+        <values>
+            <fullName>Accounting Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Sold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conflict</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Difficult</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expensive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Features-Missing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invalid Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time-Resource Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too Small</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>eCommerce_Project_Mgr__c</picklist>
+        <values>
+            <fullName>Axel Arvizu</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

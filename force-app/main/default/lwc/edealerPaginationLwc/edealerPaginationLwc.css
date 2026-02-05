@@ -1,0 +1,64 @@
+.align-tr{   width:100%!important; display:block!important;text-align: left;
+}
+.pageNum{
+    width:100%
+}
+
+.part-List-Color {
+    background-color: red;
+}
+
+.label-hidden > label {
+    display: none;
+}
+
+.bgWhite{
+    background:white;    
+    padding: 10px;
+    padding-bottom: 0px;
+}
+.pageTxthead {
+    width: 35%;
+    font-weight: 600;
+}
+
+.tenPer{
+    width:12%;
+    padding: 0px 4px!important;
+    min-width:70px;
+}
+.tenPer .slds-select_container .slds-select
+{
+    height:25px;
+}
+.fivePer{
+    width:5%
+}
+.slds-button{
+    height: 20px !important;
+    padding: 11px 10px !important;
+}
+
+.slds-button{
+    height: 20px !important;
+    padding: 11px 10px !important;
+}
+.paragraph-container p {
+    display: inline-block; 
+    margin: 0; 
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.button-container{
+    text-align: right;
+    padding: 0.9rem;   
+    padding-bottom: 0px;
+}
+.btn-group{
+    padding-left: 0.8rem;
+}
+.color-black{
+   color:black !important;
+}

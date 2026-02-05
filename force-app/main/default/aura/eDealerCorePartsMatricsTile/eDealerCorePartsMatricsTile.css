@@ -1,0 +1,175 @@
+.THIS {
+}
+
+.THIS .fixedHeight{
+    height:64px !important;
+    min-width:128px !important;
+    float: right;
+}
+
+.THIS .greenTextb {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45px;
+    color: #27C321;
+    right: 2%;
+    top: 15%;
+}
+.THIS .redTextb {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45px;
+    color: #ff0000;
+    right: 2%;
+    top: 15%;
+}
+.THIS .yellowTextb {
+    position: relative;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45px;
+    color: #FFBC26;
+    right: 2%;
+    top: 15%;
+}
+.THIS.cardDiv{
+	width:100%;
+    /*height: 150px; */
+    box-shadow: 0 1px 3px 2px #e4e4e4;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.THIS.cardDiv:hover{box-shadow: 0 1px 5px rgba(0,0,0,0.3)!important;border:1px solid #DA93FF!important;}
+
+.THIS .iconFloat-Right svg{fill:#cdcdcd}
+.THIS .gridHeight{
+	height:100px;
+}
+
+.THIS .tileName_Div{
+	width:100%;
+    height:20%;
+}
+
+.THIS .tileName_Div-headername{
+    line-height: 26px;
+    color: #636a6a!important;
+    
+    font-size: 12px;
+    float:left;
+}
+
+.THIS .tileName_Div-headerdate{
+    line-height: 26px;
+    color: #636a6a;
+    font-size: 12px;
+    float:right;
+}
+
+.THIS .tileInfo_Div{
+	    width: 100%;
+   height: auto;
+    display: flex;
+    padding: 20px 0px 10px 0px;
+}
+
+.THIS .displayFlex{
+    display:flex;
+} 
+
+.THIS .tileInfo_Div-grid{
+	width:100%;
+}
+
+.THIS .bottom_Div{
+	width:100%;
+    height:30%;
+}
+
+.THIS .bottom_Div-grid{
+	width:100%;
+}
+
+.THIS .fontSize-x_small{
+    line-height: 26px;
+    color: #9f9f9f;
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end*/
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+.THIS .iconFloat-Right{
+	float: right;
+}
+
+.THIS .tileName_Div-headername{
+    /*roboto medium*/
+    font-family: 'RobotoMedium' !important;
+    /*roboto medium end*/
+	font-size: 12PX;
+    float:left;color: #9f9f9f;
+}
+
+.THIS .tileInfo_Div{
+	width:100%;
+    height:50%;
+    display:flex;
+}
+
+.THIS .displayFlex{
+    display:flex;
+} 
+
+.THIS .tileInfo_Div-grid{
+	width:100%;
+}
+
+.THIS .bottom_Div{
+	width:100%;
+    height:30%;
+}
+
+.THIS .bottom_Div-grid{
+	width:100%;
+}
+
+.THIS .fontSize-x_small{
+	font-size: 12PX;color: #9f9f9f;
+}
+
+.THIS .span_approval{
+	align-self: flex-end;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45PX;
+    color:rgba(51, 204, 0, 1);
+    LINE-HEIGHT: 35PX;
+}
+
+.THIS .span_onhold{
+	align-self: flex-end;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45PX;
+    color:#ffbc26;
+    LINE-HEIGHT: 35PX;
+}
+
+.THIS .span_rejections{
+	align-self: flex-end;
+    /*roboto regular*/
+    font-family: 'RobotoRegular'!important;
+    /*roboto regular end*/
+    font-size: 45PX;
+    color:red;
+    LINE-HEIGHT: 35PX;
+}

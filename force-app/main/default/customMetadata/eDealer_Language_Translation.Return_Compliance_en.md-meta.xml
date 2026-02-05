@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Return Compliance</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_num&quot; : &quot;GROUP&quot;,
+&quot;dlrcode&quot; : &quot;DEALER&quot;,
+&quot;rmatype&quot; : &quot;RMA TYPE&quot;,
+&quot;po_number&quot; : &quot;PO NUMBER&quot;,
+&quot;item&quot; : &quot;ITEM&quot;,
+&quot;suggested_date&quot; : &quot;SUGGESTED DATE&quot;,
+&quot;suggested_qty&quot; : &quot;SUGGESTED QTY&quot;,
+&quot;suggested_extnet&quot; : &quot;SUGGESTED EXT. NET&quot;,
+&quot;returned_date&quot; : &quot;RETURN DATE&quot;,
+&quot;returned_qty&quot; : &quot;RETURN QTY&quot;,
+&quot;returned_extnet&quot; : &quot;RETURNED EXT. NET&quot;,
+&quot;avg_return_compliance&quot; : &quot;AVG RETURN COMPLIANCE&quot;,
+&quot;return_status&quot; : &quot;RETURN STATUS&quot;
+}</value>
+    </values>
+</CustomMetadata>

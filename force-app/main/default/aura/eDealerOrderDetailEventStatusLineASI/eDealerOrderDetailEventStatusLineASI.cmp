@@ -1,0 +1,28 @@
+<aura:component >
+    <aura:attribute name="activeOrderWorkflowRec" type="Object" />
+    
+    <aura:if isTrue="{!v.activeOrderWorkflowRec.STAT == 'Delivered'}">
+        <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar">
+            <span class="slds-progress-bar__value fifty-order-update">
+                <span class="slds-assistive-text">Progress: 50%</span>
+            </span>
+        </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!v.activeOrderWorkflowRec.STAT == 'Shipped/In-Transit'}">
+        <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar">
+            <span class="slds-progress-bar__value fifty-order-update">
+                <span class="slds-assistive-text">Progress: 50%</span>
+            </span>
+        </div>
+    </aura:if>
+    
+    <aura:if isTrue="{!and(v.activeOrderWorkflowRec.STAT != 'Delivered', v.activeOrderWorkflowRec.event_status != 'Shipped/In-Transit')}">
+        <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar">
+            <span class="slds-progress-bar__value hundread-delivered">
+                <span class="slds-assistive-text">Progress: 50%</span>
+            </span>
+        </div>
+    </aura:if>
+    
+</aura:component>

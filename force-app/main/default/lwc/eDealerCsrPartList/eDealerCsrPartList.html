@@ -1,0 +1,204 @@
+<template>
+	<div class="slds-var-p-around_medium">
+		<lightning-card label = "as" hide-header = "true">
+			<template if:true={isShowSpinner}>
+				<lightning-spinner alternative-text="Loading" size="medium" variant="brand">
+				</lightning-spinner>
+			</template>
+			<div class="slds-m-horizontal_xx-small">
+			<lightning-tabset>
+				<lightning-tab label={label.EDealer_Parts_List} >
+					<div class="paragraph-container container slds-p-horizontal_x-small">
+						<div
+							class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 left-content">
+							{label.EDealer_Part_List_Instruction}
+						</div>
+						<template lwc:if={disabledForm}>
+
+						</template>
+						<template lwc:else>
+							<div
+								class="slds-var-p-around_x-small slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 right-content">
+								<c-e-dealer-mass-upload onpartdata={handleMassUpload} partsviewdata={partsViewData}></c-e-dealer-mass-upload>
+							</div>
+						</template>
+					</div>
+
+					<div class="slds-p-horizontal_medium table_max-height">
+						<table class="slds-table slds-table_bordered slds-table_cell-buffer margin-bottom_xxx-large">
+							<thead class="th-color sticky_header Bring_Front">
+								<tr>
+									<template for:each={columnLabelByApiName} for:item="columnName" for:index="index">
+										<th key={columnName.label} scope="col">{columnName.label}</th>
+									</template>
+								</tr>
+							</thead>
+							<!-- Table Body -->
+							<tbody>
+								<template for:each={getPartSearchData} for:item="item" for:index="index">
+
+									<tr key={item.Id} class={item.className} data-id={item.srNum}>
+										<td class="">
+											{item.srNum}
+										</td>
+										<td class="search-container">
+											<lightning-input type="text" value={item.Part} disabled="true" data-id={index}
+												variant="label-hidden" message-when-value-missing=" " class={item.errorPart} 
+												></lightning-input>
+											<template lwc:if={disabledForm}>
+
+											</template>
+											<template lwc:else>
+												<lightning-icon icon-name="utility:search" size="x-small"
+													onclick={handleOpenModalForPartSelection} class="search-icon"
+													data-index={item.srNum}>
+												</lightning-icon>
+											</template>
+										</td>
+										<td>
+											<lightning-input type="text" value={item.PartDescription}
+												variant="label-hidden" message-when-value-missing=" " class="validate"
+												disabled="true" data-index={item.srNum} required>
+											</lightning-input>
+										</td>
+										<!--td>
+											<lightning-input type="text" value={item.Quantity} disabled
+												variant="label-hidden" message-when-value-missing=" " class="validate"
+												data-index={item.srNum} required>
+											</lightning-input>
+										</td-->
+										<td name="CHANNEL">
+
+											<lightning-combobox value={item.Channel} variant="label-hidden"
+												message-when-value-missing=" " options={item.Channels}
+												onload={handleChannelOptionChange} onchange={handleChannelOptionChange}
+												data-id={index}
+												 data-index={item.srNum}
+												class={item.errorChannel} disabled={disabledForm} name="CHANNEL">
+											</lightning-combobox>
+										</td>
+										<td class="search-container" name="COMPETITOR">
+											<lightning-input type="text" value={item.Competitor.CompetitorName}
+												variant="label-hidden" message-when-value-missing=" " class={item.errorCompetitorName}
+												disabled="true" required={reqdInput} name="COMPETITOR" >>
+											</lightning-input>
+											<template lwc:if={item.isSelected}>
+												<template lwc:if={disabledForm}>
+
+												</template>
+												<template lwc:else>
+													<lightning-icon icon-name="utility:search" size="x-small"
+														onclick={handleOpenModalForCompetitorSelection}
+														class="search-icon" disabled={disabledForm}
+														data-index={item.srNum}>
+													</lightning-icon>
+												</template>
+											</template>
+											<template lwc:else>
+												<template lwc:if={isEdit}>
+													<template lwc:if={isCompetitveSales}>
+
+														<lightning-icon icon-name="utility:search" size="x-small"
+															onclick={handleOpenModalForCompetitorSelection}
+															class="search-icon" disabled={disabledForm}
+															data-index={item.srNum}>
+														</lightning-icon>
+													</template>
+												</template>
+
+											</template>
+										</td>
+										<td name="COMP PART#">
+											<lightning-input type="text" value={item.CompPart}
+												onchange={handleCompPartChange} variant="label-hidden"
+												data-index={item.srNum} message-when-value-missing=" " class={item.errorCompPart} maxlength="18"
+												disabled={compDisabled}  name="COMP PART#">
+											</lightning-input>
+										</td>
+										<td name="PARTS PRICE">
+											<lightning-input type="text" pattern="^\d+(\.\d{1,2})?$"
+												value={item.CompPrice} onchange={handleCompPriceChange} maxlength="12"
+												variant="label-hidden" message-when-value-missing=" "
+												data-index={item.srNum} class={item.errorCompPrice} disabled={compDisabled}
+												 name="PARTS PRICE">
+											</lightning-input>
+										</td>
+										<template lwc:if={disabledForm}>
+
+										</template>
+										<template lwc:else>
+											<td class="slds-grid slds-grid_vertical-align-center">
+												
+												<lightning-icon icon-name="utility:delete" alternative-text="Delete"
+													size="x-small" class='slds-m-right_x-small ' variant={deleteButtonVariant}
+													onclick={handleDeleteRow} data-index={item.srNum}>
+												</lightning-icon>
+
+												<lightning-icon icon-name="utility:add" alternative-text="Add"
+													size="x-small" variant="success" onclick={handleAddRow}
+													data-index={item.srNum}>
+												</lightning-icon>											
+												<div class="slds-m-top_xxx-small bring_front">
+													<c-edealer-multiline-helptext error-list={item.errorMessages}
+														class='slds-m-top-small'></c-edealer-multiline-helptext>
+												</div>
+											</td>
+										</template>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+					<template if:true={isDisplayPagination}>
+						<div class="slds-grid slds-wrap padding12px ">
+							<div class="slds-size_1-of-1 slds-medium-size_9-of-12 slds-large-size_9-of-12">
+								<c-edealer-pagination-lwc total-records={partsData}
+									page-number={pageNumber} page-size={paginationPageSize} display-page-buttons="false"
+									ontotalrecordchange={handleTotalRecordChange} onhandlenext={handleNextButton}
+									onhandleprev={handlePrevButton} total-competitors={totalPartsData}
+									onpagenumberchange={handlePageNumberchange}
+									onhandlepagenumberchange={handlePageNumberChange}></c-edealer-pagination-lwc>
+							</div>
+						</div>
+					</template>
+					<div class="button-container">
+						<button class={buttonClassName} onclick={resetPartListLines}
+						name="openConfirmation" disabled={getCancelBtnDisabled}>{cancelButtonLabel}</button>
+						<button class="slds-button slds-button_secondary btn-group" onclick={handleSaveAsDraftButtonClick}
+						disabled={getDraftBtnDisabled}>{label.EDealer_Save_As_Draft}</button>
+						<button class="slds-button slds-button_destructive submit-btn" onclick={handleSubmitCSR}
+					disabled={getSubmitBtnDisabled}>{label.EDealer_Submit}</button>
+					</div>
+				</lightning-tab>
+				<lightning-tab label={label.EDealer_Communication}>
+					<c-edealer-csr-comment-container csr-number={csrNumber} dealer-user-name={dealerUserName}
+						is-non-dealer={isNonDealer} csr-phase={csrPhase} disable-post-btn={isCsrDataSubmitted}>
+					</c-edealer-csr-comment-container>
+				</lightning-tab>
+			</lightning-tabset>
+			</div>
+		</lightning-card>
+	</div>
+	<!-- Opening Modal Pop Up Box For Competitor List -->
+	
+	<template lwc:if={openCompetitorModal}>
+		
+		<c-edealer-competitor-container selected-part={selectedPart} onaddcompetitor={handleAddCompetitor}
+			dealer-code={dealerCode} onselectedcompetitor={handleChooseCompetitor}
+			oncancelmodal={handleCloseCompetitorModal} selected-comp-id={selectedCompId}
+			onclosemodal={handleCloseCompetitorModal}
+			selected-competitor-data-for-add-competitor={selectedCompetitorForAddCompetitor}>
+		</c-edealer-competitor-container>
+	</template>
+
+	<!-- Opening Modal Pop Up Box For PrimaryPartPartSearch List -->
+	<template lwc:if={openPartSearchModal}>
+		<c-e-dealer-part-search-container onclosepartsearchmodal={handleClosePartSearchModal} csrtype={headercsrtype}
+		headerdealertype={headerdealertype} onaddparts={handleAddToCSR} dealerid={headerdealercode} dealer-code={dealerCode} division={division}>
+		</c-e-dealer-part-search-container>
+	</template>
+	<c-edealer-confirmation-modal message={label.EDealer_Are_you_sure} confirm-label={label.EDealer_Yes}
+		cancel-label={label.EDealer_No} visible={isDialogVisible} name="confirmModal"
+		onconfirmation={resetPartListLines}>
+	</c-edealer-confirmation-modal>
+</template>

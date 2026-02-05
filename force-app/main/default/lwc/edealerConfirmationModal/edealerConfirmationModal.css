@@ -1,0 +1,9 @@
+.slds-modal__container{
+	width: 50px !important;
+}
+.slds-modal__content{
+	text-align: center;
+}
+.no-btn{
+	padding-right: 5px;
+}

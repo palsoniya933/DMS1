@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dedicated_Fleet__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Marks if the Account is a dedicated fleet managed by DFS</description>
+    <inlineHelpText>Managed by the DFS team</inlineHelpText>
+    <label>Dedicated Fleet</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transport_Topics_List__c</fullName>
+    <label>Transport Topics List</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Private</fullName>
+                <default>false</default>
+                <label>Private</label>
+            </value>
+            <value>
+                <fullName>For-Hire</fullName>
+                <default>false</default>
+                <label>For-Hire</label>
+            </value>
+            <value>
+                <fullName>Medium Duty</fullName>
+                <default>false</default>
+                <label>Medium Duty</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,48 @@
+<aura:component controller="GatewayAnnouncements" 
+                access="global">
+
+    <aura:attribute name="announcements" type="Gateway_Announcement__c[]"/>
+    <aura:attribute name="isModalOpen" type="Boolean" default="false"/>
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    
+    <aura:method name="initialize" action="{!c.doInit}" description="Public method to initialize announcements"/>
+
+
+    <aura:if isTrue="{!v.isModalOpen}">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-backdrop" style="z-index:999999">
+            <div class="slds-modal__container">
+
+                <header class="slds-modal__header modal-header">
+                    <b class="slds-text-heading_medium">{!$Label.c.Announcement_Label}</b>
+                    <lightning:buttonIcon iconName="utility:close" class="slds-modal__close" variant="bare" 
+                                          alternativeText="Close" onclick="{!c.closeModal}" />
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium scrollable-content">
+                    <aura:if isTrue="{!v.isLoading}">
+                        <lightning:spinner alternativeText="Loading..." size="medium"/>
+                    </aura:if>
+                    
+                    <aura:iteration items="{!v.announcements}" var="ann">
+                        <div class="slds-p-horizontal_medium slds-p-vertical_small slds-grid slds-align-start">
+                            <lightning:icon 
+                                iconName="utility:pin" 
+                                size="small" 
+                                class="slds-m-right_small" 
+                                variant="error"
+                            />
+                            <lightning:formattedRichText 
+                                value="{!ann.Announcement_Verbiage__c}" 
+                                class="slds-text-heading_small"
+                            />
+                        </div>
+                    </aura:iteration>
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <lightning:button class="btnClass" label="{!$Label.c.Close}" onclick="{!c.closeModal}" variant="neutral"/>
+                </footer>
+            </div>
+        </section>
+    </aura:if>
+</aura:component>

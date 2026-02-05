@@ -1,0 +1,107 @@
+<aura:component  controller="EDealerCNRRSVPartsTileController"
+                extends="c:edealerTracking"
+                implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    
+    <!-- this will save the days On Hand api details -->
+    <aura:attribute name="csrRSVData" type="Object" />
+    
+    <!-- this will save the days On Hand api details cache for based on multiple location -->
+    <aura:attribute name="csrRSVMapCacheData" type="Map" />
+    
+    <!-- this will save the title for the tile -->
+	<aura:attribute name="title" type="string" />
+    
+    <!-- this will save the dealer division -->
+	<aura:attribute name="currentDealerDivision" type="string" />
+    
+    
+    <aura:attribute name="selectoptions" type="List" default="[
+                                                              {'label': 'daily', 'value': 'D'},
+                                                              {'label': 'weekly', 'value': 'W'},
+                                                              {'label': 'monthly', 'value': 'M'},
+                                                              {'label': 'quaterly', 'value': 'Q'},
+                                                              {'label': 'yearly', 'value': '1Y'}]"/>
+    
+    <!-- saving the selected options -->
+    <aura:attribute name="selectedoption" type="string" default="daily"/>
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" default="false"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="Object"/>
+    
+    <!-- calling method on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- on Change of Location/Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedLocation.listSelectedLoc}" action="{!c.doInit}"/>
+    
+    
+    <div class="eo-card">
+        <div class="slds-card tile">
+            <!-- spinner -->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Grid -->
+                <div class="slds-grid gridHeight">
+                    <div class="slds-col slds-size_8-of-8">
+                        <!-- Tile Name -->
+                        <div class="tileName_Div">
+                            <!--<aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">-->
+                                <span class="heading">
+                                <a href="" 
+                                   onclick="{!c.openOrdersTile}">{!v.title}
+                                </a></span>
+                            <!-- 19-10-21 --> 
+                            &nbsp;&nbsp;
+                           <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+
+                            <span onclick="{!c.handleOpenInNewWindow}" >                                
+                                <a href="javascript:void(0);"><img src="{!$Resource.EDealerResources + '/icons/opentabicon.svg'+'#opentabicon'}" class="imgicon-style-align"/></a>
+                            </span>
+                                <!--<aura:set attribute="else">
+                                    <span class="heading">  {!v.title}</span>
+                                </aura:set>-->
+                            </aura:if>
+                        </div>
+                        <div class="tileInfo_Div">
+                            <span class="{!v.selectedLocation.listSelectedLoc.length == 1?'blackTextb':'blackTextbNP'}">
+                                <aura:if isTrue="{!not(empty(v.csrRSVData.cnr_count))}">
+                                    <aura:if isTrue="{!v.selectedLocation.listSelectedLoc.length == 1}">
+                                        <lightning:formattedNumber value="{!v.csrRSVData.cnr_count}" onclick="{!c.handleOpenInNewWindow}"/>
+                                        <aura:set attribute="else">
+                                            <lightning:formattedNumber value="{!v.csrRSVData.cnr_count}"/>
+                                        </aura:set>
+                                    </aura:if>
+                                    
+                                    <aura:set attribute="else">
+                                        0
+                                    </aura:set>
+                                </aura:if>
+                                <span class="sideText">{!$Label.c.Parts}</span>
+                            </span>                        
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+             <!-- information icon -->
+            <div class="infoIconPosition">
+                <lightning:helptext
+                                    content="{!$Label.c.Edealer_Conditional_Reserve_parts}"
+                                    />
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>

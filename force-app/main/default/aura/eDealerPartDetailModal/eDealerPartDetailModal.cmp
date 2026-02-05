@@ -1,0 +1,151 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+                access="global" 
+                controller="EDealerPartDetails">
+    
+    <!-- this will save the current Dealer Code -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- this will save the current Dealer/user division -->
+    <aura:attribute name="division" type="String"/>
+    
+    <!-- this will save the part number whose details ha to be pulled -->
+    <aura:attribute name="partNumber" type="String" /> <!--5-280X-->
+    
+    <!-- this will save the part details like part description, source type, etc... -->
+    <aura:attribute name="partDetail" type="Object" />
+    
+    <!-- this will save the part alternate detail like part description, source type, etc... -->
+    <aura:attribute name="alternateDetail" type="Object" />
+    <aura:attribute name="partDetailObj" type="Object" />
+    <aura:attribute name="dealerDataDetail" type="Object" />
+    
+    <!-- Language in which part details will show -->
+    <aura:attribute name="language" type="String" default="EN"/>
+    
+    <!-- this is used to save the list of images to be displayed -->
+    <aura:attribute name="imagelist" type="List"/>
+    <aura:attribute name="videolist" type="List"/>
+    <aura:attribute name="documentlist" type="List"/>
+    
+    <!-- used to hide / show the loading -->
+    <aura:attribute name="displayLoading" type="boolean" default="true"/>
+    
+    <!-- this is used for calling onload apex method -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- when part number changes then reload the part details -->
+    <aura:handler name="change" value="{!v.partNumber}" action="{!c.doInit}"/>
+    
+    
+    
+    <!-- part detail header section -->
+    <div class="slds-card">
+        
+        <!-- SPINNER -->
+        <aura:if isTrue="{!v.displayLoading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+        </aura:if>
+        
+        <div style="position:relative;" class="modal-div">
+            
+            <div class="slds-m-around_x-small bgpart-style">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_5-of-12">
+                        <span>
+                            <div class="prodnameno slds-truncate align-partname"> 
+                                <span class="grey pt-name">{!$Label.c.Edealer_Part} &nbsp;</span> 
+                                <span style="display:inline-block;"><div class="prodnameSourcedet slds-truncate">
+                                    {!v.partDetail.part_number}
+                                    </div> </span>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slds-m-around_x-small prodTopHead">
+                
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_6-of-12">
+                        <span>
+                            <div class="prodnameno slds-truncate"> 
+                                <span class="grey">{!$Label.c.Edealer_PART_NAME}&nbsp; </span> 
+                                {!v.partDetail.part_name}
+                            </div>
+                        </span>
+                    </div>
+                    
+                    <div class="slds-col slds-size_6-of-12">
+                        <span>
+                            <div class="prodnameSourcedet slds-truncate">
+                                <span class="grey">{!$Label.c.Edealer_PART_SOURCE}&nbsp; </span> 
+                                {!v.partDetail.part_source}
+                            </div>
+                        </span>
+                    </div>
+                </div>   
+            </div>
+            
+            <!-- Part Image/info -->
+            <div class="slds-grid slds-wrap slds-m-around_x-small topmargn">
+                <div class="slds-col slds-size_5-of-12">
+                    <span> 
+                        <aura:if isTrue="{!v.imagelist.length > 0}">
+                            <lightning:carousel disableAutoRefresh="true" disableAutoScroll="false">
+                                <aura:iteration items="{!v.imagelist}" var="item">
+                                    <lightning:carouselImage src = "{!item}"/>                                 
+                                </aura:iteration> 
+                            </lightning:carousel>
+                            <aura:set attribute="else">
+                                <img class="noImageClass" src="{!$Resource.EDealerResources + '/Logos/NoPartImage.jpeg'}"/>
+                            </aura:set>
+                        </aura:if>
+                    </span>
+                </div>
+                <div class="slds-col slds-size_7-of-12">
+                    <div class="slds-m-around_x-small pad8">
+                        <p class="greyheading">{!$Label.c.Edealer_PART_DESCRIPTION}</p>
+                        <p class="contntdetail">
+                            <aura:if isTrue="{!not(empty(v.partDetail.full_description))}">
+                                {!v.partDetail.full_description}
+                                <aura:set attribute="else">
+                                    {!v.partDetail.part_description}
+                                </aura:set>
+                            </aura:if>
+                            
+                        </p>
+                    </div> 
+                    
+                    <div class="slds-grid slds-wrap slds-wrap slds-m-left_x-small pad8">
+                        <p class="slds-m-bottom_x-small prodnameno">{!$Label.c.Edealer_PART_DETAILS}</p>
+                        <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-m-bottom_x-small gridTxt">
+                            <div class="slds-col slds-size_6-of-12 gridheadtxt">{!$Label.c.Edealer_UNIT_OF_MEASURE}</div>
+                            <div class="slds-col slds-size_6-of-12 prodnameno">{!v.partDetail.unit_of_measure}</div>
+                        </div>
+                        <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-m-bottom_x-small gridTxt">
+                            <div class="slds-col slds-size_6-of-12 gridheadtxt">{!$Label.c.Edealer_STOCKING_INDICATOR}</div>
+                            <div class="slds-col slds-size_6-of-12 prodnameno">{!v.partDetail.stocking_indicator}</div>
+                        </div>
+                        <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-m-bottom_x-small gridTxt">
+                            <div class="slds-col slds-size_6-of-12 gridheadtxt">{!$Label.c.Edealer_STOCKING_CLASS}</div>
+                            <div class="slds-col slds-size_6-of-12 prodnameno">{!v.partDetail.stocking_class}</div>
+                        </div>
+                        <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-m-bottom_x-small gridTxt">
+                            <div class="slds-col slds-size_6-of-12 gridheadtxt">{!$Label.c.Edealer_WEIGHT}</div>
+                            <div class="slds-col slds-size_6-of-12 prodnameno">{!v.partDetail.weight}</div>
+                        </div>
+                        <aura:iteration items="{!v.partDetailObj}" var="ad"> 
+                            <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-m-bottom_x-small gridTxt">
+                                
+                                <div class="slds-col slds-size_6-of-12 gridheadtxt">{!ad.attributename}</div>
+                                <div class="slds-col slds-size_6-of-12 prodnameno">{!ad.value}</div>
+                            </div>                                     
+                        </aura:iteration> 
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

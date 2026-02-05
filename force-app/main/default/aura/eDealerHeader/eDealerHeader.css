@@ -1,0 +1,307 @@
+.THIS .logos{
+    display: flex;
+}
+.THIS .companylogo img{
+    height: 36px;
+    float: left;
+    margin: 4px 0 0 4px;
+}
+
+.THIS .dealername{
+    /* for custom font*/
+    font-family: 'RobotoBold';
+    /* for custom font end*/
+    font-size: 18px;
+    font-weight: 600;
+    padding:12px 12px;;
+}
+/*Start from Mayadevi*/
+.THIS .rightSideHeader {
+    /*float: right;*/
+    flex: 1;
+    text-align: right;
+}
+
+.THIS .rightSideHeader .userDropDown ul {
+    margin: 0px;
+    padding: 0px;
+    width:100%;
+   
+}
+.THIS .rightSideHeader .userDropDown ul li
+{
+    text-align:left;
+    padding: 0px 5px;
+}
+.cEDealerHeader .rightSideHeader .userDropDown ul li a .slds-icon_container.Black svg
+{
+    fill:black;
+    background-color:IndianRed !important;
+}
+.THIS .rightSideHeader .userDropDown ul li a {
+    padding: 10px 12px;
+}
+.THIS .rightSideHeader .userDropDown ul li a .slds-icon_container
+{
+    padding:0px 5px 0px 0px;
+}
+/*.cEDealerHeader .rightSideHeader ul li:first-child {
+    width: 65%;
+}*/
+.cEDealerHeader .rightSideHeader ul li:last-child {
+   	margin-top:-4px !important;
+}
+.THIS .rightSideHeader .userDropDown ul li{width:100%;}
+.THIS .userDropDown ul li {
+    display: block;
+    width: 100%;
+    /*float: left;*/
+    border-bottom: 1px solid #d9d4d4;
+}
+.THIS .userDropDown ul li:last-child
+{
+    border-bottom:none;
+}
+.THIS .rightSideHeader ul {
+    padding: 0px;
+    margin: 10px 0px;
+    float: right; /*width:71%;*/
+}
+
+.THIS .rightSideHeader ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0px 12px;
+    /*float:left;
+     float: right; */
+}
+.THIS .txtCenter{text-align:center}
+.THIS .search-form button {
+    border: 0;
+    /* border-radius */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    /* border-radius 
+    padding: 0;
+    margin-left: -30px;*/
+    background: 0 0;
+}
+
+.THIS .serch-icon-align{position: absolute!important;
+    /*margin: -20px -24px!important;*/
+     margin: -22px -24px!important;
+}
+
+.THIS .search-form
+{
+    /*width:100%;
+    float:left;*/
+}
+.THIS .search-form button .icon {
+    color: rgba(2,59,109,.6);
+    width: 20px;
+    height: 20px;
+}
+.THIS .search-form input {
+    border: 0;
+    font-size: 13px;
+    color: black;
+    border: 1px solid rgba(2,59,109,.2);
+    padding: 6px 35px 6px 7px;
+ /*   border-radius: 4px;*/
+    /* border-radius */
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+    /* border-radius */
+    transition: .3s;
+    /*width: 74%;*/
+    /*width: 58%;*/
+    width:auto;
+    height:30px;
+    background:#f5f6fa;
+}
+.THIS .search-form input:placeholder
+{
+    font-style:italic;
+}
+
+.THIS .search-form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-style:italic;
+  opacity: 1; /* Firefox */
+}
+
+.THIS .search-form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-style:italic;
+}
+
+.THIS .search-form input::-ms-input-placeholder { /* Microsoft Edge */
+  font-style:italic;
+}
+/*end from Mayadevi*/
+.THIS {
+    box-shadow: 1px 3px 3px #ccc;
+    /*height: 65px;*/
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    padding:5px 0;
+}
+.THIS .slds-col--padded{
+    padding-left:0 !important;
+    padding-right:0 !important;
+    
+}
+.THIS .searchlist{
+    width:10%;
+}
+
+.THIS .label-hidden > label {
+    display: none;
+}
+
+.THIS .headerCmp-combobox-group {
+    display: flex;
+    flex-direction: row;
+} 
+/*.THIS .headerCmp-top-logo{
+    width: 55%;
+    margin: 8px 0 5px 0;
+    height:60px;
+    margin: 2px 0 0px 0;
+}*/
+/*.THIS .headerCmp-dealer_name {
+    /* for custom font
+    font-family: 'RobotoBold';*/
+    /* for custom font end
+    font-size: 18px;
+    font-weight: 600;
+    padding:15px 0px;
+}*/
+/*custom font*/
+@font-face {
+   font-family: 'RobotoBold';
+   src: url(/resource/RobotoBold); 
+    /* 
+     'RobotoBold' is the name of static resorces (.ttf) font file 
+    */
+ }
+/*custom font end*/
+
+.THIS .mrgn10{
+    margin:0 10px;
+}
+.THIS .selectall{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    /*border: 2px solid rgba(2,59,109,.2);*/
+    border: 1px solid rgba(2,59,109,.2);
+    padding: 5px 12px 5px 8px;
+    /*float: left;*/
+   /* width: 26%;*/
+    width: auto;
+    float:left;
+    border-right: 0px;
+    height:30px;
+    font-size:13px;
+
+}
+.THIS .searchcontainer{
+    float:right;
+    width:45%;
+    position: relative;
+    top: 20%;
+}
+.THIS .searchcontainer input{
+    background: #f5f6fa;
+    /*height: 35px;*/
+    width: 82%;
+    position: relative;
+    right: 27%;
+    border: 1px solid #b2b2b2;
+}
+.THIS .userdetails{
+    position: relative;
+    top: 28%;
+    left: 12%;  
+}
+.THIS .notification {  
+    color: white;
+    text-decoration: none;
+    padding: 2px 2px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+
+.THIS .notification .badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    padding: 1px 7px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+
+
+.THIS .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.THIS .dropbtn:hover .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.THIS .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.THIS .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;   
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 65px;
+    right: 3px;
+    width: 200px;
+}
+
+.THIS .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.THIS .dropdown-content a:hover {
+  background-color: #f6f6f6;
+}
+
+.THIS .dropdown-content-border{
+    border-bottom: 1px solid #d9d4d4;
+}
+
+.THIS .show {display: block;}
+
+.THIS .select-order{
+    cursor: pointer;
+}
+.THIS .disabledEvent{
+    opacity: 0.6;
+    pointer-events: none;
+}

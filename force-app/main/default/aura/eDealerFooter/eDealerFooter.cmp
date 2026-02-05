@@ -1,0 +1,49 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	
+    <!-- this used for the current Dealer Division -->
+    <aura:attribute name="currentYear" type="integer" />
+    
+    <!-- calling method on load -->
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!--<div class="slds-grid slds-wrap"> -->
+                <div class="slds-col slds-size_12-of-12 EDealerFooter">
+                    <div style="width:100%;">
+                        <!--<div class="slds-m-top_medium slds-m-bottom_medium"> -->
+                            <div class="slds-grid slds-wrap" style="padding-bottom: 12px;">
+                                <div class="slds-col slds-small-size_1-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                                </div>
+                                <div class="slds-col slds-small-size_10-of-12 slds-medium-size_8-of-12 slds-large-size_8-of-12">
+                                    <table style="width:100%;">
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td colspan="5">
+                                                <div align="center" class="slds-m-top_small">
+                                                    <!--<span style="color:#F5F5F5;">© PACCCAR PARTS - Copyright 2020</span> -->
+                                                    <span style="font-family: arial; font-size: 12px; color: #B9B9B9;">
+            											© {!v.currentYear}&nbsp; {!$Label.c.PACCAR_Parts_All_rights_reserved}
+        											</span>
+        											<span style="font-size: 12px; color: #B9B9B9;">
+            											&nbsp;|&nbsp;</span>
+        											<a style="font-size: 12px; color: #B9B9B9;" target="_self" href="https://www.paccarparts.com/privacy-statement/">
+          												{!$Label.c.Privacy_Statement}
+        											</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody></table>
+                                </div>
+                                <div class="slds-col slds-small-size_1-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                                </div>
+                            </div>
+                     
+                        <!--</div>-->
+                    </div>
+                </div>
+            <!--  </div>  -->
+
+    
+    
+</aura:component>

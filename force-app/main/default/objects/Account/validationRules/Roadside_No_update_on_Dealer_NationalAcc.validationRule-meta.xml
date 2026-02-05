@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Roadside_No_update_on_Dealer_NationalAcc</fullName>
+    <active>true</active>
+    <description>Roadside supervisor should not be able to edit these fields on Dealerships and National accounts. In spite of modify accounts Roadside permission set</description>
+    <errorConditionFormula>AND(
+    $Profile.Name = &quot;Service User&quot;,
+    RecordType.Name &lt;&gt; &quot;TCS Service Accounts&quot;,
+    RecordType.Name &lt;&gt; &quot;Independent Service Provider&quot;,
+    RecordType.Name &lt;&gt; &quot;Fleet &amp; Repair Shops&quot;,
+    RecordType.Name &lt;&gt; &quot;PacLease Account&quot;,
+    $UserRole.Name = &quot;Roadside&quot;,
+    OR(
+        ISCHANGED(Phone),
+        ISCHANGED(PCC_Use_Phone__c),
+        ISCHANGED(Fleet_Code__c),
+        ISCHANGED(KW_Corresponding_Dealer__c),
+        ISCHANGED(PB_Corresponding_Dealer__c),
+        ISCHANGED(Industry),
+        ISCHANGED(Service_Email__c),
+        ISCHANGED(Centralized_Billing__c)
+    ),
+    (NOW() - CreatedDate &gt; 0.0417)
+)</errorConditionFormula>
+    <errorMessage>You do not have Permission to Edit this field on this type of account</errorMessage>
+</ValidationRule>

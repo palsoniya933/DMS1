@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attainment_to_Track_to_Goal__c</fullName>
+    <formula>Business_Days_Passed__c /65</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>% Attainment to Track to Goal</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

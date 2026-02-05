@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Qty_In_Cart__c</fullName>
+    <label>Total Qty In Cart</label>
+    <summarizedField>EDealerCart__c.Quantity__c</summarizedField>
+    <summaryFilterItems>
+        <field>EDealerCart__c.Type__c</field>
+        <operation>equals</operation>
+        <value>In Cart</value>
+    </summaryFilterItems>
+    <summaryForeignKey>EDealerCart__c.Suggested_Order__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

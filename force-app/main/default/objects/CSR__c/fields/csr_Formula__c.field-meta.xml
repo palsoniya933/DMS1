@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>csr_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISBLANK(CSR_Number__c),
+HYPERLINK(&quot;/lightning/r/CSR__c/&quot; &amp; Id &amp; &quot;/view&quot;, Name, &quot;_self&quot;),
+HYPERLINK(&quot;/lightning/r/CSR__c/&quot; &amp; Id &amp; &quot;/view&quot;, CSR_Number__c, &quot;_self&quot;)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CSR#</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

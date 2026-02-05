@@ -1,0 +1,17 @@
+<template>
+	<template if:true={dislayErrorIcon}>
+		<button class="slds-button slds-button_icon" onmouseover={toggleHideShow}
+            onmouseout={toggleHideShow}>
+            <lightning-icon icon-name="utility:warning" variant="warning" class="slds-m-left_xx-small zIndexClass" alternative-text="Info" size="x-small"
+                title="">
+            </lightning-icon>
+        </button>
+		<div class={popOver} role="tooltip" id="help" style="position:absolute;top:-5px;right:45px;width:auto">
+			<div class="slds-popover__body">
+				<template for:each={errorData} for:item="error">
+					<p key={error}>{error}</p>
+				</template>
+			</div>
+		</div>
+	</template>
+</template>

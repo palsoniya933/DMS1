@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_MX_Annual_Parts_Purchases__c</fullName>
+    <formula>Total_Clase_8_7__c *3000+ Total_Clase_6__c *1900+Dollys__c *400+Trailers__c *400+ ISX__c *800 +PX__c *450</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculation is as follows: (Class_8_Total__c *3000)+ (Class_6_7_Total__c *1900)+ (Dollys__c *400)+( Trailers__c *400)</inlineHelpText>
+    <label>Estimated MX Annual Parts Purchases</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

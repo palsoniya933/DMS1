@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Country_for_United_States</fullName>
+    <active>false</active>
+    <description>Validates that the account Billing Country is a valid two -character abbreviation for US, USA, United States</description>
+    <errorConditionFormula>OR(BillingCountry = &quot;USA&quot;, BillingCountry=&quot;United States&quot;, BillingCountry= &quot;United States of America&quot;, BillingCountry= &quot;united states&quot;)</errorConditionFormula>
+    <errorDisplayField>BillingCountry</errorDisplayField>
+    <errorMessage>A valid two-letter country code (US) is required for United States.</errorMessage>
+</ValidationRule>

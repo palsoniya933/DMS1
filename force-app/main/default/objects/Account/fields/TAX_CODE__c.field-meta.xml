@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAX_CODE__c</fullName>
+    <description>OPC Tax Code is used in the invoicing process and is based on the state requirement. 
+Mexico and Canada are Tax Exempt.</description>
+    <label>OPC Tax Code</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>WH1</fullName>
+                <default>false</default>
+                <label>WH1</label>
+            </value>
+            <value>
+                <fullName>WH2</fullName>
+                <default>false</default>
+                <label>WH2</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

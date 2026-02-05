@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fleet_Sales_Manager__c</fullName>
+    <label>Fleet Sales Manager</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Frank Reynolds</fullName>
+                <default>false</default>
+                <label>Frank Reynolds</label>
+            </value>
+            <value>
+                <fullName>James Telling</fullName>
+                <default>false</default>
+                <label>James Telling</label>
+            </value>
+            <value>
+                <fullName>Justin Gerstner</fullName>
+                <default>false</default>
+                <label>Justin Gerstner</label>
+            </value>
+            <value>
+                <fullName>Mike Sharpe</fullName>
+                <default>false</default>
+                <label>Mike Sharpe</label>
+            </value>
+            <value>
+                <fullName>Monica Cafferty</fullName>
+                <default>false</default>
+                <label>Monica Cafferty</label>
+            </value>
+            <value>
+                <fullName>Scott Tuck</fullName>
+                <default>false</default>
+                <label>Scott Tuck</label>
+            </value>
+            <value>
+                <fullName>Steve McManis</fullName>
+                <default>false</default>
+                <label>Steve McManis</label>
+            </value>
+            <value>
+                <fullName>Thomas Booth</fullName>
+                <default>false</default>
+                <label>Thomas Booth</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

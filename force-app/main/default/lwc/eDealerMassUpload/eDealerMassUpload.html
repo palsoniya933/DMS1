@@ -1,0 +1,77 @@
+<template>
+	<div class="slds-grid">
+		<div class="slds-col">
+			<button class="download-btn" onclick={downloadTemplate} >
+				<img src={excelDownloadLogo} class="imgicon-style-align" /> {label.EDealer_Download_Template}</button>
+
+			<lightning-button variant="success" class="upload-btn" label={label.EDealer_Mass_Upload}
+				icon-name="utility:upload" onclick={openModal}>
+			</lightning-button>
+		</div>
+	</div>
+	<template if:true={isModalOpen}>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header slds-modal__header_empty">
+					<div class="slds-m-around_x-small">
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size_5-of-12">
+								<span>
+                            <div class="prodnameno slds-truncate align-partname">
+                                <h2 class="slds-text-heading_medium">
+                                   {label.EDealer_Mass_Upload}
+                                </h2>   
+                            </div>
+                            </span>
+							</div>
+							<div class="slds-modal__content">
+								<button  onclick={handleClosePartSearchModal} class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                            <lightning-icon icon-name="utility:close" onclick={closeModal}  size="small" class="fill-color"></lightning-icon>  
+                        </button>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium fileAlign" id="modal-content-id-1">
+					<lightning-layout>
+						<lightning-layout-item>
+							<lightning-input type="file" onchange={handleFileChange} accept={acceptedFormats}>
+							</lightning-input>
+							<lightning-layout>
+								<lightning-layout-item>
+									<div class="slds-m-left_small slds-m-right_small">
+										<template lwc:if={fileDetails}>
+											<template for:each={fileDetails} for:item="file" for:index="index">
+												<template if:false={file.isDeleted}>
+													<p key={file.fileId}>
+														{file.fileName}
+
+													</p>
+												</template>
+											</template>
+										</template>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-top_large slds-p-left_small">
+							<lightning-button variant="destructive" label={label.edealerMassuploadbutton} onclick={handleUpload}
+								disabled={disableUploadButton}></lightning-button>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-top_large slds-p-left_small">
+						 <lightning-helptext content={allowedFileFormats}></lightning-helptext>
+						</lightning-layout-item>
+						<lightning-layout-item padding="around-small">
+						</lightning-layout-item>
+					</lightning-layout>
+
+
+
+				</div>
+
+			</div>
+		</section>
+	</template>
+</template>

@@ -1,0 +1,24 @@
+<template>
+	<lightning-spinner lwc:if={isShowSpinner} alternative-text="Loading" size="medium" variant="brand">
+	</lightning-spinner>
+
+	<div class="slds-grid slds-grid_vertical slds-p-around_x-small">
+		<div class="slds-col slds-align-top slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12">
+			<textarea value={comments}
+			class="textarea"
+			disabled={disablePostMessage}
+			maxlength="70"
+			onchange={handleCommentsChange}>
+    		</textarea>
+		</div>
+		<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-clearfix">
+			<button class="slds-button slds-button_destructive btn-group slds-float_right"
+        			onclick={handleCreateCsrComment}
+					disabled={disablePostMessage}>{label.Edealer_POST}
+    		</button>
+			<c-e-dealer-info-icon content={CommentscannotbeaddedtotheCSRuntilaCSRnumberhasbeengenerated}
+				 align="top-right" class="slds-float_right slds-m-right_xx-small"></c-e-dealer-info-icon>
+		</div>
+
+	</div>
+</template>

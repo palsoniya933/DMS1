@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-grid slds-wrap slds-gutters slds-m-around_medium">
+        <template for:each={inspectionSheetsList} for:item="documentInfo">
+            <div key={documentInfo.id}
+                class="slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-m-vertical_xx-small">
+                <c-inspection-sheet-document document-name={documentInfo.fileName}
+                    document-extension={documentInfo.extension} document-url={documentInfo.downloadUrl}
+                    display-only={isDisplayOnly} document-s-no={documentInfo.id}
+                    is-admin-user={isAdminUser}></c-inspection-sheet-document>
+            </div>
+        </template>
+    </div>
+</template>

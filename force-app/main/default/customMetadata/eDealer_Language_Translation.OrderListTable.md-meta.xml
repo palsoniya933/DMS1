@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Order List Table</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">All</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;: &quot;dealerCode&quot;,
+&quot;fr_CA&quot;: &quot;Code du concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Código de concesionaria&quot;,
+&quot;en_US&quot;: &quot;Dealer Code&quot;,
+&quot;order&quot;: 2
+},
+{
+&quot;columnAPIName&quot;: &quot;suffix&quot;,
+&quot;fr_CA&quot;: &quot;Suffixe&quot;,
+&quot;es_MX&quot;: &quot;Sufijo&quot;,
+&quot;en_US&quot;: &quot;Suffix&quot;,
+&quot;order&quot;: 3
+},
+{
+&quot;columnAPIName&quot;: &quot;Channel&quot;,
+&quot;fr_CA&quot;: &quot;Canal&quot;,
+&quot;es_MX&quot;: &quot;Canal&quot;,
+&quot;en_US&quot;: &quot;Channel&quot;,
+&quot;order&quot;: 6
+},
+{
+&quot;columnAPIName&quot;: &quot;dealerPO&quot;,
+&quot;fr_CA&quot;: &quot;Bon de commande conc.&quot;,
+&quot;es_MX&quot;: &quot;OC de Concesionario&quot;,
+&quot;en_US&quot;: &quot;Dealer PO&quot;,
+&quot;order&quot;: 6
+},
+{
+&quot;columnAPIName&quot;: &quot;partNumber&quot;,
+&quot;fr_CA&quot;: &quot;Numéro de pièce&quot;,
+&quot;es_MX&quot;: &quot;Número de pieza&quot;,
+&quot;en_US&quot;: &quot;Part Number&quot;,
+&quot;order&quot;: 7
+},
+{
+&quot;columnAPIName&quot;: &quot;qty&quot;,
+&quot;fr_CA&quot;: &quot;Quantité&quot;,
+&quot;es_MX&quot;: &quot;Cantidad&quot;,
+&quot;en_US&quot;: &quot;Qty&quot;,
+&quot;order&quot;: 8
+},
+{
+&quot;columnAPIName&quot;: &quot;dealerPrice&quot;,
+&quot;fr_CA&quot;: &quot;Prix ​​du concessionnaire&quot;,
+&quot;es_MX&quot;: &quot;Precio de concesionario&quot;,
+&quot;en_US&quot;: &quot;Dealer Price&quot;,
+&quot;order&quot;: 9
+},
+{
+&quot;columnAPIName&quot;: &quot;promoCode&quot;,
+&quot;fr_CA&quot;: &quot;Code promotionnel&quot;,
+&quot;es_MX&quot;: &quot;Código promocional&quot;,
+&quot;en_US&quot;: &quot;Promo Code&quot;,
+&quot;order&quot;: 10
+},
+{
+&quot;columnAPIName&quot;: &quot;action&quot;,
+&quot;fr_CA&quot;: &quot;ACTION&quot;,
+&quot;es_MX&quot;: &quot;Acción&quot;,
+&quot;en_US&quot;: &quot;ACTION&quot;,
+&quot;order&quot;: 11
+}
+]</value>
+    </values>
+</CustomMetadata>

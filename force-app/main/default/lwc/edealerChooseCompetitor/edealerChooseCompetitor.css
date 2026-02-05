@@ -1,0 +1,293 @@
+:host {
+    overflow-x: hidden;
+    --sds-c-tabs-item-text-color-active:red;
+    --sds-c-tabs-item-text-font-weight: 700;
+    --slds-c-tabs-item-color-border-hover :none;
+    --sds-c-tabs-item-color-border-active:red;
+}
+
+.slds-var-p-around_medium {
+    max-width: 100%;
+    overflow-x: visible;
+}
+.slds-path__link{
+	    padding-left: 0px !important;
+    padding-right: 0px !important;
+	padding: 0 5px 0 5px !important;
+}
+.fixedPosition {
+    position: fixed !important;
+}
+.delete-color {
+      
+    --sds-c-icon-color-foreground-default: red !important;
+    --sds-c-icon-color-background: red !important;
+}
+.add-color {
+     
+    --sds-c-icon-color-foreground-default: green !important;
+    --sds-c-icon-color-background: green !important;
+}
+.btn-padding{
+   padding-top: 18px !important;
+}
+.submit-btn{
+   padding-left: 18px !important;
+}
+.slds-table thead th{
+    background: gray;
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.delete_icon {
+    --sds-c-icon-color-background: #FF4538;
+    --sds-c-icon-color-foreground-default: white !important;
+    padding: 3px;
+    border-radius: 20px;
+}
+
+.add_icon {
+    --sds-c-icon-color-background: green;
+    --sds-c-icon-color-foreground-default: white !important;
+    padding: 3px;
+    border-radius: 20px;
+}
+.paragraph-container p {
+    display: inline-block; /* or display: inline; */
+    margin: 0; /* Remove default paragraph margin */
+}
+.imgicon-style-align{
+    width: 31px;
+    height: 23px;
+    margin-right: 4px;
+    margin-left: -4px;
+    margin-top: -2px;
+   
+}
+.download-btn{ 
+    background: #c23934!important;
+    color: #fff!important;
+    padding: 3px 7px 3px!important;
+    border-radius: 5px!important;
+    border: 2px solid #c23934;
+    margin-right: 6px;
+    margin-top: 1px;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-content {
+    margin-right: auto; 
+}
+
+.right-content {
+    text-align: right;
+    
+}
+.upload-btn{ 
+    --slds-c-button-success-text-color:#fff !important;
+    
+}
+.align-close{
+    text-align: right;
+}
+.close-icon{
+    background: red;
+    padding-bottom: 1rem;
+    text-align: right;
+}
+.slds-modal__close{ 
+    top: 1.4rem;
+    z-index: 999;
+    right: 1.7rem;
+}
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px; 
+    cursor: pointer;
+    padding-top: 20px;
+}
+.search-btn{
+    text-align: right;
+}
+.slds-table_container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+.close-icon{
+    width: 25px !important;
+    height: 25px !important;
+    fill:red !important;
+}
+.slds-modal__container{
+    max-width: 85rem !important;
+    width: 85% !important;
+    border-radius: 10%;
+    padding: 20px;
+}
+.slds-checkbox{
+    padding-left: 30px;
+}
+.invDatacontainertablecontainer{
+    padding-top:0px;
+}
+.leftpd{
+    padding-left:20px !important;
+}
+.invDatacontainertable{
+    width:100%;
+}
+.invDatacontainertableheading th{
+    background-color:#808080;
+    color:white;    
+    padding: 10px 5px;
+    text-transform: uppercase;
+    height: 35px;
+    font-weight: 500;
+}
+.slds-icon .slds-icon-text-default .slds-icon_small{
+    width: 25px !important;
+    height: 25px !important;
+    fill:red !important;
+}
+.slds-is-active {
+    color: #e3474b!important;
+    background-color: red !important;
+}
+.black-btn{
+    background-color: black;
+    color: white;
+    padding-right: 0.8rem;
+}
+.button-container{
+    text-align: right;
+    padding: 0.9rem;
+    
+}
+.btn-group{
+    padding-left: 0.8rem;
+}
+.bgpart-style{
+    padding: 0px 10px;
+    width: 100%;
+    background: #f5f6fa;
+    margin: -7px 0 12px 0;
+    height: 55px;
+    padding-top: 0px 10px;
+}
+.prodnameno {
+    font-size: 16px;
+}
+.align-partname{margin: 17px 0px 0px!important;padding:0px!important;}
+.pt-name{    
+    float: left;
+    padding: 2px 0px;
+}
+.padding-around{
+  padding-right: 5px;
+  padding-left: 3px;
+  padding-bottom: 10px;
+}
+.custom-row{
+    background-color: lightgrey !important;
+    height: 30px;
+    position: sticky;
+    top: 35px;
+}
+.csrpartstabledata{
+    padding: 0 5px;
+    height: 42px;
+}
+.row-design{
+    background: #fff;
+}
+.slds-m-around_x-small{
+    text-align:left;
+    padding-left:25px;
+    background:lightgrey;
+    
+}
+.slds-text-heading_medium{
+    padding-bottom:15px;
+    font-weight: 600;
+    font-size:medium;
+    /* font-size: ; */
+}
+.slds-icon_container{
+    fill:red;
+}
+.fill-color{
+    --slds-c-icon-color-foreground-default:#ff0000;
+}
+.slds-is-fixed{
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+.tabs {
+   box-shadow: 0px 2px 5px #A4B6D4 !important;
+    border: 1px solid #A5C9FF!important;
+    border-radius: 6px;
+}
+.slds-tabs_default__item.slds-is-active a li{
+    color: #e3474b!important;
+    font-weight: 600;
+    border-bottom: 2px solid red;
+}
+.slds-tabs_default__item.slds-is-active li{
+    color: #e3474b!important;
+}
+.slds-tabs_default__link {
+    color: #000;
+    font-size: 15px;
+    font-weight: 600;
+}
+.slds-tabs_default__link:focus{text-decoration:none!important;}
+.slds-tabs_default__item::after{display:none;}
+
+.slds-tabs_default__item .slds-is-active:after {
+    background: #e3474b!important;
+}
+.slds-tabs_default
+{
+    background: #ffffff;
+    border-radius: 6px;
+    padding:10px;
+}
+.part-left{
+    padding-left:20px;
+}
+.sr-col{
+    width: 3.25rem;
+}
+.radio-margin{
+    margin-right: 5px;
+}
+.padding12px {
+    padding: 0px 12px;
+    padding-bottom: 0px;;
+    text-align: left;
+}
+.scrollbar{
+    max-height: 300px;
+    overflow-y: auto;
+}
+.fixTableHead thead th { 
+      position: sticky; 
+      top: 0; 
+      z-index: 0;
+} 
+/* .fixTableHead tbody th { 
+      position: sticky;
+      top: 40px;
+} */

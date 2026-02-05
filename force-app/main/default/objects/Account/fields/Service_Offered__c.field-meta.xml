@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Offered__c</fullName>
+    <description>Service Offered by the Dealers/ISPs</description>
+    <label>Service Offered</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Body Shop</fullName>
+                <default>false</default>
+                <label>Body Shop</label>
+            </value>
+            <value>
+                <fullName>Engine</fullName>
+                <default>false</default>
+                <label>Engine</label>
+            </value>
+            <value>
+                <fullName>Full Service(Parts &amp; Service)</fullName>
+                <default>false</default>
+                <label>Full Service(Parts &amp; Service)</label>
+            </value>
+            <value>
+                <fullName>Glass</fullName>
+                <default>false</default>
+                <label>Glass</label>
+            </value>
+            <value>
+                <fullName>Hybrid</fullName>
+                <default>false</default>
+                <label>Hybrid</label>
+            </value>
+            <value>
+                <fullName>Locksmith</fullName>
+                <default>false</default>
+                <label>Locksmith</label>
+            </value>
+            <value>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+                <label>Mobile</label>
+            </value>
+            <value>
+                <fullName>Parts Only</fullName>
+                <default>false</default>
+                <label>Parts Only</label>
+            </value>
+            <value>
+                <fullName>Refrigerated Trailer</fullName>
+                <default>false</default>
+                <label>Refrigerated Trailer</label>
+            </value>
+            <value>
+                <fullName>Rental/Leasing</fullName>
+                <default>false</default>
+                <label>Rental/Leasing</label>
+            </value>
+            <value>
+                <fullName>Tire Sales &amp; Service</fullName>
+                <default>false</default>
+                <label>Tire Sales &amp; Service</label>
+            </value>
+            <value>
+                <fullName>Towing</fullName>
+                <default>false</default>
+                <label>Towing</label>
+            </value>
+            <value>
+                <fullName>Trailer Parts &amp; Service</fullName>
+                <default>false</default>
+                <label>Trailer Parts &amp; Service</label>
+            </value>
+            <value>
+                <fullName>Truck Stop</fullName>
+                <default>false</default>
+                <label>Truck Stop</label>
+            </value>
+            <value>
+                <fullName>Welding</fullName>
+                <default>false</default>
+                <label>Welding</label>
+            </value>
+            <value>
+                <fullName>Preferred ISP</fullName>
+                <default>false</default>
+                <label>Preferred ISP</label>
+            </value>
+            <value>
+                <fullName>LNG Service</fullName>
+                <default>false</default>
+                <label>LNG Service</label>
+            </value>
+            <value>
+                <fullName>CNG Service</fullName>
+                <default>false</default>
+                <label>CNG Service</label>
+            </value>
+            <value>
+                <fullName>BEV Service</fullName>
+                <default>false</default>
+                <label>BEV Service</label>
+            </value>
+            <value>
+                <fullName>Tires Sales &amp; Service</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tires Sales &amp; Service</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

@@ -1,0 +1,223 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" 
+                extends="c:edealerTracking"
+                controller="EDealerMSL_CSL_RSL_cntrl">
+    
+    <!-- currency code for loged in user/edealer -->
+    <aura:attribute name="currencyCode" type="String" /> 
+    
+    <!-- this is used for the saving the flag if the api apex call is called -->    
+    <aura:attribute name="APICalled" type="boolean" default="false"/>
+    
+    <aura:attribute name="offset" type="Integer" default="0"/>
+    <aura:attribute name="totaldownloadAPIcalls" type="Integer" />
+    <aura:attribute name="totaldownloadAPIcalled" type="Integer" default="0"/>
+    <aura:attribute name="downloadData" type="List" />
+    
+    <!-- Accessible Dealer with his Location/sub-Locations -->
+    <aura:attribute name="accessibleDealersLocs" type="List" />
+    
+    <!-- used to track id button as to be disabled -->
+    <aura:attribute name="disabledReportButton" type="boolean" default="true"/>
+    
+    <!-- From Locations list -->
+    <aura:attribute name="fromLocList" type="List" />
+    
+    <!-- this used for the current Dealer Code/Location -->
+    <aura:attribute name="dealerCode" type="String" />
+    
+    <!-- this used for the current Dealer Division -->
+    <aura:attribute name="dealerDivision" type="String" />
+    
+    <!-- this is used for store MSL CSL RSL Report  data into cache -->
+    <aura:attribute name="MSL_CSL_RSLReportDataMapCache" type="Map" />
+    
+    <!-- for loading -->
+    <aura:attribute name="displayLoading" type="Boolean" />
+    
+     <!-- for Filter Data -->
+    <aura:attribute name="selectedFilters" type="List" />
+
+    <!-- filter section columns -->
+    <aura:attribute name="filterColumns" type="List" />
+    
+    <!-- this is used for store data for MSL CSL RSL Report -->
+    <aura:attribute name="MSL_CSL_RSLReportData" type="List" />
+    
+    <!-- this is used for Language Translation -->
+    <aura:attribute name="languageTranslation" type="MAP"/>
+    
+    <!-- pagination related attributes -->
+    <aura:attribute name="PaginationList" type="object[]"/>
+    <aura:attribute name="paginationPageNumber" type="String" />
+    <aura:attribute name="paginationPageSize" type="Integer" default="25" />
+    <aura:attribute name="paginationTotalPages" type="Integer" />
+    <aura:attribute name="paginationRecordStart" type="Integer" />
+    <aura:attribute name="paginationRecordEnd" type="Integer" />
+    <aura:attribute name="paginationAllPageNumber" type="Integer[]" />
+    <aura:attribute name="paginationDisabledPrevious" type="boolean" default="true"/>
+    <aura:attribute name="paginationDisabledNext" type="boolean" default="false"/>
+    
+    
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="sortDirection" type="String" default="asc" />
+    <aura:attribute name="defaultSortDirection" type="String" default="asc" />
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="activeFilter" type="string" default='all' access="PRIVATE" />
+    <aura:attribute name="loadTime" type="Integer" />
+    
+    <!-- calling method on load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="destroy" value="{!this}" action="{!c.handleDestroy}"/> 
+    
+    <!-- this is to handle the change for multi select -->
+    <aura:handler name="change" value="{!v.fromLocList}" action="{!c.handleToFilterChange}"/>
+    
+    
+   <div class="reportContainerBox slds-p-around_small">
+    <!-- Section Label -->
+    <div class="slds-text-heading_small slds-m-bottom_medium">
+        {!$Label.c.MDI_Report_Filters}
+    </div>
+
+    <div class="reportFilters">
+        <p>
+            <span class="greyColor">{!$Label.c.Set_Parameter}</span> :
+            <span class="themecolor">{!$Label.c.CSL_RSL_Report}</span>
+        </p>
+        <p class="filtertxt">{!$Label.c.Select_Dealers}</p>
+        <br/>
+        <hr class="seperatorclass"/>
+
+        <!-- Filters input -->
+        <div class="slds-grid">
+            <table>
+                <tr valign="top">
+                    <td valign="top">
+                        <span>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-size_5-of-12">
+                                    <p class="greyColor">{!$Label.c.Dealer_Code}</p>
+                                    <aura:if isTrue="{!v.fromLocList.length > 0}">
+                                        <c:eDealerCustomMultiSelect 
+                                            options="{!v.fromLocList}" 
+                                            isContainer="true">
+                                        </c:eDealerCustomMultiSelect>
+                                    </aura:if>
+                                </div>
+
+                                <div class="slds-col slds-size_7-of-12">
+                                    <c:eDealerReportFilter 
+                                        selectedFilter="{!v.selectedFilters}" 
+                                        reportName="CSL RSL Report Filter"/>
+                                </div>
+                            </div>
+                        </span>
+                    </td>
+                </tr>
+            </table>                
+        </div>
+    </div>
+</div>
+
+    
+    <!-- this is for the Manual LockDown Report -->
+    <div class="reportContainerBox">
+        <lightning:card>
+            <!--SPINNER-->
+            <aura:if isTrue="{!v.displayLoading}">
+                <lightning:spinner alternativeText="Loading" size="medium" variant = "brand"/>
+            </aura:if>
+            <div class="slds-col slds-size_12-of-12 padding12px">
+                <div class="rFloat">
+                    <div align="right" class="" >
+                        <!-- Download Report Button csv format-->
+                        <c:eDealerDownloadReportInCsvButton reportName= "{!$Label.c.CSL_RSL_Report}"
+                                                            invData = "{!v.MSL_CSL_RSLReportData}"
+                                                            columns = "{!v.columns}"/>
+                        <!-- Download Report Button -->
+                        <c:eDealerDownloadReportButton  reportName="{!$Label.c.CSL_RSL_Report}"
+                                                       report="{!v.MSL_CSL_RSLReportData}"
+                                                       columns="{!v.columns}"
+                                                       aura:id="downloadcmp"
+                                                       callapimethod = "{!c.downloadReportData}"/>
+                        <button class="slds-button slds-button_destructive generateReportbutton" disabled="{!v.disabledReportButton}" onclick="{!c.fetchInternalReportData}">
+                            <lightning:icon iconName="utility:side_list" size ="xx-small" alternativeText="side_list" title="" />{!$Label.c.Generate_Report}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- data part -->   
+            <div class="slds-col slds-size_12-of-12 padding12px">
+            <aura:if isTrue="{!v.MSL_CSL_RSLReportData.length > 0 }">      
+                
+                <div class="datacontainer">            
+                    <table >
+                        <tr>
+                            <td>
+                                <c:eDealerPagination totalRecords = "{!v.MSL_CSL_RSLReportData}"
+                                                     totalNumberRecords = "{!v.MSL_CSL_RSLReportData}"
+                                                     PaginationList = "{!v.PaginationList}"
+                                                     PageNumber="{!v.paginationPageNumber}"
+                                                     pageSize="{!v.paginationPageSize}"
+                                                     TotalPages="{!v.paginationTotalPages}"
+                                                     RecordStart="{!v.paginationRecordStart}"
+                                                     RecordEnd="{!v.paginationRecordEnd}"
+                                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                                     disablednext="{!v.paginationDisabledNext}"
+                                                     displayPageButtons="false"></c:eDealerPagination>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table style="table-layout:fixed;">
+                        <td>
+                            
+                            <lightning:datatable keyField="id"
+                                                 hideCheckboxColumn="true"
+                                                 columns="{!v.columns }"
+                                                 data="{!v.PaginationList}"
+                                                 defaultSortDirection="{!v.defaultSortDirection}"
+                                                 sortedDirection="{!v.sortDirection}"
+                                                 sortedBy="{!v.sortedBy}"
+                                                 onsort="{!c.handleSort}"
+                                                 class="cols-table"
+                                                 columnWidthsMode="auto"
+                                                 minColumnWidth="120">
+                            </lightning:datatable>
+                        </td></table>
+                    
+                    
+                </div>
+                
+                <!-- pagination cmp -->
+                <c:eDealerPagination totalRecords = "{!v.MSL_CSL_RSLReportData}"
+                                     totalNumberRecords = "{!v.MSL_CSL_RSLReportData}"
+                                     PaginationList = "{!v.PaginationList}"
+                                     PageNumber="{!v.paginationPageNumber}"
+                                     pageSize="{!v.paginationPageSize}"
+                                     TotalPages="{!v.paginationTotalPages}"
+                                     RecordStart="{!v.paginationRecordStart}"
+                                     RecordEnd="{!v.paginationRecordEnd}"
+                                     allPageNumber="{!v.paginationAllPageNumber}"
+                                     displayPageButtons="true"
+                                     disabledprevious="{!v.paginationDisabledPrevious}"
+                                     disablednext="{!v.paginationDisabledNext}"></c:eDealerPagination>
+                
+                
+                
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.APICalled}">
+                        <br/>
+                        <c:eDealerNotRecordFound></c:eDealerNotRecordFound>
+                    </aura:if>
+                    
+                </aura:set>
+                
+            </aura:if>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DFM__c</fullName>
+    <label>DFM</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BENITEZ,G.</fullName>
+                <default>false</default>
+                <label>BENITEZ,G.</label>
+            </value>
+            <value>
+                <fullName>HERRERA,M.</fullName>
+                <default>false</default>
+                <label>HERRERA,M.</label>
+            </value>
+            <value>
+                <fullName>JIMENEZ,A.</fullName>
+                <default>false</default>
+                <label>JIMENEZ,A.</label>
+            </value>
+            <value>
+                <fullName>NEGRETE, F.</fullName>
+                <default>false</default>
+                <label>NEGRETE, F.</label>
+            </value>
+            <value>
+                <fullName>MORENO,A.</fullName>
+                <default>false</default>
+                <label>MORENO,A.</label>
+            </value>
+            <value>
+                <fullName>GONZALEZ, A.</fullName>
+                <default>false</default>
+                <label>GONZALEZ, A.</label>
+            </value>
+            <value>
+                <fullName>VIESCA,R.</fullName>
+                <default>false</default>
+                <label>VIESCA,R.</label>
+            </value>
+            <value>
+                <fullName>CALACICH.L.</fullName>
+                <default>false</default>
+                <label>CALACICH.L.</label>
+            </value>
+            <value>
+                <fullName>CLARIGUE, J.</fullName>
+                <default>false</default>
+                <label>CLARIGUE, J.</label>
+            </value>
+            <value>
+                <fullName>GUZMAN, J.</fullName>
+                <default>false</default>
+                <label>GUZMAN, J.</label>
+            </value>
+            <value>
+                <fullName>FLORES, JM.</fullName>
+                <default>false</default>
+                <label>FLORES, JM.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

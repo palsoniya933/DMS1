@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is the Lightning Message Channel for CSR application.</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>message To Send</description>
+        <fieldName>detail</fieldName>
+    </lightningMessageFields>
+    <masterLabel>eDealerCSRChannel</masterLabel>
+</LightningMessageChannel>

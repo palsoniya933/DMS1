@@ -1,0 +1,47 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <!-- this will save the selected location -->
+    <aura:attribute name="selectedLocation" type="object"/>
+    
+    <!-- this will save the menu name which is clicked -->
+    <aura:attribute name="selectedTab" type="String" />
+    
+    <!-- LoggedIn User details -->
+    <aura:attribute name="userDetail" type="Object" />
+    
+    <!-- on Change of Dealer Code -->
+    <aura:handler name="change" value="{!v.selectedTab}" action="{!c.updateTotalCartCount}"/>
+    
+    <div class="tabBox">
+        <lightning:tabset selectedTabId="{!v.selectedTab}">
+            <!-- Emergency Tab -->
+            <lightning:tab label="PDC EMERGENCY ORDERS" id="EM">
+                <aura:if isTrue="{!v.selectedTab == 'EM'}">     
+                    <c:eDealerEmergencyOrdersCart  dealerCode = "{!v.selectedLocation.selectedLoc}" userDetail="{!v.userDetail}"/>
+                </aura:if>    
+            </lightning:tab>
+            
+            <!-- Stock Order Tab -->
+            <lightning:tab label="PDC STOCK ORDERS" id="SO" >
+                <aura:if isTrue="{!v.selectedTab == 'SO'}">     
+                    <c:eDealerStockOrdersCart  dealerCode = "{!v.selectedLocation.selectedLoc}" userDetail="{!v.userDetail}"/>
+                </aura:if>
+            </lightning:tab>
+            
+            <!-- DSP Emergency Tab -->
+            <lightning:tab label="DSP EMERGENCY ORDERS" id="DSPEM">
+                <aura:if isTrue="{!v.selectedTab == 'DSPEM'}">   
+                    <c:eDealerDSPEmergencyOrdersCart  dealerCode = "{!v.selectedLocation.selectedLoc}" userDetail="{!v.userDetail}"/>
+                </aura:if>
+            </lightning:tab>
+            
+            <!-- DSP Tab -->
+            <lightning:tab label="DSP STOCK ORDERS" id="DSP">
+                <aura:if isTrue="{!v.selectedTab == 'DSP'}">   
+                    <c:eDealerDSPOrdersCart  dealerCode = "{!v.selectedLocation.selectedLoc}" userDetail="{!v.userDetail}"/>
+                </aura:if>
+            </lightning:tab>
+            
+        </lightning:tabset>
+    </div>
+</aura:component>

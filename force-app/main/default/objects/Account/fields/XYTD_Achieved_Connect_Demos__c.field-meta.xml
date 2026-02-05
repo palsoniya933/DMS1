@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>XYTD_Achieved_Connect_Demos__c</fullName>
+    <defaultValue>&apos;https://na2.salesforce.com/00O400000026VTz&apos;</defaultValue>
+    <description>&apos;https://na2.salesforce.com/00O400000026VTz&apos;</description>
+    <inlineHelpText>Shows the % to the goal</inlineHelpText>
+    <label>2009 Achieved Connect Demos</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Url</type>
+</CustomField>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_Routing</fullName>
+    <columns>csr_Formula__c</columns>
+    <columns>csr_Phase__c</columns>
+    <columns>csr_DealerDivision__c</columns>
+    <columns>csr_DealerGroup__c</columns>
+    <columns>csr_DealerCode__c</columns>
+    <columns>csr_Dealer_Type__c</columns>
+    <columns>csr_Type__c</columns>
+    <columns>csr_Internal_Checkbox__c</columns>
+    <columns>csr_Competitive_Type__c</columns>
+    <columns>csr_Status__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>csr_Assigned_To__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>csr_Status__c</field>
+        <operation>equals</operation>
+        <value>X</value>
+    </filters>
+    <label>CSR Routing</label>
+    <sharedTo>
+        <group>CSR_Processor</group>
+    </sharedTo>
+</ListView>

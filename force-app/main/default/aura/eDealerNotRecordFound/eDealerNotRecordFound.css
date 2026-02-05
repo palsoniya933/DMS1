@@ -1,0 +1,40 @@
+.THIS {
+}
+
+.THIS .info-msg {
+    top: 6%;
+    background: #fffac2;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    width: 100%;
+        border: 1px solid #fff36a;
+}
+.THIS .info-msg svg{
+    margin: 0px 5px 4px 5px;
+    vertical-align: middle;
+}
+.THIS.warningbox{
+    padding: 1%;
+    border-radius: 4px;
+    color:#898989;
+    background-color:#fff;
+    background-image: none;
+}
+
+.THIS .redicon svg {
+    fill: #898989;
+}
+
+.THIS .blackicon svg {
+      fill: #636a6a;
+}
+
+.THIS.warningboxYellow{
+    border-radius: 4px;
+    color: #636a6a;
+    background-color: #fff;
+    background-image: none;
+    margin-top: 18px;
+}

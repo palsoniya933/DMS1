@@ -1,0 +1,26 @@
+<aura:event type="APPLICATION" description="This event will fire if user clicked on menu" access="global">
+	<aura:attribute name="menuName" type="String"/> 
+    <aura:attribute name="tabName" type="String"/>
+    <aura:attribute name="submenu" type="String"/>
+    <!-- For Example, when user click on Tile to open any MDI Report -->
+    <aura:attribute name="reportName" type="String"/> 
+    
+    <!-- searched Track Order Number -->
+    <aura:attribute name="orderNumber" type="String"/>
+    
+     <!-- searched part number -->
+    <aura:attribute name="partNumber" type="String"/>
+    <aura:attribute name="csrNumber" type="String"/>
+    <aura:attribute name="csrphase" type="String"/>
+    <aura:attribute name="csrPartNumber" type="String"/>
+    <aura:attribute name="location" type="String"/>
+     <!-- searched po number -->
+    <aura:attribute name="poNumber" type="String"/>
+     <aura:attribute name="selectedTabLabel" type="String"/>
+    <!-- heading name -->
+    <aura:attribute name="headingName" type="String"/>
+    <aura:attribute name="selectedoption" type="String"/>
+    
+    <!-- Selected Dealer Location/ code -->
+    <aura:attribute name="dealerLoc" type="string"/>
+</aura:event>

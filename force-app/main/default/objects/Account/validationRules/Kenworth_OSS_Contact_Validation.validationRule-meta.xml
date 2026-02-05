@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kenworth_OSS_Contact_Validation</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL( Kenworth_Dealer_OSS__r.Account.PACCARDivision__c ,&quot;Kenworth&quot;)</errorConditionFormula>
+    <errorDisplayField>Kenworth_Dealer_OSS__c</errorDisplayField>
+    <errorMessage>Please make sure your contact is a Kenworth dealer personnel</errorMessage>
+</ValidationRule>

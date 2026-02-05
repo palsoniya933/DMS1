@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Internal Transfer Report</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">fr_CA</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">{
+&quot;grp_nbr&quot; : &quot;GROUPE&quot;,
+&quot;Part_Number&quot; : &quot;ITEM&quot;,
+&quot;from_loc&quot; : &quot;DE&quot;,
+&quot;from_abc&quot; : &quot;DE ABC&quot;,
+&quot;FROM_12_Mth_Dmd&quot; : &quot;DE DEMANDES 12 MOIS&quot;,
+&quot;FROM_12_Mth_Hits&quot; : &quot;DE APPELS DE FICHIERS 12 MOIS&quot;,
+&quot;oh&quot; : &quot;DE EN MAIN&quot;,
+&quot;from_ohoo&quot; : &quot;DE EN MAIN + EN COMMANDE&quot;,
+&quot;from_dealernet&quot; : &quot;DEALERNET&quot;,
+&quot;from_distchan&quot; : &quot;CIRCUIT DE DISTRIBUTION&quot; ,
+&quot;to_loc&quot; : &quot;À /  VERS&quot; ,
+&quot;to_distchan&quot; : &quot;VERS CIRCUIT DE DISTRIBUTION&quot; ,
+&quot;to_abc&quot; : &quot;VERS ABC&quot;,
+&quot;TO_12_Mth_Dmd&quot; : &quot;VERS DEMANDE DE 12 MOIS&quot; ,
+&quot;TO_12_Mth_Hits&quot; : &quot;VERS APPELS DE FICHIERS 12 MOIS&quot; ,
+&quot;to_ohoo&quot; : &quot;VERS EN MAIN + EN COMMANDE&quot; ,
+&quot;Opportunity_Qty&quot; : &quot;QUANTITÉ POSSIBLE&quot; ,
+&quot;Transfer_Qty&quot; : &quot;QUANTITÉ DU TRANSFERT &quot; ,
+&quot;Transfer_Value&quot; : &quot;VALEUR DU TRANSFERT&quot;
+}</value>
+    </values>
+</CustomMetadata>

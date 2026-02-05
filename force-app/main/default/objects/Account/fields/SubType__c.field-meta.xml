@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SubType__c</fullName>
+    <label>Customer Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Auto Transport</fullName>
+                <default>false</default>
+                <label>Auto Transport</label>
+            </value>
+            <value>
+                <fullName>Bulk Haul</fullName>
+                <default>false</default>
+                <label>Bulk Haul</label>
+            </value>
+            <value>
+                <fullName>Construction</fullName>
+                <default>false</default>
+                <label>Construction</label>
+            </value>
+            <value>
+                <fullName>Dump</fullName>
+                <default>false</default>
+                <label>Dump</label>
+            </value>
+            <value>
+                <fullName>Heavy Haul</fullName>
+                <default>false</default>
+                <label>Heavy Haul</label>
+            </value>
+            <value>
+                <fullName>Line Haul</fullName>
+                <default>false</default>
+                <label>Line Haul</label>
+            </value>
+            <value>
+                <fullName>Logging</fullName>
+                <default>false</default>
+                <label>Logging</label>
+            </value>
+            <value>
+                <fullName>Mining</fullName>
+                <default>false</default>
+                <label>Mining</label>
+            </value>
+            <value>
+                <fullName>Mixer</fullName>
+                <default>false</default>
+                <label>Mixer</label>
+            </value>
+            <value>
+                <fullName>Oilfield</fullName>
+                <default>false</default>
+                <label>Oilfield</label>
+            </value>
+            <value>
+                <fullName>Pickup &amp; Delivery</fullName>
+                <default>false</default>
+                <label>Pickup &amp; Delivery</label>
+            </value>
+            <value>
+                <fullName>Refrigerated</fullName>
+                <default>false</default>
+                <label>Refrigerated</label>
+            </value>
+            <value>
+                <fullName>Refuse/Waste</fullName>
+                <default>false</default>
+                <label>Refuse/Waste</label>
+            </value>
+            <value>
+                <fullName>Regional Haul</fullName>
+                <default>false</default>
+                <label>Regional Haul</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>COOP</fullName>
+                <default>false</default>
+                <label>COOP</label>
+            </value>
+            <value>
+                <fullName>Fleet Profit Center</fullName>
+                <default>false</default>
+                <label>Fleet Profit Center</label>
+            </value>
+            <value>
+                <fullName>Independent</fullName>
+                <default>false</default>
+                <label>Independent</label>
+            </value>
+            <value>
+                <fullName>School</fullName>
+                <default>false</default>
+                <label>School</label>
+            </value>
+            <value>
+                <fullName>Transit</fullName>
+                <default>false</default>
+                <label>Transit</label>
+            </value>
+            <value>
+                <fullName>Paratransit</fullName>
+                <default>false</default>
+                <label>Paratransit</label>
+            </value>
+            <value>
+                <fullName>Shuttle</fullName>
+                <default>false</default>
+                <label>Shuttle</label>
+            </value>
+            <value>
+                <fullName>Motorcoach</fullName>
+                <default>false</default>
+                <label>Motorcoach</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Auto Transport</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Bulk Haul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Construction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Dump</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Heavy Haul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Line Haul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Logging</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Mining</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Mixer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Oilfield</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Pickup &amp; Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Refrigerated</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Refuse/Waste</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Regional Haul</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fleet</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bus</controllingFieldValue>
+            <valueName>School</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bus</controllingFieldValue>
+            <valueName>Transit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bus</controllingFieldValue>
+            <valueName>Paratransit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bus</controllingFieldValue>
+            <valueName>Shuttle</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bus</controllingFieldValue>
+            <valueName>Motorcoach</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

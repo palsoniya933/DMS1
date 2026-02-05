@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Freight Charges</label>
+    <protected>false</protected>
+    <values>
+        <field>Language__c</field>
+        <value xsi:type="xsd:string">en_US</value>
+    </values>
+    <values>
+        <field>Translation_json__c</field>
+        <value xsi:type="xsd:string">[
+{
+&quot;columnAPIName&quot;:&quot;paccarorder&quot;,
+&quot;label&quot;: &quot;PACCAR Order#&quot;,
+&quot;order&quot; : 1,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;dealerpo&quot;,
+&quot;label&quot;: &quot;Dealer PO#&quot;,
+&quot;order&quot; : 3,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;orderdate&quot;,
+&quot;label&quot;: &quot;Created Date&quot;,
+&quot;order&quot; : 4,
+&quot;datatype&quot; : &quot;Text&quot;
+},
+{
+&quot;columnAPIName&quot;:&quot;freighttotal&quot;,
+&quot;label&quot;: &quot;Freight Total&quot;,
+&quot;order&quot; : 5,
+&quot;datatype&quot; : &quot;Number&quot;
+}
+]</value>
+    </values>
+</CustomMetadata>

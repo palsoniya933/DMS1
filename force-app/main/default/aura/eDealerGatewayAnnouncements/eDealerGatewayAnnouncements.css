@@ -1,0 +1,9 @@
+.THIS .modal-header {
+    background-color: #d10000;
+    color: white;
+}
+
+.THIS .scrollable-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
